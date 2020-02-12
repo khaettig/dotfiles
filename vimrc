@@ -42,7 +42,8 @@ inoremap <Right> <C-w><Right>
 " Shortcuts
 nnoremap <F3> :sp $MYVIMRC<CR>
 nnoremap <F4> :source $MYVIMRC<CR> :PlugUpdate<CR>
-nnoremap <F10> :call VimuxRunCommand("rununittests")<CR>
+nnoremap <F6> :call VimuxRunCommand("rununittests")<CR>
+nnoremap <F7> :call VimuxRunCommand("rune2etests")<CR>
 map <C-y> :NERDTreeToggle<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
@@ -54,6 +55,10 @@ set clipboard=unnamedplus
 set splitright
 set splitbelow
 
+" Mappings for fugitive
+let g:nremap = {'a': '', 'i': ''}
+let g:xremap = {'a': '', 'i': ''}
+let g:oremap = {'a': '', 'i': ''}
 " Copied from CoC-Readme
 " if hidden is not set, TextEdit might fail.
 set hidden
