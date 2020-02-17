@@ -4,14 +4,14 @@
 * &lt;F3&gt; open vimrc
 * &lt;F4&gt; source vimrc and update plugins
 * &lt;F5&gt; run and build app (.localrc)
-* &lt;F6&gt; run unit tests (.locarc)
+* &lt;F6&gt; run unit tests (.localrc)
 * &lt;F7&gt; run e2e tests (.localrc)
 
 ## Splits
-* &lt;C-w&gt; _ &gt; Max out split height
-* &lt;C-w&gt; | &gt; Max out split width
-* &lt;C-w&gt; = &gt; Normalize splits
-* &lt;C-W&gt; R &gt; Swap splits
+* &lt;C-w&gt; _ Max out split height
+* &lt;C-w&gt; | Max out split width
+* &lt;C-w&gt; = Normalize splits
+* &lt;C-W&gt; R Swap splits
 
 ## Motions
 * **w**ord
