@@ -1,34 +1,81 @@
-<C-w> _ > Max out height
-<C-w> | > Max out width
-<C-w> = > Normalize
+# Vim
 
-<C-W> R > Swap split
+## Shortcuts
+<F3> open vimrc
+<F4> source vimrc and update plugins
+<F5> run and build app (.localrc)
+<F6> run unit tests (.locarc)
+<F7> run e2e tests (.localrc)
+
+## Splits
+<C-w> _ > Max out split height
+<C-w> | > Max out split width
+<C-w> = > Normalize splits
+<C-W> R > Swap splits
+
+## Motions
+[w]ord
+word [b]ackward
+end of a word [ä]
+[f]ind character/un[t]il (F/T backwards)
+[/] search
+
+## Commands
+[d]elete
+[c]hange
+[y]ank
+[</>] indent
+[=] reformat
+
+## Text Objects
+i[n]ner [w]ord
+also with [p]aragraph, and [)][']["][t]
+
+## Misc
+0 Beginning of the line
+$ End of the line
+~ Toggle case under cursor/visually-selected
+<C-l> scroll up
+<C-a> scroll down
+
+## ALE
+<C-n> go to next problem
+<C-f> use fixer
+
+## EasyMotion
+<Leader>w word
+<Leader>b word backwards
+<Leader>f find (one character)
+<Leader>s find backwards (one character)
+
+## NERDTree
+<C-y> Toggle
+s for vertical split
+i for horizontal split
+
+## Ctrlp
+<C-x> for vertical split
+<C-v> for horizontal split
+
+## Vim-Test
+<Leader>tn :TestNearest
+<Leader>tf :TestFile
+<Leader>tl :TestLast
+<Leader>tv :TestVisit
+
+## COC
+<F2> Rename
+gd go to definition
+gy go to type definition
+gi go to implementation
+gr go to references
+K see documentation
 
 
-Motions 
-_w_ord
-word _b_ackward
-_e_nd of a word --> ä/c
-_f_ind character un_t_il (FT backward)
-$0 go to end or beginning of line
 
-Commands
-delete
-change
-yank
->< indent
-= reformat
+## Fugitive
+:G git status
+:Git command
 
-d/blub 
-
-text objects:
-i_n_nner _w_ord -> inner word
-_p_aragraph, _)_ _'_ _"_ _t_
-
-Nerdtree > s vertical split, i horizontal split
-Ctrp > ctrlv horizontal ctrlx vertical
-
-n repeat last search (N backwards)
-
-Tmux:
-<C-b> z > Minmax current pane
+# Tmux
+<C-b>z Toggle pane maximization
