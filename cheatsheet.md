@@ -1,17 +1,17 @@
 # Vim
 
 ## Shortcuts
-* <F3> open vimrc
-* <F4> source vimrc and update plugins
-* <F5> run and build app (.localrc)
-* <F6> run unit tests (.locarc)
-* <F7> run e2e tests (.localrc)
+* &lt;F3&gt; open vimrc
+* &lt;F4&gt; source vimrc and update plugins
+* &lt;F5&gt; run and build app (.localrc)
+* &lt;F6&gt; run unit tests (.locarc)
+* &lt;F7&gt; run e2e tests (.localrc)
 
 ## Splits
-* <C-w> _ > Max out split height
-* <C-w> | > Max out split width
-* <C-w> = > Normalize splits
-* <C-W> R > Swap splits
+* &lt;C-w&gt; _ &gt; Max out split height
+* &lt;C-w&gt; | &gt; Max out split width
+* &lt;C-w&gt; = &gt; Normalize splits
+* &lt;C-W&gt; R &gt; Swap splits
 
 ## Motions
 * **w**ord
@@ -24,7 +24,7 @@
 * **d**elete
 * **c**hange
 * **y**ank
-* **</>** indent
+* **&lt;/&gt;** indent
 * **=** reformat
 
 ## Text Objects
@@ -35,36 +35,36 @@
 * 0 Beginning of the line
 * $ End of the line
 * ~ Toggle case under cursor/visually-selected
-* <C-l> scroll up
-* <C-a> scroll down
+* &lt;C-l&gt; scroll up
+* &lt;C-a&gt; scroll down
 
 ## ALE
-* <C-n> go to next problem
-* <C-f> use fixer
+* &lt;C-n&gt; go to next problem
+* &lt;C-f&gt; use fixer
 
 ## EasyMotion
-* <Leader>w word
-* <Leader>b word backwards
-* <Leader>f find (one character)
-* <Leader>s find backwards (one character)
+* &lt;Leader&gt;w word
+* &lt;Leader&gt;b word backwards
+* &lt;Leader&gt;f find (one character)
+* &lt;Leader&gt;s find backwards (one character)
 
 ## NERDTree
-* <C-y> Toggle
+* &lt;C-y&gt; Toggle
 * s for vertical split
 * i for horizontal split
 
 ## Ctrlp
-* <C-x> for vertical split
-* <C-v> for horizontal split
+* &lt;C-x&gt; for vertical split
+* &lt;C-v&gt; for horizontal split
 
 ## Vim-Test
-* <Leader>tn :TestNearest
-* <Leader>tf :TestFile
-* <Leader>tl :TestLast
-* <Leader>tv :TestVisit
+* &lt;Leader&gt;tn :TestNearest
+* &lt;Leader&gt;tf :TestFile
+* &lt;Leader&gt;tl :TestLast
+* &lt;Leader&gt;tv :TestVisit
 
 ## COC
-* <F2> Rename
+* &lt;F2&gt; Rename
 * gd go to definition
 * gy go to type definition
 * gi go to implementation
@@ -76,4 +76,4 @@
 * :Git command
 
 # Tmux
-* <C-b>z Toggle pane maximization
+* &lt;C-b&gt;z Toggle pane maximization
