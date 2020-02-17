@@ -48,10 +48,11 @@ nnoremap <F3> :sp $MYVIMRC<CR>
 nnoremap <F4> :source $MYVIMRC<CR> :PlugUpdate<CR>
 nnoremap <F6> :call VimuxRunCommand("rununittests")<CR>
 nnoremap <F7> :call VimuxRunCommand("rune2etests")<CR>
-map <C-y> :NERDTreeToggle<CR>
+map <silent> <C-y> :NERDTreeToggle<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
-nmap <C-n> <Plug>(ale_next_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
+nmap <silent> <C-f> :ALEFix<CR>
 
 " Settings
 syntax on
