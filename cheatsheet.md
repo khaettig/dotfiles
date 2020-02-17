@@ -29,7 +29,7 @@
 
 ## Text Objects
 * i**n**ner **w**ord
-* also with **p**aragraph, and **)****'****"****t**
+* also with **p**aragraph, and **)**, **'**, **"**, **t**
 
 ## Misc
 * 0 Beginning of the line
