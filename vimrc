@@ -12,9 +12,12 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'benmills/vimux'
+Plug 'easymotion/vim-easymotion'
+Plug 'janko/vim-test'
+Plug 'mgedmin/coverage-highlight.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -25,8 +28,9 @@ noremap l k
 noremap e l
 
 " Remap overwritten keys
+noremap h n
 noremap n i
-noremap j a 
+noremap j a
 noremap ä e 
 
 " Use arrow keys for split navigation
@@ -47,18 +51,39 @@ nnoremap <F7> :call VimuxRunCommand("rune2etests")<CR>
 map <C-y> :NERDTreeToggle<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
+nmap <C-n> <Plug>(ale_next_wrap)
 
 " Settings
+syntax on
 color ron
 let mapleader = ","
 set clipboard=unnamedplus
 set splitright
 set splitbelow
+set rnu
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+match OverLength /\%>80v.\+/
+let test#strategy = "vimux"
+let g:ale_fixers = {'python': 'autopep8'}
+let g:ale_python_auto_pipenv = 1
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
+highlight clear SignColumn
+
+" Mappings for EasyMotion
+map <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_keys='abcdefghijklmopqrstuvwxypäöü'
 
 " Mappings for fugitive
 let g:nremap = {'a': '', 'i': ''}
 let g:xremap = {'a': '', 'i': ''}
 let g:oremap = {'a': '', 'i': ''}
+
+" Mappings for vim-test
+noremap <Leader>tn :TestNearest<CR>
+noremap <Leader>tf :TestFile<CR>
+noremap <Leader>tl :TestLast<CR>
+noremap <Leader>tv :TestVisit<CR>
+
 " Copied from CoC-Readme
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -128,10 +153,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
 
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -188,3 +209,12 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Indentations
+autocmd FileType html setlocal ts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=4 sw=4 sts=0 noexpandtab
+autocmd FileType python setlocal ts=4 sw=4 expandtab
+
+set autoindent
+set smartindent

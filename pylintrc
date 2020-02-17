@@ -1,0 +1,3 @@
+[MASTER]
+disable=
+    C0111,C0114,C0115,C0116 # missing docstrings (module, class, function)
