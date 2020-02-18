@@ -46,6 +46,7 @@ inoremap <Right> <C-w><Right>
 " Shortcuts
 nnoremap <F3> :sp $MYVIMRC<CR>
 nnoremap <F4> :source $MYVIMRC<CR> :PlugUpdate<CR>
+nnoremap <F5> :call VimuxRunCommand("runapp")<CR>
 nnoremap <F6> :call VimuxRunCommand("rununittests")<CR>
 nnoremap <F7> :call VimuxRunCommand("rune2etests")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>

@@ -8,6 +8,9 @@ if [[ -a .localrc ]]; then
     source .localrc
 fi
 
+alias dcbu="docker-compose build && docker-compose up -d"
+alias dcbua="docker-compose build && docker-compose up"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

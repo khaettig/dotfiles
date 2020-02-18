@@ -52,6 +52,7 @@
 * &lt;C-y&gt; Toggle
 * s for vertical split
 * i for horizontal split
+* m to open the filesystem menu
 
 ## Ctrlp
 * &lt;C-x&gt; for vertical split
