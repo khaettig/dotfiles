@@ -82,10 +82,10 @@ let g:xremap = {'a': '', 'i': ''}
 let g:oremap = {'a': '', 'i': ''}
 
 " Mappings for vim-test
-noremap <Leader>tn :TestNearest<CR>
-noremap <Leader>tf :TestFile<CR>
-noremap <Leader>tl :TestLast<CR>
-noremap <Leader>tv :TestVisit<CR>
+noremap <Leader>an :TestNearest<CR>
+noremap <Leader>af :TestFile<CR>
+noremap <Leader>al :TestLast<CR>
+noremap <Leader>av :TestVisit<CR>
 
 " Copied from CoC-Readme
 " if hidden is not set, TextEdit might fail.

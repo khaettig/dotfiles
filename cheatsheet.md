@@ -59,10 +59,10 @@
 * &lt;C-v&gt; for horizontal split
 
 ## Vim-Test
-* &lt;Leader&gt;tn :TestNearest
-* &lt;Leader&gt;tf :TestFile
-* &lt;Leader&gt;tl :TestLast
-* &lt;Leader&gt;tv :TestVisit
+* &lt;Leader&gt;an :TestNearest
+* &lt;Leader&gt;af :TestFile
+* &lt;Leader&gt;al :TestLast
+* &lt;Leader&gt;av :TestVisit
 
 ## COC
 * &lt;F2&gt; Rename
