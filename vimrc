@@ -70,6 +70,7 @@ let g:ale_fixers = {'python': 'autopep8'}
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 highlight clear SignColumn
+autocmd FileType python let b:coc_root_patterns = ['Pipfile', '.git']
 
 " Mappings for EasyMotion
 map <Leader> <Plug>(easymotion-prefix)
