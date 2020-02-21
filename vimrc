@@ -51,7 +51,6 @@ nnoremap <silent> <F4> :source $MYVIMRC<CR> :PlugUpdate<CR>
 nnoremap <silent> <F5> :wa<CR> :call VimuxRunCommand("runapp")<CR>
 nnoremap <silent> <F6> :wa<CR> :call VimuxRunCommand("rununittests")<CR>
 nnoremap <silent> <F7> :wa<CR> :call VimuxRunCommand("rune2etests")<CR>
-nnoremap <silent> <leader>z :VimuxZoomRunner<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
@@ -108,3 +107,17 @@ autocmd FileType python setlocal ts=4 sw=4 expandtab
 
 set autoindent
 set smartindent
+
+" Minimize/Restore tmux height from within vim (to inspect failed tests)
+let g:tmuxRunnerMaxed = 0
+function! ToggleTmux()
+   if g:tmuxRunnerMaxed
+     silent execute "!tmux resize-pane -t 1 -y 10"
+     let g:tmuxRunnerMaxed = 0
+   else
+     silent execute "!tmux resize-pane -t 0 -y 2"
+     let g:tmuxRunnerMaxed = 1
+   endif
+endfunction
+
+noremap <silent> <leader>z :call ToggleTmux()<CR>
