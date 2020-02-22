@@ -52,10 +52,10 @@ inoremap <Right> <C-w><Right>
 
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
-nnoremap <silent> <F4> :source $MYVIMRC<CR> :PlugUpdate<CR>
-nnoremap <silent> <F5> :wa<CR> :call VimuxRunCommand("runapp")<CR>
-nnoremap <silent> <F6> :wa<CR> :call VimuxRunCommand("rununittests")<CR>
-nnoremap <silent> <F7> :wa<CR> :call VimuxRunCommand("rune2etests")<CR>
+nnoremap <silent> <F4> :source $MYVIMRC<CR>:PlugUpdate<CR>
+nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
+nnoremap <silent> <F6> :wa<CR>:call VimuxRunCommand("rununittests")<CR>
+nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
@@ -126,4 +126,4 @@ function! ToggleTmux()
    endif
 endfunction
 
-noremap <silent> <leader>z :call ToggleTmux()<CR>
+noremap <silent> <leader>m :call ToggleTmux()<CR>

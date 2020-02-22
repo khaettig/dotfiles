@@ -11,7 +11,7 @@ fi
 alias dcbu="docker-compose build && docker-compose up -d"
 alias dcbua="docker-compose build && docker-compose up"
 alias ds="docker ps -a"
-alias tp="tmux new-session -A -s dev 'pipenv shell'"
+alias tv="tmux new-session -A -s dev vim"
 
 # If not running interactively, don't do anything
 case $- in
