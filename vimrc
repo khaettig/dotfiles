@@ -18,7 +18,12 @@ Plug 'benmills/vimux'
 Plug 'janko/vim-test'
 Plug 'dense-analysis/ale'
 
-Plug 'jmcantrell/vim-virtualenv', {'for': 'python'}
+" Deoplete and depenencies
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
+" Python specific
 Plug 'python-rope/ropevim', {'for': 'python'}
 Plug 'mgedmin/coverage-highlight.vim', {'for': 'python'}
 call plug#end()
@@ -63,7 +68,7 @@ let mapleader = ","
 set clipboard=unnamedplus
 set splitright
 set splitbelow
-set relativenumber
+set number relativenumber
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%>80v.\+/
 highlight clear SignColumn
@@ -76,6 +81,7 @@ let g:gitgutter_map_keys = 0
 let g:ale_linters = {'python': ['pylint', 'pyls']}
 let g:ale_fixers = {'python': 'autopep8'}
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
+let g:deoplete#enable_at_startup = 1
 
 let g:ropevim_guess_project=1
 
