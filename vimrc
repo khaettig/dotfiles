@@ -60,6 +60,7 @@ nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
+map <silent> <leader>b ^Oimport pbd; pdb.set_trace()<ESC>
 map <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 
 " Vim Settings
