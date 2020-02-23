@@ -11,6 +11,7 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
@@ -82,6 +83,8 @@ let g:ale_linters = {'python': ['pylint', 'pyls']}
 let g:ale_fixers = {'python': 'autopep8'}
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', { '_': ['ale'] })
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:ropevim_guess_project=1
 
@@ -104,6 +107,9 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-f> :ALEFix<CR>
 nmap <silent> <leader>x :ALEFindReferences<CR>
 nmap <silent> <leader>d :w<CR>:ALEGoToDefinition<CR>
+
+" Mappings for Deoplete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Indentations
 autocmd FileType html setlocal ts=2 sw=2 expandtab
