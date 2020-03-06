@@ -12,6 +12,7 @@
 * &lt;C-w&gt; | Max out split width
 * &lt;C-w&gt; = Normalize splits
 * &lt;C-W&gt; R Swap splits
+* &lt;C-W&gt; K/H Switch horizontal/vertical
 
 ## Motions
 * **w**ord
@@ -37,6 +38,9 @@
 * ~ Toggle case under cursor/visually-selected
 * &lt;C-l&gt; scroll up
 * &lt;C-a&gt; scroll down
+
+## Vim-Surround
+* cs'/" change surrounding '/"
 
 ## ALE
 * &lt;C-n&gt; go to next problem
@@ -64,17 +68,14 @@
 * &lt;Leader&gt;al :TestLast
 * &lt;Leader&gt;av :TestVisit
 
-## COC
-* &lt;F2&gt; Rename
-* gd go to definition
-* gy go to type definition
-* gi go to implementation
-* gr go to references
-* K see documentation
-
 ## Fugitive
 * :G git status
 * :Git command
+* = show inline div
+* X check out -- file
 
 # Tmux
 * &lt;C-b&gt;z Toggle pane maximization
+
+# Terminal
+* $lt;C-+$gt;/$lt;C--$gt;/$lt;C-0$gt; Zoom
