@@ -60,8 +60,8 @@ nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
-map <silent> <leader>b ^Oimport pbd; pdb.set_trace()<ESC>
-map <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
+nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
+nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 
 " Vim Settings
 syntax on
@@ -102,6 +102,7 @@ noremap <Leader>tn :TestNearest<CR>
 noremap <Leader>tf :TestFile<CR>
 noremap <Leader>tl :TestLast<CR>
 noremap <Leader>tv :TestVisit<CR>
+noremap <Leader>ts :TestNearest -strategy=basic<CR>
 
 " Mappings for ALE
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
