@@ -14,4 +14,5 @@ install() {
 install vimrc
 install bashrc
 install pylintrc
+install pdbrc.py
 install tmux.conf
