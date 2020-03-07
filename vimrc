@@ -71,9 +71,6 @@ set clipboard=unnamedplus
 set splitright
 set splitbelow
 set number relativenumber
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
-highlight clear SignColumn
 
 " Plugin Settings
 let test#strategy = "vimux"
@@ -84,6 +81,7 @@ let g:ale_linters = {'python': ['pylint', 'pyls']}
 let g:ale_fixers = {'python': 'autopep8'}
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:deoplete#enable_at_startup = 1
+highlight ALEWarning ctermbg=52
 call deoplete#custom#option('sources', { '_': ['ale'] })
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
