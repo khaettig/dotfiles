@@ -73,6 +73,14 @@
 * :Git command
 * = show inline div
 * X check out -- file
+* cc in git window, commit
+* dd show all diffs
+* :Gvdiffsplit Show diffs on conflicting file
+* dp/do do pull/do obtain for diffs
+
+## Deoplete
+* #lt;C-n#gt; Autocomplete next
+* #lt;C-p#gt; Autocomplete previous
 
 # Tmux
 * &lt;C-b&gt;z Toggle pane maximization
