@@ -75,8 +75,11 @@
 * X check out -- file
 * cc in git window, commit
 * dd show all diffs
-* :Gvdiffsplit Show diffs on conflicting file
+* :G difftool -y Open conflicts
 * dp/do do pull/do obtain for diffs
+* [c/]c next/previous conflict
+* Gwrite save merge results
+* :only close diffs and show only file
 
 ## Deoplete
 * #lt;C-n#gt; Autocomplete next
@@ -87,3 +90,4 @@
 
 # Terminal
 * $lt;C-+$gt;/$lt;C--$gt;/$lt;C-0$gt; Zoom
+* cd - Move to last directory
