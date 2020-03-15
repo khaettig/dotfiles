@@ -1,0 +1,5 @@
+pynvim
+python-language-server
+pylint
+rope
+ropevim
