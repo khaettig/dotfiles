@@ -74,8 +74,10 @@ set number relativenumber
 
 " Plugin Settings
 let test#strategy = 'vimux'
+let test#javascript#karma#file_pattern ='spec/test_.*\.js'
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:gitgutter_map_keys = 0
+let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 
 let g:ale_linters = {'python': ['pylint', 'pyls']}
 let g:ale_fixers = {'python': 'autopep8'}
@@ -105,6 +107,7 @@ noremap <Leader>ts :TestNearest -strategy=basic<CR>
 " Mappings for ALE
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-f> :ALEFix<CR>
+nmap <silent> <leader>r :ALERename<CR>
 nmap <silent> <leader>x :ALEFindReferences<CR>
 nmap <silent> <leader>d :w<CR>:ALEGoToDefinition<CR>
 
@@ -134,4 +137,4 @@ function! ToggleTmux()
    endif
 endfunction
 
-noremap <silent> <leader>m :call ToggleTmux()<CR>
+noremap <silent> <leader>m :call ToggleTmux()<CR><C-w>=<CR>
