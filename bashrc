@@ -13,6 +13,8 @@ alias dcbua="docker-compose build && docker-compose up"
 alias ds="docker ps -a"
 alias tv="tmux new-session -A -s dev vim"
 
+alias python="python3"
+
 
 # If not running interactively, don't do anything
 case $- in
