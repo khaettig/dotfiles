@@ -71,6 +71,7 @@ set clipboard=unnamedplus
 set splitright
 set splitbelow
 set number relativenumber
+set encoding=utf-8
 
 " Plugin Settings
 let test#strategy = 'vimux'
@@ -116,6 +117,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Indentations
 autocmd FileType html setlocal ts=2 sw=2 expandtab
+autocmd FileType htmldjango setlocal ts=2 sw=2 expandtab
 autocmd FileType css setlocal ts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=4 sw=4 sts=0 noexpandtab
 autocmd FileType python setlocal ts=4 sw=4 expandtab

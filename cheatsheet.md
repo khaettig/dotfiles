@@ -88,6 +88,9 @@
 # Tmux
 * &lt;C-b&gt;z Toggle pane maximization
 
+# Git
+* commit --amend to amend forgotten changes to last commit
+
 # Terminal
 * $lt;C-+$gt;/$lt;C--$gt;/$lt;C-0$gt; Zoom
 * cd - Move to last directory
