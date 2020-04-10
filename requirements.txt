@@ -1,5 +1,10 @@
 pynvim
 python-language-server
 pylint
+pylint-django
+pyaml
 rope
 ropevim
+autopep8
+pdbpp
+coverage
