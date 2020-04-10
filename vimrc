@@ -127,6 +127,22 @@ autocmd FileType yaml setlocal ts=2 sw=2 expandtab
 set autoindent
 set smartindent
 
+
+" Mappings for Coverage
+let g:coverageHighlighted = 0
+function! ToggleCoverage()
+  if g:coverageHighlighted
+    silent execute "HighlightCoverageOff"
+    let g:coverageHighlighted = 0
+  else
+    silent execute "HighlightCoverage"
+    let g:coverageHighlighted = 1
+  endif
+endfunction
+
+nmap <silent> <leader>c :call ToggleCoverage()<CR>
+
+
 " Minimize/Restore tmux height from within vim (to inspect failed tests)
 let g:tmuxRunnerMaxed = 0
 function! ToggleTmux()
