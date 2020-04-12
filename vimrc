@@ -127,6 +127,8 @@ autocmd FileType yaml setlocal ts=2 sw=2 expandtab
 set autoindent
 set smartindent
 
+autocmd BufNewFile */Projects/*.md 0r ~/Notes/Templates/project.md
+
 
 " Mappings for Coverage
 let g:coverageHighlighted = 0
