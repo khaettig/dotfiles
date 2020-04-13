@@ -11,7 +11,7 @@ fi
 alias dcbu="docker-compose build && docker-compose up -d"
 alias dcbua="docker-compose build && docker-compose up"
 alias ds="docker ps -a"
-alias tv="pipenv run tmux new-session -A -s dev vim"
+alias tv="tmux new-session -A -s dev vim"
 alias n="cd ~/Notes && tmux new-session -A -s notes vim Incoming.md"
 alias w="cd ~/Work/Notes && tmux new-session -A -s work vim Incoming.md"
 alias t="~/Work/Notes/.todo-txt/todo.sh"
