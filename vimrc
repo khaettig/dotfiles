@@ -27,7 +27,22 @@ Plug 'roxma/vim-hug-neovim-rpc'
 " Python specific
 Plug 'python-rope/ropevim', {'for': 'python'}
 Plug 'mgedmin/coverage-highlight.vim', {'for': 'python'}
+
+" Javascript specific
+Plug 'ruanyl/coverage.vim', {'for': 'javascript'}
 call plug#end()
+
+" Vim Settings
+syntax on
+color ron
+let mapleader = ","
+set clipboard=unnamedplus
+set splitright
+set splitbelow
+set number relativenumber
+set encoding=utf-8
+set viminfo=<800,:100,/50,'100,f1
+
 
 " Remap hjkl to neo2 keys
 noremap i h
@@ -63,22 +78,13 @@ noremap <C-a> <C-E>
 nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 
-" Vim Settings
-syntax on
-color ron
-let mapleader = ","
-set clipboard=unnamedplus
-set splitright
-set splitbelow
-set number relativenumber
-set encoding=utf-8
-
 " Plugin Settings
 let test#strategy = 'vimux'
 let test#javascript#karma#file_pattern ='spec/test_.*\.js'
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:gitgutter_map_keys = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
+let g:coverage_json_report_path = '.coverage/coverage.json'
 
 let g:ale_linters = {'python': ['pylint', 'pyls']}
 let g:ale_fixers = {'python': 'autopep8'}
