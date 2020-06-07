@@ -1,9 +1,11 @@
 " Install plug.vim if not installed
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
+if !filereadable(autoload_plug_path)
+  silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
+      \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+unlet autoload_plug_path
 
 " Install plugins
 call plug#begin('~/.vim/plugged')
@@ -18,6 +20,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
 Plug 'janko/vim-test'
 Plug 'dense-analysis/ale'
+Plug 'ThePrimeagen/vim-be-good'
 
 " Deoplete and depenencies
 Plug 'Shougo/deoplete.nvim'
@@ -81,7 +84,11 @@ let g:gitgutter_map_keys = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 
 let g:ale_linters = {'python': ['pylint', 'pyls']}
-let g:ale_fixers = {'python': 'autopep8'}
+let g:ale_fixers = {
+\   'python': ['autopep8'],
+\   'javascript': ['eslint'],
+\   'json': ['fixjson']}
+let g:ale_json_fixjson_options = '-i 2'
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:deoplete#enable_at_startup = 1
 highlight ALEWarning ctermbg=52
@@ -120,6 +127,7 @@ autocmd FileType html setlocal ts=2 sw=2 expandtab
 autocmd FileType htmldjango setlocal ts=2 sw=2 expandtab
 autocmd FileType css setlocal ts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd FileType json setlocal ts=2 sw=2 sts=0 expandtab
 autocmd FileType python setlocal ts=4 sw=4 expandtab
 autocmd FileType lua setlocal ts=4 sw=4 expandtab
 autocmd FileType yaml setlocal ts=2 sw=2 expandtab

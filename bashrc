@@ -8,12 +8,13 @@ if [[ -a .localrc ]]; then
     source .localrc
 fi
 
+alias vim="nvim"
 alias dcbu="docker-compose build && docker-compose up -d"
 alias dcbua="docker-compose build && docker-compose up"
 alias ds="docker ps -a"
-alias tv="tmux new-session -A vim"
-alias n="cd ~/Notes && tmux new-session -A -s notes vim Incoming.md"
-alias w="cd ~/Work/Notes && tmux new-session -A -s work vim Incoming.md"
+alias tv="tmux new-session -A nvim"
+alias n="cd ~/Notes && tmux new-session -A -s notes nvim Incoming.md"
+alias w="cd ~/Work/Notes && tmux new-session -A -s work nvim Incoming.md"
 alias t="~/Work/Notes/.todo-txt/todo.sh"
 alias dot="cd ~/Git/dotfiles"
 
