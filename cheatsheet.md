@@ -38,6 +38,10 @@
 * ~ Toggle case under cursor/visually-selected
 * &lt;C-l&gt; scroll up
 * &lt;C-a&gt; scroll down
+* :args pattern Add files to arglist
+* :argdo command | update Do command in all argfiles
+* :argdo %s/pattern/gec | update Search and replace (e is  to ignore errors)
+* :argd pattern Remove files from arglist
 
 ## Vim-Surround
 * cs'/" change surrounding '/"

@@ -125,7 +125,8 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 autocmd FileType html setlocal ts=2 sw=2 expandtab
 autocmd FileType htmldjango setlocal ts=2 sw=2 expandtab
 autocmd FileType css setlocal ts=2 sw=2 expandtab
-autocmd FileType javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd FileType javascript setlocal ts=4 sw=4 expandtab
+autocmd FileType json setlocal ts=4 sw=4 expandtab
 autocmd FileType python setlocal ts=4 sw=4 expandtab
 autocmd FileType lua setlocal ts=4 sw=4 expandtab
 autocmd FileType yaml setlocal ts=2 sw=2 expandtab
