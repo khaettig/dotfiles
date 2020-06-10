@@ -20,7 +20,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
 Plug 'janko/vim-test'
 Plug 'dense-analysis/ale'
-Plug 'ThePrimeagen/vim-be-good'
+Plug 'ThePrimeagen/vim-be-good', {'commit': 'e2e153d27606b1890a0fc68da1018de9863efd27'}
 
 " Deoplete and depenencies
 Plug 'Shougo/deoplete.nvim'
@@ -46,7 +46,6 @@ set number relativenumber
 set encoding=utf-8
 set viminfo=<800,:100,/50,'100,f1
 
-
 " Remap hjkl to neo2 keys
 noremap i h
 noremap a j
@@ -71,7 +70,7 @@ inoremap <Right> <C-w><Right>
 
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
-nnoremap <silent> <F4> :source $MYVIMRC<CR>:PlugUpdate<CR>
+nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
 nnoremap <silent> <F6> :wa<CR>:call VimuxRunCommand("rununittests")<CR>
 nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
@@ -80,6 +79,7 @@ noremap <C-l> <C-y>
 noremap <C-a> <C-E>
 nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
+nnoremap <silent> <ESC><ESC> :noh<CR>
 
 " Plugin Settings
 let test#strategy = 'vimux'
@@ -142,8 +142,8 @@ autocmd FileType markdown setlocal ts=2 sw=2 expandtab
 set autoindent
 set smartindent
 
+" GTD
 autocmd BufNewFile */Projects/*.md 0r Templates/project.md
-
 
 " Mappings for Coverage
 let g:coverageHighlighted = 0
@@ -159,7 +159,6 @@ endfunction
 
 nmap <silent> <leader>c :call ToggleCoverage()<CR>
 
-
 " Minimize/Restore tmux height from within vim (to inspect failed tests)
 let g:tmuxRunnerMaxed = 0
 function! ToggleTmux()
@@ -173,3 +172,7 @@ function! ToggleTmux()
 endfunction
 
 noremap <silent> <leader>m :call ToggleTmux()<CR><C-w>=<CR>
+
+augroup DisableMappings
+    autocmd! VimEnter * :vunmap a%
+augroup END
