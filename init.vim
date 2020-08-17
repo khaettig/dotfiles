@@ -80,6 +80,7 @@ noremap <C-a> <C-E>
 nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
+nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 
 " Plugin Settings
 let test#strategy = 'vimux'
@@ -89,7 +90,9 @@ let g:gitgutter_map_keys = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 let g:coverage_json_report_path = '.coverage/coverage.json'
 
-let g:ale_linters = {'python': ['pylint', 'pyls']}
+let g:ale_linters = {
+\   'python': ['pylint', 'pyls'],
+\   'javascript': ['eslint', 'tsserver']}
 let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'javascript': ['eslint'],
@@ -138,6 +141,7 @@ autocmd FileType python setlocal ts=4 sw=4 expandtab
 autocmd FileType lua setlocal ts=4 sw=4 expandtab
 autocmd FileType yaml setlocal ts=2 sw=2 expandtab
 autocmd FileType markdown setlocal ts=2 sw=2 expandtab
+autocmd FileType vim setlocal ts=4 sw=4 expandtab
 
 set autoindent
 set smartindent
