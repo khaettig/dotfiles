@@ -28,8 +28,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 " Python specific
-Plug 'python-rope/ropevim', {'for': 'python'}
-Plug 'mgedmin/coverage-highlight.vim', {'for': 'python'}
+Plug 'kalekseev/vim-coverage.py', {'for': 'python'}
 
 " Javascript specific
 Plug 'ruanyl/coverage.vim', {'for': 'javascript'}
@@ -94,14 +93,13 @@ let g:ale_linters = {
 \   'python': ['pylint', 'pyls'],
 \   'javascript': ['eslint', 'tsserver']}
 let g:ale_fixers = {
-\   'python': ['autopep8'],
+\   'python': ['black', 'isort'],
 \   'javascript': ['eslint'],
 \   'json': ['fixjson']}
 let g:ale_json_fixjson_options = '-i 2'
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
+let g:ale_fix_on_save = 1
 let g:deoplete#enable_at_startup = 1
-highlight ALEWarning ctermbg=52
-call deoplete#custom#option('sources', { '_': ['ale'] })
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:ropevim_guess_project=1
@@ -149,19 +147,7 @@ set smartindent
 " GTD
 autocmd BufNewFile */Projects/*.md 0r Templates/project.md
 
-" Mappings for Coverage
-let g:coverageHighlighted = 0
-function! ToggleCoverage()
-  if g:coverageHighlighted
-    silent execute "HighlightCoverageOff"
-    let g:coverageHighlighted = 0
-  else
-    silent execute "HighlightCoverage"
-    let g:coverageHighlighted = 1
-  endif
-endfunction
-
-nmap <silent> <leader>c :call ToggleCoverage()<CR>
+nmap <silent> <leader>c :CoveragePyToggle<CR>
 
 " Minimize/Restore tmux height from within vim (to inspect failed tests)
 let g:tmuxRunnerMaxed = 0
