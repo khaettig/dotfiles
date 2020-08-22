@@ -94,12 +94,14 @@ let g:ale_linters = {
 \   'javascript': ['eslint', 'tsserver']}
 let g:ale_fixers = {
 \   'python': ['black', 'isort'],
-\   'javascript': ['eslint'],
-\   'json': ['fixjson']}
+\   'javascript': ['prettier'],
+\   'json': ['prettier'],
+\   'css': ['prettier']}
 let g:ale_json_fixjson_options = '-i 2'
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_fix_on_save = 1
 let g:deoplete#enable_at_startup = 1
+highlight ALEWarning ctermbg=52
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:ropevim_guess_project=1
