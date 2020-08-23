@@ -85,6 +85,7 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 let test#strategy = 'vimux'
 let test#javascript#karma#file_pattern ='spec/test_.*\.js'
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
+let g:EasyMotion_do_mapping = 0
 let g:gitgutter_map_keys = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 let g:coverage_json_report_path = '.coverage/coverage.json'
@@ -93,7 +94,7 @@ let g:ale_linters = {
 \   'python': ['pylint', 'pyls'],
 \   'javascript': ['eslint', 'tsserver']}
 let g:ale_fixers = {
-\   'python': ['black', 'isort'],
+\   'python': ['black'],
 \   'javascript': ['prettier'],
 \   'json': ['prettier'],
 \   'css': ['prettier']}
@@ -105,7 +106,12 @@ highlight ALEWarning ctermbg=52
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Mappings for EasyMotion
-map ö <Plug>(easymotion-prefix)
+nmap f <Plug>(easymotion-f)
+xmap f <Plug>(easymotion-f)
+omap f <Plug>(easymotion-f)
+nmap F <Plug>(easymotion-bd-f)
+xmap F <Plug>(easymotion-bd-f)
+omap F <Plug>(easymotion-bd-f)
 
 " Mappings for fugitive
 let g:nremap = {'a': '', 'i': ''}
