@@ -104,8 +104,6 @@ let g:deoplete#enable_at_startup = 1
 highlight ALEWarning ctermbg=52
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-let g:ropevim_guess_project=1
-
 " Mappings for EasyMotion
 map ö <Plug>(easymotion-prefix)
 
@@ -127,6 +125,10 @@ nmap <silent> <C-f> :ALEFix<CR>
 nmap <silent> <leader>r :ALERename<CR>
 nmap <silent> <leader>x :ALEFindReferences<CR>
 nmap <silent> <leader>d :w<CR>:ALEGoToDefinition<CR>
+
+" Fix ALE preview window navigation
+autocmd FileType ale-preview-selection silent! unmap <buffer> a
+autocmd FileType ale-preview-selection silent! unmap <buffer> i
 
 " Mappings for Deoplete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
