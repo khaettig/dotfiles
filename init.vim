@@ -59,7 +59,7 @@ noremap ä e
 
 " Use arrow keys for split navigation
 noremap <Up> <C-w><Up>
-noremap <Down> <C-w><Down> 
+noremap <Down> <C-w><Down>
 noremap <Left> <C-w><Left>
 noremap <Right> <C-w><Right>
 inoremap <Up> <C-w><Right>
