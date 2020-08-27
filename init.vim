@@ -94,24 +94,22 @@ let g:ale_linters = {
 \   'python': ['pylint', 'pyls'],
 \   'javascript': ['eslint', 'tsserver']}
 let g:ale_fixers = {
-\   'python': ['black'],
+\   'python': ['black', 'isort'],
 \   'javascript': ['prettier'],
 \   'json': ['prettier'],
 \   'css': ['prettier']}
 let g:ale_json_fixjson_options = '-i 2'
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_fix_on_save = 1
+let g:ale_hover_cursor = 0
 let g:deoplete#enable_at_startup = 1
 highlight ALEWarning ctermbg=52
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Mappings for EasyMotion
-nmap f <Plug>(easymotion-f)
-xmap f <Plug>(easymotion-f)
-omap f <Plug>(easymotion-f)
-nmap F <Plug>(easymotion-bd-f)
-xmap F <Plug>(easymotion-bd-f)
-omap F <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-s2)
+xmap f <Plug>(easymotion-s2)
+omap f <Plug>(easymotion-s2)
 
 " Mappings for fugitive
 let g:nremap = {'a': '', 'i': ''}
