@@ -86,6 +86,7 @@ let test#strategy = 'vimux'
 let test#javascript#karma#file_pattern ='spec/test_.*\.js'
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
+highlight EasyMotionTarget ctermbg=none ctermfg=cyan
 let g:gitgutter_map_keys = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 let g:coverage_json_report_path = '.coverage/coverage.json'
