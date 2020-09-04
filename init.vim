@@ -84,7 +84,8 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 
 " Plugin Settings
 let test#strategy = 'vimux'
-let test#javascript#karma#file_pattern ='spec/test_.*\.js'
+let test#javascript#karma#executable = 'frontend/node_modules/karma/bin/karma run'
+let test#javascript#karma#file_pattern ='**/test_.*\.js'
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
 highlight EasyMotionTarget ctermbg=none ctermfg=cyan
