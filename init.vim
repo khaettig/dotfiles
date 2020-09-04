@@ -74,6 +74,7 @@ nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
 nnoremap <silent> <F6> :wa<CR>:call VimuxRunCommand("rununittests")<CR>
 nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
+map <silent> <leader><C-y> :NERDTreeFind<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
 nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
