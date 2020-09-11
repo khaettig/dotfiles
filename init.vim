@@ -37,7 +37,7 @@ call plug#end()
 " Vim Settings
 syntax on
 color ron
-let mapleader = ","
+let mapleader = " "
 set clipboard=unnamedplus
 set splitright
 set splitbelow
