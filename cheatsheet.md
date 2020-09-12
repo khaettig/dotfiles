@@ -58,6 +58,7 @@
 
 ## NERDTree
 * &lt;C-y&gt; Toggle
+* &lt;Leader&gt;&lt;C-y&gt; Toggle and go to current file
 * s for vertical split
 * i for horizontal split
 * m to open the filesystem menu
@@ -79,22 +80,33 @@
 * X check out -- file
 * cc in git window, commit
 * dd show all diffs
-* :G difftool -y Open conflicts
-* dp/do do pull/do obtain for diffs
-* [c/]c next/previous conflict
-* Gwrite save merge results
-* :only close diffs and show only file
+* :G mergetool Load conflicts into quickfix list
+* :copen Open quickfix list
+* &lt;Leader&gt;gf Turn off autoformatting
+* &lt;Leader&gt;ge Get left version
+* &lt;Leader&gt;gn Get right version
+* &lt;Leader&gt;gd Open three-way-split for this file
+* &lt;C-W&gt;O Close other splits
+* ßf find next conflict tag
+* ßß save and go to next conflict
+* ßq go to next conflict
+* ẞq go to previeous conflict
+* :Gedit branch:% open this file from other branch
+* :Gvdiff branch:% diff this file to other branch
+* :diffget to get changes from other branch
 
 ## Deoplete
-* #lt;C-n#gt; Autocomplete next
-* #lt;C-p#gt; Autocomplete previous
+* &lt;C-n&gt; Autocomplete next
+* &lt;C-p&gt; Autocomplete previous
 
 # Tmux
 * &lt;C-b&gt;z Toggle pane maximization
 
 # Git
 * commit --amend to amend forgotten changes to last commit
+* git checkout -m &lt;file&gt; to reload files with conflicts
+* git log develop..branch to show commits in branch and not in develop
 
 # Terminal
-* $lt;C-+$gt;/$lt;C--$gt;/$lt;C-0$gt; Zoom
+* &lt;C-+&gt;/&lt;C--&gt;/&lt;C-0&gt; Zoom
 * cd - Move to last directory
