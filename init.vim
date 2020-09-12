@@ -82,6 +82,7 @@ nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
+nnoremap <silent> <leader>md :!grip -b %<CR>
 
 " Plugin Settings
 let test#strategy = 'vimux'
