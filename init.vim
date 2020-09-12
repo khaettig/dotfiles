@@ -15,6 +15,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
@@ -97,7 +98,7 @@ let g:ale_linters = {
 \   'python': ['pylint', 'pyls'],
 \   'javascript': ['eslint', 'tsserver']}
 let g:ale_fixers = {
-\   'python': ['isort', 'black'],
+\   'python': ['black'],
 \   'javascript': ['prettier'],
 \   'json': ['prettier'],
 \   'html': ['html-beautify'],
@@ -121,6 +122,14 @@ omap f <Plug>(easymotion-s2)
 let g:nremap = {'a': '', 'i': ''}
 let g:xremap = {'a': '', 'i': ''}
 let g:oremap = {'a': '', 'i': ''}
+nmap <leader>ge :diffget //2<CR>
+nmap <leader>gn :diffget //3<CR>
+nmap <leader>gd :Gvdiffsplit!<CR>
+nmap <leader>gf :let g:ale_fix_on_save = 0<CR>
+nmap ßß :w<CR>:only<CR>:cnext<CR>:Gvdiffsplit!<CR>z.<CR>
+nmap ßq :cnext<CR>
+nmap ẞq :cprevious<CR>
+nmap ßf /<<<<<<<\\|=======\\|>>>>>>><CR>
 
 " Mappings for vim-test
 noremap <Leader>tn :TestNearest<CR>
@@ -175,7 +184,7 @@ function! ToggleTmux()
    endif
 endfunction
 
-noremap <silent> <leader>m :call ToggleTmux()<CR><C-w>=<CR>
+noremap <silent> , :call ToggleTmux()<CR><C-w>=<CR>
 
 augroup DisableMappings
     autocmd! VimEnter * :vunmap a%
