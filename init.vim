@@ -21,7 +21,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
 Plug 'janko/vim-test'
 Plug 'dense-analysis/ale'
-Plug 'ThePrimeagen/vim-be-good', {'commit': 'e2e153d27606b1890a0fc68da1018de9863efd27'}
+Plug 'takac/vim-hardtime'
 
 " Deoplete and depenencies
 Plug 'Shougo/deoplete.nvim'
@@ -94,6 +94,9 @@ highlight EasyMotionTarget ctermbg=none ctermfg=cyan
 let g:gitgutter_map_keys = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 let g:coverage_json_report_path = '.coverage/coverage.json'
+let g:hardtime_default_on = 1
+let g:list_of_normal_keys = ["l", "i", "a", "e"]
+let g:list_of_visual_keys = ["l", "i", "a", "e"]
 
 let g:ale_linters = {
 \   'python': ['pylint', 'pyls'],
