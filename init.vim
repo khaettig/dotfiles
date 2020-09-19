@@ -22,6 +22,7 @@ Plug 'benmills/vimux'
 Plug 'janko/vim-test'
 Plug 'dense-analysis/ale'
 Plug 'takac/vim-hardtime'
+Plug 'ThePrimeagen/vim-be-good'
 
 " Deoplete and depenencies
 Plug 'Shougo/deoplete.nvim'
