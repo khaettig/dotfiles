@@ -43,6 +43,7 @@ def main():
     files = [
         ("init.vim", "~/.config/nvim/init.vim"),
         ("bashrc", "~/.bashrc"),
+        ("profile", "~/.profile"),
         ("pylintrc", "~/.pylintrc"),
         ("pdbrc.py", "~/.pdbrc.py"),
         ("tmux.conf", "~/.tmux.conf"),

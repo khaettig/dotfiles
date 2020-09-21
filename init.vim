@@ -13,9 +13,11 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-surround' 
+Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
@@ -87,9 +89,13 @@ nnoremap <silent> <leader>md :!grip -b %<CR>
 nnoremap <silent> <leader>i :!isort %<CR>
 
 " Plugin Settings
-let test#strategy = 'vimux'
-let test#javascript#karma#executable = 'frontend/node_modules/karma/bin/karma run'
+"" vim-test
+let test#strategy = 'dispatch'
+let test#python#runner = 'pytest'
+" let test#javascript#karma#executable = 'frontend/node_modules/karma/bin/karma run'
 let test#javascript#karma#file_pattern ='**/test_.*\.js'
+"" vim-dispatch
+let g:dispatch_no_tmux_make = 1
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
 highlight EasyMotionTarget ctermbg=none ctermfg=cyan
