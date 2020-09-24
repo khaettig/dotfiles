@@ -90,8 +90,7 @@ nnoremap <silent> <leader>i :!isort %<CR>
 
 " Plugin Settings
 "" vim-test
-let test#strategy = 'dispatch'
-let test#python#runner = 'pytest'
+let test#strategy = 'vimux'
 " let test#javascript#karma#executable = 'frontend/node_modules/karma/bin/karma run'
 let test#javascript#karma#file_pattern ='**/test_.*\.js'
 "" vim-dispatch
@@ -102,7 +101,6 @@ highlight EasyMotionTarget ctermbg=none ctermfg=cyan
 let g:gitgutter_map_keys = 0
 let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 let g:coverage_json_report_path = '.coverage/coverage.json'
-let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["l", "i", "a", "e"]
 let g:list_of_visual_keys = ["l", "i", "a", "e"]
 
