@@ -77,7 +77,7 @@ nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
 nnoremap <silent> <F6> :wa<CR>:call VimuxRunCommand("rununittests")<CR>
 nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
-nnoremap <silent> <leader>v :VimuxRunLastCommand<CR>
+nnoremap <silent> <leader>v :VimuxRunCommand("!!")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
 map <silent> <leader><C-y> :NERDTreeFind<CR>
 noremap <C-l> <C-y>
