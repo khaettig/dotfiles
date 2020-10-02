@@ -91,6 +91,7 @@ nnoremap <silent> <leader>i :!isort %<CR>
 " Plugin Settings
 "" vim-test
 let test#strategy = 'vimux'
+let test#python#runner = 'djangotest'
 " let test#javascript#karma#executable = 'frontend/node_modules/karma/bin/karma run'
 let test#javascript#karma#file_pattern ='**/test_.*\.js'
 "" vim-dispatch
@@ -113,7 +114,8 @@ let g:ale_fixers = {
 \   'json': ['prettier'],
 \   'html': ['html-beautify'],
 \   'htmldjango': ['html-beautify'],
-\   'css': ['prettier']}
+\   'css': ['prettier'],
+\   'scss': ['prettier']}
 let g:ale_json_fixjson_options = '-i 2'
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_html_beautify_options = '-s 2 -w 88'
