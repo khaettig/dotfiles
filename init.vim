@@ -204,3 +204,7 @@ noremap <silent> , :call ToggleTmux()<CR><C-w>=<CR>
 augroup DisableMappings
     autocmd! VimEnter * :vunmap a%
 augroup END
+
+" Python scripts
+:source ~/.scripts/js_rename.py
+:command! -nargs=* JSRename :py3 js_rename(<f-args>) 
