@@ -46,6 +46,8 @@ set clipboard=unnamedplus
 set splitright
 set splitbelow
 set number relativenumber
+set ignorecase
+set smartcase
 set encoding=utf-8
 set viminfo=<800,:100,/50,'100,f1
 
@@ -78,6 +80,7 @@ nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
 nnoremap <silent> <F6> :wa<CR>:call VimuxRunCommand("rununittests")<CR>
 nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
 nnoremap <silent> <leader>v :VimuxRunCommand("!!")<CR>
+nnoremap <silent> <leader>m :VimuxRunCommand("exit")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
 map <silent> <leader><C-y> :NERDTreeFind<CR>
 noremap <C-l> <C-y>
@@ -86,7 +89,6 @@ nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-nnoremap <silent> <leader>md :!grip -b %<CR>
 nnoremap <silent> <leader>i :!isort %<CR>
 
 " Plugin Settings
