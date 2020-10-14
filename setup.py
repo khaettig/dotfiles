@@ -48,6 +48,7 @@ def main():
         ("pdbrc.py", "~/.pdbrc.py"),
         ("tmux.conf", "~/.tmux.conf"),
         ("pycodestyle", "~/.config/pycodestyle"),
+        ("scripts", "~/.scripts/"),
     ]
 
     for source, link in files:
