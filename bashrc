@@ -17,6 +17,8 @@ alias n="cd ~/Notes && tmux new-session -A -s notes nvim Incoming.md"
 alias w="cd ~/Work && tmux new-session -A -s work nvim Incoming.md"
 alias t="~/Work/.todo-txt/todo.sh"
 alias dot="cd ~/Git/dotfiles"
+alias sme="cd ~/Git/spotl.media"
+alias sma="cd ~/Git/spotl.machine"
 
 alias python="python3"
 
