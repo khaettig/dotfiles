@@ -8,3 +8,5 @@ ropevim
 autopep8
 pdbpp
 coverage
+pre-commit
+black
