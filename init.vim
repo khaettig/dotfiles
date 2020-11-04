@@ -92,11 +92,10 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 nnoremap <silent> <leader>i :!isort %<CR>
 
 " Plugin Settings
+"" NERDTRee
+let NERDTreeIgnore = ['__pycache__', '\.pyc$']
 "" vim-test
 let test#strategy = 'vimux'
-let test#python#runner = 'djangotest'
-" let test#javascript#karma#executable = 'frontend/node_modules/karma/bin/karma run'
-let test#javascript#karma#file_pattern ='**/test_.*\.js'
 "" vim-dispatch
 let g:dispatch_no_tmux_make = 1
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
