@@ -50,6 +50,8 @@ set ignorecase
 set smartcase
 set encoding=utf-8
 set viminfo=<800,:100,/50,'100,f1
+set exrc
+set secure
 
 " Remap hjkl to neo2 keys
 noremap i h
@@ -119,7 +121,7 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'scss': ['prettier']}
 let g:ale_json_fixjson_options = '-i 2'
-let g:ale_python_pylint_options = '--load-plugins pylint_django'
+" let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_html_beautify_options = '-s 2 -w 88'
 let g:ale_fix_on_save = 1
 let g:ale_hover_cursor = 0
