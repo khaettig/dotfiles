@@ -23,6 +23,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
 Plug 'janko/vim-test'
 Plug 'dense-analysis/ale'
+Plug 'puremourning/vimspector'
 Plug 'takac/vim-hardtime'
 Plug 'ThePrimeagen/vim-be-good'
 
@@ -91,7 +92,6 @@ nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
-nnoremap <silent> <leader>i :!isort %<CR>
 
 " Plugin Settings
 "" NERDTRee
@@ -167,6 +167,17 @@ autocmd FileType ale-preview-selection silent! unmap <buffer> i
 
 " Mappings for Deoplete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" Mappings for Vimspector
+nnoremap <leader>il :call vimspector#Launch()<CR>
+nnoremap <leader>ix :call vimspector#Reset()<CR>
+nnoremap <leader>ib :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <leader>is :call vimspector#StepInto()<CR>
+nnoremap <leader>in :call vimspector#StepOver()<CR>
+nnoremap <leader>io :call vimspector#StepOut()<CR>
+nnoremap <leader>ic :call vimspector#Continue()<CR>
+nnoremap <leader>ir :call vimspector#Restart()<CR>
+nnoremap <leader>it :call vimspector#RunToCursor()<CR>
 
 " Indentations
 autocmd FileType html setlocal ts=2 sw=2 expandtab
