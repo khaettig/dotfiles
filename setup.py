@@ -3,11 +3,20 @@
 import os
 import stat
 from pathlib import Path
+from subprocess import run
 
 import requests
 
 NVIM_URL = "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
 NVIM_INSTALL = f"{Path.home()}/.local/bin/nvim"
+
+PACKAGES = [
+    "python3-pip",
+    "python3-venv",
+    "curl",
+    "tmux",
+    "xclip", # Needed for nvim clipboard support
+]
 
 
 def download_file(url, destination):
@@ -21,7 +30,7 @@ def make_executable(file_name):
     os.chmod(file_name, os.stat(file_name).st_mode | stat.S_IEXEC)
 
 
-def install(source, link):
+def install_config_file(source, link):
     if link.exists():
         backup = link.with_suffix(".old")
         print(f"Moving existing file to {backup}")
@@ -38,6 +47,9 @@ def install_nvim_if_not_installed():
     download_file(NVIM_URL, NVIM_INSTALL)
     make_executable(NVIM_INSTALL)
 
+def install_packages():
+    for package in PACKAGES:
+        run(["sudo", "apt-get", "install", "-y", package], check=True)
 
 def main():
     files = [
@@ -51,9 +63,11 @@ def main():
         ("scripts", "~/.scripts/"),
     ]
 
-    for source, link in files:
-        install(Path.cwd() / source, Path(link).expanduser())
+    install_packages()
     install_nvim_if_not_installed()
+
+    for source, link in files:
+        install_config_file(Path.cwd() / source, Path(link).expanduser())
 
 
 if __name__ == "__main__":
