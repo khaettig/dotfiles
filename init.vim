@@ -79,7 +79,7 @@ inoremap <Right> <C-w><Right>
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
 nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>
-nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
+" nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
 nnoremap <silent> <F6> :wa<CR>:call VimuxRunCommand("rununittests")<CR>
 nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
 nnoremap <silent> <leader>v :VimuxRunCommand("!!")<CR>
@@ -104,6 +104,8 @@ let g:dispatch_compilers = {}
 let g:dispatch_compilers['.venv/bin/'] = ''
 let g:dispatch_compilers['python3 -m unittest'] = 'pyunit'
 let g:dispatch_compilers['python3 manage.py test'] = 'pyunit'
+let g:dispatch_compilers['karma'] = ''
+let g:dispatch_compilers['./.karma'] = 'karma'
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
 highlight EasyMotionTarget ctermbg=none ctermfg=cyan
