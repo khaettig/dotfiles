@@ -149,8 +149,8 @@ nmap <leader>gn :diffget //3<CR>
 nmap <leader>gd :Gvdiffsplit!<CR>
 nmap <leader>gf :let g:ale_fix_on_save = 0<CR>
 nmap ßß :w<CR>:only<CR>:cnext<CR>:Gvdiffsplit!<CR>z.<CR>
-nmap ßq :cnext<CR>
-nmap ẞq :cprevious<CR>
+nmap ü :cprevious<CR>
+nmap ö :cnext<CR>
 nmap ßf /<<<<<<<\\|=======\\|>>>>>>><CR>
 
 " Mappings for vim-test
@@ -219,6 +219,16 @@ function! ToggleTmux()
 endfunction
 
 noremap <silent> , :call ToggleTmux()<CR><C-w>=<CR>
+
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+
+nnoremap <silent> ä :call ToggleQuickFix()<cr>
 
 augroup DisableMappings
     autocmd! VimEnter * :vunmap a%
