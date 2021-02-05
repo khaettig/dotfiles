@@ -97,9 +97,13 @@ nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 "" NERDTRee
 let NERDTreeIgnore = ['__pycache__', '\.pyc$']
 "" vim-test
-let test#strategy = 'vimux'
+let test#strategy = 'dispatch'
 "" vim-dispatch
 let g:dispatch_no_tmux_make = 1
+let g:dispatch_compilers = {}
+let g:dispatch_compilers['.venv/bin/'] = ''
+let g:dispatch_compilers['python3 -m unittest'] = 'pyunit'
+let g:dispatch_compilers['python3 manage.py test'] = 'pyunit'
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
 highlight EasyMotionTarget ctermbg=none ctermfg=cyan
@@ -152,7 +156,8 @@ noremap <Leader>tn :TestNearest<CR>
 noremap <Leader>tf :TestFile<CR>
 noremap <Leader>tl :TestLast<CR>
 noremap <Leader>tv :TestVisit<CR>
-noremap <Leader>ts :TestNearest -strategy=basic<CR>
+noremap <Leader>ts :TestSuite<CR>
+noremap <Leader>td :TestNearest -strategy=basic<CR>
 
 " Mappings for ALE
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
