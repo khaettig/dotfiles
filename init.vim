@@ -75,19 +75,17 @@ noremap <Right> <C-w><Right>
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
 nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>
-" nnoremap <silent> <F5> :wa<CR>:call VimuxRunCommand("runapp")<CR>
-nnoremap <silent> <F6> :wa<CR>:call VimuxRunCommand("rununittests")<CR>
-nnoremap <silent> <F7> :wa<CR>:call VimuxRunCommand("rune2etests")<CR>
 nnoremap <silent> <leader>v :VimuxRunCommand("!!")<CR>
 nnoremap <silent> <leader>m :VimuxRunCommand("exit")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
 map <silent> <leader><C-y> :NERDTreeFind<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
-nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace()<ESC>
+nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace() # nofmt # TODO<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
+nnoremap , '
 
 " Plugin Settings
 "" NERDTRee
@@ -123,7 +121,6 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \   'scss': ['prettier']}
 let g:ale_json_fixjson_options = '-i 2'
-" let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_html_beautify_options = '-s 2 -w 88'
 let g:ale_fix_on_save = 1
 let g:ale_hover_cursor = 0
@@ -201,20 +198,6 @@ set smartindent
 autocmd BufNewFile */Projects/*.md 0r Templates/project.md
 
 nmap <silent> <leader>c :CoveragePyToggle<CR>
-
-" Minimize/Restore tmux height from within vim (to inspect failed tests)
-let g:tmuxRunnerMaxed = 0
-function! ToggleTmux()
-   if g:tmuxRunnerMaxed
-     silent execute "!tmux resize-pane -t 1 -y 10"
-     let g:tmuxRunnerMaxed = 0
-   else
-     silent execute "!tmux resize-pane -t 0 -y 2"
-     let g:tmuxRunnerMaxed = 1
-   endif
-endfunction
-
-noremap <silent> , :call ToggleTmux()<CR><C-w>=<CR>
 
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
