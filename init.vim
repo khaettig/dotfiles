@@ -71,10 +71,6 @@ noremap <Up> <C-w><Up>
 noremap <Down> <C-w><Down>
 noremap <Left> <C-w><Left>
 noremap <Right> <C-w><Right>
-inoremap <Up> <C-w><Right>
-inoremap <Down> <C-w><Down>
-inoremap <Left> <C-w><Left>
-inoremap <Right> <C-w><Right>
 
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
