@@ -11,6 +11,7 @@ NVIM_URL = "https://github.com/neovim/neovim/releases/download/nightly/nvim.appi
 NVIM_INSTALL = f"{Path.home()}/.local/bin/nvim"
 
 PACKAGES = [
+    "yadm",
     "python3-pip",
     "python3-venv",
     "curl",
@@ -47,27 +48,20 @@ def install_nvim_if_not_installed():
     download_file(NVIM_URL, NVIM_INSTALL)
     make_executable(NVIM_INSTALL)
 
+
 def install_packages():
     for package in PACKAGES:
         run(["sudo", "apt-get", "install", "-y", package], check=True)
 
-def main():
-    files = [
-        ("init.vim", "~/.config/nvim/init.vim"),
-        ("bashrc", "~/.bashrc"),
-        ("profile", "~/.profile"),
-        ("pylintrc", "~/.pylintrc"),
-        ("pdbrc.py", "~/.pdbrc.py"),
-        ("tmux.conf", "~/.tmux.conf"),
-        ("pycodestyle", "~/.config/pycodestyle"),
-        ("scripts", "~/.scripts/"),
-    ]
 
+def install_requirements():
+    run(["pip3", "install", "-r", ".scripts/requirements.txt"], check=True)
+
+
+def main():
     install_packages()
     install_nvim_if_not_installed()
-
-    for source, link in files:
-        install_config_file(Path.cwd() / source, Path(link).expanduser())
+    install_requirements()
 
 
 if __name__ == "__main__":
