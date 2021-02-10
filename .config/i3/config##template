@@ -202,18 +202,6 @@ bar {
 	tray_output none
 }
 
-# Secondary screens
-bar {
-	{% if yadm.hostname == "kevin-desktop" %}
-	output DVI-D-0
-	{% endif %}
-
-	{% if yadm.hostname == "kevin-X1" %}
-	{% endif %}
-	
-	tray_output none
-}
-
 hide_edge_borders both
 
 bindsym $mod+x exec i3lock --color "#000000"
@@ -245,11 +233,21 @@ bindsym $mod+p exec /home/kevin/.scripts/pomodoro.py
 
 # Host specific
 {% if yadm.hostname == "kevin-desktop" %}
+
+## Secondary screen
+bar {
+	output DVI-D-0
+	
+	tray_output none
+}
+
 exec xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 0x1080 --rotate normal
 
 # Powerline fix
 exec ping 192.168.1.1
+
 {% endif %}
 
 {% if yadm.hostname == "kevin-X1" %}
+
 {% endif %}
