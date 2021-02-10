@@ -1,0 +1,6 @@
+yadm
+python3-pip
+python3-venv
+curl
+tmux
+xclip

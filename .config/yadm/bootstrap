@@ -7,17 +7,11 @@ from subprocess import run
 
 import requests
 
+HOME = Path.home()
 NVIM_URL = "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
-NVIM_INSTALL = f"{Path.home()}/.local/bin/nvim"
-
-PACKAGES = [
-    "yadm",
-    "python3-pip",
-    "python3-venv",
-    "curl",
-    "tmux",
-    "xclip", # Needed for nvim clipboard support
-]
+NVIM_INSTALL = f"{HOME}/.local/bin/nvim"
+REQUIREMENTS = f"{HOME}/.scripts/requirements.txt"
+PACKAGES = f"{HOME}/.scripts/packages.txt"
 
 
 def download_file(url, destination):
@@ -50,12 +44,11 @@ def install_nvim_if_not_installed():
 
 
 def install_packages():
-    for package in PACKAGES:
-        run(["sudo", "apt-get", "install", "-y", package], check=True)
+    run(["xargs", "-a", PACKAGES, "sudo", "apt-get", "install"], check=True)
 
 
 def install_requirements():
-    run(["pip3", "install", "-r", ".scripts/requirements.txt"], check=True)
+    run(["pip3", "install", "-r", REQUIREMENTS], check=True)
 
 
 def main():
