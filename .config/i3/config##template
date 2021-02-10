@@ -217,10 +217,6 @@ for_window [class="Spotify"] move to workspace $ws10
 # Hide annoying slack mini panel
 for_window [class="Slack" floating] move scratchpad
 
-exec telegram-desktop
-exec slack
-exec spotify
-
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 
 # Spotify
@@ -245,6 +241,10 @@ exec xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output
 
 # Powerline fix
 exec ping 192.168.1.1
+
+exec telegram-desktop
+exec slack
+exec spotify
 
 {% endif %}
 
