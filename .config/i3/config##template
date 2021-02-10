@@ -43,9 +43,6 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# kill focused window
-bindsym $mod+q kill
-
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -151,7 +148,6 @@ bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+C restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -204,8 +200,11 @@ bar {
 
 hide_edge_borders both
 
-bindsym $mod+x exec i3lock --color "#000000"
-# TODO: systemctl suspend
+bindsym $mod+x kill
+bindsym $mod+v exec i3lock --color "#000000"
+bindsym $mod+Shift+X exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+V exec i3lock --color "#000000" && systemctl suspend
+
 bindsym Print exec flameshot full -c
 bindsym Shift+Print exec flameshot gui
 bindsym Control+Shift+Print exec peek
