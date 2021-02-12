@@ -56,6 +56,7 @@ def main():
     install_nvim_if_not_installed()
     install_requirements()
     run(["systemctl", "--user", "enable", "syncthing.service"], check=True)
+    run(["sudo", "sh", "/home/kevin/.scripts/install_pam_autologin.sh"], check=True)
 
 
 if __name__ == "__main__":
