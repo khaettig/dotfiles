@@ -10,4 +10,5 @@ arandr
 feh
 flameshot
 peek
+syncthing
 jq

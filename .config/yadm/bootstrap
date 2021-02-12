@@ -55,6 +55,7 @@ def main():
     install_packages()
     install_nvim_if_not_installed()
     install_requirements()
+    run(["systemctl", "--user", "enable", "syncthing.service"], check=True)
 
 
 if __name__ == "__main__":
