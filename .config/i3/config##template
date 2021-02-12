@@ -174,8 +174,6 @@ mode "resize" {
         bindsym $mod+c mode "default"
 }
 
-bindsym $mod+c mode "resize"
-
 # Styling
 set $bg-color            "#000000"
 set $inactive-bg-color   "#000000"
@@ -208,6 +206,9 @@ bindsym $mod+Shift+V exec i3lock --color "#000000" && systemctl suspend
 bindsym Print exec flameshot full -c
 bindsym Shift+Print exec flameshot gui
 bindsym Control+Shift+Print exec peek
+
+bindsym $mod+c exec google-chrome
+bindysm $mod+f exec firefox
 
 assign [class="TelegramDesktop"] $ws8
 assign [class="Slack"] $ws9
