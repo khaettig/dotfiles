@@ -208,7 +208,7 @@ bindsym Shift+Print exec flameshot gui
 bindsym Control+Shift+Print exec peek
 
 bindsym $mod+c exec google-chrome
-bindysm $mod+f exec firefox
+bindsym $mod+f exec firefox
 
 assign [class="TelegramDesktop"] $ws8
 assign [class="Slack"] $ws9
