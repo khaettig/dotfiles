@@ -81,7 +81,7 @@ map <silent> <C-y> :NERDTreeToggle<CR>
 map <silent> <leader><C-y> :NERDTreeFind<CR>
 noremap <C-l> <C-y>
 noremap <C-a> <C-E>
-nnoremap <silent> <leader>b ^Oimport pdb; pdb.set_trace() # nofmt # TODO<ESC>
+nnoremap <silent> <leader>b ^O__import__("pdb").set_trace()  # TODO<ESC>
 nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
