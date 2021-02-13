@@ -12,3 +12,4 @@ flameshot
 peek
 syncthing
 jq
+black
