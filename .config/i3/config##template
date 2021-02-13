@@ -181,6 +181,7 @@ bindsym Print exec flameshot full -c
 bindsym Shift+Print exec flameshot gui
 bindsym Control+Shift+Print exec peek
 
+bindsym $mod+o exec nautilus
 bindsym $mod+c exec google-chrome
 bindsym $mod+f exec firefox
 bindsym $mod+Shift+C exec google-chrome --incognito
