@@ -64,7 +64,7 @@ noremap e l
 noremap h n
 noremap n i
 noremap j a
-noremap ä e 
+noremap k e 
 
 " Use arrow keys for split navigation
 noremap <Up> <C-w><Up>
@@ -129,9 +129,10 @@ highlight ALEWarning ctermbg=52
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Mappings for EasyMotion
-nmap f <Plug>(easymotion-s2)
-xmap f <Plug>(easymotion-s2)
-omap f <Plug>(easymotion-s2)
+nmap ſ <Plug>(easymotion-s2)
+xmap ſ <Plug>(easymotion-s2)
+omap ſ <Plug>(easymotion-s2)
+
 
 " Mappings for fugitive
 let g:nremap = {'a': '', 'i': ''}
