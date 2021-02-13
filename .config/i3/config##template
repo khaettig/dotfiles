@@ -143,8 +143,14 @@ bindsym $mod+g move workspace to output up
 bindsym $mod+r move workspace to output down
 bindsym $mod+t move workspace to output right
 
+# Resizing
+bindsym $mod+Shift+N resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+G resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+R resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+T resize shrink width 10 px or 10 ppt
+
 # reload the configuration file
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+Y reload
 
 # Styling
 set $bg-color            "#000000"
