@@ -145,6 +145,8 @@ nmap <leader>gf :let g:ale_fix_on_save = 0<CR>
 nmap ßß :w<CR>:only<CR>:cnext<CR>:Gvdiffsplit!<CR>z.<CR>
 nmap ü :cprevious<CR>
 nmap ö :cnext<CR>
+nmap Ü :lprevious<CR>
+nmap Ö :lnext<CR>
 nmap ßf /<<<<<<<\\|=======\\|>>>>>>><CR>
 
 " Mappings for vim-test
@@ -200,15 +202,35 @@ autocmd BufNewFile */Projects/*.md 0r Templates/project.md
 
 nmap <silent> <leader>c :CoveragePyToggle<CR>
 
-function! ToggleQuickFix()
-    if empty(filter(getwininfo(), 'v:val.quickfix'))
-        copen
-    else
-        cclose
-    endif
+function! GetBufferList()
+  redir =>buflist
+  silent! ls!
+  redir END
+  return buflist
 endfunction
 
-nnoremap <silent> ä :call ToggleQuickFix()<cr>
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+nnoremap <silent> ä :call ToggleList("Quickfix List", "c")<CR>
+nnoremap <silent> Ä :call ToggleList("Location List", "l")<CR>
 
 augroup DisableMappings
     autocmd! VimEnter * :vunmap a%
