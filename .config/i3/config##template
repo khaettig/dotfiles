@@ -209,7 +209,8 @@ bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # Pomodoro
-bindsym $mod+p exec /home/kevin/.scripts/pomodoro.py
+bindsym $mod+p exec python3 /home/kevin/.scripts/pomodoro_control.py
+bindsym $mod+Shift+P exec python3 /home/kevin/.scripts/pomodoro_control.py stop
 
 # Host specific
 {% if yadm.hostname == "kevin-desktop" %}
