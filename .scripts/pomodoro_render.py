@@ -5,8 +5,7 @@ import zmq
 ADDRESS = "tcp://127.0.0.1:12323"
 
 BLOCK_CHAR = "█"
-LEFT_CHAR = "▕"
-RIGHT_CHAR = "▏"
+EMPTY_CHAR = "░"
 
 
 def render(message, seconds_left, duration_in_s):
@@ -18,7 +17,7 @@ def render(message, seconds_left, duration_in_s):
     minutes_gone = math.floor(bar_mult * seconds_gone / 60)
     minutes_left = math.ceil(bar_mult * pos_seconds_left / 60)
 
-    bar = LEFT_CHAR + minutes_gone * BLOCK_CHAR + minutes_left * " " + RIGHT_CHAR
+    bar = minutes_gone * BLOCK_CHAR + minutes_left * EMPTY_CHAR
     if seconds_left < 0:
         seconds_left *= -1
         time_left = "-"
