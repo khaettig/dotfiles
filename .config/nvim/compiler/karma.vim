@@ -1,8 +1,6 @@
 " Vim compiler file
 " Compiler: Karma runner for javascript
 
-" TODO: Autoinstall
-
 if exists("current_compiler")
   finish
 endif
@@ -17,7 +15,7 @@ endif
 CompilerSet efm=%.%#ERROR\ \[runner\]%.%#:%m
 
 " Chrome Headless 87.0.4280.141 (Linux x86_64): Executed 314 of 314 (2 FAILED) (1.133 secs / 0.861 secs)
-CompilerSet efm+=%-GChrome%.%#:
+CompilerSet efm+=Chrome%.%#:\ %m
 
 " Chrome Headless 87.0.4280.141 (Linux x86_64) <error name> FAILED
 CompilerSet efm+=%E%.%#Chrome%.%#\)\ %oFAILED
