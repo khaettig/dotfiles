@@ -184,7 +184,7 @@ bindsym $mod+Shift+X exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Shift+V exec i3lock --color "#000000" && systemctl suspend
 
 bindsym Print exec flameshot full -c
-bindsym Shift+Print exec flameshot gui
+bindsym Control+Print exec flameshot gui
 bindsym Control+Shift+Print exec peek
 
 bindsym $mod+o exec nautilus
