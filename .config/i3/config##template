@@ -174,6 +174,11 @@ bar {
 
         status_command i3blocks -c "/home/kevin/.i3blocks.conf"
 	tray_output none
+
+	colors {
+		# Disable workspace notifications
+		urgent_workspace "#333333" "#222222" "#88888
+	}
 }
 
 hide_edge_borders both
@@ -232,6 +237,9 @@ exec telegram-desktop
 exec slack
 exec spotify
 exec discord
+
+bindsym $mod+m exec pkill -x telegram-deskto; exec pkill -x slack; exec pkill -x Discord
+bindsym $mod+Shift+M exec telegram-desktop; exec slack; exec discord
 
 {% endif %}
 
