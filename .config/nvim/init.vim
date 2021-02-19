@@ -89,6 +89,7 @@ nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 nnoremap , '
+nnoremap <silent> <CR> :bnext<CR>
 nnoremap <silent> <leader><CR> I~~<ESC>A~~<ESC>
 
 " Plugin Settings
@@ -106,6 +107,7 @@ let g:dispatch_compilers['karma'] = ''
 let g:dispatch_compilers['./.karma'] = 'karma'
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_new_list_item_indent = 0
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
 highlight EasyMotionTarget ctermbg=none ctermfg=cyan
