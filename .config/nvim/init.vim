@@ -37,6 +37,9 @@ Plug 'kalekseev/vim-coverage.py', {'for': 'python'}
 
 " Javascript specific
 Plug 'ruanyl/coverage.vim', {'for': 'javascript'}
+
+" Markdown specific
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 call plug#end()
 
 " Vim Settings
@@ -74,7 +77,7 @@ noremap <Right> <C-w><Right>
 
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
-nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>
+nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>:UpdateRemotePlugins<CR>
 nnoremap <silent> <leader>v :VimuxRunCommand("!!")<CR>
 nnoremap <silent> <leader>m :VimuxRunCommand("exit")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
@@ -86,6 +89,7 @@ nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 nnoremap , '
+nnoremap <silent> <leader><CR> I~~<ESC>A~~<ESC>
 
 " Plugin Settings
 "" NERDTRee
@@ -100,6 +104,8 @@ let g:dispatch_compilers['python3 -m unittest'] = 'pyunit'
 let g:dispatch_compilers['python3 manage.py test'] = 'pyunit'
 let g:dispatch_compilers['karma'] = ''
 let g:dispatch_compilers['./.karma'] = 'karma'
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_strikethrough = 1
 let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
 highlight EasyMotionTarget ctermbg=none ctermfg=cyan
