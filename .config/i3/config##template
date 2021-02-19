@@ -193,6 +193,7 @@ bindsym $mod+f exec firefox
 bindsym $mod+Shift+C exec google-chrome --incognito
 bindsym $mod+Shift+F exec firefox --private-window
 
+assign [class="discord"] $ws7
 assign [class="TelegramDesktop"] $ws8
 assign [class="Slack"] $ws9
 for_window [class="Spotify"] move to workspace $ws10
@@ -219,7 +220,7 @@ bindsym $mod+Shift+P exec python3 /home/kevin/.scripts/pomodoro_control.py stop
 bar {
 	output DVI-D-0
 	
-	tray_output none
+	tray_output DVI-D-0
 }
 
 exec xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 0x1080 --rotate normal
@@ -230,6 +231,7 @@ exec ping 192.168.1.1
 exec telegram-desktop
 exec slack
 exec spotify
+exec discord
 
 {% endif %}
 
