@@ -177,7 +177,7 @@ bar {
 
 	colors {
 		# Disable workspace notifications
-		urgent_workspace "#333333" "#222222" "#88888
+		urgent_workspace "#333333" "#222222" "#888888"
 	}
 }
 
