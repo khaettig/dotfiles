@@ -49,6 +49,8 @@ let mapleader = " "
 set clipboard=unnamedplus
 set splitright
 set splitbelow
+set winminheight=0
+set winminwidth=0
 set number relativenumber
 set ignorecase
 set smartcase
@@ -57,7 +59,7 @@ set viminfo=<800,:100,/50,'100,f1
 set exrc
 set secure
 
-" Remap hjkl to neo2 keys
+" remap hjkl to neo2 keys
 noremap i h
 noremap a j
 noremap l k
@@ -74,6 +76,9 @@ noremap <Up> <C-w><Up>
 noremap <Down> <C-w><Down>
 noremap <Left> <C-w><Left>
 noremap <Right> <C-w><Right>
+
+noremap ¡ <C-w><Up><C-w>_
+noremap ¿ <C-w><Down><C-w>_
 
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
