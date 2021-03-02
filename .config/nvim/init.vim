@@ -94,7 +94,6 @@ nnoremap <silent> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 nnoremap , '
-nnoremap <silent> <CR> :bnext<CR>
 nnoremap <silent> <leader><CR> I~~<ESC>A~~<ESC>
 
 " Plugin Settings
@@ -252,17 +251,15 @@ augroup DisableMappings
 augroup END
 
 " Python scripts
-if isdirectory("~/.scripts/")
-    :source ~/.scripts/js_rename.py
-    :command! -nargs=* JSRename :py3 js_rename(<f-args>) 
+:source ~/.scripts/js_rename.py
+:command! -nargs=* JSRename :py3 js_rename(<f-args>) 
 
-    :source ~/.scripts/gtd.py
-    :command! Archive :py3 gtd_archive()
-    :command! Arc :py3 gtd_archive()
-    :command! Project :py3 gtd_project()
-    :command! Pro :py3 gtd_project()
-    :command! Someday :py3 gtd_someday()
-    :command! Som :py3 gtd_someday()
+:source ~/.scripts/gtd.py
+:command! Archive :py3 gtd_archive()
+:command! Arc :py3 gtd_archive()
+:command! Project :py3 gtd_project()
+:command! Pro :py3 gtd_project()
+:command! Someday :py3 gtd_someday()
+:command! Som :py3 gtd_someday()
 
-    :command! -nargs=1 Rebase :!python3 ~/.scripts/rebase.py <f-args>
-endif
+:command! -nargs=1 Rebase :!python3 ~/.scripts/rebase.py <f-args>
