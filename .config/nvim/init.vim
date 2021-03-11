@@ -33,10 +33,10 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 " Python specific
-Plug 'kalekseev/vim-coverage.py', {'for': 'python'}
+Plug 'kalekseev/vim-coverage.py', {'do': ':UpdateRemotePlugins'}
 
 " Javascript specific
-Plug 'ruanyl/coverage.vim', {'for': 'javascript'}
+Plug 'ruanyl/coverage.vim'
 
 " Markdown specific
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
@@ -82,7 +82,7 @@ noremap ¿ <C-w><Down><C-w>_
 
 " Shortcuts
 nnoremap <silent> <F3> :sp $MYVIMRC<CR>
-nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>:UpdateRemotePlugins<CR>
+nnoremap <silent> <F4> :PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <silent> <leader>v :VimuxRunCommand("!!")<CR>
 nnoremap <silent> <leader>m :VimuxRunCommand("exit")<CR>
 map <silent> <C-y> :NERDTreeToggle<CR>
@@ -214,7 +214,22 @@ set smartindent
 " GTD
 autocmd BufNewFile */Projects/*.md 0r Templates/project.md
 
-nmap <silent> <leader>c :CoveragePyToggle<CR>
+nmap <silent> <leader>c :CoveragePy<CR>
+
+function ConfigureCoveragePy()
+    highlight default MyCoveragePyOk ctermfg=Green
+    highlight default MyCoveragePyWarn ctermfg=Yellow
+    highlight default MyCoveragePyError ctermfg=Red
+
+    sign define coverageOk text=░░ texthl=MyCoverageOk
+    sign define coverageWarn text=░░ texthl=MyCoveragePyWarn
+    sign define coverageErr text=░░ texthl=MyCoveragePyError
+endfunction
+
+autocmd FileType python call ConfigureCoveragePy()
+
+let g:coverage_sign_uncovered = '░░'
+let g:coverage_interval = 1000
 
 function! GetBufferList()
   redir =>buflist
