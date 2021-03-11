@@ -16,13 +16,12 @@ alias tv="tmux new-session -A nvim"
 alias p="bash ~/.scripts/open_programming.sh"
 alias n="bash ~/.scripts/open_notes.sh"
 alias w="bash ~/.scripts/open_work_notes.sh"
-alias deploy="python3 ~/.scripts/deploy.sh"
+alias deploy="python3 ~/.scripts/deploy.py"
 alias dot="cd ~/Git/dotfiles"
 alias sme="cd ~/Git/spotl.media"
 alias sma="cd ~/Git/spotl.machine"
 
 alias python="python3"
-
 
 # If not running interactively, don't do anything
 case $- in
