@@ -11,3 +11,5 @@ pdbpp
 coverage
 pre-commit
 black
+mdformat
+mdformat-tables
