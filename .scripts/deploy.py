@@ -4,7 +4,7 @@ from subprocess import run, PIPE
 from collections import namedtuple
 
 TYPES = [(1, "Bug"), (2, "Feature"), (3, "Support")]
-Issue = namedtuple("Issue", ["number", "project", "title"])
+Issue = namedtuple("Issue", ["number", "title"])
 
 
 def get_redmine_raw():
@@ -26,6 +26,7 @@ def main():
         issues = [parse_line(line) for line in get_redmine_raw().split("\n") if line]
         for issue in sorted(issues):
             print(f"* {issue_type[1]} #{issue.number}: {issue.title}")
+        for issue in sorted(issues):
             move_issue(issue.number)
 
 
