@@ -18,11 +18,11 @@ def render_issue(issue):
     itype = issue["tracker"]["name"]
     author = issue["author"]["name"]
     assigned_to = issue["assigned_to"]["name"]
-    return f'• {itype} #{iid} ({author}):\t"{title}" done by {assigned_to}'
+    return f"* {itype} [#{iid}](https://redmine.spotl.io/issues/{iid}) ({author}): {title} *done by {assigned_to}*"
 
 
 def render_category(category):
-    return f"• {category.capitalize()}"
+    return f"#### {category.capitalize()}"
 
 
 def move_issue(issue):
