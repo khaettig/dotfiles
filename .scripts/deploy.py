@@ -1,33 +1,49 @@
 #!/bin/env python3
 
+import json
 from subprocess import run, PIPE
-from collections import namedtuple
-
-TYPES = [(1, "Bug"), (2, "Feature"), (3, "Support")]
-Issue = namedtuple("Issue", ["number", "title"])
 
 
-def get_redmine_raw():
-    return run(
-        ["redmine", "issues", "--status", "7"], stdout=PIPE, check=True
-    ).stdout.decode("utf-8")
+def get_redmine_issues():
+    return json.loads(
+        run(
+            ["redmine", "issues", "--status", "7", "--json"], stdout=PIPE, check=True
+        ).stdout.decode("utf-8")
+    )
 
 
-def parse_line(line):
-    return Issue(number=line[:6].strip(), title=line[85:].strip())
+def render_issue(issue):
+    iid = issue["id"]
+    title = issue["subject"]
+    itype = issue["tracker"]["name"]
+    author = issue["author"]["name"]
+    assigned_to = issue["assigned_to"]["name"]
+    return f'• {itype} #{iid} ({author}):\t"{title}" done by {assigned_to}'
 
 
-def move_issue(number):
-    run(["redmine", "update", "--status", "8", number], check=True)
+def render_category(category):
+    return f"• {category.capitalize()}"
+
+
+def move_issue(issue):
+    run(["redmine", "update", "--status", "8", str(issue["id"])], check=True)
 
 
 def main():
-    for issue_type in TYPES:
-        issues = [parse_line(line) for line in get_redmine_raw().split("\n") if line]
-        for issue in sorted(issues):
-            print(f"* {issue_type[1]} #{issue.number}: {issue.title}")
-        for issue in sorted(issues):
-            move_issue(issue.number)
+    issues = get_redmine_issues()
+
+    categorized_issues = {
+        category: [issue for issue in issues if issue["category"]["name"] == category]
+        for category in set(issue["category"]["name"] for issue in issues)
+    }
+
+    for category, sub_issues in categorized_issues.items():
+        print(render_category(category))
+        for issue in sorted(sub_issues, key=lambda issue: issue["id"]):
+            print("  " + render_issue(issue))
+
+    for issue in issues:
+        move_issue(issue)
 
 
 if __name__ == "__main__":
