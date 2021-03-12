@@ -101,6 +101,8 @@
 
 # Tmux
 * &lt;C-b&gt;z Toggle pane maximization
+* &lt;C-b&gt;. Change window number
+* &lt;C-b&gt;s Search when in selection mode
 
 # Git
 * commit --amend to amend forgotten changes to last commit
