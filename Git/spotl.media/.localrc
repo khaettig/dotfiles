@@ -1,0 +1,6 @@
+source .venv/bin/activate
+
+export DJANGO_SETTINGS_MODULE=spotl.dev_settings
+export PYTHONPATH="$PYTHONPATH:/home/kevin/Git/spotl.media/apps"
+
+alias runapp="python3 run_dev_server.py --with_karma"
