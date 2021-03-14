@@ -19,8 +19,22 @@ from subprocess import run, PIPE
 def main():
     start_time = time.time()
     result = run(["pytest", "--tb=short", *sys.argv[1:]], stdout=PIPE, stderr=PIPE,)
-    lines = result.stdout.decode("utf-8").split("\n")
 
+    stderr = result.stderr.decode("utf-8")
+    if stderr:
+        lines = stderr.split("\n")
+        message = lines[-2]
+        for line in reversed(lines):
+            if line.strip().startswith("File"):
+                parts = line[8:].split(" ")
+                file_name = parts[0][:-2]
+                line_number = parts[2][:-1]
+                break
+        render_message("e", "Invalid code", file_name, line_number, message)
+        print("SUMMARY: INVALID CODE", end="")
+        exit(1)
+
+    lines = result.stdout.decode("utf-8").split("\n")
     sections = split_lines(lines, header_char="=")
 
     handle_errors(sections.get("ERRORS", []))
