@@ -321,7 +321,7 @@ endfunction
 let g:neomake_testmon_maker = {
     \ 'exe': 'python3', 
     \ 'args': ['~/.scripts/pytest_wrapper.py', '--testmon'],
-    \ 'errorformat': '%t:%f:%l:%m,%-G=%.%#',
+    \ 'errorformat': '%t:%f:%l:%m,%-GSUMMARY%.%#',
     \ }
 let g:neomake_python_enabled_makers = ['testmon']
 
@@ -345,7 +345,7 @@ endfunction
 function! TestFinished() abort
     let s:jobinfo = g:neomake_hook_context.jobinfo
     let s:raw = s:jobinfo.jobstart_opts.stdout[-1]
-    let g:test_status = substitute(s:raw, "=", "", "g")
+    let g:test_status = substitute(s:raw, "SUMMARY: ", "", "g")
 
     if s:jobinfo.exit_code == 1 || s:jobinfo.exit_code == 2
         call SetTestBarToColor(s:test_red)
