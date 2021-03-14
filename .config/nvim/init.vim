@@ -321,7 +321,7 @@ endfunction
 let g:neomake_testmon_maker = {
     \ 'exe': 'python3', 
     \ 'args': ['~/.scripts/pytest_wrapper.py', '--testmon'],
-    \ 'errorformat': '%t:%f:%l:%m,%-GSUMMARY%.%#',
+    \ 'errorformat': '%t:%o:%f:%l:%m,%-GSUMMARY%.%#',
     \ }
 let g:neomake_python_enabled_makers = ['testmon']
 
