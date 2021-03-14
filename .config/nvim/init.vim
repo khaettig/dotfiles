@@ -183,7 +183,7 @@ noremap <Leader>tf :TestFile<CR>
 noremap <Leader>tl :TestLast<CR>
 noremap <Leader>tv :TestVisit<CR>
 noremap <Leader>ts :TestSuite<CR>
-noremap <Leader>td :TestNearest -strategy=basic<CR>
+noremap <Leader>tdp :TestNearest -strategy=pydebug<CR>
 
 " Mappings for ALE
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
@@ -363,3 +363,10 @@ augroup neomake_hook
   autocmd User NeomakeJobStarted call TestStarted()
   autocmd User NeomakeJobFinished call TestFinished()
 augroup END
+
+function PyDebugStrategy(cmd)
+    -tabnew
+    call termopen('pytest --pdb' . a:cmd[36:])
+    startinsert
+endfunction
+let g:test#custom_strategies = {'pydebug': function('PyDebugStrategy')}

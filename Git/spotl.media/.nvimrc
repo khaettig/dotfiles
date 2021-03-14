@@ -2,7 +2,7 @@ let g:ale_python_pylint_options = '--load-plugins pylint_django'
 
 let test#python#runner = 'pytest'
 let test#python#pytest#executable = 'python3 ~/.scripts/pytest_wrapper.py'
-let test#python#pytest#options = '~/.scripts/pytest_wrapper.py --testmon-noselect'
+let test#python#pytest#options = '--testmon-noselect'
 
 let test#javascript#runner = 'karma'
 let test#javascript#karma#executable = './.karma'
