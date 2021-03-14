@@ -12,12 +12,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-commentary'
+Plug 'neomake/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
@@ -100,15 +101,11 @@ nnoremap <silent> <leader><CR> I~~<ESC>A~~<ESC>
 "" NERDTRee
 let NERDTreeIgnore = ['__pycache__', '\.pyc$']
 "" vim-test
-let test#strategy = 'dispatch'
+let test#strategy = 'neomake'
 "" vim-dispatch
 let g:dispatch_no_tmux_make = 1
 let g:dispatch_compilers = {}
-let g:dispatch_compilers['.venv/bin/'] = ''
-let g:dispatch_compilers['python3 -m unittest'] = 'python3'
-let g:dispatch_compilers['python3 manage.py test'] = 'python3'
-let g:dispatch_compilers['coverage run'] = 'python3'
-let g:dispatch_compilers['python3 -m coverage run'] = 'python3'
+let g:dispatch_compilers['python3 ~/.scripts/pytest_wrapper.py'] = 'wrapper'
 let g:dispatch_compilers['karma'] = ''
 let g:dispatch_compilers['./.karma'] = 'karma'
 let g:vim_markdown_folding_disabled = 1
@@ -141,6 +138,23 @@ let g:ale_hover_cursor = 0
 let g:deoplete#enable_at_startup = 1
 highlight ALEWarning ctermbg=52
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'teststatus' ] ],
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'teststatus' ] ],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'teststatus': 'GetTestStatus',
+      \ },
+      \ }
 
 " Mappings for EasyMotion
 nmap ſ <Plug>(easymotion-s2)
@@ -283,3 +297,65 @@ if isdirectory("/home/kevin/.scripts/")
 
     :command! -nargs=1 Rebase :!python3 ~/.scripts/rebase.py <f-args>
 endif
+
+let s:test_green = ['#ffffff', '#005f00', 15, 22]
+let s:test_red = ['#ffffff', '#800000', 15, 1]
+let s:test_orange = ['#ffffff', '#df5f00', 15, 166]
+function SetTestBarToColor(color)
+    let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+    let s:palette.normal.right = [a:color]
+    call lightline#colorscheme()
+endfunction
+
+let g:test_status = ''
+let g:test_bar_width = 40
+function GetTestStatus()
+    if g:test_status == ''
+        return ''
+    endif
+    let s:padding_length = (g:test_bar_width - strchars(g:test_status)) / 2.0
+    return repeat(" ", float2nr(ceil(s:padding_length))) . g:test_status . repeat(" ", float2nr(floor(s:padding_length)))
+endfunction
+
+" --tb=line is broken with --testmon, use custom parser as workaround
+let g:neomake_testmon_maker = {
+    \ 'exe': 'python3', 
+    \ 'args': ['~/.scripts/pytest_wrapper.py', '--testmon'],
+    \ 'errorformat': '%t:%f:%l:%m,%-G=%.%#',
+    \ }
+let g:neomake_python_enabled_makers = ['testmon']
+
+let g:neomake_virtualtext_current_error = 0
+let g:neomake_error_sign = {
+    \ 'text': '>>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+let g:neomake_warning_sign = {
+    \ 'text': '>>',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+
+
+
+function! TestStarted() abort
+    let g:test_status = 'PENDING'
+    call SetTestBarToColor(s:test_orange)
+endfunction
+
+function! TestFinished() abort
+    let s:jobinfo = g:neomake_hook_context.jobinfo
+    let s:raw = s:jobinfo.jobstart_opts.stdout[-1]
+    let g:test_status = substitute(s:raw, "=", "", "g")
+
+    if s:jobinfo.exit_code == 1 || s:jobinfo.exit_code == 2
+        call SetTestBarToColor(s:test_red)
+    else
+        call SetTestBarToColor(s:test_green)
+    endif
+endfunction
+
+augroup neomake_hook
+  au!
+  autocmd User NeomakeJobStarted call TestStarted()
+  autocmd User NeomakeJobFinished call TestFinished()
+augroup END

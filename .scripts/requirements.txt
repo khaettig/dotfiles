@@ -3,6 +3,11 @@ pynvim
 python-language-server
 pylint
 pylint-django
+pytest
+pytest-xdist
+pytest-testmon
+pytest-cov
+pytest-django
 pyaml
 rope
 ropevim
