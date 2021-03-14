@@ -148,7 +148,7 @@ def handle_failure(title, lines):
     for i, line in enumerate(lines):
         if line.startswith("E "):
             for j in reversed(range(0, i)):
-                if line[j].startswith(" "):
+                if lines[j].startswith(" "):
                     continue
                 parts = lines[j].split(":")
             render_message("e", module_name, parts[0], parts[1], line[1:].strip())
