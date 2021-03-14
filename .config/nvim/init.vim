@@ -19,7 +19,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround' 
 Plug 'tpope/vim-commentary'
 Plug 'neomake/neomake'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'benmills/vimux'
 Plug 'janko/vim-test'
@@ -27,6 +26,9 @@ Plug 'dense-analysis/ale'
 Plug 'puremourning/vimspector'
 Plug 'takac/vim-hardtime'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 
 " Deoplete and depenencies
 Plug 'Shougo/deoplete.nvim'
@@ -96,6 +98,8 @@ nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 nnoremap , '
 nnoremap <silent> <leader><CR> I~~<ESC>A~~<ESC>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <leader><C-p> :GBranches<CR>
 
 " Plugin Settings
 "" NERDTRee
@@ -115,7 +119,6 @@ let g:EasyMotion_keys='abcdefghijklmopqrstuvwxyzäöü'
 let g:EasyMotion_do_mapping = 0
 highlight EasyMotionTarget ctermbg=none ctermfg=cyan
 let g:gitgutter_map_keys = 0
-let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules)$'
 let g:coverage_json_report_path = '.coverage/coverage.json'
 let g:list_of_normal_keys = ["l", "i", "a", "e"]
 let g:list_of_visual_keys = ["l", "i", "a", "e"]
