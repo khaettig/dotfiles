@@ -354,6 +354,10 @@ function! TestFinished() abort
     endif
 endfunction
 
+function RunPytestCoverage(...)
+    call jobstart("pytest -n auto --cov=. --cov-report=")
+endfunction
+
 augroup neomake_hook
   au!
   autocmd User NeomakeJobStarted call TestStarted()
