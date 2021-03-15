@@ -20,6 +20,8 @@ alias deploy="python3 ~/.scripts/deploy.py | python3 -m grip -b -"
 alias dot="cd ~/Git/dotfiles"
 alias sme="cd ~/Git/spotl.media"
 alias sma="cd ~/Git/spotl.machine"
+alias neo="setxkbmap de neo"
+alias bone="setxkbmap de bone"
 
 alias python="python3"
 
