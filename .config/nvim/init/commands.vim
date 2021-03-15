@@ -1,0 +1,1 @@
+:command SV source $MYVIMRC
