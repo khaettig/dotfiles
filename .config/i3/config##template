@@ -99,7 +99,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+u focus parent
+# bindsym $mod+u focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -147,7 +147,7 @@ bindsym $mod+r move workspace to output down
 bindsym $mod+t move workspace to output right
 
 # Presentation mode: Move everything on one screen
-bindsym $mod+Shift+W \
+bindsym $mod+w \
 [workspace=$ws1] move workspace to output primary; \
 [workspace=$ws2] move workspace to output primary; \
 [workspace=$ws3] move workspace to output primary; \
@@ -158,7 +158,7 @@ bindsym $mod+Shift+W \
 [workspace=$ws8] move workspace to output primary; \
 [workspace=$ws9] move workspace to output primary; \
 [workspace=$ws10] move workspace to output primary
-bindsym $mod+Shift+K \
+bindsym $mod+k \
 [workspace=$ws1] move workspace to output $secondary; \
 [workspace=$ws2] move workspace to output $secondary; \
 [workspace=$ws3] move workspace to output $secondary; \
@@ -245,9 +245,6 @@ bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym $mod+p exec python3 /home/kevin/.scripts/pomodoro_control.py
 bindsym $mod+Shift+P exec python3 /home/kevin/.scripts/pomodoro_control.py stop
 
-# Have empty workspace for second screen
-exec --no-startup-id i3-msg workspace 0
-
 # Host specific
 {% if yadm.hostname == "kevin-desktop" %}
 
@@ -271,8 +268,9 @@ exec discord
 bindsym $mod+m exec pkill -x telegram-deskto; exec pkill -x slack; exec pkill -x Discord
 bindsym $mod+Shift+M exec telegram-desktop; exec slack; exec discord
 
+bindsym $mod+j exec amixer -c 1 sset Mic toggle
+
 {% endif %}
 
 {% if yadm.hostname == "kevin-X1" %}
-
 {% endif %}
