@@ -4,26 +4,11 @@
 
 export TERM=xterm-256color
 
+source ~/.bash_aliases
+
 if [[ -a .localrc ]]; then
     source .localrc
 fi
-
-alias vim="nvim"
-alias dcbu="docker-compose build && docker-compose up -d"
-alias dcbua="docker-compose build && docker-compose up"
-alias ds="docker ps -a"
-alias tv="tmux new-session -A nvim"
-alias p="bash ~/.scripts/open_programming.sh"
-alias n="bash ~/.scripts/open_notes.sh"
-alias w="bash ~/.scripts/open_work_notes.sh"
-alias deploy="python3 ~/.scripts/deploy.py | python3 -m grip -b -"
-alias dot="cd ~/Git/dotfiles"
-alias sme="cd ~/Git/spotl.media"
-alias sma="cd ~/Git/spotl.machine"
-alias neo="setxkbmap de neo"
-alias bone="setxkbmap de bone"
-
-alias python="python3"
 
 # If not running interactively, don't do anything
 case $- in
