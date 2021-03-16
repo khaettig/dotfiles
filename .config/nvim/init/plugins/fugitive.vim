@@ -1,3 +1,4 @@
+nnoremap <leader>G :G<CR>
 nmap <leader>ge :diffget //2<CR>
 nmap <leader>gn :diffget //3<CR>
 nmap <leader>gd :Gvdiffsplit!<CR>
