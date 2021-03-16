@@ -12,6 +12,7 @@ NVIM_URL = "https://github.com/neovim/neovim/releases/download/nightly/nvim.appi
 NVIM_INSTALL = f"{HOME}/.local/bin/nvim"
 REQUIREMENTS = f"{HOME}/.scripts/requirements.txt"
 PACKAGES = f"{HOME}/.scripts/packages.txt"
+SYMLINKS = {f"{HOME}/.git": f"{HOME}/.config/yadm/repo.git/"}
 
 
 def download_file(url, destination):
@@ -23,16 +24,6 @@ def download_file(url, destination):
 
 def make_executable(file_name):
     os.chmod(file_name, os.stat(file_name).st_mode | stat.S_IEXEC)
-
-
-def install_config_file(source, link):
-    if link.exists():
-        backup = link.with_suffix(".old")
-        print(f"Moving existing file to {backup}")
-        link.rename(backup)
-
-    print(f"Creating soft link for {source}")
-    link.symlink_to(source)
 
 
 def install_nvim_if_not_installed():
@@ -51,12 +42,22 @@ def install_requirements():
     run(["pip3", "install", "-r", REQUIREMENTS], check=True)
 
 
+def install_symlinks():
+    for source, target in SYMLINKS.items():
+        try:
+            Path(source).symlink_to(target)
+            print(f"Installed symlink from {target} to {source}")
+        except FileExistsError:
+            pass
+
+
 def main():
     install_packages()
     install_nvim_if_not_installed()
     install_requirements()
+    install_symlinks()
     run(["systemctl", "--user", "enable", "syncthing.service"], check=True)
-    run(["sudo", "sh", "/home/kevin/.scripts/install_pam_autologin.sh"], check=True)
+    run(["sudo", "sh", f"{HOME}/.scripts/install_pam_autologin.sh"], check=True)
 
 
 if __name__ == "__main__":
