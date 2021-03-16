@@ -41,4 +41,3 @@ augroup neomake_hook
   autocmd User NeomakeJobStarted call TestStarted()
   autocmd User NeomakeJobFinished call TestFinished()
 augroup END
-

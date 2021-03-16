@@ -7,6 +7,8 @@ source ~/.config/nvim/init/commands.vim
 source ~/.config/nvim/init/file_type_settings.vim
 source ~/.config/nvim/init/autocommands.vim
 
+source ~/.config/nvim/init/test_bar.vim
+
 if isdirectory("/home/kevin/.scripts/")
     source ~/.config/nvim/init/scripts.vim
 endif

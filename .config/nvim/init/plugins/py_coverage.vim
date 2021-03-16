@@ -10,8 +10,14 @@ function ConfigureCoveragePy()
     sign define coverageErr text=░░ texthl=MyCoveragePyError
 endfunction
 
+function RerunCoveragePy(...)
+    :doautoall FileType
+endfunction
+
 function RunPytestCoverage(...)
-    call jobstart("pytest -n auto --cov=. --cov-report=")
+    call jobstart(
+    \ "pytest -n auto --cov=. --cov-report=",
+    \ {"on_exit": function("RerunCoveragePy")})
 endfunction
 
 autocmd FileType python call ConfigureCoveragePy()
