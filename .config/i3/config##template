@@ -265,8 +265,10 @@ exec slack
 exec spotify
 exec discord
 
-bindsym $mod+m exec pkill -x telegram-deskto; exec pkill -x slack; exec pkill -x Discord
-bindsym $mod+Shift+M exec telegram-desktop; exec slack; exec discord
+bindsym $mod+b exec pkill -x telegram-deskto; exec pkill -x Discord
+bindsym $mod+Shift+B exec telegram-desktop; exec discord
+bindsym $mod+m exec pkill -x slack
+bindsym $mod+Shift+M exec slack
 
 bindsym $mod+j exec amixer -c 1 sset Mic toggle
 
