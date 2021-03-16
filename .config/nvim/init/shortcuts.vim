@@ -34,8 +34,6 @@ nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 nnoremap , '
 nnoremap <silent> <leader><CR> I~~<ESC>A~~<ESC>
-nnoremap <C-p> :GFiles<CR>
-nnoremap <leader><C-p> :GBranches<CR>
 
 nmap ü :cprevious<CR>
 nmap ö :cnext<CR>

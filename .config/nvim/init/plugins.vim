@@ -41,6 +41,7 @@ source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
 source ~/.config/nvim/init/plugins/ale.vim
 source ~/.config/nvim/init/plugins/vimspector.vim
+source ~/.config/nvim/init/plugins/fzf.vim
 
 source ~/.config/nvim/init/plugins/deoplete.vim
 
