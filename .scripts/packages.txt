@@ -13,3 +13,4 @@ peek
 syncthing
 jq
 black
+fd-find

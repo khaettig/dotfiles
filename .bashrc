@@ -6,6 +6,9 @@ export TERM=xterm-256color
 
 source ~/.bash_aliases
 
+export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow'
+
+
 if [[ -a .localrc ]]; then
     source .localrc
 fi
