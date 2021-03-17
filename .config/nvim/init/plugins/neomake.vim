@@ -12,19 +12,20 @@ let g:neomake_warning_sign = {
 let g:neomake_python_enabled_makers = ['pytest', 'pytestxdist', 'testmon']
 
 let s:postprocessor_errorformat = '%t:%o:%f:%l:%m,%-GSUMMARY%.%#'
+let s:pytest_wrapper = '~/.scripts/test_wrappers/pytest_main.py'
 
 let g:neomake_pytest_maker = {
     \ 'exe': 'python3', 
-    \ 'args': ['~/.scripts/pytest_wrapper.py'],
+    \ 'args': [s:pytest_wrapper],
     \ 'errorformat': s:postprocessor_errorformat,
     \ }
 let g:neomake_pytestxdist_maker = {
     \ 'exe': 'python3', 
-    \ 'args': ['~/.scripts/pytest_wrapper.py', '-n', 'auto'],
+    \ 'args': [s:pytest_wrapper, '-n', 'auto'],
     \ 'errorformat': s:postprocessor_errorformat,
     \ }
 let g:neomake_testmon_maker = {
     \ 'exe': 'python3', 
-    \ 'args': ['~/.scripts/pytest_wrapper.py', '--testmon'],
+    \ 'args': [s:pytest_wrapper, '--testmon'],
     \ 'errorformat': s:postprocessor_errorformat,
     \ }

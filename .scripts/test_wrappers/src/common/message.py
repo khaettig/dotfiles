@@ -8,7 +8,15 @@ class Message:
         self.sub_messages = []
 
     def __str__(self):
-        return f"{self.code}:{self.module_name}:{self.file_name}:{self.line_number}:{self.text}"
+        return ":".join(
+            [
+                self.code,
+                self.module_name,
+                self.file_name,
+                str(self.line_number),
+                self.text.split("\n")[0],
+            ]
+        )
 
     def __repr__(self):
         return str(self)

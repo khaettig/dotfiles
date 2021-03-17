@@ -36,7 +36,6 @@ def test_failure_in_test():
 
     assert as_strings(messages) == [
         f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:14:Failing Test:",
-        f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:16:AssertionError",
         f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:16:assert False",
     ]
     assert summary == Summary(passed=1, failed=1, total=2)
@@ -67,7 +66,6 @@ def test_syntax_error():
 
     assert as_strings(messages) == [
         f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:60:Failing Test:",
-        f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:62:NameError",
         f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:62:"
         + "NameError: name 'mischief' is not defined",
     ]

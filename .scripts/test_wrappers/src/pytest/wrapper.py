@@ -27,12 +27,10 @@ class PytestWrapper(Wrapper):
         for test in failed_tests:
             messages.append(self.get_title_message(root, test))
 
-            for trace in test["call"]["traceback"]:
+            for trace in test["call"]["traceback"][:-1]:
                 messages.append(self.get_traceback_message(root, test, trace))
 
-            crash_message = self.get_traceback_message("", test, test["call"]["crash"])
-            if crash_message != messages[-1]:
-                messages.append(crash_message)
+            messages.append(self.get_traceback_message("", test, test["call"]["crash"]))
 
         return (messages, self.get_summary(data))
 
