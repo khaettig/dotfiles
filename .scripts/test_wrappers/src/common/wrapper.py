@@ -6,11 +6,11 @@ from subprocess import run, PIPE
 
 class Wrapper:
     def run(self):
-        time_before = time.time()
         wrapper_args, command_args = self.parse_arguments()
-        duration = time.time() - time_before
 
+        time_before = time.time()
         stdout, stderr, returncode = self.run_command(command_args)
+        duration = time.time() - time_before
 
         if wrapper_args.print_raw:
             self.print_raw(stdout, stderr, returncode)
