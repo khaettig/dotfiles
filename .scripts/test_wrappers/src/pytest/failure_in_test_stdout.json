@@ -1,0 +1,102 @@
+{
+  "created": 1615993342.267124,
+  "duration": 0.058786869049072266,
+  "exitcode": 1,
+  "root": "/home/kevin/.scripts/test_wrappers",
+  "environment": {
+    "Python": "3.8.5",
+    "Platform": "Linux-5.8.0-45-generic-x86_64-with-glibc2.29",
+    "Packages": { "pytest": "6.2.2", "py": "1.10.0", "pluggy": "0.13.1" },
+    "Plugins": {
+      "cov": "2.11.1",
+      "testmon": "1.0.3",
+      "json-report": "1.2.4",
+      "metadata": "1.11.0",
+      "forked": "1.3.0",
+      "django": "4.1.0",
+      "xdist": "2.2.1",
+      "Faker": "6.1.1"
+    }
+  },
+  "summary": { "passed": 1, "failed": 1, "total": 2, "collected": 2 },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        { "nodeid": "src/__init__.py", "type": "Package" },
+        { "nodeid": "src/common/__init__.py", "type": "Package" },
+        { "nodeid": "src/pytest/__init__.py", "type": "Package" }
+      ]
+    },
+    { "nodeid": "src/__init__.py", "outcome": "passed", "result": [] },
+    { "nodeid": "src/common/__init__.py", "outcome": "passed", "result": [] },
+    {
+      "nodeid": "src/pytest/test_pytest.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_no_failures",
+          "type": "Function",
+          "lineno": 4
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_failure_in_test",
+          "type": "Function",
+          "lineno": 14
+        }
+      ]
+    },
+    {
+      "nodeid": "src/pytest/__init__.py",
+      "outcome": "passed",
+      "result": [{ "nodeid": "src/pytest/test_pytest.py", "type": "Module" }]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_no_failures",
+      "lineno": 4,
+      "outcome": "passed",
+      "keywords": [
+        "test_pytest.py",
+        "test_wrappers",
+        "test_no_failures",
+        "src/pytest/__init__.py"
+      ],
+      "setup": { "duration": 0.019805128998996224, "outcome": "passed" },
+      "call": { "duration": 0.00022984899987932295, "outcome": "passed" },
+      "teardown": { "duration": 0.00021535199994104914, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_failure_in_test",
+      "lineno": 14,
+      "outcome": "failed",
+      "keywords": [
+        "test_pytest.py",
+        "test_wrappers",
+        "src/pytest/__init__.py",
+        "test_failure_in_test"
+      ],
+      "setup": { "duration": 0.0005298689975461457, "outcome": "passed" },
+      "call": {
+        "duration": 0.00018048700076178648,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/kevin/.scripts/test_wrappers/src/pytest/test_pytest.py",
+          "lineno": 16,
+          "message": "assert False"
+        },
+        "traceback": [
+          {
+            "path": "src/pytest/test_pytest.py",
+            "lineno": 16,
+            "message": "AssertionError"
+          }
+        ],
+        "longrepr": "def test_failure_in_test():\n>       assert False\nE       assert False\n\nsrc/pytest/test_pytest.py:16: AssertionError"
+      },
+      "teardown": { "duration": 0.00035615399974631146, "outcome": "passed" }
+    }
+  ]
+}
