@@ -17,24 +17,93 @@ class PytestWrapper(Wrapper):
 
     def parse(self, stdout, stderr):
         data = json.loads(stdout)
-        root = data["root"] + "/"
+        data["parsed_root"] = data["root"] + "/"
+        return (self.parse_messages(data), self.parse_summary(data))
+
+    def parse_messages(self, data):
+        return self.parse_collectors(data) + self.parse_tests(data)
+
+    def has_failed(self, report):
+        return report["outcome"] == "failed"
+
+    def has_stdout(self, test):
+        return "stdout" in test["call"]
+
+    def parse_collectors(self, data):
+        return [
+            self.get_collector_message(data, collector)
+            for collector in data["collectors"]
+            if self.has_failed(collector)
+        ]
+
+    def get_collector_message(self, data, collector):
+        split = collector["longrepr"].split(":")
+        file_name = data["parsed_root"] + split[0]
+        line_number = split[1]
+        message = ":".join(split[2:])
+        return Message(
+            "e", "import error", file_name, line_number, message.split("\nE   ")[-1]
+        )
+
+    def get_failed_collectors(self, data):
+        return [
+            collector
+            for collector in data["collectors"]
+            if collector["outcome"] == "failed"
+        ]
+
+    def parse_tests(self, data):
+        return [
+            message
+            for test in data["tests"]
+            for message in self.parse_test(data["parsed_root"], test)
+        ]
+
+    def parse_test(self, root, test):
         messages = []
 
-        for collector in self.get_failed_collectors(data):
-            messages.append(self.get_collector_message(root, collector))
+        if self.has_failed(test):
+            messages += self.get_error_messages(root, test, test["call"]["traceback"])
 
-        failed_tests = [test for test in data["tests"] if test["outcome"] == "failed"]
-        for test in failed_tests:
-            messages.append(self.get_title_message(root, test))
+        if self.has_stdout(test):
+            messages += self.get_stdout_messages(root, test)
 
-            for trace in test["call"]["traceback"][:-1]:
-                messages.append(self.get_traceback_message(root, test, trace))
+        return messages
 
-            messages.append(self.get_traceback_message("", test, test["call"]["crash"]))
+    def get_file_and_module_name(self, test):
+        split = test["nodeid"].split("::")
+        return split[0], (".").join(split[1:])
 
-        return (messages, self.get_summary(data))
+    def get_error_messages(self, root, test, traceback):
+        return [
+            self.get_title_message(root, test),
+            *(self.get_error_message(root, test, trace) for trace in traceback[:-1]),
+            self.get_error_message("", test, test["call"]["crash"]),
+        ]
 
-    def get_summary(self, data):
+    def get_title_message(self, root, test):
+        file_name, module_name = self.get_file_and_module_name(test)
+        return Message(
+            "e", module_name, root + file_name, test["lineno"], "Test failed:"
+        )
+
+    def get_error_message(self, root, test, trace):
+        _, module_name = self.get_file_and_module_name(test)
+        return Message(
+            "e", module_name, root + trace["path"], trace["lineno"], trace["message"]
+        )
+
+    def get_stdout_messages(self, root, test):
+        file_name, module_name = self.get_file_and_module_name(test)
+        return [
+            Message(
+                "i", module_name, root + file_name, test["lineno"], "Output: " + line
+            )
+            for line in test["call"]["stdout"].split("\n")
+            if line != ""
+        ]
+
+    def parse_summary(self, data):
         if self.get_failed_collectors(data):
             return Summary(message="CRASHED")
         raw_summary = data["summary"]
@@ -51,28 +120,3 @@ class PytestWrapper(Wrapper):
             for collector in data["collectors"]
             if collector["outcome"] == "failed"
         ]
-
-    def get_file_and_module_name(self, test):
-        split = test["nodeid"].split("::")
-        return split[0], (".").join(split[1:])
-
-    def get_title_message(self, root, test):
-        file_name, module_name = self.get_file_and_module_name(test)
-        return Message(
-            "e", module_name, root + file_name, test["lineno"], "Failing Test:"
-        )
-
-    def get_traceback_message(self, root, test, trace):
-        _, module_name = self.get_file_and_module_name(test)
-        return Message(
-            "e", module_name, root + trace["path"], trace["lineno"], trace["message"]
-        )
-
-    def get_collector_message(self, root, collector):
-        split = collector["longrepr"].split(":")
-        file_name = root + split[0]
-        line_number = split[1]
-        message = ":".join(split[2:])
-        return Message(
-            "e", "import error", file_name, line_number, message.split("\nE   ")[-1]
-        )

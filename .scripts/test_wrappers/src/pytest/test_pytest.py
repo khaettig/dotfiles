@@ -32,7 +32,7 @@ def test_failure_in_test():
     messages, summary = PytestWrapper().parse(stdout, stderr)
 
     assert as_strings(messages) == [
-        f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:14:Failing Test:",
+        f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:14:Test failed:",
         f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:16:assert False",
     ]
     assert summary == Summary(passed=1, failed=1, total=2)
@@ -44,10 +44,10 @@ def test_failure_in_code():
     messages, summary = PytestWrapper().parse(stdout, stderr)
 
     assert as_strings(messages) == [
-        f"e:test_no_failures:{ROOT}/src/pytest/test_pytest.py:10:Failing Test:",
+        f"e:test_no_failures:{ROOT}/src/pytest/test_pytest.py:10:Test failed:",
         f"e:test_no_failures:{ROOT}/src/pytest/test_pytest.py:15:",
         f"e:test_no_failures:{ROOT}/src/pytest/wrapper.py:19:AssertionError",
-        f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:20:Failing Test:",
+        f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:20:Test failed:",
         f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:25:",
         f"e:test_failure_in_test:{ROOT}/src/pytest/wrapper.py:19:AssertionError",
     ]
@@ -60,7 +60,7 @@ def test_syntax_error():
     messages, summary = PytestWrapper().parse(stdout, stderr)
 
     assert as_strings(messages) == [
-        f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:60:Failing Test:",
+        f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:60:Test failed:",
         f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:62:"
         "NameError: name 'mischief' is not defined",
     ]
@@ -87,10 +87,21 @@ def test_class_based_test():
 
     assert as_strings(messages) == [
         "e:AjaxMenuViewTest.test_renders_correct_template:"
-        f"{root}apps/membership/tests/test_member_menu.py:6:"
-        "Failing Test:",
+        f"{root}apps/membership/tests/test_member_menu.py:6:Test failed:",
         "e:AjaxMenuViewTest.test_renders_correct_template:"
         f"{root}apps/membership/tests/test_member_menu.py:10:"
         "AssertionError: assert False",
     ]
     assert summary == Summary(failed=1, total=1)
+
+
+def test_captures_stdout():
+    stdout, stderr = load_fixture("pytest", "captures_stdout")
+
+    messages, summary = PytestWrapper().parse(stdout, stderr)
+
+    assert as_strings(messages) == [
+        f"i:test_captures_stdout:{ROOT}/src/pytest/test_pytest.py:98:Output: A line",
+        f"i:test_captures_stdout:{ROOT}/src/pytest/test_pytest.py:98:Output: Another",
+    ]
+    assert summary == Summary(passed=1, total=1)
