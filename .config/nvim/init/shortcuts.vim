@@ -35,12 +35,16 @@ nnoremap <silent> <ESC><ESC> :noh<CR>
 nnoremap <silent> <leader>j :%!python -m json.tool<CR>
 nnoremap , '
 nnoremap <silent> <leader><CR> I~~<ESC>A~~<ESC>
+nmap ßf /<<<<<<<\\|=======\\|>>>>>>><CR>
 
 nmap ü :cprevious<CR>
 nmap ö :cnext<CR>
 nmap Ü :lprevious<CR>
 nmap Ö :lnext<CR>
-nmap ßf /<<<<<<<\\|=======\\|>>>>>>><CR>
+nmap <leader>ü :colder<CR>
+nmap <leader>ö :cnewer<CR>
+nmap <leader>Ü :lolder<CR>
+nmap <leader>Ö :lnewer<CR>
 
 nnoremap <silent> ä :call ToggleList("Quickfix List", "c")<CR>
 nnoremap <silent> Ä :call ToggleList("Location List", "l")<CR>
