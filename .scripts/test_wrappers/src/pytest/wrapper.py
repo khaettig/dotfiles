@@ -21,35 +21,35 @@ class PytestWrapper(Wrapper):
 
         failed_tests = [test for test in data["tests"] if test["outcome"] == "failed"]
         for test in failed_tests:
-            file_name, module_name = test["nodeid"].split("::")
+            messages.append(self.get_title_message(data["root"], test))
 
-            messages.append(
-                Message(
-                    "e",
-                    module_name,
-                    data["root"] + "/" + file_name,
-                    test["lineno"],
-                    "Failing Test:",
-                )
-            )
+            for trace in test["call"]["traceback"]:
+                messages.append(self.get_traceback_message(data["root"], test, trace))
 
-            traceback = test["call"]["traceback"]
-            messages.append(
-                Message(
-                    "e",
-                    module_name,
-                    data["root"] + "/" + traceback[0]["path"],
-                    traceback[0]["lineno"],
-                    traceback[0]["message"],
-                )
-            )
+        return (messages, self.get_summary(data["summary"]))
 
-        raw_summary = data["summary"]
-        return (
-            messages,
-            Summary(
-                passed=raw_summary.get("passed", 0),
-                failed=raw_summary.get("failed", 0),
-                total=raw_summary.get("total", 0),
-            ),
+    def get_summary(self, raw_summary):
+        return Summary(
+            passed=raw_summary.get("passed", 0),
+            failed=raw_summary.get("failed", 0),
+            total=raw_summary.get("total", 0),
+        )
+
+    def get_file_and_module_name(self, test):
+        return test["nodeid"].split("::")
+
+    def get_title_message(self, root, test):
+        file_name, module_name = self.get_file_and_module_name(test)
+        return Message(
+            "e", module_name, root + "/" + file_name, test["lineno"], "Failing Test:"
+        )
+
+    def get_traceback_message(self, root, test, trace):
+        _, module_name = self.get_file_and_module_name(test)
+        return Message(
+            "e",
+            module_name,
+            root + "/" + trace["path"],
+            trace["lineno"],
+            trace["message"],
         )

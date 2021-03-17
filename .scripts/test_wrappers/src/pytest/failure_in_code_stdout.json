@@ -1,0 +1,120 @@
+{
+  "created": 1615995619.3283944,
+  "duration": 0.06248164176940918,
+  "exitcode": 1,
+  "root": "/home/kevin/.scripts/test_wrappers",
+  "environment": {
+    "Python": "3.8.5",
+    "Platform": "Linux-5.8.0-45-generic-x86_64-with-glibc2.29",
+    "Packages": { "pytest": "6.2.2", "py": "1.10.0", "pluggy": "0.13.1" },
+    "Plugins": {
+      "cov": "2.11.1",
+      "testmon": "1.0.3",
+      "json-report": "1.2.4",
+      "metadata": "1.11.0",
+      "forked": "1.3.0",
+      "django": "4.1.0",
+      "xdist": "2.2.1",
+      "Faker": "6.1.1"
+    }
+  },
+  "summary": { "failed": 2, "total": 2, "collected": 2 },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        { "nodeid": "src/__init__.py", "type": "Package" },
+        { "nodeid": "src/common/__init__.py", "type": "Package" },
+        { "nodeid": "src/pytest/__init__.py", "type": "Package" }
+      ]
+    },
+    { "nodeid": "src/__init__.py", "outcome": "passed", "result": [] },
+    { "nodeid": "src/common/__init__.py", "outcome": "passed", "result": [] },
+    {
+      "nodeid": "src/pytest/test_pytest.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_no_failures",
+          "type": "Function",
+          "lineno": 10
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_failure_in_test",
+          "type": "Function",
+          "lineno": 20
+        }
+      ]
+    },
+    {
+      "nodeid": "src/pytest/__init__.py",
+      "outcome": "passed",
+      "result": [{ "nodeid": "src/pytest/test_pytest.py", "type": "Module" }]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_no_failures",
+      "lineno": 10,
+      "outcome": "failed",
+      "keywords": [
+        "test_pytest.py",
+        "test_no_failures",
+        "test_wrappers",
+        "src/pytest/__init__.py"
+      ],
+      "setup": { "duration": 0.0199958550001611, "outcome": "passed" },
+      "call": {
+        "duration": 0.00026247000278090127,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/kevin/.scripts/test_wrappers/src/pytest/wrapper.py",
+          "lineno": 19,
+          "message": "AssertionError"
+        },
+        "traceback": [
+          { "path": "src/pytest/test_pytest.py", "lineno": 15, "message": "" },
+          {
+            "path": "src/pytest/wrapper.py",
+            "lineno": 19,
+            "message": "AssertionError"
+          }
+        ],
+        "longrepr": "def test_no_failures():\n        stdout, stderr = load_fixture(\"pytest/no_failures\")\n        wrapper = PytestWrapper()\n    \n>       messages, summary = PytestWrapper().parse(stdout, stderr)\n\nsrc/pytest/test_pytest.py:15: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <src.pytest.wrapper.PytestWrapper object at 0x7ff4968da190>\nstdout = '{\\n  \"created\": 1615989770.509135,\\n  \"duration\": 0.03737282752990723,\\n  \"exitcode\": 0,\\n  \"root\": \"/home/kevin/.scr...\"outcome\": \"passed\" },\\n      \"teardown\": { \"duration\": 0.00032116900183609687, \"outcome\": \"passed\" }\\n    }\\n  ]\\n}\\n'\nstderr = ''\n\n    def parse(self, stdout, stderr):\n>       assert False\nE       AssertionError\n\nsrc/pytest/wrapper.py:19: AssertionError"
+      },
+      "teardown": { "duration": 0.00025598800129955634, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_failure_in_test",
+      "lineno": 20,
+      "outcome": "failed",
+      "keywords": [
+        "test_pytest.py",
+        "test_wrappers",
+        "src/pytest/__init__.py",
+        "test_failure_in_test"
+      ],
+      "setup": { "duration": 0.0005622899989248253, "outcome": "passed" },
+      "call": {
+        "duration": 0.00021514100080821663,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/kevin/.scripts/test_wrappers/src/pytest/wrapper.py",
+          "lineno": 19,
+          "message": "AssertionError"
+        },
+        "traceback": [
+          { "path": "src/pytest/test_pytest.py", "lineno": 25, "message": "" },
+          {
+            "path": "src/pytest/wrapper.py",
+            "lineno": 19,
+            "message": "AssertionError"
+          }
+        ],
+        "longrepr": "def test_failure_in_test():\n        stdout, stderr = load_fixture(\"pytest/failure_in_test\")\n        wrapper = PytestWrapper()\n    \n>       messages, summary = PytestWrapper().parse(stdout, stderr)\n\nsrc/pytest/test_pytest.py:25: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <src.pytest.wrapper.PytestWrapper object at 0x7ff4954a0520>\nstdout = '{\\n  \"created\": 1615993342.267124,\\n  \"duration\": 0.058786869049072266,\\n  \"exitcode\": 1,\\n  \"root\": \"/home/kevin/.sc...ertionError\"\\n      },\\n      \"teardown\": { \"duration\": 0.00035615399974631146, \"outcome\": \"passed\" }\\n    }\\n  ]\\n}\\n'\nstderr = ''\n\n    def parse(self, stdout, stderr):\n>       assert False\nE       AssertionError\n\nsrc/pytest/wrapper.py:19: AssertionError"
+      },
+      "teardown": { "duration": 0.0002975960014737211, "outcome": "passed" }
+    }
+  ]
+}

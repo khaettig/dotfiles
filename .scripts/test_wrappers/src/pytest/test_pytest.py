@@ -29,3 +29,20 @@ def test_failure_in_test():
         f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:16:AssertionError",
     ]
     assert summary == Summary(passed=1, failed=1, total=2)
+
+
+def test_failure_in_test():
+    stdout, stderr = load_fixture("pytest/failure_in_code")
+    wrapper = PytestWrapper()
+
+    messages, summary = PytestWrapper().parse(stdout, stderr)
+
+    assert as_strings(messages) == [
+        f"e:test_no_failures:{ROOT}/src/pytest/test_pytest.py:10:Failing Test:",
+        f"e:test_no_failures:{ROOT}/src/pytest/test_pytest.py:15:",
+        f"e:test_no_failures:{ROOT}/src/pytest/wrapper.py:19:AssertionError",
+        f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:20:Failing Test:",
+        f"e:test_failure_in_test:{ROOT}/src/pytest/test_pytest.py:25:",
+        f"e:test_failure_in_test:{ROOT}/src/pytest/wrapper.py:19:AssertionError",
+    ]
+    assert summary == Summary(passed=0, failed=2, total=2)
