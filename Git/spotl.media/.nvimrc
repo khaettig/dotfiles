@@ -9,4 +9,4 @@ let test#javascript#jest#file_pattern = 'test_.*\.js'
 autocmd FileType python :CoveragePy
 
 autocmd BufWritePost *.py :Neomake! testmon
-" let g:coverage_timer = timer_start(30000, 'RunPytestCoverage', {'repeat': '-1'})
+let g:coverage_timer = timer_start(30000, 'RunPytestCoverage', {'repeat': '-1'})

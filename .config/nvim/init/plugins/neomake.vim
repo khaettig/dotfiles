@@ -11,7 +11,7 @@ let g:neomake_warning_sign = {
 
 let g:neomake_python_enabled_makers = ['pytest', 'pytestxdist', 'testmon']
 
-let s:wrapper_errorformat = '%t:%o:%f:%l:%m,%-GSUMMARY:%.%#'
+let s:wrapper_errorformat = '%t:%o:%f:%l:%m,%t:%o:%f:%l:,%-GSUMMARY:%.%#'
 let s:pytest_wrapper = '~/.scripts/test_wrappers/pytest_main.py'
 
 let g:neomake_pytest_maker = {
