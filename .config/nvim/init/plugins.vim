@@ -37,6 +37,7 @@ source ~/.config/nvim/init/plugins/nerd_tree.vim
 source ~/.config/nvim/init/plugins/git_gutter.vim
 source ~/.config/nvim/init/plugins/lightline.vim
 source ~/.config/nvim/init/plugins/fugitive.vim
+source ~/.config/nvim/init/plugins/dispatch.vim
 source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
 source ~/.config/nvim/init/plugins/ale.vim

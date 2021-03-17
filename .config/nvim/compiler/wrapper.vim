@@ -9,4 +9,4 @@ if exists(":CompilerSet") != 2		" older Vim always used :setlocal
   command -nargs=* CompilerSet setlocal <args>
 endif
 
-CompilerSet efm=%t:%f:%l:%m,%-GSUMMARY%.%#
+CompilerSet efm=%t:%o:%f:%l:%m,%-GSUMMARY%.%#

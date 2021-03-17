@@ -53,7 +53,8 @@ class PytestWrapper(Wrapper):
         ]
 
     def get_file_and_module_name(self, test):
-        return test["nodeid"].split("::")
+        split = test["nodeid"].split("::")
+        return split[0], (".").join(split[1:])
 
     def get_title_message(self, root, test):
         file_name, module_name = self.get_file_and_module_name(test)

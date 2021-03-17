@@ -8,11 +8,12 @@ noremap <Leader>ts :TestSuite<CR>
 noremap <Leader>tdp :TestNearest -strategy=pydebug<CR>
 
 let test#python#runner = 'pytest'
-let test#python#pytest#executable = 'python3 ~/.scripts/pytest_wrapper.py'
+let test#python#pytest#executable = 'python3 ~/.scripts/test_wrappers/pytest_main.py'
 
 function PyDebugStrategy(cmd)
     -tabnew
-    call termopen('pytest --pdb' . a:cmd[36:])
+    let s:command = join(split(a:cmd)[2:], " ")
+    call termopen('pytest --pdb ' . s:command)
     startinsert
 endfunction
 

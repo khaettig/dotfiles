@@ -16,6 +16,10 @@ class Wrapper:
             self.print_raw(stdout, stderr, returncode)
             exit(0)
 
+        if stderr:
+            print(stderr)
+            exit(1)
+
         messages, summary = self.parse(stdout=stdout, stderr=stderr)
         self.render_messages(messages)
         self.render_summary(summary, duration)
