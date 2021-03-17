@@ -10,6 +10,9 @@ class Message:
     def __str__(self):
         return f"{self.code}:{self.module_name}:{self.file_name}:{self.line_number}:{self.text}"
 
+    def __eq__(self, other):
+        return str(self) == str(other)
+
     def add(self, sub_message):
         self.sub_messages.append(sub_message)
         sub_message.parent = self

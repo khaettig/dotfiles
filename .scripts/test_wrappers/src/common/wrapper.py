@@ -1,23 +1,46 @@
 import sys
+import time
+import argparse
 from subprocess import run, PIPE
 
 
 class Wrapper:
     def run(self):
-        call = self.run_command()
-        messages, summary = self.parse(
-            stdout=call.stdout.decode("utf-8"), stderr=call.stderr.decode("utf-8")
-        )
-        self.render_messages(messages)
-        self.render_summary(summary)
-        exit(call.returncode)
+        time_before = time.time()
+        wrapper_args, command_args = self.parse_arguments()
+        duration = time.time() - time_before
 
-    def run_command(self):
-        return run(self.command + sys.argv[1:], stdout=PIPE, stderr=PIPE)
+        stdout, stderr, returncode = self.run_command(command_args)
+
+        if wrapper_args.print_raw:
+            self.print_raw(stdout, stderr, returncode)
+            exit(0)
+
+        messages, summary = self.parse(stdout=stdout, stderr=stderr)
+        self.render_messages(messages)
+        self.render_summary(summary, duration)
+
+        exit(returncode)
+
+    def parse_arguments(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--print_raw", action="store_true")
+        return parser.parse_known_args()
+
+    def run_command(self, options):
+        call = run(self.command + options, stdout=PIPE, stderr=PIPE)
+        return call.stdout.decode("utf-8"), call.stderr.decode("utf-8"), call.returncode
 
     def render_messages(self, messages):
         for message in messages:
             message.render()
 
-    def render_summary(self, summary):
-        print(f"SUMMARY: {summary}")
+    def render_summary(self, summary, duration):
+        print(f"{summary} in {duration:.2f}s")
+
+    def print_raw(self, stdout, stderr, returncode):
+        print("Output (stdout):")
+        print(stdout)
+        print("Errors (stderr):")
+        print(stderr)
+        print(f"Returncode: {returncode}")
