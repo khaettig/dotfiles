@@ -9,11 +9,22 @@ let g:neomake_warning_sign = {
     \ 'texthl': 'ErrorMsg',
     \ }
 
-let g:neomake_python_enabled_makers = ['testmon']
+let g:neomake_python_enabled_makers = ['pytest', 'pytestxdist', 'testmon']
 
-" --tb=line is broken with --testmon, use custom parser as workaround
+let s:postprocessor_errorformat = '%t:%o:%f:%l:%m,%-GSUMMARY%.%#'
+
+let g:neomake_pytest_maker = {
+    \ 'exe': 'python3', 
+    \ 'args': ['~/.scripts/pytest_wrapper.py'],
+    \ 'errorformat': s:postprocessor_errorformat,
+    \ }
+let g:neomake_pytestxdist_maker = {
+    \ 'exe': 'python3', 
+    \ 'args': ['~/.scripts/pytest_wrapper.py', '-n', 'auto'],
+    \ 'errorformat': s:postprocessor_errorformat,
+    \ }
 let g:neomake_testmon_maker = {
     \ 'exe': 'python3', 
     \ 'args': ['~/.scripts/pytest_wrapper.py', '--testmon'],
-    \ 'errorformat': '%t:%o:%f:%l:%m,%-GSUMMARY%.%#',
+    \ 'errorformat': s:postprocessor_errorformat,
     \ }
