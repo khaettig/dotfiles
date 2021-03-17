@@ -10,11 +10,14 @@ class Message:
     def __str__(self):
         return ":".join(
             [
-                self.code,
-                self.module_name,
-                self.file_name,
-                str(self.line_number),
-                self.text.split("\n")[0],
+                str(attribute)
+                for attribute in [
+                    self.code,
+                    self.module_name,
+                    self.file_name,
+                    self.line_number,
+                    self.text.split("\n")[0],
+                ]
             ]
         )
 

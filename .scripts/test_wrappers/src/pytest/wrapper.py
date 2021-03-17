@@ -30,20 +30,46 @@ class PytestWrapper(Wrapper):
         return "stdout" in test["call"]
 
     def parse_collectors(self, data):
+        failed_collectors = [
+            collector for collector in data["collectors"] if self.has_failed(collector)
+        ]
         return [
-            self.get_collector_message(data, collector)
-            for collector in data["collectors"]
-            if self.has_failed(collector)
+            message
+            for collector in failed_collectors
+            for message in self.get_collector_messages(data, collector)
         ]
 
-    def get_collector_message(self, data, collector):
-        split = collector["longrepr"].split(":")
-        file_name = data["parsed_root"] + split[0]
-        line_number = split[1]
-        message = ":".join(split[2:])
-        return Message(
-            "e", "import error", file_name, line_number, message.split("\nE   ")[-1]
-        )
+    def get_collector_messages(self, data, collector):
+        if "longrepr" not in collector:
+            return []
+        raw_message = collector["longrepr"].split("\n")
+
+        messages = []
+        file_name, line_number = None, None
+        for line in reversed(raw_message):
+            if not line.startswith("E   "):
+                if not file_name:
+                    if line.startswith(" "):
+                        continue
+                    file_name, line_number = line.split(":")[:2]
+                    file_name = data["parsed_root"] + file_name
+                break
+            if line.startswith("E     File"):
+                file_name, line_number = self.parse_file_name(line)
+                break
+            messages.insert(0, line)
+
+        # E   SyntaxError: invalid syntax
+        module_name = messages[-1][1:].strip().split(" ")[0][:-1]
+
+        return [
+            Message("e", module_name, file_name, line_number, line) for line in messages
+        ]
+
+    def parse_file_name(self, line):
+        # E     File "<file_name>", line <line_number>
+        split = line[12:].split(" ")
+        return split[0][:-2], split[2]
 
     def get_failed_collectors(self, data):
         return [
