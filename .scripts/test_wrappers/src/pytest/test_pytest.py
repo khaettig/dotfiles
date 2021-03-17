@@ -68,6 +68,20 @@ def test_syntax_error():
     assert as_strings(messages) == [
         f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:60:Failing Test:",
         f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:62:NameError",
-        f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:62:NameError: name 'mischief' is not defined",
+        f"e:test_syntax_error:{ROOT}/src/pytest/test_pytest.py:62:"
+        + "NameError: name 'mischief' is not defined",
     ]
     assert summary == Summary(passed=3, failed=1, total=4)
+
+
+def test_import_error():
+    stdout, stderr = load_fixture("pytest", "import_error")
+    wrapper = PytestWrapper()
+
+    messages, summary = PytestWrapper().parse(stdout, stderr)
+
+    assert as_strings(messages) == [
+        f"e:import error:{ROOT}/src/pytest/test_pytest.py:1:"
+        + "NameError: name 'importerror' is not defined"
+    ]
+    assert summary == Summary(message="CRASHED")

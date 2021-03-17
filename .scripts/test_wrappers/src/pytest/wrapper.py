@@ -20,6 +20,9 @@ class PytestWrapper(Wrapper):
         root = data["root"] + "/"
         messages = []
 
+        for collector in self.get_failed_collectors(data):
+            messages.append(self.get_collector_message(root, collector))
+
         failed_tests = [test for test in data["tests"] if test["outcome"] == "failed"]
         for test in failed_tests:
             messages.append(self.get_title_message(root, test))
@@ -31,15 +34,25 @@ class PytestWrapper(Wrapper):
             if crash_message != messages[-1]:
                 messages.append(crash_message)
 
-        return (messages, self.get_summary(data["summary"]))
+        return (messages, self.get_summary(data))
 
-    def get_summary(self, raw_summary):
+    def get_summary(self, data):
+        if self.get_failed_collectors(data):
+            return Summary(message="CRASHED")
+        raw_summary = data["summary"]
         return Summary(
             passed=raw_summary.get("passed", 0),
             failed=raw_summary.get("failed", 0),
             skipped=raw_summary.get("skipped", 0),
             total=raw_summary.get("total", 0),
         )
+
+    def get_failed_collectors(self, data):
+        return [
+            collector
+            for collector in data["collectors"]
+            if collector["outcome"] == "failed"
+        ]
 
     def get_file_and_module_name(self, test):
         return test["nodeid"].split("::")
@@ -54,4 +67,13 @@ class PytestWrapper(Wrapper):
         _, module_name = self.get_file_and_module_name(test)
         return Message(
             "e", module_name, root + trace["path"], trace["lineno"], trace["message"]
+        )
+
+    def get_collector_message(self, root, collector):
+        split = collector["longrepr"].split(":")
+        file_name = root + split[0]
+        line_number = split[1]
+        message = ":".join(split[2:])
+        return Message(
+            "e", "import error", file_name, line_number, message.split("\nE   ")[-1]
         )

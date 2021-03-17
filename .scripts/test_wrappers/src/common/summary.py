@@ -10,6 +10,9 @@ class Summary:
         counts = f"{self.passed}P {self.failed}F {self.skipped}P {self.total}T"
         return "SUMMARY: " + (self.message if self.message else counts)
 
+    def __repr__(self):
+        return str(self)
+
     def __eq__(self, other):
         return (
             self.passed == other.passed
