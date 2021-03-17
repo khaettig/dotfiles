@@ -1,3 +1,4 @@
+echo "source"
 " remap hjkl to neo2 keys
 noremap i h
 noremap a j

@@ -1,6 +1,6 @@
+source ~/.config/nvim/init/settings.vim
 source ~/.config/nvim/init/install_plug.vim
 source ~/.config/nvim/init/plugins.vim
-source ~/.config/nvim/init/settings.vim
 source ~/.config/nvim/init/shortcuts.vim
 source ~/.config/nvim/init/functions.vim
 source ~/.config/nvim/init/commands.vim
