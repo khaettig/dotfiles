@@ -17,14 +17,19 @@ class PytestWrapper(Wrapper):
 
     def parse(self, stdout, stderr):
         data = json.loads(stdout)
+        root = data["root"] + "/"
         messages = []
 
         failed_tests = [test for test in data["tests"] if test["outcome"] == "failed"]
         for test in failed_tests:
-            messages.append(self.get_title_message(data["root"], test))
+            messages.append(self.get_title_message(root, test))
 
             for trace in test["call"]["traceback"]:
-                messages.append(self.get_traceback_message(data["root"], test, trace))
+                messages.append(self.get_traceback_message(root, test, trace))
+
+            crash_message = self.get_traceback_message("", test, test["call"]["crash"])
+            if crash_message != messages[-1]:
+                messages.append(crash_message)
 
         return (messages, self.get_summary(data["summary"]))
 
@@ -32,6 +37,7 @@ class PytestWrapper(Wrapper):
         return Summary(
             passed=raw_summary.get("passed", 0),
             failed=raw_summary.get("failed", 0),
+            skipped=raw_summary.get("skipped", 0),
             total=raw_summary.get("total", 0),
         )
 
@@ -41,15 +47,11 @@ class PytestWrapper(Wrapper):
     def get_title_message(self, root, test):
         file_name, module_name = self.get_file_and_module_name(test)
         return Message(
-            "e", module_name, root + "/" + file_name, test["lineno"], "Failing Test:"
+            "e", module_name, root + file_name, test["lineno"], "Failing Test:"
         )
 
     def get_traceback_message(self, root, test, trace):
         _, module_name = self.get_file_and_module_name(test)
         return Message(
-            "e",
-            module_name,
-            root + "/" + trace["path"],
-            trace["lineno"],
-            trace["message"],
+            "e", module_name, root + trace["path"], trace["lineno"], trace["message"]
         )
