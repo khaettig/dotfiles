@@ -1,12 +1,8 @@
+from src.common import load_fixture, as_strings, Summary
 from src.pytest import PytestWrapper
-from src.common import load_fixture, Summary
 
 W_ROOT = "/home/kevin/.scripts/test_wrappers/"
 S_ROOT = "/home/kevin/Git/spotl.media/"
-
-
-def as_strings(iterables):
-    return list(map(str, iterables))
 
 
 def test_no_failures():
