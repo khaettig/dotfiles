@@ -44,10 +44,6 @@ class Wrapper:
             print_raw(stdout, stderr, returncode)
             sys.exit(returncode)
 
-        if stderr:
-            print(stderr)
-            sys.exit(returncode)
-
         messages, summary = self.parse(stdout=stdout, stderr=stderr)
         render_messages(messages)
         render_summary(summary, duration)

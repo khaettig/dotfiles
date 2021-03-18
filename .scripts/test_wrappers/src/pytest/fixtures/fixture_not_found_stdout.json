@@ -1,0 +1,253 @@
+{
+  "created": 1616052280.5005968,
+  "duration": 0.06435632705688477,
+  "exitcode": 1,
+  "root": "/home/kevin/.scripts/test_wrappers",
+  "environment": {
+    "Python": "3.8.5",
+    "Platform": "Linux-5.8.0-45-generic-x86_64-with-glibc2.29",
+    "Packages": { "pytest": "6.2.2", "py": "1.10.0", "pluggy": "0.13.1" },
+    "Plugins": {
+      "cov": "2.11.1",
+      "testmon": "1.0.3",
+      "json-report": "1.2.4",
+      "metadata": "1.11.0",
+      "forked": "1.3.0",
+      "django": "4.1.0",
+      "xdist": "2.2.1",
+      "Faker": "6.1.1"
+    }
+  },
+  "summary": { "error": 1, "passed": 9, "total": 10, "collected": 10 },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        { "nodeid": "src/__init__.py", "type": "Package" },
+        { "nodeid": "src/common/__init__.py", "type": "Package" },
+        { "nodeid": "src/jest/__init__.py", "type": "Package" },
+        { "nodeid": "src/pytest/__init__.py", "type": "Package" }
+      ]
+    },
+    { "nodeid": "src/__init__.py", "outcome": "passed", "result": [] },
+    { "nodeid": "src/common/__init__.py", "outcome": "passed", "result": [] },
+    {
+      "nodeid": "src/jest/test_jest.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "src/jest/test_jest.py::test_",
+          "type": "Function",
+          "lineno": 0
+        }
+      ]
+    },
+    {
+      "nodeid": "src/jest/__init__.py",
+      "outcome": "passed",
+      "result": [{ "nodeid": "src/jest/test_jest.py", "type": "Module" }]
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_no_failures",
+          "type": "Function",
+          "lineno": 10
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_skipped_test",
+          "type": "Function",
+          "lineno": 19
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_failure_in_test",
+          "type": "Function",
+          "lineno": 28
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_failure_in_code",
+          "type": "Function",
+          "lineno": 40
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_syntax_error",
+          "type": "Function",
+          "lineno": 56
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_import_error",
+          "type": "Function",
+          "lineno": 69
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_captures_stdout",
+          "type": "Function",
+          "lineno": 81
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_class_based_test",
+          "type": "Function",
+          "lineno": 93
+        },
+        {
+          "nodeid": "src/pytest/test_pytest.py::test_missing_colon_after_def",
+          "type": "Function",
+          "lineno": 109
+        }
+      ]
+    },
+    {
+      "nodeid": "src/pytest/__init__.py",
+      "outcome": "passed",
+      "result": [{ "nodeid": "src/pytest/test_pytest.py", "type": "Module" }]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "src/jest/test_jest.py::test_",
+      "lineno": 0,
+      "outcome": "error",
+      "keywords": [
+        "test_wrappers",
+        "test_jest.py",
+        "test_",
+        "src/jest/__init__.py"
+      ],
+      "setup": {
+        "duration": 0.019869160000098418,
+        "outcome": "failed",
+        "longrepr": "file /home/kevin/.scripts/test_wrappers/src/jest/test_jest.py, line 1\n  def test_(self):\nE       fixture 'self' not found\n>       available fixtures: _dj_autoclear_mailbox, _django_clear_site_cache, _django_db_marker, _django_set_urlconf, _django_setup_unittest, _fail_for_invalid_template_variable, _live_server_helper, _session_faker, _template_string_if_invalid_marker, admin_client, admin_user, async_client, async_rf, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, client, cov, db, django_assert_max_num_queries, django_assert_num_queries, django_db_blocker, django_db_createdb, django_db_keepdb, django_db_modify_db_settings, django_db_modify_db_settings_parallel_suffix, django_db_modify_db_settings_tox_suffix, django_db_modify_db_settings_xdist_suffix, django_db_reset_sequences, django_db_setup, django_db_use_migrations, django_mail_dnsname, django_mail_patch_dns, django_test_environment, django_user_model, django_username_field, doctest_namespace, faker, include_metadata_in_junit_xml, json_metadata, live_server, mailoutbox, metadata, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, rf, settings, testrun_uid, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transactional_db, worker_id\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/home/kevin/.scripts/test_wrappers/src/jest/test_jest.py:1"
+      },
+      "teardown": { "duration": 0.0002855230000022857, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_no_failures",
+      "lineno": 10,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_wrappers",
+        "test_pytest.py",
+        "test_no_failures"
+      ],
+      "setup": { "duration": 0.0007392950001303689, "outcome": "passed" },
+      "call": { "duration": 0.00030351600003086787, "outcome": "passed" },
+      "teardown": { "duration": 0.00020534600002974912, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_skipped_test",
+      "lineno": 19,
+      "outcome": "passed",
+      "keywords": [
+        "test_skipped_test",
+        "test_wrappers",
+        "src/pytest/__init__.py",
+        "test_pytest.py"
+      ],
+      "setup": { "duration": 0.000478977000057057, "outcome": "passed" },
+      "call": { "duration": 0.00023643400004402793, "outcome": "passed" },
+      "teardown": { "duration": 0.00019653000003927446, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_failure_in_test",
+      "lineno": 28,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_failure_in_test",
+        "test_wrappers",
+        "test_pytest.py"
+      ],
+      "setup": { "duration": 0.0005271669999729056, "outcome": "passed" },
+      "call": { "duration": 0.00028068500000699714, "outcome": "passed" },
+      "teardown": { "duration": 0.00021557499985647155, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_failure_in_code",
+      "lineno": 40,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_wrappers",
+        "test_failure_in_code",
+        "test_pytest.py"
+      ],
+      "setup": { "duration": 0.0005287589999625197, "outcome": "passed" },
+      "call": { "duration": 0.00034291800011487794, "outcome": "passed" },
+      "teardown": { "duration": 0.0002026519998707954, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_syntax_error",
+      "lineno": 56,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_wrappers",
+        "test_syntax_error",
+        "test_pytest.py"
+      ],
+      "setup": { "duration": 0.0005284489998302888, "outcome": "passed" },
+      "call": { "duration": 0.00030425799991462554, "outcome": "passed" },
+      "teardown": { "duration": 0.00019998699985990243, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_import_error",
+      "lineno": 69,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_wrappers",
+        "test_import_error",
+        "test_pytest.py"
+      ],
+      "setup": { "duration": 0.0005283479999889096, "outcome": "passed" },
+      "call": { "duration": 0.0002659780000158207, "outcome": "passed" },
+      "teardown": { "duration": 0.00019972600011897157, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_captures_stdout",
+      "lineno": 81,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_wrappers",
+        "test_pytest.py",
+        "test_captures_stdout"
+      ],
+      "setup": { "duration": 0.0005277379998460674, "outcome": "passed" },
+      "call": { "duration": 0.000256589999935386, "outcome": "passed" },
+      "teardown": { "duration": 0.00019909499997083913, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_class_based_test",
+      "lineno": 93,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_wrappers",
+        "test_class_based_test",
+        "test_pytest.py"
+      ],
+      "setup": { "duration": 0.0005369440000322356, "outcome": "passed" },
+      "call": { "duration": 0.00030992800020612776, "outcome": "passed" },
+      "teardown": { "duration": 0.00019891500005542184, "outcome": "passed" }
+    },
+    {
+      "nodeid": "src/pytest/test_pytest.py::test_missing_colon_after_def",
+      "lineno": 109,
+      "outcome": "passed",
+      "keywords": [
+        "src/pytest/__init__.py",
+        "test_wrappers",
+        "test_missing_colon_after_def",
+        "test_pytest.py"
+      ],
+      "setup": { "duration": 0.0005810349998682796, "outcome": "passed" },
+      "call": { "duration": 0.00037051899994366977, "outcome": "passed" },
+      "teardown": { "duration": 0.0007001630001468584, "outcome": "passed" }
+    }
+  ]
+}

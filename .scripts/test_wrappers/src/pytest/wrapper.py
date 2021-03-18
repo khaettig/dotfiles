@@ -1,3 +1,4 @@
+import sys
 import json
 from subprocess import run, PIPE
 
@@ -19,6 +20,10 @@ class PytestWrapper(Wrapper):
         return stdout, call.stderr.decode("utf-8"), call.returncode
 
     def parse(self, stdout, stderr):
+        if stderr:
+            print(stderr)
+            sys.exit(1)
+
         data = json.loads(stdout)
         data["parsed_root"] = data["root"] + "/"
         return (self.parse_messages(data), self.parse_summary(data))
@@ -29,8 +34,11 @@ class PytestWrapper(Wrapper):
     def has_failed(self, report):
         return report["outcome"] == "failed"
 
+    def has_crashed(self, test):
+        return test["setup"]["outcome"] == "failed"
+
     def has_stdout(self, test):
-        return "stdout" in test["call"]
+        return "call" in test and "stdout" in test["call"]
 
     def parse_collectors(self, data):
         failed_collectors = [
@@ -91,8 +99,11 @@ class PytestWrapper(Wrapper):
     def parse_test(self, root, test):
         messages = []
 
+        if self.has_crashed(test):
+            messages += self.get_crash_messages(root, test)
+
         if self.has_failed(test):
-            messages += self.get_error_messages(root, test, test["call"]["traceback"])
+            messages += self.get_error_messages(root, test)
 
         if self.has_stdout(test):
             messages += self.get_stdout_messages(root, test)
@@ -103,10 +114,32 @@ class PytestWrapper(Wrapper):
         split = test["nodeid"].split("::")
         return split[0], (".").join(split[1:])
 
-    def get_error_messages(self, root, test, traceback):
+    def get_crash_messages(self, root, test):
+        file_name, module_name = self.get_file_and_module_name(test)
+        file_name = root + file_name
+        line_number = test["lineno"]
+
+        error_lines = [
+            line
+            for line in test["setup"]["longrepr"].split("\n")
+            if line.startswith("E   ")
+        ]
+
+        return [
+            Message("e", module_name, file_name, line_number, "Test failed:"),
+            *(
+                Message("e", module_name, file_name, line_number, line)
+                for line in error_lines
+            ),
+        ]
+
+    def get_error_messages(self, root, test):
         return [
             self.get_title_message(root, test),
-            *(self.get_error_message(root, test, trace) for trace in traceback[:-1]),
+            *(
+                self.get_error_message(root, test, trace)
+                for trace in test["call"]["traceback"][:-1]
+            ),
             self.get_error_message("", test, test["call"]["crash"]),
         ]
 
@@ -138,7 +171,7 @@ class PytestWrapper(Wrapper):
         raw_summary = data["summary"]
         return Summary(
             passed=raw_summary.get("passed", 0),
-            failed=raw_summary.get("failed", 0),
+            failed=raw_summary.get("error", 0) + raw_summary.get("failed", 0),
             skipped=raw_summary.get("skipped", 0),
             total=raw_summary.get("total", 0),
         )
