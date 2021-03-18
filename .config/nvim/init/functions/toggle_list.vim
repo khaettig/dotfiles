@@ -5,7 +5,7 @@ function! GetBufferList()
   return buflist
 endfunction
 
-function! ToggleList(bufname, pfx)
+function! ToggleList(bufname, pfx, height)
   let buflist = GetBufferList()
   for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
     if bufwinnr(bufnum) != -1
@@ -19,7 +19,7 @@ function! ToggleList(bufname, pfx)
       return
   endif
   let winnr = winnr()
-  exec(a:pfx.'open')
+  exec(a:pfx . 'open ' . a:height)
   if winnr() != winnr
     wincmd p
   endif

@@ -16,6 +16,7 @@ noremap <Down> <C-w><Down>
 noremap <Left> <C-w><Left>
 noremap <Right> <C-w><Right>
 
+noremap <leader>ä <C-w>_
 noremap ¡ <C-w><Up><C-w>_
 noremap ¿ <C-w><Down><C-w>_
 
@@ -45,5 +46,7 @@ nmap <leader>ö :cnewer<CR>
 nmap <leader>Ü :lolder<CR>
 nmap <leader>Ö :lnewer<CR>
 
-nnoremap <silent> ä :call ToggleList("Quickfix List", "c")<CR>
-nnoremap <silent> Ä :call ToggleList("Location List", "l")<CR>
+nnoremap <silent> ä :call ToggleList("Quickfix List", "c", 15)<CR>
+nnoremap <silent> <leader>ä :call ToggleList("Quickfix List", "c", 30)<CR>
+nnoremap <silent> Ä :call ToggleList("Location List", "l", 15)<CR>
+nnoremap <silent> <leader>Ä :call ToggleList("Location List", "l", 30)<CR>

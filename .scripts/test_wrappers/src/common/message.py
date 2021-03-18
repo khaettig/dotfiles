@@ -35,3 +35,6 @@ class Message:
         print(self)
         for sub_message in self.sub_messages:
             print(sub_message)
+
+    def add_root_to_file_name(self, root):
+        self.file_name = root + self.file_name

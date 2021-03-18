@@ -33,6 +33,10 @@ let g:neomake_testmon_maker = {
     \ }
 let g:neomake_jest_maker = {
     \ 'exe': 'python3', 
-    \ 'args': [s:pytest_wrapper, '--executable', './frontend/node_modules/jest/bin/jest.js'],
+    \ 'args': [
+    \    s:jest_wrapper,
+    \    '--executable', './node_modules/jest/bin/jest.js',
+    \    '--cwd', './frontend',
+    \  ],
     \ 'errorformat': s:wrapper_errorformat,
     \ }

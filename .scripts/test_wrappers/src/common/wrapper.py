@@ -8,6 +8,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--print_raw", action="store_true")
     parser.add_argument("--executable", nargs="?")
+    parser.add_argument("--cwd", nargs="?", default=".")
     return parser.parse_known_args()
 
 
@@ -36,7 +37,7 @@ class Wrapper:
 
         time_before = time.time()
         stdout, stderr, returncode = self.run_command(
-            command_args, executable=wrapper_args.executable
+            command_args, executable=wrapper_args.executable, cwd=wrapper_args.cwd
         )
         duration = time.time() - time_before
 
@@ -53,11 +54,11 @@ class Wrapper:
     def parse(self, stdout, stderr):
         raise NotImplementedError
 
-    def run_command(self, command_arguments, executable=None):
+    def run_command(self, command_arguments, cwd=".", executable=None):
         assembled_command = self.assemble_command(
             self.command, command_arguments, executable
         )
-        call = run(assembled_command, stdout=PIPE, stderr=PIPE)
+        call = run(assembled_command, cwd=cwd, stdout=PIPE, stderr=PIPE)
         return call.stdout.decode("utf-8"), call.stderr.decode("utf-8"), call.returncode
 
     def assemble_command(self, command, arguments, executable=None):

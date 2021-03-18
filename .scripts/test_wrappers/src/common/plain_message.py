@@ -13,3 +13,6 @@ class PlainMessage:
 
     def render(self):
         print(self)
+
+    def add_root_to_file_name(self, root):
+        pass

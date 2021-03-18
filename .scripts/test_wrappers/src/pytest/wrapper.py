@@ -10,11 +10,11 @@ JSON_REPORT = "/tmp/pytest.json"
 class PytestWrapper(Wrapper):
     command = ["pytest", "--json-report", f"--json-report-file={JSON_REPORT}"]
 
-    def run_command(self, command_arguments, executable=None):
+    def run_command(self, command_arguments, executable=None, cwd="."):
         assembled_command = self.assemble_command(
             self.command, command_arguments, executable
         )
-        call = run(assembled_command, stdout=PIPE, stderr=PIPE)
+        call = run(assembled_command, cwd=".", stdout=PIPE, stderr=PIPE)
         with open(JSON_REPORT) as f:
             stdout = f.read()
         return stdout, call.stderr.decode("utf-8"), call.returncode

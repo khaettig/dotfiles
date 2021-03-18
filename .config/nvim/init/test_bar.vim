@@ -28,6 +28,13 @@ function! TestFinished() abort
     let s:jobinfo = g:neomake_hook_context.jobinfo
 
     let s:stdout = s:jobinfo.jobstart_opts.stdout
+    let s:stderr = s:jobinfo.jobstart_opts.stderr
+
+    if s:stderr != ['']
+        echo s:stderr
+        return
+    endif
+
     if s:stdout[-1] == ''
         let s:raw = s:stdout[-2]
     else
