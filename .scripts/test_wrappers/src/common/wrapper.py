@@ -7,6 +7,7 @@ from subprocess import run, PIPE, CalledProcessError
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--print_raw", action="store_true")
+    parser.add_argument("--executable", nargs="?")
     return parser.parse_known_args()
 
 
@@ -34,7 +35,9 @@ class Wrapper:
         wrapper_args, command_args = parse_arguments()
 
         time_before = time.time()
-        stdout, stderr, returncode = self.run_command(command_args)
+        stdout, stderr, returncode = self.run_command(
+            command_args, executable=wrapper_args.executable
+        )
         duration = time.time() - time_before
 
         if wrapper_args.print_raw:
@@ -54,9 +57,16 @@ class Wrapper:
     def parse(self, stdout, stderr):
         raise NotImplementedError
 
-    def run_command(self, options):
-        try:
-            call = run(self.command + options, stdout=PIPE, stderr=PIPE, check=True)
-        except CalledProcessError:
-            pass  # stderr is passed anyway
+    def run_command(self, command_arguments, executable=None):
+        assembled_command = self.assemble_command(
+            self.command, command_arguments, executable
+        )
+        call = run(assembled_command, stdout=PIPE, stderr=PIPE)
         return call.stdout.decode("utf-8"), call.stderr.decode("utf-8"), call.returncode
+
+    def assemble_command(self, command, arguments, executable=None):
+        return (
+            [executable, *command[1:], *arguments]
+            if executable
+            else command + arguments
+        )
