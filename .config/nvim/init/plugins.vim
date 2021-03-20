@@ -12,17 +12,11 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'neomake/neomake'
 Plug 'janko/vim-test'
-Plug 'dense-analysis/ale'
 Plug 'takac/vim-hardtime'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
-
-" Deoplete and depenencies
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 
 " Python specific
 Plug 'kalekseev/vim-coverage.py', {'do': ':UpdateRemotePlugins'}
@@ -41,10 +35,7 @@ source ~/.config/nvim/init/plugins/fugitive.vim
 source ~/.config/nvim/init/plugins/dispatch.vim
 source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
-source ~/.config/nvim/init/plugins/ale.vim
 source ~/.config/nvim/init/plugins/fzf.vim
-
-source ~/.config/nvim/init/plugins/deoplete.vim
 
 source ~/.config/nvim/init/plugins/py_coverage.vim
 
