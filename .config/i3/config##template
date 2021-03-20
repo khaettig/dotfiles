@@ -147,7 +147,7 @@ bindsym $mod+r move workspace to output down
 bindsym $mod+t move workspace to output right
 
 # Presentation mode: Move everything on one screen
-bindsym $mod+w \
+bindsym $mod+h \
 [workspace=$ws1] move workspace to output primary; \
 [workspace=$ws2] move workspace to output primary; \
 [workspace=$ws3] move workspace to output primary; \
