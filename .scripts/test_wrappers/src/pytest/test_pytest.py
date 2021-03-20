@@ -137,3 +137,32 @@ def test_fixture_not_found():
     ]
     assert as_strings(messages) == expected
     assert summary == Summary(passed=9, failed=1, total=10)
+
+
+def test_long_traceback():
+    stdout, stderr = load_fixture("pytest", "long_traceback")
+
+    messages, summary = PytestWrapper().parse(stdout, stderr)
+
+    expected = [
+        "e:MemberCreationTest.test_links_new_member_to_current_account:"
+        f"{S_ROOT}apps/membership/tests/test_member_creation.py:29:Test failed:",
+        "e:MemberCreationTest.test_links_new_member_to_current_account:"
+        f"{S_ROOT}apps/membership/tests/test_member_creation.py:31:",
+        "e:MemberCreationTest.test_links_new_member_to_current_account:"
+        f"{S_ROOT}apps/user/mixins.py:57:in dispatch",
+        "e:MemberCreationTest.test_links_new_member_to_current_account:"
+        f"{S_ROOT}apps/membership/views/ajax_account_views.py:46:in form_valid",
+        "e:MemberCreationTest.test_links_new_member_to_current_account:"
+        f"{S_ROOT}apps/membership/services.py:11:in send_password_email",
+        "e:MemberCreationTest.test_links_new_member_to_current_account:"
+        f"{S_ROOT}.venv/lib/python3.8/site-packages/django/urls/resolvers.py:685:"
+        "django.urls.exceptions.NoReverseMatch: Reverse for "
+        "'password_reset_confirm' with keyword arguments '{'uidb64': "
+        "'NDVhN2MyNzgtMWNkZC00YWNiLWJhM2ItZWNhNDZkM2NmZDAz', 'token': "
+        "'ajt7ek-c3d2bc2371954b1ba7d47cbbe15eaf3d'}' not found. 1 pattern(s) "
+        "tried: ['en/u/reset/(?P<uidb64>[0-9A-Za-z_\\\\-]+)/(?P<token>[0-9A-Za-z]"
+        "{1,13}-[0-9A-Za-z]{1,20})/$']",
+    ]
+    assert as_strings(messages) == expected
+    assert summary == Summary(failed=1, total=1)

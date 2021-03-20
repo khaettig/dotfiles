@@ -49,7 +49,9 @@ class Wrapper:
         render_messages(messages)
         render_summary(summary, duration)
 
-        sys.exit(returncode)
+        if summary.failed:
+            exit(1)
+        exit(0)
 
     def parse(self, stdout, stderr):
         raise NotImplementedError

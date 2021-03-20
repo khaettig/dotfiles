@@ -138,7 +138,10 @@ class PytestWrapper(Wrapper):
             self.get_title_message(root, test),
             *(
                 self.get_error_message(root, test, trace)
-                for trace in test["call"]["traceback"][:-1]
+                for trace in test["call"]["traceback"]
+                if "site-packages" not in trace["path"]
+                and trace["message"].startswith("in")
+                or trace["message"] == ""
             ),
             self.get_error_message("", test, test["call"]["crash"]),
         ]
