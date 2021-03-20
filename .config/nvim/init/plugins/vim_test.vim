@@ -5,7 +5,8 @@ noremap <Leader>tf :TestFile<CR>
 noremap <Leader>tl :TestLast<CR>
 noremap <Leader>tv :TestVisit<CR>
 noremap <Leader>ts :TestSuite<CR>
-noremap <Leader>tdp :TestNearest -strategy=pydebug<CR>
+" TODO: Make language dependend
+noremap <Leader>td :TestNearest -strategy=pydebug<CR>
 
 let test#python#runner = 'pytest'
 let test#python#pytest#executable = 'python3 ~/.scripts/test_wrappers/pytest_main.py'

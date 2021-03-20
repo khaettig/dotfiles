@@ -18,13 +18,9 @@ let g:ale_html_beautify_options = '-s 2 -w 88'
 let g:ale_fix_on_save = 1
 let g:ale_hover_cursor = 0
 
-nmap <leader>gf :let g:ale_fix_on_save = 0<CR>
-nmap <silent> <C-n> <Plug>(ale_next_wrap)
-nmap <silent> <C-f> :ALEFix<CR>
-nmap <silent> <leader>r :ALERename<CR>
-nmap <silent> <leader>x :ALEFindReferences<CR>
-nmap <silent> <leader>d :w<CR>:ALEGoToDefinition<CR>
-
-" Fix ALE preview window navigation
-autocmd FileType ale-preview-selection silent! unmap <buffer> a
-autocmd FileType ale-preview-selection silent! unmap <buffer> i
+nnoremap <leader>gf :let g:ale_fix_on_save = 0<CR>
+nnoremap <silent> <C-n> <Plug>(ale_next_wrap)
+nnoremap <silent> <C-f> :ALEFix<CR>
+nnoremap <silent> <leader>r :ALERename<CR>
+nnoremap <silent> <leader>x :ALEFindReferences<CR>
+nnoremap <silent> <leader>d :w<CR>:ALEGoToDefinition<CR>

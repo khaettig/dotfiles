@@ -15,8 +15,3 @@ set exrc
 set secure
 set autoindent
 set smartindent
-
-
-" TODO: Orphaned, remove with neo2 settings:
-let g:list_of_normal_keys = ["l", "i", "a", "e"]
-let g:list_of_visual_keys = ["l", "i", "a", "e"]

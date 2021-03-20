@@ -13,7 +13,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'neomake/neomake'
 Plug 'janko/vim-test'
 Plug 'dense-analysis/ale'
-Plug 'puremourning/vimspector'
 Plug 'takac/vim-hardtime'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -43,7 +42,6 @@ source ~/.config/nvim/init/plugins/dispatch.vim
 source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
 source ~/.config/nvim/init/plugins/ale.vim
-source ~/.config/nvim/init/plugins/vimspector.vim
 source ~/.config/nvim/init/plugins/fzf.vim
 
 source ~/.config/nvim/init/plugins/deoplete.vim
