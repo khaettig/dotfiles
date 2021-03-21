@@ -12,6 +12,7 @@ NVIM_URL = "https://github.com/neovim/neovim/releases/download/nightly/nvim.appi
 NVIM_INSTALL = f"{HOME}/.local/bin/nvim"
 REQUIREMENTS = f"{HOME}/.scripts/requirements.txt"
 PACKAGES = f"{HOME}/.scripts/packages.txt"
+NPM_PACKAGES = f"{HOME}/.scripts/npm_packages.txt"
 SYMLINKS = {f"{HOME}/.git": f"{HOME}/.config/yadm/repo.git/"}
 
 
@@ -42,6 +43,10 @@ def install_requirements():
     run(["pip3", "install", "-r", REQUIREMENTS], check=True)
 
 
+def install_npm_packages():
+    run(["xargs", "-a", NPM_PACKAGES, "sudo", "npm", "install", "-g"], check=True)
+
+
 def install_symlinks():
     for source, target in SYMLINKS.items():
         try:
@@ -55,6 +60,7 @@ def main():
     install_packages()
     install_nvim_if_not_installed()
     install_requirements()
+    install_npm_packages()
     install_symlinks()
     run(["systemctl", "--user", "enable", "syncthing.service"], check=True)
     run(["sudo", "sh", f"{HOME}/.scripts/install_pam_autologin.sh"], check=True)
