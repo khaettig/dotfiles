@@ -18,3 +18,4 @@ pre-commit
 black
 mdformat
 mdformat-tables
+redminecli
