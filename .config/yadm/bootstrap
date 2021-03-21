@@ -3,7 +3,7 @@
 import os
 import stat
 from pathlib import Path
-from subprocess import run
+from subprocess import run, PIPE
 
 import requests
 
@@ -55,10 +55,15 @@ def install_symlinks():
         except FileExistsError:
             pass
 
+def install_newer_node_version():
+    run("curl -sL https://deb.nodesource.com/setup_15.x | sudo bash -", shell=True, check=True)
+    run(["sudo", "apt-get", "install", "-y", "nodejs"], check=True)
+
 
 def main():
     install_packages()
     install_nvim_if_not_installed()
+    install_newer_node_version()
     install_requirements()
     install_npm_packages()
     install_symlinks()
