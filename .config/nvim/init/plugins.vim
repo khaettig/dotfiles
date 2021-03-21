@@ -10,7 +10,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
+Plug 'neovim/nvim-lspconfig'
 Plug 'neomake/neomake'
+Plug 'nvim-lua/completion-nvim'
 Plug 'janko/vim-test'
 Plug 'takac/vim-hardtime'
 Plug 'ThePrimeagen/vim-be-good'
@@ -36,6 +38,8 @@ source ~/.config/nvim/init/plugins/dispatch.vim
 source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
 source ~/.config/nvim/init/plugins/fzf.vim
+source ~/.config/nvim/init/plugins/completion.vim
+luafile ~/.config/nvim/init/plugins/lsp.lua
 
 source ~/.config/nvim/init/plugins/py_coverage.vim
 
