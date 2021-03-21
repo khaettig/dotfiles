@@ -8,6 +8,7 @@ pytest-xdist
 pytest-testmon
 pytest-cov
 pytest-django
+pytest-json-report
 pyaml
 rope
 ropevim
