@@ -35,7 +35,6 @@ let g:neomake_jest_maker = {
     \ 'exe': 'python3', 
     \ 'args': [
     \    s:jest_wrapper,
-    \    '--executable', './node_modules/jest/bin/jest.js',
     \    '--cwd', './frontend',
     \  ],
     \ 'errorformat': s:wrapper_errorformat,

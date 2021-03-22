@@ -65,7 +65,7 @@ class Wrapper:
 
     def assemble_command(self, command, arguments, executable=None):
         return (
-            [executable, *command[1:], *arguments]
+            [*executable.split(" "), *command[1:], *arguments]
             if executable
             else command + arguments
         )

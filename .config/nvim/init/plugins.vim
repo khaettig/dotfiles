@@ -19,6 +19,8 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
 
 " Python specific
 Plug 'kalekseev/vim-coverage.py', {'do': ':UpdateRemotePlugins'}
@@ -38,6 +40,8 @@ source ~/.config/nvim/init/plugins/dispatch.vim
 source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
 source ~/.config/nvim/init/plugins/fzf.vim
+source ~/.config/nvim/init/plugins/vimspector.vim
+source ~/.config/nvim/init/plugins/maximizer.vim
 source ~/.config/nvim/init/plugins/completion.vim
 luafile ~/.config/nvim/init/plugins/lsp.lua
 
