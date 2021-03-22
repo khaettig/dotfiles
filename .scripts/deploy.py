@@ -22,7 +22,7 @@ def get_redmine_issues(status):
         ).stdout.decode("utf-8")
     )
     return [
-        add_uncategorized_category(issue) for issue in issues if "category" not in issue
+        issue if "category" in issue else add_uncategorized_category(issue) for issue in issues
     ]
 
 
