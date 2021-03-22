@@ -18,12 +18,12 @@ let s:jest_wrapper = '~/.scripts/test_wrappers/jest_main.py'
 
 let g:neomake_pytest_maker = {
     \ 'exe': 'python3', 
-    \ 'args': [s:pytest_wrapper],
+    \ 'args': [s:pytest_wrapper, '--cov=', '--cov-branch'],
     \ 'errorformat': s:wrapper_errorformat,
     \ }
 let g:neomake_pytestxdist_maker = {
     \ 'exe': 'python3', 
-    \ 'args': [s:pytest_wrapper, '-n', 'auto'],
+    \ 'args': [s:pytest_wrapper, '-n', 'auto', '--cov=', '--cov-branch'],
     \ 'errorformat': s:wrapper_errorformat,
     \ }
 let g:neomake_testmon_maker = {
@@ -35,7 +35,15 @@ let g:neomake_jest_maker = {
     \ 'exe': 'python3', 
     \ 'args': [
     \    s:jest_wrapper,
-    \    '--cwd', './frontend',
+    \    '--cwd', './frontend', '--onlyChanged',
+    \  ],
+    \ 'errorformat': s:wrapper_errorformat,
+    \ }
+let g:neomake_jestcoverage_maker = {
+    \ 'exe': 'python3', 
+    \ 'args': [
+    \    s:jest_wrapper,
+    \    '--cwd', './frontend', '--coverage',
     \  ],
     \ 'errorformat': s:wrapper_errorformat,
     \ }
