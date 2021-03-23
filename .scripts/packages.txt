@@ -14,3 +14,4 @@ syncthing
 jq
 black
 fd-find
+grip
