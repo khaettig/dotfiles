@@ -8,6 +8,7 @@ let g:test_bar_width = 40
 function SetTestBarToColor(color)
     let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
     let s:palette.normal.right = [a:color]
+    let s:palette.inactive.right = [a:color]
     call lightline#colorscheme()
 endfunction
 
