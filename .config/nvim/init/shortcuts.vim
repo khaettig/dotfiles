@@ -3,10 +3,10 @@ nnoremap <silent> <F4> :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 
 " Split navigation
-noremap <Up> <C-w><Up>
-noremap <Down> <C-w><Down>
-noremap <Left> <C-w><Left>
-noremap <Right> <C-w><Right>
+noremap <S-Up> <C-w><Up>
+noremap <S-Down> <C-w><Down>
+noremap <S-Left> <C-w><Left>
+noremap <S-Right> <C-w><Right>
 
 " Quickfix
 noremap ü :cprevious<CR>
