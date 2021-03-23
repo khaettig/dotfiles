@@ -1,5 +1,3 @@
 nnoremap <leader>G :G<CR>
 
-nnoremap <leader>de :diffget //2<CR>
-nnoremap <leader>dn :diffget //3<CR>
-nnoremap <leader>dd :Gvdiffsplit!<CR>
+command Merge :G mergetool | :Gvdiffsplit! | :echo "Reminder: Use d2o and d3o, end with :only"

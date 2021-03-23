@@ -14,6 +14,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'neomake/neomake'
 Plug 'nvim-lua/completion-nvim'
 Plug 'janko/vim-test'
+Plug 'guns/xterm-color-table.vim'
 Plug 'takac/vim-hardtime'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
