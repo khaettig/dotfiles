@@ -26,8 +26,7 @@ def start_server(context):
                 exit()
             seconds_left = duration - int((datetime.now() - begin).total_seconds())
             if seconds_left == 0:
-                pass
-                # playsound("/home/kevin/.misc/beep.mp3")
+                playsound("/home/kevin/.misc/beep.mp3")
             mode = "POMODORO" if pomodoro else "BREAK"
             answer = f"{mode},{seconds_left},{duration}"
             socket.send(answer.encode("utf-8"))
