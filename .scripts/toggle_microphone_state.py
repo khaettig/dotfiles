@@ -37,7 +37,7 @@ def main():
     else:
         message = ["normal", ON]
 
-    run(["notify-send", "-t", "2000", "-u", *message], check=True)
+    run(["notify-send", "-t", "300", "-u", *message], check=True)
 
 
 if __name__ == "__main__":
