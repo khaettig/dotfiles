@@ -2,6 +2,9 @@ nnoremap <silent> <F3> :sp $MYVIMRC<CR>
 nnoremap <silent> <F4> :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <silent> <ESC><ESC> :noh<CR>
 
+nmap <silent> <leader>to OTODO(kh): <ESC>gccA
+nmap <silent> <leader>tO :Gg TODO(kh)<CR>
+
 " Split navigation
 noremap <S-Up> <C-w><Up>
 noremap <S-Down> <C-w><Down>
