@@ -60,6 +60,10 @@ def install_newer_node_version():
     run(["sudo", "apt-get", "install", "-y", "nodejs"], check=True)
 
 
+def install_crontab():
+    run(["crontab", f"{HOME}/.scripts/crontab"], check=True)
+
+
 def main():
     install_packages()
     install_nvim_if_not_installed()
@@ -67,6 +71,7 @@ def main():
     install_requirements()
     install_npm_packages()
     install_symlinks()
+    install_crontab()
     run(["systemctl", "--user", "enable", "syncthing.service"], check=True)
     run(["sudo", "sh", f"{HOME}/.scripts/install_pam_autologin.sh"], check=True)
 
