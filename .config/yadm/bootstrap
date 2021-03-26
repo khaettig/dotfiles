@@ -13,7 +13,7 @@ NVIM_INSTALL = f"{HOME}/.local/bin/nvim"
 REQUIREMENTS = f"{HOME}/.scripts/requirements.txt"
 PACKAGES = f"{HOME}/.scripts/packages.txt"
 NPM_PACKAGES = f"{HOME}/.scripts/npm_packages.txt"
-SYMLINKS = {f"{HOME}/.git": f"{HOME}/.config/yadm/repo.git/"}
+SYMLINKS = {f"{HOME}/.git": f"{HOME}/.config/yadm/repo.git/", f"{HOME}/.tmate.conf": f"{HOME}/.tmux.conf"}
 
 
 def download_file(url, destination):
