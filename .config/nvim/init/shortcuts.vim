@@ -6,10 +6,10 @@ nmap <silent> <leader>to OTODO(kh): <ESC>gccA
 nmap <silent> <leader>tO :Gg TODO(kh)<CR>
 
 " Split navigation
-noremap <S-Up> <C-w><Up>
-noremap <S-Down> <C-w><Down>
-noremap <S-Left> <C-w><Left>
-noremap <S-Right> <C-w><Right>
+noremap Λ <C-w><Up>
+noremap ∀ <C-w><Down>
+noremap ∫ <C-w><Left>
+noremap ∃ <C-w><Right>
 
 " Quickfix
 noremap ü :cprevious<CR>
