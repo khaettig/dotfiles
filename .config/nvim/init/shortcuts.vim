@@ -32,8 +32,8 @@ nnoremap ¡ <C-w><Up><C-w>_
 nnoremap ¿ <C-w><Down><C-w>_
 
 " Python
-autocmd FileType python nnoremap <buffer> <leader>b ^O__import__("pdb").set_trace()  # TODO<ESC>
-autocmd FileType python nnoremap <buffer> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO<ESC>
+autocmd FileType python nnoremap <buffer> <leader>b ^O__import__("pdb").set_trace()  # TODO(kh)<ESC>
+autocmd FileType python nnoremap <buffer> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO(kh)<ESC>
 
 " Markdown
 autocmd FileType markdown nnoremap <buffer> <leader><CR> I~~<ESC>A~~<ESC>
