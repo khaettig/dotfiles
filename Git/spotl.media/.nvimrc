@@ -10,7 +10,7 @@ let g:coverage_json_report_path = 'frontend/.coverage/coverage-final.json'
 
 autocmd FileType python :CoveragePy
 
-autocmd BufWritePost *.py :Neomake! testmon
+" autocmd BufWritePost *.py :Neomake! testmon
 " autocmd BufWritePost *.js :Neomake! jest
 " let g:coverage_timer = timer_start(30000, 'RunPytestCoverage', {'repeat': '-1'})
 
