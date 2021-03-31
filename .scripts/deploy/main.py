@@ -1,72 +1,32 @@
 #!/bin/env python3
 
-import json
-from subprocess import run, PIPE
+import argparse
+from redmine import Redmine, IssueStatus
+from commands import render_issues, move_issues
 
-
-class Status:
-    NEW = "1"
-    IN_PROGRESS = "2"
-    OPEN_PULL_REQUEST = "3"
-    REJECTED = "6"
-    MERGED = "7"
-    DEPLOYED = "8"
-    CHANGES_REQUESTED = "9"
-    TODO = "10"
-
-
-def get_redmine_issues(status):
-    issues = json.loads(
-        run(
-            ["redmine", "issues", "--status", status, "--json"], stdout=PIPE, check=True
-        ).stdout.decode("utf-8")
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Search GCP logs for an entry.")
+    parser.add_argument(
+        "--only_print",
+        action="store_true",
+        default=False
     )
-    return [
-        issue if "category" in issue else add_uncategorized_category(issue) for issue in issues
-    ]
-
-
-def add_uncategorized_category(issue):
-    issue["category"] = {"name": "uncategorized"}
-    return issue
-
-
-def render_issue(issue, done_by=False):
-    iid = issue["id"]
-    title = issue["subject"]
-    itype = issue["tracker"]["name"]
-    author = issue["author"]["name"]
-    assigned_to = (
-        issue["assigned_to"]["name"] if "assigned_to" in issue else "Not assigned"
-    )
-    result = f"* {itype} [#{iid}](https://redmine.spotl.io/issues/{iid}) ({author}): {title} *done by {assigned_to}*"
-    result += f"*done by {assigned_to}*" if done_by else ""
-    return result
-
-
-def render_category(category):
-    return f"#### {category.capitalize()}"
-
-
-def move_issue(issue, status):
-    run(["redmine", "update", "--status", status, str(issue["id"])], check=True)
-
+    return parser.parse_args()
 
 def main():
-    issues = get_redmine_issues(Status.MERGED)
+    args = parse_arguments()
+    redmine = Redmine()
 
-    categorized_issues = {
-        category: [issue for issue in issues if issue["category"]["name"] == category]
-        for category in set(issue["category"]["name"] for issue in issues)
-    }
+    print("### Deployed")
+    print(render_issues(IssueStatus.MERGED, redmine))
+    print("### Rejected")
+    print(render_issues(IssueStatus.REJECTED, redmine))
 
-    for category, sub_issues in categorized_issues.items():
-        print(render_category(category))
-        for issue in sorted(sub_issues, key=lambda issue: issue["id"]):
-            print("  " + render_issue(issue))
+    if args.only_print:
+        exit(0)
 
-    for issue in issues:
-        move_issue(issue, Status.DEPLOYED)
+    move_issues(IssueStatus.MERGED, IssueStatus.DEPLOYED, redmine)
+    move_issues(IssueStatus.REJECTED, IssueStatus.REJECTED_LOGGED, redmine)
 
 
 if __name__ == "__main__":
