@@ -11,7 +11,7 @@ autocmd FileType python nnoremap <buffer> <Leader>tc :Neomake! pytestxdist<CR>
 autocmd FileType javascript nnoremap <buffer> <Leader>tc :Neomake! jestcoverage<CR>
 
 let test#python#runner = 'pytest'
-let test#python#pytest#executable = 'python3 ~/.scripts/test_wrappers/pytest_main.py'
+" let test#python#pytest#executable = 'python3 ~/.scripts/test_wrappers/pytest_main.py'
 
 function! PyDebugStrategy(cmd)
     -tabnew
