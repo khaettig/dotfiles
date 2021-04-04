@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/home/kevin/Git/spotl.media/.venv/bin/pytest", line 8, in <module>
+    sys.exit(console_main())
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/_pytest/config/__init__.py", line 185, in console_main
+    code = main()
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/_pytest/config/__init__.py", line 143, in main
+    config = _prepareconfig(args, plugins)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/_pytest/config/__init__.py", line 318, in _prepareconfig
+    config = pluginmanager.hook.pytest_cmdline_parse(
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/manager.py", line 84, in <lambda>
+    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/callers.py", line 203, in _multicall
+    gen.send(outcome)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/_pytest/helpconfig.py", line 100, in pytest_cmdline_parse
+    config: Config = outcome.get_result()
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/_pytest/config/__init__.py", line 1003, in pytest_cmdline_parse
+    self.parse(args)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/_pytest/config/__init__.py", line 1283, in parse
+    self._preparse(args, addopts=addopts)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/_pytest/config/__init__.py", line 1191, in _preparse
+    self.hook.pytest_load_initial_conftests(
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/hooks.py", line 286, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/manager.py", line 93, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/manager.py", line 84, in <lambda>
+    self._inner_hookexec = lambda hook, methods, kwargs: hook.multicall(
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/callers.py", line 208, in _multicall
+    return outcome.get_result()
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pluggy/callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pytest_django/plugin.py", line 322, in pytest_load_initial_conftests
+    _setup_django()
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/pytest_django/plugin.py", line 224, in _setup_django
+    django.setup()
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/__init__.py", line 16, in setup
+    from django.urls import set_script_prefix
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/urls/__init__.py", line 1, in <module>
+    from .base import (
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/urls/base.py", line 9, in <module>
+    from .exceptions import NoReverseMatch, Resolver404
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/urls/exceptions.py", line 1, in <module>
+    from django.http import Http404
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/http/__init__.py", line 1, in <module>
+    from django.http.cookie import SimpleCookie, parse_cookie
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/http/cookie.py", line 1, in <module>
+    from http import cookies
+  File "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/http/__init__.py", line 1, in <module>
+    from django.http.cookie import SimpleCookie, parse_cookie
+ImportError: cannot import name 'SimpleCookie' from partially initialized module 'django.http.cookie' (most likely due to a circular import) (/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/http/cookie.py)

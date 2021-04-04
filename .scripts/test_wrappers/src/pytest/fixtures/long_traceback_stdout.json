@@ -1,0 +1,251 @@
+{
+  "created": 1616244284.4473886,
+  "duration": 0.7640225887298584,
+  "exitcode": 1,
+  "root": "/home/kevin/Git/spotl.media",
+  "environment": {
+    "Python": "3.8.5",
+    "Platform": "Linux-5.8.0-45-generic-x86_64-with-glibc2.29",
+    "Packages": { "pytest": "6.2.2", "py": "1.10.0", "pluggy": "0.13.1" },
+    "Plugins": {
+      "cov": "2.11.1",
+      "Faker": "5.5.1",
+      "xdist": "2.2.0",
+      "testmon": "1.0.3",
+      "json-report": "1.2.4",
+      "metadata": "1.11.0",
+      "parallel": "0.1.0",
+      "forked": "1.3.0",
+      "reportlog": "0.1.2",
+      "django": "4.1.0"
+    }
+  },
+  "summary": { "failed": 1, "total": 1, "collected": 1 },
+  "collectors": [
+    {
+      "nodeid": "",
+      "outcome": "passed",
+      "result": [
+        {
+          "nodeid": "apps/membership/tests/test_member_creation.py::MemberCreationTest::test_links_new_member_to_current_account",
+          "type": "TestCaseFunction",
+          "lineno": 29
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "nodeid": "apps/membership/tests/test_member_creation.py::MemberCreationTest::test_links_new_member_to_current_account",
+      "lineno": 29,
+      "outcome": "failed",
+      "keywords": [
+        "test_member_creation.py",
+        "apps/membership/tests/__init__.py",
+        "MemberCreationTest",
+        "spotl.media",
+        "test_links_new_member_to_current_account"
+      ],
+      "setup": { "duration": 0.24656753199997183, "outcome": "passed" },
+      "call": {
+        "duration": 0.25964996799984874,
+        "outcome": "failed",
+        "crash": {
+          "path": "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/urls/resolvers.py",
+          "lineno": 685,
+          "message": "django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset_confirm' with keyword arguments '{'uidb64': 'NDVhN2MyNzgtMWNkZC00YWNiLWJhM2ItZWNhNDZkM2NmZDAz', 'token': 'ajt7ek-c3d2bc2371954b1ba7d47cbbe15eaf3d'}' not found. 1 pattern(s) tried: ['en/u/reset/(?P<uidb64>[0-9A-Za-z_\\\\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$']"
+        },
+        "traceback": [
+          {
+            "path": "apps/membership/tests/test_member_creation.py",
+            "lineno": 31,
+            "message": ""
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/test/client.py",
+            "lineno": 748,
+            "message": "in post"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/test/client.py",
+            "lineno": 404,
+            "message": "in post"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/test/client.py",
+            "lineno": 470,
+            "message": "in generic"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/test/client.py",
+            "lineno": 716,
+            "message": "in request"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/test/client.py",
+            "lineno": 577,
+            "message": "in check_exception"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/core/handlers/exception.py",
+            "lineno": 47,
+            "message": "in inner"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/core/handlers/base.py",
+            "lineno": 181,
+            "message": "in _get_response"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/views/generic/base.py",
+            "lineno": 70,
+            "message": "in view"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/contrib/auth/mixins.py",
+            "lineno": 52,
+            "message": "in dispatch"
+          },
+          {
+            "path": "apps/user/mixins.py",
+            "lineno": 57,
+            "message": "in dispatch"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/views/generic/base.py",
+            "lineno": 98,
+            "message": "in dispatch"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/views/generic/edit.py",
+            "lineno": 142,
+            "message": "in post"
+          },
+          {
+            "path": "apps/membership/views/ajax_account_views.py",
+            "lineno": 46,
+            "message": "in form_valid"
+          },
+          {
+            "path": "apps/membership/services.py",
+            "lineno": 11,
+            "message": "in send_password_email"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/contrib/auth/forms.py",
+            "lineno": 323,
+            "message": "in save"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/contrib/auth/forms.py",
+            "lineno": 266,
+            "message": "in send_mail"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/loader.py",
+            "lineno": 62,
+            "message": "in render_to_string"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/backends/django.py",
+            "lineno": 61,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/base.py",
+            "lineno": 170,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/test/utils.py",
+            "lineno": 96,
+            "message": "in instrumented_test_render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/base.py",
+            "lineno": 938,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/base.py",
+            "lineno": 905,
+            "message": "in render_annotated"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/defaulttags.py",
+            "lineno": 39,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/base.py",
+            "lineno": 938,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/base.py",
+            "lineno": 905,
+            "message": "in render_annotated"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/loader_tags.py",
+            "lineno": 53,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/base.py",
+            "lineno": 938,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/base.py",
+            "lineno": 905,
+            "message": "in render_annotated"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/template/defaulttags.py",
+            "lineno": 446,
+            "message": "in render"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/urls/base.py",
+            "lineno": 87,
+            "message": "in reverse"
+          },
+          {
+            "path": ".venv/lib/python3.8/site-packages/django/urls/resolvers.py",
+            "lineno": 685,
+            "message": "NoReverseMatch"
+          }
+        ],
+        "log": [
+          {
+            "name": "django.request",
+            "msg": "Internal Server Error: /en/ms/account/ajax/create_member/",
+            "args": null,
+            "levelname": "ERROR",
+            "levelno": 40,
+            "pathname": "/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/utils/log.py",
+            "filename": "log.py",
+            "module": "log",
+            "exc_info": null,
+            "exc_text": "Traceback (most recent call last):\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/core/handlers/exception.py\", line 47, in inner\n    response = get_response(request)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/core/handlers/base.py\", line 181, in _get_response\n    response = wrapped_callback(request, *callback_args, **callback_kwargs)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/views/generic/base.py\", line 70, in view\n    return self.dispatch(request, *args, **kwargs)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/contrib/auth/mixins.py\", line 52, in dispatch\n    return super().dispatch(request, *args, **kwargs)\n  File \"/home/kevin/Git/spotl.media/apps/user/mixins.py\", line 57, in dispatch\n    return super().dispatch(request, *args, **kwargs)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/views/generic/base.py\", line 98, in dispatch\n    return handler(request, *args, **kwargs)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/views/generic/edit.py\", line 142, in post\n    return self.form_valid(form)\n  File \"/home/kevin/Git/spotl.media/apps/membership/views/ajax_account_views.py\", line 46, in form_valid\n    send_password_email(self.request, form.cleaned_data[\"user\"][\"email\"])\n  File \"/home/kevin/Git/spotl.media/apps/membership/services.py\", line 11, in send_password_email\n    password_form.save(\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/contrib/auth/forms.py\", line 323, in save\n    self.send_mail(\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/contrib/auth/forms.py\", line 266, in send_mail\n    body = loader.render_to_string(email_template_name, context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/loader.py\", line 62, in render_to_string\n    return template.render(context, request)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/backends/django.py\", line 61, in render\n    return self.template.render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/base.py\", line 170, in render\n    return self._render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/test/utils.py\", line 96, in instrumented_test_render\n    return self.nodelist.render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/base.py\", line 938, in render\n    bit = node.render_annotated(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/base.py\", line 905, in render_annotated\n    return self.render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/defaulttags.py\", line 39, in render\n    output = self.nodelist.render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/base.py\", line 938, in render\n    bit = node.render_annotated(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/base.py\", line 905, in render_annotated\n    return self.render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/loader_tags.py\", line 53, in render\n    result = self.nodelist.render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/base.py\", line 938, in render\n    bit = node.render_annotated(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/base.py\", line 905, in render_annotated\n    return self.render(context)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/template/defaulttags.py\", line 446, in render\n    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/urls/base.py\", line 87, in reverse\n    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))\n  File \"/home/kevin/Git/spotl.media/.venv/lib/python3.8/site-packages/django/urls/resolvers.py\", line 685, in _reverse_with_prefix\n    raise NoReverseMatch(msg)\ndjango.urls.exceptions.NoReverseMatch: Reverse for 'password_reset_confirm' with keyword arguments '{'uidb64': 'NDVhN2MyNzgtMWNkZC00YWNiLWJhM2ItZWNhNDZkM2NmZDAz', 'token': 'ajt7ek-c3d2bc2371954b1ba7d47cbbe15eaf3d'}' not found. 1 pattern(s) tried: ['en/u/reset/(?P<uidb64>[0-9A-Za-z_\\\\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$']",
+            "stack_info": null,
+            "lineno": 224,
+            "funcName": "log_response",
+            "created": 1616244284.2062087,
+            "msecs": 206.2087059020996,
+            "relativeCreated": 1176.6715049743652,
+            "thread": 140037989189440,
+            "threadName": "MainThread",
+            "processName": "MainProcess",
+            "process": 31097,
+            "status_code": 500,
+            "request": "<WSGIRequest: POST '/en/ms/account/ajax/create_member/'>"
+          }
+        ],
+        "longrepr": "self = <apps.membership.tests.test_member_creation.MemberCreationTest testMethod=test_links_new_member_to_current_account>\n\n    def test_links_new_member_to_current_account(self):\n>       self.client.post(\n            reverse(\"membership:ajax_account_create_member\"), data=valid_member_data(),\n        )\n\napps/membership/tests/test_member_creation.py:31: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n.venv/lib/python3.8/site-packages/django/test/client.py:748: in post\n    response = super().post(path, data=data, content_type=content_type, secure=secure, **extra)\n.venv/lib/python3.8/site-packages/django/test/client.py:404: in post\n    return self.generic('POST', path, post_data, content_type,\n.venv/lib/python3.8/site-packages/django/test/client.py:470: in generic\n    return self.request(**r)\n.venv/lib/python3.8/site-packages/django/test/client.py:716: in request\n    self.check_exception(response)\n.venv/lib/python3.8/site-packages/django/test/client.py:577: in check_exception\n    raise exc_value\n.venv/lib/python3.8/site-packages/django/core/handlers/exception.py:47: in inner\n    response = get_response(request)\n.venv/lib/python3.8/site-packages/django/core/handlers/base.py:181: in _get_response\n    response = wrapped_callback(request, *callback_args, **callback_kwargs)\n.venv/lib/python3.8/site-packages/django/views/generic/base.py:70: in view\n    return self.dispatch(request, *args, **kwargs)\n.venv/lib/python3.8/site-packages/django/contrib/auth/mixins.py:52: in dispatch\n    return super().dispatch(request, *args, **kwargs)\napps/user/mixins.py:57: in dispatch\n    return super().dispatch(request, *args, **kwargs)\n.venv/lib/python3.8/site-packages/django/views/generic/base.py:98: in dispatch\n    return handler(request, *args, **kwargs)\n.venv/lib/python3.8/site-packages/django/views/generic/edit.py:142: in post\n    return self.form_valid(form)\napps/membership/views/ajax_account_views.py:46: in form_valid\n    send_password_email(self.request, form.cleaned_data[\"user\"][\"email\"])\napps/membership/services.py:11: in send_password_email\n    password_form.save(\n.venv/lib/python3.8/site-packages/django/contrib/auth/forms.py:323: in save\n    self.send_mail(\n.venv/lib/python3.8/site-packages/django/contrib/auth/forms.py:266: in send_mail\n    body = loader.render_to_string(email_template_name, context)\n.venv/lib/python3.8/site-packages/django/template/loader.py:62: in render_to_string\n    return template.render(context, request)\n.venv/lib/python3.8/site-packages/django/template/backends/django.py:61: in render\n    return self.template.render(context)\n.venv/lib/python3.8/site-packages/django/template/base.py:170: in render\n    return self._render(context)\n.venv/lib/python3.8/site-packages/django/test/utils.py:96: in instrumented_test_render\n    return self.nodelist.render(context)\n.venv/lib/python3.8/site-packages/django/template/base.py:938: in render\n    bit = node.render_annotated(context)\n.venv/lib/python3.8/site-packages/django/template/base.py:905: in render_annotated\n    return self.render(context)\n.venv/lib/python3.8/site-packages/django/template/defaulttags.py:39: in render\n    output = self.nodelist.render(context)\n.venv/lib/python3.8/site-packages/django/template/base.py:938: in render\n    bit = node.render_annotated(context)\n.venv/lib/python3.8/site-packages/django/template/base.py:905: in render_annotated\n    return self.render(context)\n.venv/lib/python3.8/site-packages/django/template/loader_tags.py:53: in render\n    result = self.nodelist.render(context)\n.venv/lib/python3.8/site-packages/django/template/base.py:938: in render\n    bit = node.render_annotated(context)\n.venv/lib/python3.8/site-packages/django/template/base.py:905: in render_annotated\n    return self.render(context)\n.venv/lib/python3.8/site-packages/django/template/defaulttags.py:446: in render\n    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)\n.venv/lib/python3.8/site-packages/django/urls/base.py:87: in reverse\n    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <URLResolver <URLResolver list> (None:None) '^/'>\nlookup_view = 'password_reset_confirm', _prefix = '/', args = ()\nkwargs = {'token': 'ajt7ek-c3d2bc2371954b1ba7d47cbbe15eaf3d', 'uidb64': 'NDVhN2MyNzgtMWNkZC00YWNiLWJhM2ItZWNhNDZkM2NmZDAz'}\npossibilities = [([('en/u/reset/%(uidb64)s/%(token)s/', ['uidb64', 'token'])], 'en/u/reset/(?P<uidb64>[0-9A-Za-z_\\\\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', {}, {})]\npossibility = [('en/u/reset/%(uidb64)s/%(token)s/', ['uidb64', 'token'])]\npattern = 'en/u/reset/(?P<uidb64>[0-9A-Za-z_\\\\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$'\ndefaults = {}, converters = {}, result = 'en/u/reset/%(uidb64)s/%(token)s/'\nparams = ['uidb64', 'token']\ncandidate_subs = {'token': 'ajt7ek-c3d2bc2371954b1ba7d47cbbe15eaf3d', 'uidb64': 'NDVhN2MyNzgtMWNkZC00YWNiLWJhM2ItZWNhNDZkM2NmZDAz'}\ntext_candidate_subs = {'token': 'ajt7ek-c3d2bc2371954b1ba7d47cbbe15eaf3d', 'uidb64': 'NDVhN2MyNzgtMWNkZC00YWNiLWJhM2ItZWNhNDZkM2NmZDAz'}\nmatch = True\n\n    def _reverse_with_prefix(self, lookup_view, _prefix, *args, **kwargs):\n        if args and kwargs:\n            raise ValueError(\"Don't mix *args and **kwargs in call to reverse()!\")\n    \n        if not self._populated:\n            self._populate()\n    \n        possibilities = self.reverse_dict.getlist(lookup_view)\n    \n        for possibility, pattern, defaults, converters in possibilities:\n            for result, params in possibility:\n                if args:\n                    if len(args) != len(params):\n                        continue\n                    candidate_subs = dict(zip(params, args))\n                else:\n                    if set(kwargs).symmetric_difference(params).difference(defaults):\n                        continue\n                    if any(kwargs.get(k, v) != v for k, v in defaults.items()):\n                        continue\n                    candidate_subs = kwargs\n                # Convert the candidate subs to text using Converter.to_url().\n                text_candidate_subs = {}\n                match = True\n                for k, v in candidate_subs.items():\n                    if k in converters:\n                        try:\n                            text_candidate_subs[k] = converters[k].to_url(v)\n                        except ValueError:\n                            match = False\n                            break\n                    else:\n                        text_candidate_subs[k] = str(v)\n                if not match:\n                    continue\n                # WSGI provides decoded URLs, without %xx escapes, and the URL\n                # resolver operates on such URLs. First substitute arguments\n                # without quoting to build a decoded URL and look for a match.\n                # Then, if we have a match, redo the substitution with quoted\n                # arguments in order to return a properly encoded URL.\n                candidate_pat = _prefix.replace('%', '%%') + result\n                if re.search('^%s%s' % (re.escape(_prefix), pattern), candidate_pat % text_candidate_subs):\n                    # safe characters from `pchar` definition of RFC 3986\n                    url = quote(candidate_pat % text_candidate_subs, safe=RFC3986_SUBDELIMS + '/~:@')\n                    # Don't allow construction of scheme relative urls.\n                    return escape_leading_slashes(url)\n        # lookup_view can be URL name or callable, but callables are not\n        # friendly in error messages.\n        m = getattr(lookup_view, '__module__', None)\n        n = getattr(lookup_view, '__name__', None)\n        if m is not None and n is not None:\n            lookup_view_s = \"%s.%s\" % (m, n)\n        else:\n            lookup_view_s = lookup_view\n    \n        patterns = [pattern for (_, pattern, _, _) in possibilities]\n        if patterns:\n            if args:\n                arg_msg = \"arguments '%s'\" % (args,)\n            elif kwargs:\n                arg_msg = \"keyword arguments '%s'\" % kwargs\n            else:\n                arg_msg = \"no arguments\"\n            msg = (\n                \"Reverse for '%s' with %s not found. %d pattern(s) tried: %s\" %\n                (lookup_view_s, arg_msg, len(patterns), patterns)\n            )\n        else:\n            msg = (\n                \"Reverse for '%(view)s' not found. '%(view)s' is not \"\n                \"a valid view function or pattern name.\" % {'view': lookup_view_s}\n            )\n>       raise NoReverseMatch(msg)\nE       django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset_confirm' with keyword arguments '{'uidb64': 'NDVhN2MyNzgtMWNkZC00YWNiLWJhM2ItZWNhNDZkM2NmZDAz', 'token': 'ajt7ek-c3d2bc2371954b1ba7d47cbbe15eaf3d'}' not found. 1 pattern(s) tried: ['en/u/reset/(?P<uidb64>[0-9A-Za-z_\\\\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$']\n\n.venv/lib/python3.8/site-packages/django/urls/resolvers.py:685: NoReverseMatch"
+      },
+      "teardown": { "duration": 0.000960533999659674, "outcome": "passed" }
+    }
+  ]
+}
