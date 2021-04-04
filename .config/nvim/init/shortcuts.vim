@@ -27,7 +27,6 @@ nnoremap <silent> <leader>ä :call ToggleList("Quickfix List", "c", 30)<CR>
 nnoremap <silent> Ä :call ToggleList("Location List", "l", 15)<CR>
 nnoremap <silent> <leader>Ä :call ToggleList("Location List", "l", 30)<CR>
 
-nnoremap <leader>ä <C-w>_
 nnoremap ¡ <C-w><Up><C-w>_
 nnoremap ¿ <C-w><Down><C-w>_
 
