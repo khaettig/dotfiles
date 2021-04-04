@@ -16,21 +16,21 @@ let s:wrapper_errorformat = '%t:%o:%f:%l:%m,%t:%o:%f:%l:,%-GSUMMARY:%.%#'
 let s:pytest_wrapper = '~/.scripts/test_wrappers/pytest_main.py'
 let s:jest_wrapper = '~/.scripts/test_wrappers/jest_main.py'
 
-" let g:neomake_pytest_maker = {
-"     \ 'exe': 'python3', 
-"     \ 'args': [s:pytest_wrapper, '--cov=', '--cov-branch'],
-"     \ 'errorformat': s:wrapper_errorformat,
-"     \ }
-" let g:neomake_pytestxdist_maker = {
-"     \ 'exe': 'python3', 
-"     \ 'args': [s:pytest_wrapper, '-n', 'auto', '--cov=', '--cov-branch'],
-"     \ 'errorformat': s:wrapper_errorformat,
-"     \ }
-" let g:neomake_testmon_maker = {
-"     \ 'exe': 'python3', 
-"     \ 'args': [s:pytest_wrapper, '--testmon'],
-"     \ 'errorformat': s:wrapper_errorformat,
-"     \ }
+let g:neomake_pytest_maker = {
+    \ 'exe': 'python3', 
+    \ 'args': [s:pytest_wrapper, '--cov=', '--cov-branch'],
+    \ 'errorformat': s:wrapper_errorformat,
+    \ }
+let g:neomake_pytestxdist_maker = {
+    \ 'exe': 'python3', 
+    \ 'args': [s:pytest_wrapper, '-n', 'auto', '--cov=', '--cov-branch'],
+    \ 'errorformat': s:wrapper_errorformat,
+    \ }
+let g:neomake_testmon_maker = {
+    \ 'exe': 'python3', 
+    \ 'args': [s:pytest_wrapper, '--testmon'],
+    \ 'errorformat': s:wrapper_errorformat,
+    \ }
 " let g:neomake_jest_maker = {
 "     \ 'exe': 'python3', 
 "     \ 'args': [
