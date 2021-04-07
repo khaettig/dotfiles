@@ -11,16 +11,19 @@
 
 set $mod Mod4
 
-{% if yadm.hostname == "kevin-desktop" %}
+{% set dualscreen = false %}
 
-set $primary "HDMI-0"
-set $secondary "DVI-D-0"
-set $dualscreen false
+{% if YADM_HOSTNAME == "kevin-desktop" %}
 
-{% elif yadm.hostname == "kevin-X1" %}
+{% set primary = "HDMI-0" %}
+{% set secondary = "DVI-D-0" %}
+{% set dualscreen = false %}
 
-set $primary "HDMI-0"
-set $dualscreen false
+{% elif YADM_HOSTNAME == "kevin-X1" %}
+
+{% set primary = "HDMI-0" %}
+{% set secondary = "DVI-D-0" %}
+{% set dualscreen = false %}
 
 {% endif %}
 
@@ -251,11 +254,11 @@ bindsym $mod+j exec python3 ~/.scripts/toggle_microphone_state.py
 
 # Screens
 bar {
-	output $primary
+	output {{ primary }}
 
         status_command i3blocks -c "/home/kevin/.i3blocks.conf"
 
-	{% if $dualscreen %}
+	{% if dualscreen %}
 	tray_output none
 	{% endif %}
 
@@ -265,20 +268,20 @@ bar {
 	}
 }
 
-{% if $dualscreen %}
+{% if dualscreen %}
 bar {
-	output $secondary
+	output {{ secondary }}
 	
-	tray_output $secondary
+	tray_output {{ secondary }}
 }
 {% endif %}
 
 hide_edge_borders both
 
 # Host specific
-{% if yadm.hostname == "kevin-desktop" %}
+{% if YADM_HOSTNAME == "kevin-desktop" %}
 
-{% if $dualscreen %}
+{% if dualscreen %}
 exec xrandr --output $secondary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 0x1080 --rotate normal
 {% endif %}
 
@@ -292,5 +295,5 @@ exec discord
 
 {% endif %}
 
-{% if yadm.hostname == "kevin-X1" %}
+{% if YADM_HOSTNAME == "kevin-X1" %}
 {% endif %}
