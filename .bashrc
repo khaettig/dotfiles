@@ -6,6 +6,8 @@ export TERM=xterm-256color
 
 source ~/.bash_aliases
 
+export PATH="$HOME/.local/bin:$PATH"
+
 export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow'
 
 

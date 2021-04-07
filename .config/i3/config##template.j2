@@ -11,8 +11,18 @@
 
 set $mod Mod4
 
-# TODO: Make host specific
+{% if yadm.hostname == "kevin-desktop" %}
+
+set $primary "HDMI-0"
 set $secondary "DVI-D-0"
+set $dualscreen false
+
+{% elif yadm.hostname == "kevin-X1" %}
+
+set $primary "HDMI-0"
+set $dualscreen false
+
+{% endif %}
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -195,21 +205,6 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 
 exec --no-startup-id /usr/bin/feh --bg-scale /home/kevin/Bilder/Wallpapers/black.png
 
-# Primary screen
-bar {
-	output primary
-
-        status_command i3blocks -c "/home/kevin/.i3blocks.conf"
-	tray_output none
-
-	colors {
-		# Disable workspace notifications
-		urgent_workspace "#333333" "#222222" "#888888"
-	}
-}
-
-hide_edge_borders both
-
 bindsym $mod+x kill
 bindsym $mod+v exec i3lock --color "#000000"
 bindsym $mod+Shift+X exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
@@ -245,17 +240,47 @@ bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2
 bindsym $mod+p exec python3 /home/kevin/.scripts/pomodoro_control.py
 bindsym $mod+Shift+P exec python3 /home/kevin/.scripts/pomodoro_control.py stop
 
-# Host specific
-{% if yadm.hostname == "kevin-desktop" %}
+# Shorcuts
+bindsym $mod+b exec pkill -x telegram-deskto; exec pkill -x Discord
+bindsym $mod+Shift+B exec telegram-desktop; exec discord
+bindsym $mod+m exec pkill -x slack
+bindsym $mod+Shift+M exec slack
 
-## Secondary screen
+bindsym $mod+j exec python3 ~/.scripts/toggle_microphone_state.py
+
+
+# Screens
+bar {
+	output $primary
+
+        status_command i3blocks -c "/home/kevin/.i3blocks.conf"
+
+	{% if $dualscreen %}
+	tray_output none
+	{% endif %}
+
+	colors {
+		# Disable workspace notifications
+		urgent_workspace "#333333" "#222222" "#888888"
+	}
+}
+
+{% if $dualscreen %}
 bar {
 	output $secondary
 	
 	tray_output $secondary
 }
+{% endif %}
 
+hide_edge_borders both
+
+# Host specific
+{% if yadm.hostname == "kevin-desktop" %}
+
+{% if $dualscreen %}
 exec xrandr --output $secondary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 0x1080 --rotate normal
+{% endif %}
 
 # Powerline fix
 exec ping 192.168.1.1
@@ -264,13 +289,6 @@ exec telegram-desktop
 exec slack
 exec spotify
 exec discord
-
-bindsym $mod+b exec pkill -x telegram-deskto; exec pkill -x Discord
-bindsym $mod+Shift+B exec telegram-desktop; exec discord
-bindsym $mod+m exec pkill -x slack
-bindsym $mod+Shift+M exec slack
-
-bindsym $mod+j exec python3 ~/.scripts/toggle_microphone_state.py
 
 {% endif %}
 
