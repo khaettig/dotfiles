@@ -1,3 +1,5 @@
+set path +=templates
+
 nnoremap <F9> :sp<CR>:terminal python3 run_unittests.py --only_js<CR>
 
 let test#python#pytest#options = '--testmon-noselect'
