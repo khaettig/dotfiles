@@ -12,10 +12,10 @@ noremap <S-Left> <C-w><Left>
 noremap <S-Right> <C-w><Right>
 
 " Quickfix
-noremap ü :cprevious<CR>
-noremap ö :cnext<CR>
-noremap Ü :lprevious<CR>
-noremap Ö :lnext<CR>
+noremap ü :cprevious<CR>zz
+noremap ö :cnext<CR>zz
+noremap Ü :lprevious<CR>zz
+noremap Ö :lnext<CR>zz
 
 nnoremap <leader>ü :colder<CR>
 nnoremap <leader>ö :cnewer<CR>
