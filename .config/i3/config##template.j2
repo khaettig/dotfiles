@@ -17,7 +17,7 @@ set $mod Mod4
 
 {% set primary = "HDMI-0" %}
 {% set secondary = "DVI-D-0" %}
-{% set dualscreen = false %}
+{% set dualscreen = true %}
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
 
@@ -282,7 +282,7 @@ hide_edge_borders both
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 
 {% if dualscreen %}
-exec xrandr --output $secondary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 0x1080 --rotate normal
+exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x1080 --rotate normal
 {% endif %}
 
 # Powerline fix
