@@ -6,8 +6,9 @@ import time
 
 import git
 
-LOCAL_REPOSITORY = "/home/kevin/Git/merge-spotl.media/"
-REMOTE_REPOSITORY = "https://api.github.com/repos/spotl-io/spotl.media/"
+REPOSITORY = "media"
+LOCAL_REPOSITORY = f"/home/kevin/Git/merge-spotl.{REPOSITORY}/"
+REMOTE_REPOSITORY = f"https://api.github.com/repos/spotl-io/spotl.{REPOSITORY}/"
 
 
 class PullRequest:
