@@ -42,6 +42,7 @@ source ~/.config/nvim/init/plugins/fugitive.vim
 source ~/.config/nvim/init/plugins/dispatch.vim
 source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
+source ~/.config/nvim/init/plugins/ultisnips.vim
 source ~/.config/nvim/init/plugins/fzf.vim
 source ~/.config/nvim/init/plugins/vimspector.vim
 source ~/.config/nvim/init/plugins/maximizer.vim
