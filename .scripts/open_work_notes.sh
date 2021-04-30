@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/Work/Notes
+cd ~/WorkNotes
 if [[ -n "$TMUX" ]]; then
   nvim -o Incoming.md NextActions.md
 else
