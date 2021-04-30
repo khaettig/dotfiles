@@ -1,13 +1,22 @@
 #!/bin/env python3
 
-import sys
+import argparse
 import subprocess
 import time
 
 import git
 
-LOCAL_REPOSITORY = "/home/kevin/Git/merge-spotl.media/"
-REMOTE_REPOSITORY = "https://api.github.com/repos/spotl-io/spotl.media/"
+REPOSITORY = "<assigned via arguments>"
+LOCAL_REPOSITORY_TEMPLATE = "/home/kevin/Git/merge-<name>/"
+REMOTE_REPOSITORY_TEMPLATE = "https://api.github.com/repos/spotl-io/<name>/"
+
+
+def get_remote_repository():
+    return REMOTE_REPOSITORY_TEMPLATE.replace("<name>", f"spotl.{REPOSITORY}")
+
+
+def get_local_repository():
+    return LOCAL_REPOSITORY_TEMPLATE.replace("<name>", f"spotl.{REPOSITORY}")
 
 
 class PullRequest:
@@ -22,7 +31,7 @@ class PullRequest:
 
     @staticmethod
     def from_string(string):
-        return PullRequest(*string.split(";"))
+        return PullRequest(*string.split(";,;"))
 
     def can_merge(self):
         return run(["hub", "ci-status", self.commit_sha]).strip() == "success"
@@ -44,7 +53,7 @@ class PullRequest:
             return False
 
     def rebase_or_merge_head(self):
-        repo = git.Repo(LOCAL_REPOSITORY)
+        repo = git.Repo(get_local_repository())
 
         repo.git.checkout("develop")
         repo.git.pull()
@@ -54,7 +63,7 @@ class PullRequest:
         repo.git.push(u=True, force_with_lease=True)
 
     def merge(self):
-        run(["hub", "api", "-XPUT", f"{REMOTE_REPOSITORY}pulls/{self.id}/merge"])
+        run(["hub", "api", "-XPUT", f"{get_remote_repository()}pulls/{self.id}/merge"])
 
     @property
     def commit_sha(self):
@@ -62,7 +71,7 @@ class PullRequest:
 
 
 def run(command):
-    result = subprocess.run(command, stdout=subprocess.PIPE, cwd=LOCAL_REPOSITORY)
+    result = subprocess.run(command, stdout=subprocess.PIPE, cwd=get_local_repository())
 
     if result.returncode == 1:
         exit(1)
@@ -71,7 +80,7 @@ def run(command):
 
 
 def get_prs_raw():
-    return run(["hub", "pr", "list", "-f", "%I;%H;%au;%t%n"])
+    return run(["hub", "pr", "list", "-f", "%I;,;%H;,;%au;,;%t%n"])
 
 
 def get_pull_requests():
@@ -83,13 +92,29 @@ def get_pull_requests():
     return {pr.id: pr for pr in prs}
 
 
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--repository",
+        choices=["media", "machine"],
+        default="media")
+    parser.add_argument(
+        "pull_request_ids",
+        nargs=argparse.REMAINDER)
+    return parser.parse_args()
+
+
 def main():
-    pull_request_ids = sys.argv[1:]
+    args = parse_arguments()
+
+    global REPOSITORY
+    REPOSITORY = args.repository
+
     all_pull_requests = get_pull_requests()
 
     print("Start auto merging")
 
-    for pull_request_id in pull_request_ids:
+    for pull_request_id in args.pull_request_ids:
         pr = all_pull_requests.get(pull_request_id, None)
 
         print()

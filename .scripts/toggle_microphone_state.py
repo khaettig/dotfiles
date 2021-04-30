@@ -29,7 +29,7 @@ OFF = """
 
 def main():
     raw = run(
-        ["amixer", "-c", "3", "sset", "Mic", "toggle"], stdout=PIPE, check=True
+        ["amixer", "-c", "1", "sset", "Mic", "toggle"], stdout=PIPE, check=True
     ).stdout.decode("utf-8")
 
     if "[off]" in raw:

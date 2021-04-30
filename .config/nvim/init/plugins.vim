@@ -10,11 +10,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-repeat'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neomake/neomake'
 Plug 'nvim-lua/completion-nvim'
 Plug 'janko/vim-test'
 Plug 'guns/xterm-color-table.vim'
+Plug 'SirVer/ultisnips'
 Plug 'takac/vim-hardtime'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -40,6 +42,7 @@ source ~/.config/nvim/init/plugins/fugitive.vim
 source ~/.config/nvim/init/plugins/dispatch.vim
 source ~/.config/nvim/init/plugins/neomake.vim
 source ~/.config/nvim/init/plugins/vim_test.vim
+source ~/.config/nvim/init/plugins/ultisnips.vim
 source ~/.config/nvim/init/plugins/fzf.vim
 source ~/.config/nvim/init/plugins/vimspector.vim
 source ~/.config/nvim/init/plugins/maximizer.vim
