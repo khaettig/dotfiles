@@ -15,3 +15,4 @@ alias sma="cd ~/Git/spotl.machine"
 alias deploy="python3 ~/.scripts/deploy/main.py | grip -b -"
 
 alias j="jest --watchAll"
+alias jc="j --coverage --coverageReporters="
