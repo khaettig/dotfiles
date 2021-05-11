@@ -4,6 +4,7 @@ import argparse
 from redmine import Redmine, IssueStatus
 from commands import render_issues, move_issues
 
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Search GCP logs for an entry.")
     parser.add_argument(
@@ -13,13 +14,14 @@ def parse_arguments():
     )
     return parser.parse_args()
 
+
 def main():
     args = parse_arguments()
     redmine = Redmine()
 
-    print("### Deployed")
+    print("**Deployed**")
     print(render_issues(IssueStatus.MERGED, redmine))
-    print("### Rejected")
+    print("**Rejected**")
     print(render_issues(IssueStatus.REJECTED, redmine))
 
     if args.only_print:

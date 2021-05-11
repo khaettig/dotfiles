@@ -53,7 +53,7 @@ class Issue:
         issue_id = f"[#{self.issue_id}]({URL}{self.issue_id})"
         done_by = f" *done by {self.assigned_to}*" if self.assigned_to else ""
         return (
-            f"- {self.tracker} {issue_id} ({self.author}): {self.subject}{done_by}"
+            f"{self.tracker} {issue_id} ({self.author}): {self.subject}{done_by}"
         )
 
 

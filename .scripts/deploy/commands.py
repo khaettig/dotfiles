@@ -9,11 +9,12 @@ def render_issues(status, redmine):
             [issue for issue in issues if issue.category == category],
             key=lambda issue: (issue.tracker, issue.issue_id)
         )
-        result += f"#### {category}\n"
-        result += "\n".join(str(issue) for issue in categorized_issues)
+        result += f"> #### {category}\n"
+        result += "\n".join(f"> • {issue}" for issue in categorized_issues)
         result += "\n"
 
     return result
+
 
 def move_issues(from_status, to_status, redmine):
     issues = redmine.get_issues(from_status)

@@ -18,32 +18,31 @@ class RedmineMock:
         self.moved_issues[status].append(issue_id)
 
 
-
 def get_example_issues():
     return [
-            {
-                "id": "12345",
-                "subject": "Clean up code base",
-                "category": {"name": "backend"},
-                "tracker": {"name": "Bug"},
-                "author": {"name": "Bob Martin"},
-                "assigned_to": {"name": "Martin Fowler"},
-            },
-            {
-                "id": "12346",
-                "subject": "no one does this",
-                "category": {"name": "backend"},
-                "tracker": {"name": "Feature"},
-                "author": {"name": "Bob Martin"},
-            },
-            {
-                "id": "12347",
-                "subject": "Eat cake",
-                "tracker": {"name": "Bug"},
-                "author": {"name": "Bob Martin"},
-                "assigned_to": {"name": "Kent Beck"},
-            },
-        ]
+        {
+            "id": "12345",
+            "subject": "Clean up code base",
+            "category": {"name": "backend"},
+            "tracker": {"name": "Bug"},
+            "author": {"name": "Bob Martin"},
+            "assigned_to": {"name": "Martin Fowler"},
+        },
+        {
+            "id": "12346",
+            "subject": "no one does this",
+            "category": {"name": "backend"},
+            "tracker": {"name": "Feature"},
+            "author": {"name": "Bob Martin"},
+        },
+        {
+            "id": "12347",
+            "subject": "Eat cake",
+            "tracker": {"name": "Bug"},
+            "author": {"name": "Bob Martin"},
+            "assigned_to": {"name": "Kent Beck"},
+        },
+    ]
 
 
 class TestRenderIssues:
@@ -60,11 +59,11 @@ class TestRenderIssues:
         result = render_issues(IssueStatus.MERGED, redmine)
 
         expected = [
-            "#### Backend",
-            f"- Bug [#12345]({URL}12345) (Bob Martin): Clean up code base *done by Martin Fowler*",
-            f"- Feature [#12346]({URL}12346) (Bob Martin): No one does this",
-            "#### Uncategorized",
-            f"- Bug [#12347]({URL}12347) (Bob Martin): Eat cake *done by Kent Beck*",
+            "> #### Backend",
+            f"> • Bug [#12345]({URL}12345) (Bob Martin): Clean up code base *done by Martin Fowler*",
+            f"> • Feature [#12346]({URL}12346) (Bob Martin): No one does this",
+            "> #### Uncategorized",
+            f"> • Bug [#12347]({URL}12347) (Bob Martin): Eat cake *done by Kent Beck*",
             "",
         ]
 
