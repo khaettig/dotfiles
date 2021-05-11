@@ -62,6 +62,11 @@ class PullRequest:
             raise Exception()
         repo.git.push(u=True, force_with_lease=True)
 
+    def delete_local_branch(self):
+        repo = git.Repo(get_local_repository())
+        repo.git.checkout("develop")
+        repo.git.branch("-D", self.branch)
+
     def merge(self):
         run(["hub", "api", "-XPUT", f"{get_remote_repository()}pulls/{self.id}/merge"])
 
@@ -126,7 +131,7 @@ def main():
         print(pr)
         print(20 * "=")
 
-        print(f"Rebasing ...")
+        print("Rebasing ...")
         try:
             pr.rebase_or_merge_head()
         except Exception:
@@ -137,8 +142,10 @@ def main():
             print("Waiting for CI ...")
             time.sleep(30)
 
-        print(f"Merging ...")
+        print("Merging ...")
         pr.merge()
+
+        pr.delete_local_branch()
 
     print()
     print("Finished!")
