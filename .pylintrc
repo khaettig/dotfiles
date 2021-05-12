@@ -1,4 +1,5 @@
 [MASTER]
 disable=
-    C0111,C0114,C0115,C0116 # missing docstrings (module, class, function)
-    no-self-use
+    C0111,C0114,C0115,C0116, # missing docstrings (module, class, function)
+    no-self-use,
+    W503, W504, # line break before/after binary operator (black compatibility)
