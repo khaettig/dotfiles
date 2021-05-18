@@ -12,7 +12,7 @@ alias w="bash ~/.scripts/open_work_notes.sh"
 alias sme="cd ~/Git/spotl.media"
 alias sma="cd ~/Git/spotl.machine"
 
-alias deploy="python3 ~/.scripts/deploy/main.py | grip -b -"
+alias deploy="python3 ~/.scripts/deploy/main.py > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
 
 alias j="jest --watchAll"
 alias jc="j --coverage --coverageReporters="
