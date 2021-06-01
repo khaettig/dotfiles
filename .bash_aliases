@@ -16,3 +16,5 @@ alias deploy="python3 ~/.scripts/deploy/main.py > /tmp/deploy.tmp && grip -b /tm
 
 alias j="jest --watchAll"
 alias jc="j --coverage --coverageReporters="
+
+alias pc="pytest -n auto --cov=. --cov-report="
