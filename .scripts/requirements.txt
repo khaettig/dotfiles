@@ -1,4 +1,5 @@
 neovim
+j2cli
 pynvim
 python-language-server
 pylint

@@ -12,6 +12,7 @@
 set $mod Mod4
 
 {% set dualscreen = false %}
+{% set wallpaper = "/home/kevin/Bilder/Wallpapers/black.png" %}
 
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 
@@ -22,6 +23,19 @@ set $mod Mod4
 {% elif YADM_HOSTNAME == "kevin-X1" %}
 
 {% set primary = "eDP-1" %}
+{% set dualscreen = false %}
+
+{% elif YADM_HOSTNAME == "kevin-ThinkCentre" %}
+
+{% set primary = "HDMI-1" %}
+{% set secondary = "eDP-1" %}
+{% set dualscreen = true %}
+
+{% set wallpaper = "/home/kevin/Pictures/black.png" %}
+
+{% else %}
+
+{% set primary = "HDMI-0" %}
 {% set dualscreen = false %}
 
 {% endif %}
@@ -205,7 +219,7 @@ client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-col
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
 client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color 
 
-exec --no-startup-id /usr/bin/feh --bg-scale /home/kevin/Bilder/Wallpapers/black.png
+exec --no-startup-id /usr/bin/feh --bg-scale {{ wallpaper }}
 
 bindsym $mod+x kill
 bindsym $mod+v exec i3lock --color "#000000"
@@ -280,10 +294,6 @@ hide_edge_borders both
 # Host specific
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 
-{% if dualscreen %}
-exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x1080 --rotate normal
-{% endif %}
-
 # Powerline fix
 exec ping 192.168.1.1
 
@@ -291,7 +301,16 @@ exec telegram-desktop
 exec spotify
 exec discord
 
+{% elif YADM_HOSTNAME == "kevin-X1" %}
+
+{% elif YADM_HOSTNAME == "kevin-ThinkCentre" %}
+
 {% endif %}
 
-{% if YADM_HOSTNAME == "kevin-X1" %}
+{% if dualscreen %}
+	{% if YADM_HOSTNAME == "kevin-X1" %}
+		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x1080 --rotate normal
+	{% else %}
+		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 1920x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	{% endif %}
 {% endif %}

@@ -33,6 +33,7 @@ def install_nvim_if_not_installed():
     print("Installing nvim")
     download_file(NVIM_URL, NVIM_INSTALL)
     make_executable(NVIM_INSTALL)
+    run(["git", "config", "--global", "core.editor", "nvim"], check=True)
 
 
 def install_packages():
