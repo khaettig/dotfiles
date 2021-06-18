@@ -308,7 +308,7 @@ exec discord
 {% endif %}
 
 {% if dualscreen %}
-	{% if YADM_HOSTNAME == "kevin-X1" %}
+	{% if YADM_HOSTNAME == "kevin-desktop" %}
 		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x1080 --rotate normal
 	{% else %}
 		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 1920x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x0 --rotate normal
