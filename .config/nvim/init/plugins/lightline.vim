@@ -3,14 +3,13 @@ let g:lightline = {
 \   'active': {
 \     'left': [ [ 'mode', 'paste' ],
 \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-\     'right': [ [ 'teststatus' ] ],
+\     'right': [ ],
 \   },
 \   'inactive': {
 \     'left': [ [ 'readonly', 'filename', 'modified' ] ],
-\     'right': [ [ 'teststatus' ] ],
+\     'right': [ ],
 \   },
 \   'component_function': {
 \     'gitbranch': 'FugitiveHead',
-\     'teststatus': 'GetTestStatus',
 \   },
 \ }

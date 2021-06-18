@@ -1,4 +1,5 @@
-let test#strategy = 'neomake'
+let test#strategy = 'basic'
+let test#python#runner = 'pytest'
 
 noremap <Leader>tn :TestNearest<CR>
 noremap <Leader>tf :TestFile<CR>
@@ -7,11 +8,6 @@ noremap <Leader>tv :TestVisit<CR>
 noremap <Leader>ts :TestSuite<CR>
 autocmd FileType python nnoremap <buffer> <Leader>td :TestNearest -strategy=pydebug<CR>
 autocmd FileType javascript nnoremap <buffer> <Leader>td :TestNearest -strategy=jsdebug<CR>
-autocmd FileType python nnoremap <buffer> <Leader>tc :Neomake! pytestxdist<CR>
-autocmd FileType javascript nnoremap <buffer> <Leader>tc :Neomake! jestcoverage<CR>
-
-let test#python#runner = 'pytest'
-let test#python#pytest#executable = 'python3 ~/.scripts/test_wrappers/pytest_main.py'
 
 function! PyDebugStrategy(cmd)
     -tabnew
