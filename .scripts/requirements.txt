@@ -17,7 +17,8 @@ autopep8
 pdbpp
 coverage
 pre-commit
-black
+black==19.10b0
+isort
 mdformat
 mdformat-tables
 redminecli
