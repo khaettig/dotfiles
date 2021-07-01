@@ -10,6 +10,7 @@ import requests
 HOME = Path.home()
 NVIM_URL = "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
 NVIM_INSTALL = f"{HOME}/.local/bin/nvim"
+DEV_REQUIREMENTS = f"{HOME}/.scripts/dev_requirements.txt"
 REQUIREMENTS = f"{HOME}/.scripts/requirements.txt"
 PACKAGES = f"{HOME}/.scripts/packages.txt"
 NPM_PACKAGES = f"{HOME}/.scripts/npm_packages.txt"
@@ -41,6 +42,7 @@ def install_packages():
 
 
 def install_requirements():
+    run(["pip3", "install", "-r", DEV_REQUIREMENTS], check=True)
     run(["pip3", "install", "-r", REQUIREMENTS], check=True)
 
 
