@@ -17,11 +17,27 @@ class IssueStatus:
     IN_PROGRESS = "2"
     OPEN_PULL_REQUEST = "3"
     REJECTED = "6"
-    MERGED = "7"
-    DEPLOYED = "8"
+    ON_DEVELOP = "7"
+    TESTING = "8"
     CHANGES_REQUESTED = "9"
     TODO = "10"
     REJECTED_LOGGED = "11"
+    APPROVED = "12"
+    PAUSED = "13"
+    CANNOT_PROGRESS = "14"
+    DELIVERED = "15"
+
+    @staticmethod
+    def from_string(string):
+        return ISSUE_NAMES[string]
+
+
+ISSUE_NAMES = {
+    "approved": IssueStatus.APPROVED,
+    "testing": IssueStatus.TESTING,
+    "delivered": IssueStatus.DELIVERED,
+    "on_develop": IssueStatus.ON_DEVELOP
+}
 
 
 class Issue:

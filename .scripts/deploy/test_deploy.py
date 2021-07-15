@@ -49,14 +49,14 @@ class TestRenderIssues:
     def test_returns_empty_string_if_list_is_empty(self):
         redmine = Redmine(api=RedmineMock(issues_as_dict=[]))
 
-        result = render_issues(IssueStatus.MERGED, redmine)
+        result = render_issues(IssueStatus.ON_DEVELOP, redmine)
 
         assert result == ""
 
     def test_complete_example(self):
         redmine = Redmine(api=RedmineMock(issues_as_dict=get_example_issues()))
 
-        result = render_issues(IssueStatus.MERGED, redmine)
+        result = render_issues(IssueStatus.ON_DEVELOP, redmine)
 
         expected = [
             "> #### Backend",
@@ -75,8 +75,8 @@ class TestMoveIssues:
     def test_moves_all_issues_to_new_status(self):
         redmine = Redmine(api=RedmineMock(issues_as_dict=get_example_issues()))
 
-        move_issues(IssueStatus.MERGED, IssueStatus.DEPLOYED, redmine)
+        move_issues(IssueStatus.ON_DEVELOP, IssueStatus.TESTING, redmine)
 
-        assert "12345" in redmine.api.moved_issues[IssueStatus.DEPLOYED]
-        assert "12346" in redmine.api.moved_issues[IssueStatus.DEPLOYED]
-        assert "12347" in redmine.api.moved_issues[IssueStatus.DEPLOYED]
+        assert "12345" in redmine.api.moved_issues[IssueStatus.TESTING]
+        assert "12346" in redmine.api.moved_issues[IssueStatus.TESTING]
+        assert "12347" in redmine.api.moved_issues[IssueStatus.TESTING]
