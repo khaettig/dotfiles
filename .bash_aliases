@@ -12,7 +12,9 @@ alias w="bash ~/.scripts/open_work_notes.sh"
 alias sme="cd ~/Git/spotl.media"
 alias sma="cd ~/Git/spotl.machine"
 
-alias deploy="python3 ~/.scripts/deploy/main.py > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
+alias start_release="python3 ~/.scripts/deploy/main.py on_develop testing > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
+alias merge_bugfixes="python3 ~/.scripts/deploy/main.py approved testing > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
+alias merge_hotfixes="python3 ~/.scripts/deploy/main.py approved delivered > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
 alias nuke="sh ~/.scripts/nuke.sh"
 
 alias j="jest --watchAll"
