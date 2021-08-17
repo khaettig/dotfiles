@@ -17,5 +17,5 @@ autopep8
 pdbpp
 coverage
 pre-commit
-black==19.10b0
+black==21.7b0
 isort
