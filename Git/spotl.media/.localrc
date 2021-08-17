@@ -5,3 +5,4 @@ export PYTHONPATH="$PYTHONPATH:/home/kevin/Git/spotl.media/apps"
 
 alias runapp="python3 manage.py run --no-webpack-stdout"
 alias debugapp="DEBUG=True python3 manage.py run --no-wait --no-webpack-stdout"
+alias pycov="pytest -n auto --cov=apps --cov-report= --cov-branch"
