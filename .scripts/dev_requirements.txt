@@ -1,6 +1,7 @@
 neovim
 pynvim
 python-language-server
+pyflakes
 pylint
 pylint-django
 pytest
