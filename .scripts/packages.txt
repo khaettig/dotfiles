@@ -15,3 +15,4 @@ jq
 black
 fd-find
 grip
+ripgrep
