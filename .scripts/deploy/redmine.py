@@ -26,6 +26,7 @@ class IssueStatus:
     PAUSED = "13"
     CANNOT_PROGRESS = "14"
     DELIVERED = "15"
+    ON_RELEASE = "16"
 
     @staticmethod
     def from_string(string):
@@ -36,7 +37,8 @@ ISSUE_NAMES = {
     "approved": IssueStatus.APPROVED,
     "testing": IssueStatus.TESTING,
     "delivered": IssueStatus.DELIVERED,
-    "on_develop": IssueStatus.ON_DEVELOP
+    "on_develop": IssueStatus.ON_DEVELOP,
+    "on_release": IssueStatus.ON_RELEASE
 }
 
 
