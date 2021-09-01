@@ -11,6 +11,7 @@ alias w="bash ~/.scripts/open_work_notes.sh"
 
 alias sme="cd ~/Git/spotl.media"
 alias sma="cd ~/Git/spotl.machine"
+alias sac="cd ~/Git/spotl.actions"
 
 alias start_release="python3 ~/.scripts/deploy/main.py on_develop testing > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
 alias merge_bugfixes="python3 ~/.scripts/deploy/main.py on_release testing > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
