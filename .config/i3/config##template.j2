@@ -269,6 +269,10 @@ bindsym $mod+j exec python3 ~/.scripts/toggle_microphone_state.py
 bar {
 	output {{ primary }}
 
+	{% if not dualscreen %}
+		status_command i3blocks -c "/home/kevin/.i3blocks_pomodoro.conf"
+	{% endif %}
+
         status_command i3blocks -c "/home/kevin/.i3blocks.conf"
 
 	{% if dualscreen %}
@@ -284,8 +288,10 @@ bar {
 {% if dualscreen %}
 bar {
 	output {{ secondary }}
-	
+
 	tray_output {{ secondary }}
+
+        status_command i3blocks -c "/home/kevin/.i3blocks_pomodoro.conf"
 }
 {% endif %}
 
