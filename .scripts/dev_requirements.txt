@@ -1,6 +1,6 @@
 neovim
 pynvim
-python-language-server
+python-lsp-server
 pyflakes
 pylint
 pylint-django
