@@ -21,4 +21,4 @@ alias nuke="sh ~/.scripts/nuke.sh"
 alias j="jest --watchAll"
 alias jc="j --coverage --coverageReporters="
 
-alias ptwc="ptw -- --cov=apps --cov-report= --cov-branch -s"
+alias ptwc="ptw -- --cov=. --cov-report= --cov-branch -s"
