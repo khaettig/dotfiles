@@ -27,6 +27,7 @@ Plug 'szw/vim-maximizer'
 
 " Python specific
 Plug 'kalekseev/vim-coverage.py', {'do': ':UpdateRemotePlugins'}
+Plug 'python-rope/ropevim',
 
 " Javascript specific
 Plug 'ruanyl/coverage.vim'
@@ -50,6 +51,7 @@ source ~/.config/nvim/init/plugins/completion.vim
 luafile ~/.config/nvim/init/plugins/lsp.lua
 
 source ~/.config/nvim/init/plugins/py_coverage.vim
+source ~/.config/nvim/init/plugins/ropevim.vim
 
 source ~/.config/nvim/init/plugins/js_coverage.vim
 
