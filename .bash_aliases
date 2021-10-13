@@ -22,3 +22,4 @@ alias j="jest --watchAll"
 alias jc="j --coverage --coverageReporters="
 
 alias ptwc="ptw -- --cov=. --cov-report= --cov-branch -s"
+alias pyapprove="pytest --approvaltests-add-reporter=\"tmux-vim-diff.sh\" --cov=. --cov-report= --cov-branch -s"

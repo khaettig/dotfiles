@@ -30,6 +30,8 @@ nnoremap <silent> <leader>Ä :call ToggleList("Location List", "l", 30)<CR>
 nnoremap ¡ <C-w><Up><C-w>_
 nnoremap ¿ <C-w><Down><C-w>_
 
+nnoremap <leader>A :%diffput<CR><C-w><Right>:%diffget<CR>:wqa<CR>
+
 " Python
 autocmd FileType python nnoremap <buffer> <leader>b ^O__import__("pdb").set_trace()  # TODO(kh)<ESC>
 autocmd FileType python nnoremap <buffer> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO(kh)<ESC>
