@@ -10,5 +10,3 @@
 :command! Some :py3 gtd_someday()
 :command! Waiting :py3 gtd_waiting()
 :command! Wait :py3 gtd_waiting()
-
-:command! -nargs=1 Rebase :!python3 ~/.scripts/rebase.py <f-args>
