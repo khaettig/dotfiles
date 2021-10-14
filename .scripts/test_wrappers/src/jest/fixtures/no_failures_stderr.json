@@ -1,9 +1,0 @@
-PASS spec/test_jest.js
-  ✓ hello world (3 ms)
-
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
-Snapshots:   0 total
-Time:        1.642 s, estimated 2 s
-Ran all test suites.
-
