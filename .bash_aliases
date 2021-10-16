@@ -1,5 +1,6 @@
 alias vim="nvim"
 alias python="python3"
+alias xargs="xargs " # See https://unix.stackexchange.com/a/244516
 
 alias dcbu="docker-compose build && docker-compose up -d"
 alias dcbua="docker-compose build && docker-compose up"
@@ -22,4 +23,6 @@ alias j="jest --watchAll"
 alias jc="j --coverage --coverageReporters="
 
 alias ptwc="ptw -- --cov=. --cov-report= --cov-branch -s"
+alias ptwcc="cat .compile_suite | xargs ptwc"
 alias pyapprove="pytest --approvaltests-add-reporter=\"tmux-vim-diff.sh\" --cov=. --cov-report= --cov-branch -s"
+alias pyapprovec="cat .compile_suite | xargs pyapprove"
