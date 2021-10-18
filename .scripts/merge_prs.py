@@ -7,6 +7,7 @@ import time
 import git
 
 REPOSITORY = "<assigned via arguments>"
+BRANCH = "<assigned via arguments>"
 LOCAL_REPOSITORY_TEMPLATE = "/home/kevin/Git/merge-<name>/"
 REMOTE_REPOSITORY_TEMPLATE = "https://api.github.com/repos/spotl-io/<name>/"
 
@@ -38,7 +39,7 @@ class PullRequest:
 
     def try_rebase_head(self, repo):
         try:
-            repo.git.rebase("develop")
+            repo.git.rebase(BRANCH)
             return True
         except git.exc.GitCommandError:
             repo.git.rebase(abort=True)
@@ -46,7 +47,7 @@ class PullRequest:
 
     def try_merge_head(self, repo):
         try:
-            repo.git.merge("develop")
+            repo.git.merge(BRANCH)
             return True
         except git.exc.GitCommandError:
             repo.git.merge(abort=True)
@@ -55,7 +56,7 @@ class PullRequest:
     def rebase_or_merge_head(self):
         repo = git.Repo(get_local_repository())
 
-        repo.git.checkout("develop")
+        repo.git.checkout(BRANCH)
         repo.git.pull()
         repo.git.checkout(self.branch)
         if not self.try_rebase_head(repo) and not self.try_merge_head(repo):
@@ -64,11 +65,11 @@ class PullRequest:
 
     def delete_local_branch(self):
         repo = git.Repo(get_local_repository())
-        repo.git.checkout("develop")
+        repo.git.checkout(BRANCH)
         repo.git.branch("-D", self.branch)
 
     def merge(self):
-        run(["hub", "api", "-XPUT", f"{get_remote_repository()}pulls/{self.id}/merge"])
+        run(["gh", "api", "-XPUT", f"{get_remote_repository()}pulls/{self.id}/merge"])
 
     @property
     def commit_sha(self):
@@ -99,13 +100,9 @@ def get_pull_requests():
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--repository",
-        choices=["media", "machine"],
-        default="media")
-    parser.add_argument(
-        "pull_request_ids",
-        nargs=argparse.REMAINDER)
+    parser.add_argument("--repository", choices=["media", "machine"], default="media")
+    parser.add_argument("--branch", default="develop")
+    parser.add_argument("pull_request_ids", nargs=argparse.REMAINDER)
     return parser.parse_args()
 
 
@@ -114,6 +111,8 @@ def main():
 
     global REPOSITORY
     REPOSITORY = args.repository
+    global BRANCH
+    BRANCH = args.branch
 
     all_pull_requests = get_pull_requests()
 
