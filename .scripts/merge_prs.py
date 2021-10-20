@@ -55,6 +55,7 @@ class PullRequest:
 
     def rebase_or_merge_head(self):
         repo = git.Repo(get_local_repository())
+        repo.git.fetch()
 
         repo.git.checkout(BRANCH)
         repo.git.pull()
