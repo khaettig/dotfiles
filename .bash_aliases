@@ -27,4 +27,4 @@ alias ptwcc="cat .compile_suite | xargs ptwc"
 alias pyapprove="pytest --approvaltests-add-reporter=\"tmux-vim-diff.sh\" --cov=. --cov-report= --cov-branch -s"
 alias pyapprovec="cat .compile_suite | xargs pyapprove"
 
-alias gitclean="git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done"
+alias gitclean="sh ~/.scripts/git_clean.sh"
