@@ -27,9 +27,22 @@ OFF = """
 """
 
 
+def read_device_id():
+    try:
+        with open(".microphone_id", "r") as f:
+            return "".join(f.readlines()).strip()
+    except FileNotFoundError:
+        return "-1"
+
+
 def main():
+    device_id = read_device_id()
+
+    if device_id == "-1":
+        return
+
     raw = run(
-        ["amixer", "-c", "1", "sset", "Mic", "toggle"], stdout=PIPE, check=True
+        ["amixer", "-c", device_id, "sset", "Mic", "toggle"], stdout=PIPE, check=True
     ).stdout.decode("utf-8")
 
     if "[off]" in raw:
