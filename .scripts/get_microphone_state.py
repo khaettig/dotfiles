@@ -1,8 +1,7 @@
 from subprocess import run, PIPE
 
 
-# If not working anymore:
-# Run amixer -c 1/2/3/4... and look for A Capture limit of 0 - 496
+# If not working anymore: choose_microphone
 
 def read_device_id():
     try:

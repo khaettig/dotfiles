@@ -31,3 +31,5 @@ alias gitclean="sh ~/.scripts/git_clean.sh"
 
 alias kube_test="gcloud config set project spotl-media-test && gcloud container clusters get-credentials spotl-test-gke"
 alias kube_prod="gcloud config set project spotl-media-prod && gcloud container clusters get-credentials spotl-prod-gke"
+
+alias choose_microphone="python3 ~/.scripts/choose_microphone.py"
