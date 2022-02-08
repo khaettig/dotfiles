@@ -3,7 +3,7 @@ source .venv/bin/activate
 export DJANGO_SETTINGS_MODULE=spotl.dev_settings
 export PYTHONPATH="$PYTHONPATH:/home/kevin/Git/spotl.media/apps"
 
-alias runapp="python3 manage.py run --no-webpack-stdout"
+alias runapp="python3 manage.py run --no-webpack-stdout --filter-logs"
 alias debugapp="DEBUG=True python3 manage.py run --no-wait --no-webpack-stdout"
 alias pycov="pytest -n auto --cov=apps --cov-report= --cov-branch"
 alias pyunit="pytest -n auto apps/*/tests/unit"
