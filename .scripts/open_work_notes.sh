@@ -2,7 +2,7 @@
 
 cd ~/WorkNotes
 if [[ -n "$TMUX" ]]; then
-  nvim -O Incoming.md NextActions.md
+  nvim Incoming.md -c "sp NextProject.md" -c "vsp NextActions.md" -c "execute \"normal! \<C-W>L\"" -c "execute \"normal! \<C-W>h\""
 else
-  tmux new-session -A -s work nvim -O Incoming.md NextActions.md
+  tmux new-session -A -s work nvim Incoming.md -c "sp NextProject.md" -c "vsp NextActions.md" -c "execute \"normal! \<C-W>L\"" -c "execute \"normal! \<C-W>h\""
 fi
