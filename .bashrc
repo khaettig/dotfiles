@@ -3,6 +3,7 @@
 # for examples
 
 export TERM=xterm-256color
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 source ~/.bash_aliases
 
