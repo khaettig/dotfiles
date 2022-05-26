@@ -3,3 +3,4 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 export $(gnome-keyring-daemon -s)
+. "$HOME/.cargo/env"
