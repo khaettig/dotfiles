@@ -31,20 +31,20 @@ Plug 'ruanyl/coverage.vim'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 call plug#end()
 
-source ~/.config/nvim/init/plugins/nerd_tree.vim
-source ~/.config/nvim/init/plugins/git_gutter.vim
-source ~/.config/nvim/init/plugins/lightline.vim
-source ~/.config/nvim/init/plugins/fugitive.vim
-source ~/.config/nvim/init/plugins/vim_test.vim
-source ~/.config/nvim/init/plugins/ultisnips.vim
-source ~/.config/nvim/init/plugins/fzf.vim
-source ~/.config/nvim/init/plugins/maximizer.vim
-source ~/.config/nvim/init/plugins/completion.vim
-luafile ~/.config/nvim/init/plugins/lsp.lua
+source ~/.config/nvim/plugins/nerd_tree.vim
+source ~/.config/nvim/plugins/git_gutter.vim
+source ~/.config/nvim/plugins/lightline.vim
+source ~/.config/nvim/plugins/fugitive.vim
+source ~/.config/nvim/plugins/vim_test.vim
+source ~/.config/nvim/plugins/ultisnips.vim
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/maximizer.vim
+source ~/.config/nvim/plugins/completion.vim
+luafile ~/.config/nvim/plugins/lsp.lua
 
-source ~/.config/nvim/init/plugins/py_coverage.vim
-source ~/.config/nvim/init/plugins/ropevim.vim
+source ~/.config/nvim/plugins/py_coverage.vim
+source ~/.config/nvim/plugins/ropevim.vim
 
-source ~/.config/nvim/init/plugins/js_coverage.vim
+source ~/.config/nvim/plugins/js_coverage.vim
 
-source ~/.config/nvim/init/plugins/vim_markdown.vim
+source ~/.config/nvim/plugins/vim_markdown.vim
