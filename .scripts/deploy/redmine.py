@@ -38,7 +38,7 @@ ISSUE_NAMES = {
     "testing": IssueStatus.TESTING,
     "delivered": IssueStatus.DELIVERED,
     "on_develop": IssueStatus.ON_DEVELOP,
-    "on_release": IssueStatus.ON_RELEASE
+    "on_release": IssueStatus.ON_RELEASE,
 }
 
 
@@ -70,14 +70,12 @@ class Issue:
     def __str__(self):
         issue_id = f"[#{self.issue_id}]({URL}{self.issue_id})"
         done_by = f" *done by {self.assigned_to}*" if self.assigned_to else ""
-        return (
-            f"{self.tracker} {issue_id} ({self.author}): {self.subject}{done_by}"
-        )
+        return f"{self.tracker} {issue_id} ({self.author}): {self.subject}{done_by}"
 
 
 class RedmineAPI:
     def get_issues_as_dicts(self, status):
-        command = ["redmine", "issues", "--status", status, "--json"]
+        command = ["redmine", "issues", "--limit", "100", "--status", status, "--json"]
         return json.loads(get_output_from(command))
 
     def move_issue(self, issue_id, status):
