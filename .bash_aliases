@@ -1,6 +1,7 @@
 alias vim="nvim"
 alias python="python3"
 alias xargs="xargs " # See https://unix.stackexchange.com/a/244516
+alias xo="xdg-open"
 
 alias dcbu="docker-compose build && docker-compose up -d"
 alias dcbua="docker-compose build && docker-compose up"
