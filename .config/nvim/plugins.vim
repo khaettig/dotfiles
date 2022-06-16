@@ -19,16 +19,23 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'szw/vim-maximizer'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+Plug 'ThePrimeagen/refactoring.nvim'
 
 " Python specific
 Plug 'kalekseev/vim-coverage.py', {'do': ':UpdateRemotePlugins'}
 Plug 'python-rope/ropevim',
 
 " Javascript specific
-Plug 'ruanyl/coverage.vim'
+Plug 'retorillo/istanbul.vim'
 
 " Markdown specific
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+
+" While working on colors
+" Plug 'nvim-treesitter/playground'
+" Plug 'ap/vim-css-color'
 call plug#end()
 
 source ~/.config/nvim/plugins/nerd_tree.vim
@@ -41,6 +48,9 @@ source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/maximizer.vim
 source ~/.config/nvim/plugins/completion.vim
 luafile ~/.config/nvim/plugins/lsp.lua
+luafile ~/.config/nvim/plugins/treesitter.lua
+luafile ~/.config/nvim/plugins/treesitter-playground.lua
+luafile ~/.config/nvim/plugins/refactoring.lua
 
 source ~/.config/nvim/plugins/py_coverage.vim
 source ~/.config/nvim/plugins/ropevim.vim
