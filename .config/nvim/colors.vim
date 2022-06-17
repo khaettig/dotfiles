@@ -9,6 +9,9 @@ hi! FgMint gui=none guifg=#87FFAF guibg=#000000
 hi! FgJade gui=none guifg=#008030 guibg=#000000
 hi! FgDefYellow gui=none guifg=#FFE94F guibg=#000000
 hi! FgCyan gui=none guifg=#00FFFF guibg=#000000
+hi! FgBlue gui=none guifg=#3465A4 guibg=#000000
+hi! FgBlueItalic gui=italic guifg=#3465A4 guibg=#000000
+hi! FgBlueBold gui=bold guifg=#3465A4 guibg=#000000
 hi! FgPurple gui=none guifg=#AD7FA8 guibg=#000000
 hi! FgBlood gui=none guifg=#800000 guibg=#000000
 hi! FgBloodItalic gui=italic guifg=#800000 guibg=#000000
@@ -23,6 +26,7 @@ hi! BgBlood gui=none guifg=#800000 guibg=#800000
 hi! BgDarkGray gui=none guifg=#262626 guibg=#262626
 hi! BgBlack gui=none guifg=#000000 guibg=#000000
 
+hi! WhiteOnBlue gui=none guifg=#FFFFFF guibg=#3465A4
 hi! LightGrayOnDarkGray gui=none guifg=#DADADA guibg=#262626
 hi! LightGrayOnGray gui=none guifg=#DADADA guibg=#808080
 hi! GrayOnDarkGray gui=none guifg=#808080 guibg=#262626
@@ -60,9 +64,6 @@ hi! link TSKeywordReturn FgDefYellow
 hi! link TSRepeat FgDefYellow
 hi! link TSConditional FgDefYellow
 hi! link TSException FgDefYellow
-hi! link vimSet FgDefYellow
-hi! link vimCommand FgDefYellow
-
 hi! link TSType FgMint
 hi! link TSTypeBuiltin FgMint
 
@@ -91,9 +92,8 @@ hi! link TSPunctBracket FgLime
 hi! link TSPunctDelimiter FgLime
 hi! link TSPunctSpecial FgLime
 
-hi! link Comment FgBloodItalic
-hi! link TSComment FgBloodItalic
-hi! link Todo FgBloodBold
+hi! link Comment FgBlueBold
+hi! link TSComment FgBlueBold
 
 " pmenu
 hi! link Pmenu LightGrayOnDarkGray
@@ -122,6 +122,7 @@ hi! link uncovered_nt BgBlood
 
 " fugitive
 hi! link fugitiveHeader FgDefYellow
+hi! link fugitiveHeading FgMint
 hi! link fugitiveSymbolicRef FgCyan
 hi! link fugitiveHelpTag FgGray
 hi! link fugitiveUnstagedHeading FgMint
@@ -132,6 +133,7 @@ hi! link fugitiveStagedSection FgLime
 hi! link fugitiveStagedModifier FgGreen
 hi! link fugitiveCount FgPurple
 hi! link fugitiveHunk FgGray
+hi! link fugitiveHash FgJade
 hi! link fugitiveblameTime FgMint
 hi! link fugitiveblameNotCommittedYet FgGray
 hi! link fugitiveblameDelimiter FgGray
@@ -150,6 +152,15 @@ hi! link gitIdentityKeyword FgMint
 hi! link gitEmail FgMint
 hi! link gitEmailDelimiter FgMint
 hi! link gitDate FgGray
+
+" vim
+hi! link vimSet FgDefYellow
+hi! link vimCommand FgDefYellow
+hi! link vimBracket FgMint
+hi! link vimMapMod FgMint
+hi! link vimMapModKey FgMint
+hi! link vimMapLhs FgMint
+hi! link vimNotation FgMint
 
 " markdown
 hi! link mkdHeading FgMint
