@@ -71,8 +71,8 @@ hi! link TSVariable FgLime
 hi! link TSField FgLime
 hi! link TSVariableBuiltin FgGray
 
-hi! link TSConstant FgJade
-hi! link TSConstBuiltin FgJade
+hi! link TSConstant FgMint
+hi! link TSConstBuiltin FgMint
 
 hi! link TSString FgPurple
 hi! link TSStringEscape FgPurple
@@ -85,9 +85,9 @@ hi! link TSFuncBuiltin FgCyan
 hi! link TSConstructor FgCyan
 hi! link TSMethod FgCyan
 
-hi! link TSParameter FgGreen
+hi! link TSParameter FgMint
 
-hi! link TSOperator FgGreen
+hi! link TSOperator FgLime
 hi! link TSPunctBracket FgLime
 hi! link TSPunctDelimiter FgLime
 hi! link TSPunctSpecial FgLime
@@ -116,7 +116,7 @@ hi! link diffSubname FgCyan
 hi! link MyCoveragePyOk BgGreen
 hi! link MyCoveragePyWarn BgYellow
 hi! link MyCoveragePyError BgBlood
-hi! link covered BgGreen
+hi! covered gui=none guifg=#007400 guibg=#007400
 hi! link uncovered BgBlood
 hi! link uncovered_nt BgBlood
 
