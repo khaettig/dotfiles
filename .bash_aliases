@@ -20,8 +20,9 @@ alias merge_bugfixes="python3 ~/.scripts/deploy/main.py on_release testing > /tm
 alias merge_hotfixes="python3 ~/.scripts/deploy/main.py approved delivered > /tmp/deploy.tmp && grip -b /tmp/deploy.tmp"
 alias nuke="sh ~/.scripts/nuke.sh"
 
-alias j="jest --watchAll"
-alias jc="j --coverage --coverageReporters="
+alias jc="jest --coverage --coverageReporters=json"
+alias jw="jest --watchAll"
+alias jwc="jc --watchAll"
 
 alias ptwc="ptw -- --cov=. --cov-report= --cov-branch -s"
 alias ptwcc="cat .compile_suite | grep \"^[^#;]\" | xargs ptwc"
