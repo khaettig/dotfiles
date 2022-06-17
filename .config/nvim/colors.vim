@@ -1,97 +1,164 @@
 set termguicolors
 
+hi! Normal gui=none guifg=#00FF00 guibg=#000000
+hi! StatusLine gui=none guifg=#262626 guibg=#262626
+
+hi! FgLime gui=none guifg=#00FF00 guibg=#000000
+hi! FgGreen gui=none guifg=#007400 guibg=#000000
+hi! FgMint gui=none guifg=#87FFAF guibg=#000000
+hi! FgJade gui=none guifg=#008030 guibg=#000000
+hi! FgDefYellow gui=none guifg=#FFE94F guibg=#000000
+hi! FgCyan gui=none guifg=#00FFFF guibg=#000000
+hi! FgPurple gui=none guifg=#AD7FA8 guibg=#000000
+hi! FgBlood gui=none guifg=#800000 guibg=#000000
+hi! FgBloodItalic gui=italic guifg=#800000 guibg=#000000
+hi! FgBloodBold gui=bold guifg=#800000 guibg=#000000
+hi! FgLightGray gui=none guifg=#DADADA guibg=#000000
+hi! FgGray gui=none guifg=#808080 guibg=#000000
+hi! FgDarkGray gui=none guifg=#262626 guibg=#000000
+
+hi! BgGreen gui=none guifg=#007400 guibg=#007400
+hi! BgYellow gui=none guifg=#FFFF00 guibg=#FFFF00
+hi! BgBlood gui=none guifg=#800000 guibg=#800000
+hi! BgDarkGray gui=none guifg=#262626 guibg=#262626
+hi! BgBlack gui=none guifg=#000000 guibg=#000000
+
+hi! LightGrayOnDarkGray gui=none guifg=#DADADA guibg=#262626
+hi! LightGrayOnGray gui=none guifg=#DADADA guibg=#808080
+hi! GrayOnDarkGray gui=none guifg=#808080 guibg=#262626
+hi! BlackOnWhite gui=none guifg=#000000 guibg=#FFFFFF
+hi! BlackOnDefYellow gui=none guifg=#000000 guibg=#FFE94F
+
 " layout
-hi Normal gui=none guifg=#00FF00 guibg=#000000
-hi SignColumn gui=none guifg=#262626 guibg=#262626
-hi VertSplit gui=none guifg=#262626 guibg=#262626
-hi StatusLine gui=none guifg=#DADADA guibg=#262626
-hi StatusLineNC gui=none guifg=#DADADA guibg=#262626
-hi StatusLineTerm gui=none guifg=#DADADA guibg=#262626
-hi EndOfBuffer gui=none guifg=#000000 guibg=#000000
-hi LineNr gui=none guifg=#FFE94F guibg=#000000
+hi! link SignColumn BgDarkGray
+hi! link VertSplit BgDarkGray
+hi! link StatusLineNC BgDarkGray
+hi! link StatusLineTerm BgDarkGray
+hi! link EndOfBuffer BgBlack
+hi! link LineNr FgDefYellow
 
 " gutter
-hi GitGutterAdd gui=none guifg=#DADADA guibg=#262626
-hi GitGutterChange gui=none guifg=#DADADA guibg=#262626
-hi GitGutterDelete gui=none guifg=#DADADA guibg=#262626
-hi GitGutterChangeDelete gui=none guifg=#DADADA guibg=#262626
-hi GitGutterAddLine gui=none guifg=#DADADA guibg=#262626
-hi GitGutterChangeLine gui=none guifg=#DADADA guibg=#262626
-hi GitGutterDeleteLine gui=none guifg=#DADADA guibg=#262626
-hi GitGutterChangeDeleteLine gui=none guifg=#DADADA guibg=#262626
-hi GitGutterAddLineNr gui=none guifg=#DADADA guibg=#262626
-hi GitGutterChangeLineNr gui=none guifg=#DADADA guibg=#262626
-hi GitGutterDeleteLineNr gui=none guifg=#DADADA guibg=#262626
-hi GitGutterChangeDeleteLineNr gui=none guifg=#DADADA guibg=#262626
+hi! link GitGutterAdd LightGrayOnDarkGray
+hi! link GitGutterChange LightGrayOnDarkGray
+hi! link GitGutterDelete LightGrayOnDarkGray
+hi! link GitGutterChangeDelete LightGrayOnDarkGray
+hi! link GitGutterAddLine LightGrayOnDarkGray
+hi! link GitGutterChangeLine LightGrayOnDarkGray
+hi! link GitGutterDeleteLine LightGrayOnDarkGray
+hi! link GitGutterChangeDeleteLine LightGrayOnDarkGray
+hi! link GitGutterAddLineNr LightGrayOnDarkGray
+hi! link GitGutterChangeLineNr LightGrayOnDarkGray
+hi! link GitGutterDeleteLineNr LightGrayOnDarkGray
+hi! link GitGutterChangeDeleteLineNr LightGrayOnDarkGray
 
 " code
-hi TSInclude gui=none guifg=#00FFFF guibg=#000000
+hi! link TSInclude FgCyan
 
-hi TSKeyword gui=none guifg=#FFE94F guibg=#000000
-hi TSKeywordFunction gui=none guifg=#FFE94F guibg=#000000
-hi TSKeywordReturn gui=none guifg=#FFE94F guibg=#000000
-hi TSRepeat gui=none guifg=#FFE94F guibg=#000000
-hi TSConditional gui=none guifg=#FFE94F guibg=#000000
-hi TSException gui=none guifg=#FFE94F guibg=#000000
-hi vimSet gui=none guifg=#FFE94F guibg=#000000
-hi vimCommand gui=none guifg=#FFE94F guibg=#000000
+hi! link TSKeyword FgDefYellow
+hi! link TSKeywordFunction FgDefYellow
+hi! link TSKeywordReturn FgDefYellow
+hi! link TSRepeat FgDefYellow
+hi! link TSConditional FgDefYellow
+hi! link TSException FgDefYellow
+hi! link vimSet FgDefYellow
+hi! link vimCommand FgDefYellow
 
-hi TSType gui=none guifg=#87FFAF guibg=#000000
-hi TSTypeBuiltin gui=none guifg=#87FFAF guibg=#000000
+hi! link TSType FgMint
+hi! link TSTypeBuiltin FgMint
 
-hi TSVariable gui=none guifg=#00FF00 guibg=#000000
-hi TSVariableBuiltin gui=none guifg=#808080 guibg=#000000
-hi TSField gui=none guifg=#00FF00 guibg=#000000
+hi! link TSVariable FgLime
+hi! link TSField FgLime
+hi! link TSVariableBuiltin FgGray
 
-hi TSConstant gui=none guifg=#008030 guibg=#000000
-hi TSConstBuiltin gui=none guifg=#008030 guibg=#000000
+hi! link TSConstant FgJade
+hi! link TSConstBuiltin FgJade
 
-hi TSString gui=NONE guifg=#AD7FA8 guibg=#000000
-hi TSStringEscape gui=NONE guifg=#AD7FA8 guibg=#000000
-hi TSFloat gui=none guifg=#AD7FA8 guibg=#000000
-hi TSBoolean gui=none guifg=#AD7FA8 guibg=#000000
-hi TSNumber gui=none guifg=#AD7FA8 guibg=#000000
+hi! link TSString FgPurple
+hi! link TSStringEscape FgPurple
+hi! link TSFloat FgPurple
+hi! link TSBoolean FgPurple
+hi! link TSNumber FgPurple
 
-hi TSFunction gui=none guifg=#00FFFF guibg=#000000
-hi TSFuncBuiltin gui=none guifg=#00FFFF guibg=#000000
-hi TSConstructor gui=none guifg=#00FFFF guibg=#000000
-hi TSMethod gui=none guifg=#00FFFF guibg=#000000
+hi! link TSFunction FgCyan
+hi! link TSFuncBuiltin FgCyan
+hi! link TSConstructor FgCyan
+hi! link TSMethod FgCyan
 
-hi TSParameter gui=none guifg=#007400 guibg=#000000
+hi! link TSParameter FgGreen
 
-hi TSOperator gui=none guifg=#007400 guibg=#000000
-hi TSPunctBracket gui=none guifg=#00FF00 guibg=#000000
-hi TSPunctDelimiter gui=none guifg=#00FF00 guibg=#000000
-hi TSPunctSpecial gui=none guifg=#00FF00 guibg=#000000
+hi! link TSOperator FgGreen
+hi! link TSPunctBracket FgLime
+hi! link TSPunctDelimiter FgLime
+hi! link TSPunctSpecial FgLime
 
-hi Comment gui=italic guifg=#800000 guibg=#000000
-hi TSComment gui=italic guifg=#800000 guibg=#000000
-hi Todo gui=bold guifg=#800000 guibg=#000000
+hi! link Comment FgBloodItalic
+hi! link TSComment FgBloodItalic
+hi! link Todo FgBloodBold
 
 " pmenu
-hi Pmenu gui=none guifg=#DADADA guibg=#262626
-hi PmenuSel gui=none guifg=#DADADA guibg=#808080
-hi PmenuSbar gui=none guifg=#DADADA guibg=#808080
-hi PmenuThumb gui=none guifg=#DADADA guibg=#808080
+hi! link Pmenu LightGrayOnDarkGray
+hi! link PmenuSel LightGrayOnGray
+hi! link PmenuSbar LightGrayOnGray
+hi! link PmenuThumb LightGrayOnGray
 
 " diffs
-hi DiffAdd gui=none guifg=#FFFFFF guibg=#1C1C1C
-hi DiffChange gui=none guifg=#FFFFFF guibg=#1C1C1C
-hi DiffDelete gui=none guifg=#585858 guibg=#1C1C1C
-hi DiffText gui=none guifg=#FFFFFF guibg=#1C1C1C
+hi! link DiffAdd LightGrayOnDarkGray
+hi! link DiffChange LightGrayOnDarkGray
+hi! link DiffDelete GrayOnDarkGray
+hi! link DiffText LightGrayOnDarkGray
+hi! link diffAdded FgGreen 
+hi! link diffRemoved FgBlood
+hi! link diffLine FgMint
+hi! link diffIndexLine FgMint
+hi! link diffSubname FgCyan
 
 " coverage
-hi default MyCoveragePyOk gui=none guifg=#005F00 guibg=#005F00
-hi default MyCoveragePyWarn gui=none guifg=#FFFF00 guibg=#FFFF00
-hi default MyCoveragePyError gui=none guifg=#800000 guibg=#800000
-hi covered gui=none guifg=#005F00 guibg=#005F00
-hi uncovered gui=none guifg=#800000 guibg=#800000
-hi uncovered_nt gui=none guifg=#800000 guibg=#800000
+hi! link MyCoveragePyOk BgGreen
+hi! link MyCoveragePyWarn BgYellow
+hi! link MyCoveragePyError BgBlood
+hi! link covered BgGreen
+hi! link uncovered BgBlood
+hi! link uncovered_nt BgBlood
+
+" fugitive
+hi! link fugitiveHeader FgDefYellow
+hi! link fugitiveSymbolicRef FgCyan
+hi! link fugitiveHelpTag FgGray
+hi! link fugitiveUnstagedHeading FgMint
+hi! link fugitiveUnstagedSection FgLime
+hi! link fugitiveUnstagedModifier FgGreen
+hi! link fugitiveStagedHeading FgMint
+hi! link fugitiveStagedSection FgLime
+hi! link fugitiveStagedModifier FgGreen
+hi! link fugitiveCount FgPurple
+hi! link fugitiveHunk FgGray
+hi! link fugitiveblameTime FgMint
+hi! link fugitiveblameNotCommittedYet FgGray
+hi! link fugitiveblameDelimiter FgGray
+
+" git
+hi! link gitcommitComment FgJade
+hi! link gitcommitOnBranch FgJade
+hi! link gitcommitBranch FgDefYellow
+hi! link gitcommitHeader FgJade
+hi! link gitcommitSelectedType FgJade
+hi! link gitcommitSelectedFile FgMint
+hi! link gitDiff FgGray
+hi! link gitKeyword FgGray
+hi! link gitHash FgLime
+hi! link gitIdentityKeyword FgMint
+hi! link gitEmail FgMint
+hi! link gitEmailDelimiter FgMint
+hi! link gitDate FgGray
+
+" markdown
+hi! link mkdHeading FgMint
+hi! link Title FgMint
+hi! link mkdListItem FgJade
 
 " misc
-hi Visual gui=none guifg=#000000 guibg=#FFE94F
-hi VisualNOS gui=none guifg=#000000 guibg=#FFE94F
-hi Search gui=none guifg=#000000 guibg=#FFFFFF
-hi Directory gui=none guifg=#FFE94F
-hi NormalFloat gui=none guibg=#1C1C1C guibg=#FFFFFF
-
+hi! link Visual BlackOnDefYellow
+hi! link VisualNOS BlackOnDefYellow
+hi! link Search BlackOnWhite
+hi! link Directory FgDefYellow
+hi! link NormalFloat LightGrayOnDarkGray

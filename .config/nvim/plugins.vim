@@ -34,8 +34,8 @@ Plug 'retorillo/istanbul.vim'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 
 " While working on colors
-" Plug 'nvim-treesitter/playground'
-" Plug 'ap/vim-css-color'
+Plug 'nvim-treesitter/playground'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 source ~/.config/nvim/plugins/nerd_tree.vim
