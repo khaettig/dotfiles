@@ -14,13 +14,14 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'janko/vim-test'
 Plug 'guns/xterm-color-table.vim'
 Plug 'SirVer/ultisnips'
+Plug 'ap/vim-css-color'
 Plug 'ThePrimeagen/vim-be-good'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'ThePrimeagen/refactoring.nvim'
 
 " Python specific
@@ -32,10 +33,6 @@ Plug 'retorillo/istanbul.vim'
 
 " Markdown specific
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-
-" While working on colors
-Plug 'nvim-treesitter/playground'
-Plug 'ap/vim-css-color'
 call plug#end()
 
 source ~/.config/nvim/plugins/nerd_tree.vim
@@ -50,6 +47,7 @@ source ~/.config/nvim/plugins/completion.vim
 luafile ~/.config/nvim/plugins/lsp.lua
 luafile ~/.config/nvim/plugins/treesitter.lua
 luafile ~/.config/nvim/plugins/treesitter-playground.lua
+luafile ~/.config/nvim/plugins/telescope.lua
 luafile ~/.config/nvim/plugins/refactoring.lua
 
 source ~/.config/nvim/plugins/py_coverage.vim
