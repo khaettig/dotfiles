@@ -168,8 +168,8 @@ hi! link Title FgMint
 hi! link mkdListItem FgJade
 
 " misc
-hi! link Visual BlackOnDefYellow
-hi! link VisualNOS BlackOnDefYellow
+hi! link Visual WhiteOnBlue 
+hi! link VisualNOS WhiteOnBlue 
 hi! link Search BlackOnWhite
 hi! link Directory FgDefYellow
 hi! link NormalFloat LightGrayOnDarkGray
