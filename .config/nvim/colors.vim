@@ -69,6 +69,7 @@ hi! link TSTypeBuiltin FgMint
 
 hi! link TSVariable FgLime
 hi! link TSField FgLime
+hi! link TSProperty FgLime
 hi! link TSVariableBuiltin FgGray
 
 hi! link TSConstant FgMint
@@ -80,10 +81,10 @@ hi! link TSFloat FgPurple
 hi! link TSBoolean FgPurple
 hi! link TSNumber FgPurple
 
-hi! link TSFunction FgCyan
-hi! link TSFuncBuiltin FgCyan
+hi! link TSFunction FgLime
+hi! link TSFuncBuiltin FgLime
+hi! link TSMethod FgLime
 hi! link TSConstructor FgCyan
-hi! link TSMethod FgCyan
 
 hi! link TSParameter FgMint
 
