@@ -1,9 +1,10 @@
 nnoremap <silent> <F4> :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <silent> <leader>no :noh<CR>
 
-nnoremap <silent> <leader>qq :wq<CR>
+nnoremap <silent> <leader>qq :q<CR>
 nnoremap <silent> <leader>qa :wqa<CR>
 nnoremap <silent> <leader>ww :w<CR>
+nnoremap <silent> <leader>wq :wq<CR>
 nnoremap <silent> <leader>wa :wa<CR>
 
 nmap <silent> <leader>to OTODO(kh): <ESC>gccA
