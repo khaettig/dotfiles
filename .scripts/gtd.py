@@ -1,13 +1,20 @@
 python3 << endpython
+
 import os
 import vim
+from datetime import date
 
 
 NOTES_DIR = "Notes/"
+WORK_NOTES_DIR = "WorkNotes/"
 ARCHIVE_DIR = "Archive/"
 PROJECTS_DIR = "Projects/"
 SOMEDAY_DIR = "Someday/"
 WAITING_DIR = "Waiting/"
+PROTOCOL_DIR = "Protocols/"
+
+PROTOCOL_TEMPLATE = """# {}
+"""
 
 
 def move_to_dir(dir_name):
@@ -32,6 +39,17 @@ def gtd_someday():
 
 def gtd_waiting():
     move_to_dir(WAITING_DIR)
+
+
+def open_protocol():
+    today = date.today().strftime("%y-%m-%d")
+    new_path = os.path.expanduser("~/" + WORK_NOTES_DIR + PROTOCOL_DIR + today + ".md")
+
+    if not os.path.exists(new_path):
+        with open(new_path, "w+") as f:
+            for line in PROTOCOL_TEMPLATE.format(today):
+                f.write(line)
+    vim.command('e' + new_path)
 
 
 endpython

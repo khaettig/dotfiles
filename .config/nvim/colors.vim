@@ -167,6 +167,8 @@ hi! link vimNotation FgMint
 hi! link mkdHeading FgMint
 hi! link Title FgMint
 hi! link mkdListItem FgJade
+hi! link mkdCode FgPurple
+hi! link mkdCodeDelimiter FgPurple
 
 " misc
 hi! link Visual WhiteOnBlue 
