@@ -1,1 +1,0 @@
-/home/kevin/Work/Code/nvimrc_machine
