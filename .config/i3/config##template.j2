@@ -272,14 +272,11 @@ bindsym $mod+Shift+D exec setxkbmap fr
 bar {
 	output {{ primary }}
 
-	{% if not dualscreen %}
-		status_command i3blocks -c "/home/kevin/.i3blocks_pomodoro.conf"
-	{% endif %}
-
-        status_command i3blocks -c "/home/kevin/.i3blocks.conf"
-
 	{% if dualscreen %}
-	tray_output none
+		status_command i3blocks -c "/home/kevin/.i3blocks.conf"
+		tray_output none
+	{% else %}
+		status_command i3blocks -c "/home/kevin/.i3blocks_all.conf"
 	{% endif %}
 
 	colors {
