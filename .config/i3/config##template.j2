@@ -25,9 +25,9 @@ set $mod Mod4
 {% set primary = "eDP-1" %}
 {% set dualscreen = false %}
 
-{% elif YADM_HOSTNAME == "kevin-ThinkCentre" %}
+{% elif YADM_HOSTNAME == "kevin-zbook" %}
 
-{% set primary = "HDMI-1" %}
+{% set primary = "HDMI-1-4" %}
 {% set secondary = "eDP-1" %}
 {% set dualscreen = true %}
 
@@ -318,6 +318,8 @@ exec discord
 {% if dualscreen %}
 	{% if YADM_HOSTNAME == "kevin-desktop" %}
 		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x1080 --rotate normal
+	{% elif YADM_HOSTNAME == "kevin-zbook" %}
+		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 1920x0 --rotate normal
 	{% else %}
 		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 1920x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x0 --rotate normal
 	{% endif %}
