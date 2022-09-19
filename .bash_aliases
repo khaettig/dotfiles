@@ -36,3 +36,4 @@ alias kube_prod="gcloud config set project spotl-media-prod && gcloud container 
 alias kubec="sh ~/.scripts/kubec.sh"
 
 alias choose_microphone="python3 ~/.scripts/choose_microphone.py"
+alias autoclick="for i in {1..999}; do xdotool click --repeat 2 --delay 10 1; sleep 6; done"
