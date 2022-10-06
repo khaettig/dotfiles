@@ -263,7 +263,7 @@ bindsym $mod+m exec pkill -x slack
 bindsym $mod+Shift+M exec slack
 bindsym $mod+q exec python3 /home/kevin/.scripts/quick_capture.py
 
-bindsym $mod+j exec python3 ~/.scripts/toggle_microphone_state.py
+bindsym $mod+j exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 bindsym $mod+Shift+Q exec setxkbmap de neo
 bindsym $mod+Shift+D exec setxkbmap fr
