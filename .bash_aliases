@@ -9,7 +9,9 @@ alias ds="docker ps -a"
 
 alias tv="tmux -c 'source ~/.bashrc; nvim'"
 alias n="bash ~/.scripts/open_notes.sh"
+alias i="nvim ~/Notes/Incoming.md"
 alias w="bash ~/.scripts/open_work_notes.sh"
+
 
 alias sme="cd ~/Git/spotl.media"
 alias sma="cd ~/Git/spotl.machine"
