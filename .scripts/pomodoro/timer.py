@@ -31,8 +31,12 @@ class Timer:
         ))
 
     @property
+    def seconds_since_start(self):
+        return int((datetime.now() - self.started).total_seconds())
+
+    @property
     def remaining_seconds(self):
-        return self.duration_in_s - int((datetime.now() - self.started).total_seconds())
+        return self.duration_in_s - self.seconds_since_start
 
     @property
     def done(self):
