@@ -46,7 +46,7 @@ class State:
         print(" ", flush=True)
 
     def _log_timer(self):
-        now = datetime.now().strftime("%Y-%m-%d %H:%M")
+        now = self.timer.started.strftime("%Y-%m-%d %H:%M")
         goal = self.current_goal
         duration = render_time(self.timer.seconds_since_start)
 
