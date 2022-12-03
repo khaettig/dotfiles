@@ -12,7 +12,8 @@
 set $mod Mod4
 
 {% set dualscreen = false %}
-{% set wallpaper = "/home/kevin/Bilder/Wallpapers/black.png" %}
+{% set wallpaper = "/home/kevin/Bilder/Wallpapers/current.jpg" %}
+{% set lock_image = "/home/kevin/Bilder/Wallpapers/lock.png" %}
 
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 
@@ -222,9 +223,9 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 exec --no-startup-id /usr/bin/feh --bg-scale {{ wallpaper }}
 
 bindsym $mod+x kill
-bindsym $mod+v exec i3lock --color "#000000"
+bindsym $mod+v exec i3lock -i {{ lock_image }}
 bindsym $mod+Shift+X exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+V exec i3lock --color "#000000" && systemctl suspend
+bindsym $mod+Shift+V exec i3lock -i {{ lock_image }} && systemctl suspend
 
 bindsym Print exec flameshot full -c
 bindsym Control+Print exec flameshot gui
@@ -281,6 +282,7 @@ bar {
 	{% endif %}
 
 	colors {
+
 		# Disable workspace notifications
 		urgent_workspace "#333333" "#222222" "#888888"
 	}
@@ -297,6 +299,8 @@ bar {
 {% endif %}
 
 hide_edge_borders both
+default_border pixel 1
+default_floating_border pixel 1
 
 exec pkill ibus
 
@@ -311,8 +315,6 @@ exec spotify
 exec discord
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
-
-{% elif YADM_HOSTNAME == "kevin-ThinkCentre" %}
 
 {% endif %}
 
