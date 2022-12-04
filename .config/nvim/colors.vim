@@ -46,6 +46,11 @@ hi! link StatusLineNC BgDarkGray
 hi! link StatusLineTerm BgDarkGray
 hi! link EndOfBuffer BgDarkGray
 hi! link LineNr FgPaleOlive
+hi! link NERDTreeUp FgPaleBlue
+hi! link NERDTreeDir FgPaleBlue
+hi! link NERDTreeOpenable FgPaleBlue
+hi! link NERDTreeClosable FgPaleBlue
+hi! link NERDTreeLinkFile FgPaleBlue
 
 " gutter
 hi! link GitGutterAdd LightGrayOnDarkGray
@@ -136,6 +141,7 @@ hi! link mkdCode FgPaleRose
 hi! link mkdCodeDelimiter FgPaleRose
 
 " misc
+hi! link Identifier FgBlue
 hi! link Visual WhiteOnBlue 
 hi! link VisualNOS WhiteOnBlue 
 hi! link Search BlackOnWhite
