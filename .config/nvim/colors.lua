@@ -16,6 +16,7 @@ vim.api.nvim_set_hl(0, "@field", { link ="FgLightGray" })
 vim.api.nvim_set_hl(0, "@property", { link ="FgPaleJade" })
 vim.api.nvim_set_hl(0, "@variable.builtin", { link ="FgGray" })
 
+vim.api.nvim_set_hl(0, "Special", { link ="FgPaleJade" })
 vim.api.nvim_set_hl(0, "Constant", { link ="FgPaleJade" })
 vim.api.nvim_set_hl(0, "@constant", { link ="FgPaleJade" })
 vim.api.nvim_set_hl(0, "@constant.builtin", { link ="FgPaleJade" })
