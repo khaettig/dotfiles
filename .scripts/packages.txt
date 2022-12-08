@@ -16,4 +16,3 @@ black
 fd-find
 grip
 ripgrep
-pyqt5
