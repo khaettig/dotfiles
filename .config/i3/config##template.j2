@@ -16,27 +16,23 @@ set $mod Mod4
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock.png" %}
 
 {% if YADM_HOSTNAME == "kevin-desktop" %}
-
+{% set dualscreen = true %}
 {% set primary = "HDMI-0" %}
 {% set secondary = "DP-0" %}
-{% set dualscreen = true %}
+{% set lock_image = "/home/kevin/Bilder/Wallpapers/lock_desktop.png" %}
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
-
-{% set primary = "eDP-1" %}
 {% set dualscreen = false %}
+{% set primary = "eDP-1" %}
 
 {% elif YADM_HOSTNAME == "kevin-T15p" %}
-
+{% set dualscreen = true %}
 {% set primary = "DP-3" %}
 {% set secondary = "eDP-1" %}
-{% set dualscreen = true %}
-
 {% set wallpaper = "/home/kevin/Pictures/current.png" %}
 {% set lock_image = "/home/kevin/Pictures/lock.png" %}
 
 {% else %}
-
 {% set primary = "HDMI-0" %}
 {% set dualscreen = false %}
 
@@ -316,15 +312,17 @@ exec spotify
 exec discord
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
-
 {% endif %}
 
 {% if dualscreen %}
 	{% if YADM_HOSTNAME == "kevin-desktop" %}
 		exec xrandr --output {{ secondary }} --mode 2560x1440 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 2560x1440 --pos 0x1440 --rotate normal
+
 	{% elif YADM_HOSTNAME == "kevin-T15p" %}
 		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 1920x0 --rotate normal
+
 	{% else %}
 		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 1920x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x0 --rotate normal
+
 	{% endif %}
 {% endif %}
