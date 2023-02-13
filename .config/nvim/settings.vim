@@ -15,3 +15,4 @@ set exrc
 set secure
 set autoindent
 set smartindent
+filetype plugin on

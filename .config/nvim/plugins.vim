@@ -14,6 +14,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'janko/vim-test'
 Plug 'guns/xterm-color-table.vim'
 Plug 'SirVer/ultisnips'
+Plug 'vimwiki/vimwiki'
 Plug 'ap/vim-css-color'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'szw/vim-maximizer'
@@ -44,6 +45,7 @@ source ~/.config/nvim/plugins/ultisnips.vim
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/maximizer.vim
 source ~/.config/nvim/plugins/completion.vim
+luafile ~/.config/nvim/plugins/vimwiki.lua
 luafile ~/.config/nvim/plugins/lsp.lua
 luafile ~/.config/nvim/plugins/treesitter.lua
 luafile ~/.config/nvim/plugins/treesitter-playground.lua
