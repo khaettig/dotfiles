@@ -23,3 +23,4 @@ vim.g.vimwiki_list = {
         ext=".md",
     }
 }
+vim.g.vimwiki_diary_caption_level = -1
