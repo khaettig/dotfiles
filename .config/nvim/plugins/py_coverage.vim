@@ -1,5 +1,5 @@
 function ConfigureCoveragePy()
-    sign define coverageOk text=░░ texthl=MyCoverageOk
+    sign define coverageOk text=░░ texthl=MyCoveragePyOk
     sign define coverageWarn text=░░ texthl=MyCoveragePyWarn
     sign define coverageErr text=░░ texthl=MyCoveragePyError
 
