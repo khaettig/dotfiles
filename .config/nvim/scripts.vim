@@ -10,5 +10,3 @@
 :command! Some :py3 gtd_someday()
 :command! Waiting :py3 gtd_waiting()
 :command! Wait :py3 gtd_waiting()
-
-nnoremap <silent> <leader>pp :py3 open_protocol()<CR>
