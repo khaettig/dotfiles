@@ -27,9 +27,9 @@ alias jc="jest --coverage --coverageReporters=json"
 alias jw="jest --watchAll"
 alias jwc="jc --watchAll"
 
-alias ptwc="ptw -- --cov=. --cov-report= --cov-branch -s"
+alias ptwc="ptw -- --cov=. --cov-report= --cov-branch --cov-context=test -s"
 alias ptwcc="cat .compile_suite | grep \"^[^#;]\" | xargs ptwc"
-alias pyapprove="pytest --approvaltests-add-reporter=\"tmux-vim-diff.sh\" --cov=. --cov-report= --cov-branch -s"
+alias pyapprove="pytest --approvaltests-add-reporter=\"tmux-vim-diff.sh\" --cov=. --cov-report= --cov-branch -s --cov-contex=test"
 alias pyapprovec="cat .compile_suite | xargs pyapprove"
 
 alias gitclean="sh ~/.scripts/git_clean.sh"
