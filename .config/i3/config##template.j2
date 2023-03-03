@@ -11,31 +11,24 @@
 
 set $mod Mod4
 
-{% set dualscreen = false %}
 {% set wallpaper = "/home/kevin/Bilder/Wallpapers/current.jpg" %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock.png" %}
 
+{% set screens = namespace(primary="HDMI-0", secondary="") %}
+
 {% if YADM_HOSTNAME == "kevin-desktop" %}
-{% set dualscreen = true %}
-{% set primary = "HDMI-0" %}
-{% set secondary = "DP-0" %}
+{% set screens.secondary ="HDMI-0" %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock_desktop.png" %}
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
-{% set dualscreen = false %}
-{% set primary = "eDP-1" %}
+{% set screens.primary ="eDP-1" %}
 {% include '/home/kevin/.screens.j2' %}
 
 {% elif YADM_HOSTNAME == "kevin-T15p" %}
-{% set dualscreen = true %}
-{% set primary = "DP-3" %}
-{% set secondary = "eDP-1" %}
+{% set screens.primary ="DP-3" %}
+{% set screens.secondary ="eDP-1" %}
 {% set wallpaper = "/home/kevin/Pictures/current.png" %}
 {% set lock_image = "/home/kevin/Pictures/lock.png" %}
-
-{% else %}
-{% set primary = "HDMI-0" %}
-{% set dualscreen = false %}
 
 {% endif %}
 
@@ -171,30 +164,6 @@ bindsym $mod+g move workspace to output up
 bindsym $mod+r move workspace to output down
 bindsym $mod+t move workspace to output right
 
-# Presentation mode: Move everything on one screen
-bindsym $mod+h \
-[workspace=$ws1] move workspace to output primary; \
-[workspace=$ws2] move workspace to output primary; \
-[workspace=$ws3] move workspace to output primary; \
-[workspace=$ws4] move workspace to output primary; \
-[workspace=$ws5] move workspace to output primary; \
-[workspace=$ws6] move workspace to output primary; \
-[workspace=$ws7] move workspace to output primary; \
-[workspace=$ws8] move workspace to output primary; \
-[workspace=$ws9] move workspace to output primary; \
-[workspace=$ws10] move workspace to output primary
-bindsym $mod+k \
-[workspace=$ws1] move workspace to output $secondary; \
-[workspace=$ws2] move workspace to output $secondary; \
-[workspace=$ws3] move workspace to output $secondary; \
-[workspace=$ws4] move workspace to output $secondary; \
-[workspace=$ws5] move workspace to output $secondary; \
-[workspace=$ws6] move workspace to output $secondary; \
-[workspace=$ws7] move workspace to output $secondary; \
-[workspace=$ws8] move workspace to output $secondary; \
-[workspace=$ws9] move workspace to output $secondary; \
-[workspace=$ws10] move workspace to output $secondary
-
 # Resizing
 bindsym $mod+Shift+N resize grow width 10 px or 10 ppt
 bindsym $mod+Shift+G resize grow height 10 px or 10 ppt
@@ -267,9 +236,9 @@ bindsym $mod+Shift+D exec setxkbmap fr
 
 # Screens
 bar {
-	output {{ primary }}
+	output {{ screens.primary }}
 
-	{% if dualscreen %}
+	{% if screens.secondary %}
 		status_command i3blocks -c "/home/kevin/.i3blocks.conf"
 		tray_output none
 	{% else %}
@@ -283,11 +252,11 @@ bar {
 	}
 }
 
-{% if dualscreen %}
+{% if screens.secondary %}
 bar {
-	output {{ secondary }}
+	output {{ screens.secondary }}
 
-	tray_output {{ secondary }}
+	tray_output {{ screens.secondary }}
 
         status_command i3blocks -c "/home/kevin/.i3blocks_pomodoro.conf"
 }
@@ -312,15 +281,15 @@ exec --no-startup-id synclient VertScrollDelta=-113
 
 {% endif %}
 
-{% if dualscreen %}
+{% if screens.secondary %}
 	{% if YADM_HOSTNAME == "kevin-desktop" %}
-		exec xrandr --output {{ secondary }} --mode 2560x1440 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 2560x1440 --pos 0x1440 --rotate normal
+		exec xrandr --output {{ screens.secondary }} --mode 2560x1440 --pos 0x0 --rotate normal --output {{ screens.primary }} --primary --mode 2560x1440 --pos 0x1440 --rotate normal
 
 	{% elif YADM_HOSTNAME == "kevin-T15p" %}
-		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 1920x0 --rotate normal
+		exec xrandr --output {{ screens.secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ screens.primary }} --primary --mode 1920x1080 --pos 1920x0 --rotate normal
 
 	{% else %}
-		exec xrandr --output {{ secondary }} --mode 1920x1080 --pos 1920x0 --rotate normal --output {{ primary }} --primary --mode 1920x1080 --pos 0x0 --rotate normal
+		exec xrandr --output {{ screens.secondary }} --mode 1920x1080 --pos 1920x0 --rotate normal --output {{ screens.primary }} --primary --mode 1920x1080 --pos 0x0 --rotate normal
 
 	{% endif %}
 {% endif %}
