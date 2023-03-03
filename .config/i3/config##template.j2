@@ -24,6 +24,7 @@ set $mod Mod4
 {% elif YADM_HOSTNAME == "kevin-X1" %}
 {% set dualscreen = false %}
 {% set primary = "eDP-1" %}
+{% include '/home/kevin/.screens.j2' %}
 
 {% elif YADM_HOSTNAME == "kevin-T15p" %}
 {% set dualscreen = true %}
@@ -239,9 +240,6 @@ assign [class="TelegramDesktop"] $ws8
 assign [class="Slack"] $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
-# Hide annoying slack mini panel
-for_window [class="Slack" floating] move scratchpad
-
 # Unlock gnome keyring on startup (needs install_pam_autologin.sh)
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 
@@ -304,15 +302,14 @@ exec pkill ibus
 # Host specific
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 
-# Powerline fix
-exec ping 192.168.1.1
-
 exec telegram-desktop
 exec spotify
 exec discord
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
+
 exec --no-startup-id synclient VertScrollDelta=-113
+
 {% endif %}
 
 {% if dualscreen %}
