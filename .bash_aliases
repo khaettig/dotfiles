@@ -12,6 +12,7 @@ alias n="bash ~/.scripts/open_notes.sh"
 alias i="nvim ~/Notes/Incoming.md"
 alias w="bash ~/.scripts/open_work_notes.sh"
 alias b="bash ~/.scripts/open_brain.sh"
+alias v="bash ~/.scripts/open_nvim_config.sh"
 
 
 alias sme="cd ~/Git/spotl.media"
