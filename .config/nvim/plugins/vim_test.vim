@@ -4,8 +4,7 @@ let test#python#runner = 'pytest'
 noremap <Leader>tn :TestNearest<CR>
 noremap <Leader>tf :TestFile<CR>
 noremap <Leader>tl :TestLast<CR>
-noremap <Leader>tv :TestVisit<CR>
-noremap <Leader>ts :TestSuite<CR>
+noremap <Leader>ta :TestSuite<CR>
 autocmd FileType python nnoremap <buffer> <Leader>td :TestNearest -strategy=pydebug<CR>
 autocmd FileType javascript nnoremap <buffer> <Leader>td :TestNearest -strategy=jsdebug<CR>
 

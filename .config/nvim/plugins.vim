@@ -42,8 +42,6 @@ source ~/.config/nvim/plugins/lightline.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/vim_test.vim
 source ~/.config/nvim/plugins/ultisnips.vim
-source ~/.config/nvim/plugins/fzf.vim
-source ~/.config/nvim/plugins/maximizer.vim
 source ~/.config/nvim/plugins/completion.vim
 luafile ~/.config/nvim/plugins/vimwiki.lua
 luafile ~/.config/nvim/plugins/lsp.lua

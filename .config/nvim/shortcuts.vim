@@ -1,3 +1,4 @@
+nnoremap <silent> <F2> :e ~/.config/nvim/cheat_sheet.md<CR>
 nnoremap <silent> <F4> :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <silent> <leader>no :noh<CR>
 
