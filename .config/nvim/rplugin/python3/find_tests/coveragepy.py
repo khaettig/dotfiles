@@ -2,7 +2,7 @@ import sqlite3
 import subprocess
 
 
-def find_tests_running_file(file_name):
+def find_tests_for_file(file_name):
     rows = sqlite3.connect(".coverage").cursor().execute(
         f"""
         SELECT DISTINCT context

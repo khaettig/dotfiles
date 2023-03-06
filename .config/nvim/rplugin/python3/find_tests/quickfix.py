@@ -7,7 +7,7 @@ def render_call(rendered_items):
 
 
 def render_items(items):
-    ",".join(render_item(item) for item in items)
+    return ",".join(render_item(item) for item in items)
 
 
 def render_item(item):

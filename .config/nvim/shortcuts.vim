@@ -11,6 +11,8 @@ nnoremap <silent> <leader>wa :wa<CR>
 nmap <silent> <leader>to OTODO(kh): <ESC>gccA
 nmap <silent> <leader>tO :Gg TODO(kh)<CR>
 
+nnoremap <silent> <leader>tsf :FindTestsForFile<CR>
+
 " Move lines
 nnoremap <A-a> :m .+1<CR>==
 nnoremap <A-l> :m .-2<CR>==

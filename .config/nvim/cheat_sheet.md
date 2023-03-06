@@ -10,6 +10,9 @@
 | tsf  | Search for tests touching file            |
 | tsl  | Search for tests touching line (TODO)     |
 |------|-------------------------------------------|
+| qtc  | Quick Fix to Compile Suite                |
+| qfc  | Quick Fix from Compile Suite              |
+|------|-------------------------------------------|
 | ef   | Telescope find files                      |
 | eg   | Telescope live grep                       |
 | en   | Telescope live grep in nvim config        |
