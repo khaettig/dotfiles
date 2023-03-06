@@ -12,6 +12,7 @@ nmap <silent> <leader>to OTODO(kh): <ESC>gccA
 nmap <silent> <leader>tO :Gg TODO(kh)<CR>
 
 nnoremap <silent> <leader>tsf :FindTestsForFile<CR>
+nnoremap <silent> <leader>tsq :SelectTestsFromQuickFixList<CR>
 
 " Move lines
 nnoremap <A-a> :m .+1<CR>==

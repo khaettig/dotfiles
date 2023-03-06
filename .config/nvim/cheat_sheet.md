@@ -9,6 +9,7 @@
 | ta   | TestSuite / test all                      |
 | tsf  | Search for tests touching file            |
 | tsl  | Search for tests touching line (TODO)     |
+| tsq  | Select tests from quick fix list          |
 |------|-------------------------------------------|
 | qtc  | Quick Fix to Compile Suite                |
 | qfc  | Quick Fix from Compile Suite              |

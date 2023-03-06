@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export PYTHONPATH=$PYTHONPATH:$HOME/.scripts/lib
 export TERM=xterm-256color
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
