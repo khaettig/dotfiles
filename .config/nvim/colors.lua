@@ -27,11 +27,12 @@ vim.api.nvim_set_hl(0, "@float", { link ="FgPaleOrange" })
 vim.api.nvim_set_hl(0, "@boolean", { link ="FgPaleOrange" })
 vim.api.nvim_set_hl(0, "@number", { link ="FgPaleOrange" })
 
-vim.api.nvim_set_hl(0, "@function", { link ="FgLightGray" })
+vim.api.nvim_set_hl(0, "@function", { link ="FgPaleJade" })
 vim.api.nvim_set_hl(0, "@function.call", { link ="FgLightGray" })
 vim.api.nvim_set_hl(0, "@function.builtin", { link ="FgLightGray" })
-vim.api.nvim_set_hl(0, "@method", { link ="FgLightGray" })
-vim.api.nvim_set_hl(0, "@constructor", { link ="FgPaleBlue" })
+vim.api.nvim_set_hl(0, "@method", { link ="FgPaleJade" })
+vim.api.nvim_set_hl(0, "@method.call", { link ="FgLightGray" })
+vim.api.nvim_set_hl(0, "@constructor", { link ="FgPaleJade" })
 
 vim.api.nvim_set_hl(0, "@parameter", { link ="FgPaleJade" })
 
