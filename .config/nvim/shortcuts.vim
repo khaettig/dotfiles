@@ -32,6 +32,9 @@ noremap <S-Right> <C-w><Right>
 noremap ü :cprevious<CR>zz
 noremap ö :cnext<CR>zz
 
+nnoremap ν :CodeReviewPrevious<CR>
+nnoremap τ :CodeReviewNext<CR>
+
 nnoremap <leader>ü :colder<CR>
 nnoremap <leader>ö :cnewer<CR>
 nnoremap <leader>Ü :lolder<CR>
