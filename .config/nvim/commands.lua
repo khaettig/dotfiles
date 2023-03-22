@@ -2,7 +2,7 @@ vim.api.nvim_create_user_command("Gamend", ":G commit --amend --no-edit", {})
 vim.api.nvim_create_user_command("Gamendpush", ":G commit --amend --no-edit | G push --force-with-lease", {})
 
 local function code_review_next()
-    vim.cmd("cnext")
+    vim.cmd("silent! cnext")
     vim.cmd("only")
     vim.cmd("Gvdiff " .. vim.g.current_review_branch)
     vim.cmd("wincmd H")
@@ -10,7 +10,7 @@ local function code_review_next()
 end
 
 local function code_review_previous()
-    vim.cmd("cprevious")
+    vim.cmd("silent! cprevious")
     vim.cmd("only")
     vim.cmd("Gvdiff " .. vim.g.current_review_branch)
     vim.cmd("wincmd H")
