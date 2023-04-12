@@ -33,6 +33,7 @@ hi! BgGray gui=none guifg=#303030 guibg=#303030
 hi! BgBlack gui=none guifg=#000000 guibg=#000000
 
 hi! WhiteOnBlue gui=none guifg=#FFFFFF guibg=#3465A4
+hi! WhiteOnJade gui=none guifg=#FFFFFF guibg=#76AB85 
 hi! LightGrayOnDarkGray gui=none guifg=#C7C8D0 guibg=#101010
 hi! OnDarkerGray gui=none guibg=#303030
 hi! GreenOnGray gui=none guifg=#007400 guibg=#303030
@@ -143,6 +144,7 @@ hi! link Title FgPaleJade
 hi! link mkdListItem FgPaleOrange
 hi! link mkdCode FgPaleRose
 hi! link mkdCodeDelimiter FgPaleRose
+hi! link VimwikiTag FgGreen
 
 " misc
 hi! link Identifier FgBlue
