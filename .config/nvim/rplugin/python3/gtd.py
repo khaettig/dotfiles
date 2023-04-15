@@ -39,18 +39,17 @@ class GTD:
     def go_to_link(self, args):
         link_name, link_type = self._get_link()
 
-        if link_type == "project":
-            self._open_project(link_name)
-        if link_type == "md":
-            self._open_md(link_name)
-        if link_type == "file":
-            self._open_file(link_name)
-        if link_type == "cmd":
-            self._run_command(link_name)
-        if link_type == "url":
-            self._open_chrome(link_name)
-        if link_type == "ff":
-            self._open_firefox(link_name)
+        {
+            "project": self._open_project,
+            "md": self._open_md,
+            "file": self._open_file,
+            "book": self._open_book,
+            "blog": self._open_blog,
+            "cmd": self._run_command,
+            "url": self._open_chrome,
+            "ff": self._open_firefox,
+            "yt": self._open_youtube,
+        }[link_type](link_name)
 
     def _get_link(self):
         line = self.nvim.current.buffer[self.nvim.current.window.cursor[0] - 1]
@@ -88,6 +87,14 @@ class GTD:
     def _open_file(self, file_name):
         run(["xdg-open", os.path.expanduser(file_name)], check=True)
 
+    def _open_book(self, file_name):
+        run(["xdg-open",
+            os.path.expanduser(f"~/Sync/Books/{file_name}.pdf")], check=True)
+
+    def _open_blog(self, file_name):
+        run(["xdg-open",
+            os.path.expanduser(f"~/Sync/Books/Blogposts/{file_name}.pdf")], check=True)
+
     def _run_command(self, command):
         run([command], check=True)
 
@@ -96,3 +103,6 @@ class GTD:
 
     def _open_firefox(self, url):
         run(["firefox", "--new-window", url], check=True)
+
+    def _open_youtube(self, url):
+        run(["firefox", "--new-window", f"youtube.com/watch?v={url}"], check=True)
