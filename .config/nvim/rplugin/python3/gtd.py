@@ -1,3 +1,4 @@
+import requests
 import datetime
 from subprocess import run
 import os
@@ -10,6 +11,29 @@ import pynvim
 class GTD:
     def __init__(self, nvim):
         self.nvim = nvim
+
+    @pynvim.command("AddHabiticaTodo", nargs=("*"))
+    def add_habitica_todo(self, args):
+        line = self.nvim.current.buffer[self.nvim.current.window.cursor[0] - 1]
+
+        line = re.sub(r"\<.+\>", "", line)
+        line = re.sub(r"^\-\s*", "", line)
+
+        with open(os.path.expanduser("~/.habitica"), "r") as f:
+            user, token = f.readlines()[0].strip().split(":")
+
+        requests.post(
+            "https://habitica.com/api/v3/tasks/user",
+            headers={
+                "x-api-user": user,
+                "x-api-key": token,
+                "x-client": user + "-CustomScript",
+            },
+            json={
+                "text": line,
+                "type": "todo",
+            },
+        )
 
     @pynvim.command("GoToLink", nargs=("*"))
     def go_to_link(self, args):
