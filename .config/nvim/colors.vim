@@ -5,7 +5,7 @@ hi! StatusLine gui=none guifg=#262626 guibg=#262626
 hi! FgLightGray gui=none guifg=#C7C8D0 guibg=#101010
 hi! FgLightGrayBold gui=bold guifg=#C7C8D0 guibg=#101010
 hi! FgGray gui=none guifg=#808080 guibg=#101010
-hi! FgGray gui=bold guifg=#808080 guibg=#101010
+hi! FgGrayBold gui=bold guifg=#808080 guibg=#101010
 hi! FgPaleOrange gui=none guifg=#E69875 guibg=#101010
 hi! FgPaleRed gui=none guifg=#E67E80 guibg=#101010
 hi! FgPaleRedBold gui=bold guifg=#E67E80 guibg=#101010

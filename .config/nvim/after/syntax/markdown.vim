@@ -6,3 +6,6 @@ hi! link Deadline WhiteOnBlue
 
 syntax match HighPriority "<high>"
 hi! link HighPriority WhiteOnBlood
+
+syntax match TodoDone ".*✔$"
+hi! link TodoDone FgGray
