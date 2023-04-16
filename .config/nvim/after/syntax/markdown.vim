@@ -1,4 +1,4 @@
-syntax match GTDLink "\[.\+\]"
+syntax match GTDLink "\[[a-zäöüßA-Z0-9\./:~_\-\(\)]*\]"
 hi! link GTDLink FgPaleBlue
 
 syntax match Deadline "<[0-9\-]\+>"
