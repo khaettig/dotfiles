@@ -8,8 +8,13 @@ def ask_for_input():
     window.show()
     app.exec()
     return {
+        "minutes": int(window.minutes_input.text()),
         "goal": window.goal_input.text(),
-        "minutes": int(window.minutes_input.text())
+        "categories": [
+            x.strip()
+            for x in window.category_input.text().split(",")
+            if x.strip() != ""
+        ],
     }
 
 
@@ -22,15 +27,18 @@ class Window(qtw.QDialog):
         self.goal_input = qtw.QLineEdit()
         self.minutes_input = qtw.QLineEdit("25")
         self.minutes_input.setValidator(qtg.QIntValidator(1, 99))
+        self.category_input = qtw.QLineEdit()
         self.submit_button = qtw.QPushButton("Start")
         self.submit_button.clicked.connect(self.submit)
 
         layout = qtw.QGridLayout()
         layout.addWidget(qtw.QLabel("Goal:"), 0, 0, 1, 1)
         layout.addWidget(self.goal_input, 0, 1, 1, 3)
-        layout.addWidget(qtw.QLabel("Minutes:"), 1, 0, 1, 1)
-        layout.addWidget(self.minutes_input, 1, 1, 1, 1)
-        layout.addWidget(self.submit_button, 1, 3, 1, 1)
+        layout.addWidget(qtw.QLabel("Categories:"), 1, 0, 1, 1)
+        layout.addWidget(self.category_input, 1, 1, 1, 3)
+        layout.addWidget(qtw.QLabel("Minutes:"), 2, 0, 1, 1)
+        layout.addWidget(self.minutes_input, 2, 1, 1, 1)
+        layout.addWidget(self.submit_button, 2, 3, 1, 1)
         self.setLayout(layout)
 
     def submit(self):

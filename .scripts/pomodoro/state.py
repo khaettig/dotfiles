@@ -1,7 +1,8 @@
 from datetime import datetime
 from playsound import playsound
-from timer import Timer, render_time
+from timer import Timer
 from input import ask_for_input
+from snippets.caldav import create_events, Event
 
 BEEP_PATH = "/home/kevin/.misc/beep.mp3"
 LOG_PATH = "/home/kevin/.pomodoro_log.txt"
@@ -36,7 +37,11 @@ class State:
             self.next_is_break = False
         else:
             input = ask_for_input()
+            if input["goal"].strip() == "":
+                self._stop()
+                return
             self.current_goal = input["goal"]
+            self.current_categories = input["categories"]
             self.timer = Timer("POMODORO", input["minutes"] * 60)
             self.next_is_break = True
 
@@ -46,9 +51,12 @@ class State:
         print(" ", flush=True)
 
     def _log_timer(self):
-        now = self.timer.started.strftime("%Y-%m-%d %H:%M")
-        goal = self.current_goal
-        duration = render_time(self.timer.seconds_since_start)
-
-        with open(LOG_PATH, "a") as f:
-            f.write(f"{now} |{duration} | {goal}\n")
+        create_events(
+            calendar_name="Tracking",
+            events=[Event(
+                start=self.timer.started,
+                end=datetime.now(),
+                title=self.current_goal,
+                categories=self.current_categories,
+            )]
+        )
