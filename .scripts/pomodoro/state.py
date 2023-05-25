@@ -51,12 +51,15 @@ class State:
         print(" ", flush=True)
 
     def _log_timer(self):
-        create_events(
-            calendar_name="Tracking",
-            events=[Event(
-                start=self.timer.started,
-                end=datetime.now(),
-                title=self.current_goal,
-                categories=self.current_categories,
-            )]
-        )
+        try:
+            create_events(
+                calendar_name="Tracking",
+                events=[Event(
+                    start=self.timer.started,
+                    end=datetime.now(),
+                    title=self.current_goal,
+                    categories=self.current_categories,
+                )]
+            )
+        except Exception:
+            pass
