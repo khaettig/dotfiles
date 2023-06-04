@@ -7,7 +7,7 @@ from pandas_ods_reader import read_ods
 from snippets.caldav import create_events, Event
 
 STEP_SIZE = timedelta(minutes=15)
-DATA_FILE = "/home/kevin/Dokumente/Tabellen/Day.ods"
+DATA_FILE = "/home/kevin/Dokumente/Tabellen/Week.ods"
 WEEKDAYS = {
     0: "Monday",
     1: "Tuesday",
