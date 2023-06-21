@@ -66,7 +66,7 @@ def main():
                     ["pytest", *[test.identifier for test in tests]],
                     stdout=sys.stdout,
                     env=os.environ,
-                    # check=True,
+                    check=True,
                 )
             time.sleep(1)
     except KeyboardInterrupt:
