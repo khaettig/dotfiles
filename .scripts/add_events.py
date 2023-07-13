@@ -7,7 +7,7 @@ from pandas_ods_reader import read_ods
 from snippets.caldav import create_events, Event
 
 STEP_SIZE = timedelta(minutes=15)
-DATA_FILE = "/home/kevin/Dokumente/Tabellen/Week.ods"
+PATH = "/home/kevin/Dokumente/Tabellen/"
 WEEKDAYS = {
     0: "Monday",
     1: "Tuesday",
@@ -21,7 +21,7 @@ WEEKDAYS = {
 
 def main():
     args = parse_arguments()
-    events = parse_data(load_data(), args)
+    events = parse_data(load_data(args.file), args)
     create_events(calendar_name="Time Blocking", events=events)
 
 
@@ -29,11 +29,12 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("offset", type=int)
     parser.add_argument("days", type=int)
+    parser.add_argument("file", default="Week.ods", type=str)
     return parser.parse_args()
 
 
-def load_data():
-    raw = read_ods(DATA_FILE, headers=False).to_numpy().transpose()[1:-1]
+def load_data(file_name):
+    raw = read_ods(PATH + file_name, headers=False).to_numpy().transpose()[1:-1]
 
     data = defaultdict(list)
 
