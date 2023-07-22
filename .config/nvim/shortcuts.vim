@@ -56,5 +56,5 @@ autocmd FileType python nnoremap <buffer> <leader>s ^Ofrom unittest import skip<
 
 " Markdown
 autocmd FileType markdown nnoremap <silent> <buffer> <enter> :GoToLink<CR>
-autocmd FileType markdown nnoremap <silent> <buffer> <leader><enter> :AddHabiticaTodo<CR>
+autocmd FileType markdown nnoremap <silent> <buffer> <leader><enter> :AddTodoistTodo<CR>
 autocmd FileType markdown nnoremap <silent> <buffer> ✔ A ✔<ESC>

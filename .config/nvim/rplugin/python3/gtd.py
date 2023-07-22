@@ -12,6 +12,27 @@ class GTD:
     def __init__(self, nvim):
         self.nvim = nvim
 
+    @pynvim.command("AddTodoistTodo", nargs=("*"))
+    def add_todoist_todo(self, args):
+        line = self.nvim.current.buffer[self.nvim.current.window.cursor[0] - 1]
+
+        line = re.sub(r"\<.+\>", "", line)
+        line = re.sub(r"^\-\s*", "", line)
+
+        with open(os.path.expanduser("~/.todoist"), "r") as f:
+            token = f.readlines()[0].strip()
+
+        requests.post(
+            "https://api.todoist.com/rest/v2/tasks",
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json"
+            },
+            json={
+                "content": line,
+            },
+        )
+
     @pynvim.command("AddHabiticaTodo", nargs=("*"))
     def add_habitica_todo(self, args):
         line = self.nvim.current.buffer[self.nvim.current.window.cursor[0] - 1]
