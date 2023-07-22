@@ -12,6 +12,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow'
 
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export SDL_IM_MODULE="fcitx"
+export XMODIFIERS="@im=fcitx"
 
 if [[ -a .localrc ]]; then
     source .localrc
