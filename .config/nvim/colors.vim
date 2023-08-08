@@ -146,6 +146,7 @@ hi! link mkdListItem FgPaleOrange
 hi! link mkdCode FgPaleRose
 hi! link mkdCodeDelimiter FgPaleRose
 hi! link VimwikiTag FgGreen
+hi! link markdownError NONE
 
 " misc
 hi! link Identifier FgBlue
