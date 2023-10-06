@@ -10,10 +10,15 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'janko/vim-test'
 Plug 'guns/xterm-color-table.vim'
 Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'ap/vim-css-color'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'szw/vim-maximizer'
@@ -38,7 +43,7 @@ source ~/.config/nvim/plugins/lightline.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/vim_test.vim
 source ~/.config/nvim/plugins/ultisnips.vim
-source ~/.config/nvim/plugins/completion.vim
+luafile ~/.config/nvim/plugins/cmp.lua
 luafile ~/.config/nvim/plugins/lsp.lua
 luafile ~/.config/nvim/plugins/treesitter.lua
 luafile ~/.config/nvim/plugins/treesitter-playground.lua
