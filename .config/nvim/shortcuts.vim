@@ -55,6 +55,7 @@ nnoremap <leader>A :%diffput<CR><C-w><Right>:%diffget<CR>:wqa<CR>
 " Python
 autocmd FileType python nnoremap <buffer> <leader>b ^O__import__("pdb").set_trace()  # TODO(kh)<ESC>
 autocmd FileType python nnoremap <buffer> <leader>s ^Ofrom unittest import skip<CR>@skip  # TODO(kh)<ESC>
+autocmd FileType python nnoremap <buffer> <leader>rf :!black %<CR>
 
 " Markdown
 autocmd FileType markdown nnoremap <silent> <buffer> <enter> :GoToLink<CR>
