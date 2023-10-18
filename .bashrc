@@ -10,7 +10,7 @@ source ~/.bash_aliases
 
 export PATH="$HOME/.local/bin:$PATH"
 
-export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow'
+export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow -g "!{locale/*}"'
 
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"

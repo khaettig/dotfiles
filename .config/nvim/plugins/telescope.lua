@@ -1,4 +1,8 @@
-require('telescope').setup{}
+require('telescope').setup{
+    defaults = {
+        file_ignore_patterns = {"locale"}
+    }
+}
 require('telescope').load_extension('fzf')
 
 vim.api.nvim_set_keymap('n', '<leader>ef', '<cmd>Telescope find_files<CR>', {})
@@ -10,3 +14,4 @@ vim.api.nvim_set_keymap('n', '<leader>ec', '<cmd>Telescope git_commits<CR>', {})
 vim.api.nvim_set_keymap('n', '<leader>es', '<cmd>Telescope git_stash<CR>', {})
 vim.api.nvim_set_keymap('n', '<leader>eq', '<cmd>Telescope quickfix<CR>', {})
 vim.api.nvim_set_keymap('n', '<leader>em', '<cmd>Telescope marks<CR>', {})
+vim.api.nvim_set_keymap('v', '<leader>eg', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', {})
