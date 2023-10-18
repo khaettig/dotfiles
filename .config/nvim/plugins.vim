@@ -21,6 +21,7 @@ Plug 'SirVer/ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'ap/vim-css-color'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'ThePrimeagen/harpoon'
 Plug 'szw/vim-maximizer'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -49,6 +50,7 @@ luafile ~/.config/nvim/plugins/treesitter.lua
 luafile ~/.config/nvim/plugins/treesitter-playground.lua
 luafile ~/.config/nvim/plugins/telescope.lua
 luafile ~/.config/nvim/plugins/refactoring.lua
+luafile ~/.config/nvim/plugins/harpoon.lua
 
 source ~/.config/nvim/plugins/py_coverage.vim
 source ~/.config/nvim/plugins/ropevim.vim
