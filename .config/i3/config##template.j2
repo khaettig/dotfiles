@@ -17,7 +17,8 @@ set $mod Mod4
 {% set screens = namespace(primary="HDMI-0", secondary="") %}
 
 {% if YADM_HOSTNAME == "kevin-desktop" %}
-{% set screens.secondary ="DP-0" %}
+{% set screens.primary ="DP-2" %}
+{% set screens.secondary ="HDMI-0" %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock_desktop.png" %}
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
