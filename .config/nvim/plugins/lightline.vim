@@ -1,5 +1,6 @@
 let g:lightline = {
 \   'colorscheme': 'default',
+\   'separator': { 'left': "\ue0b8", 'right': "\ue0ba" },
 \   'active': {
 \     'left': [ [ 'mode', 'paste' ],
 \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
