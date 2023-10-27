@@ -20,6 +20,7 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'SirVer/ultisnips'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'ap/vim-css-color'
+Plug 'mortepau/codicons.nvim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'ThePrimeagen/harpoon'
 Plug 'szw/vim-maximizer'
@@ -29,6 +30,10 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'David-Kunz/jester'
 
 " Python specific
 Plug 'kalekseev/vim-coverage.py', {'do': ':UpdateRemotePlugins'}
@@ -51,6 +56,8 @@ luafile ~/.config/nvim/plugins/treesitter-playground.lua
 luafile ~/.config/nvim/plugins/telescope.lua
 luafile ~/.config/nvim/plugins/refactoring.lua
 luafile ~/.config/nvim/plugins/harpoon.lua
+luafile ~/.config/nvim/plugins/nvim-dap.lua
+luafile ~/.config/nvim/plugins/codicons.lua
 
 source ~/.config/nvim/plugins/py_coverage.vim
 source ~/.config/nvim/plugins/ropevim.vim
