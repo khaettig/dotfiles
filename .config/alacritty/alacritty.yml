@@ -36,16 +36,16 @@ colors:
 
 font:
   normal:
-    family: Ubuntu Mono Nerd Font
+    family: Jetbrains Mono Nerd Font
     style: Regular
   bold:
-    family: Ubuntu Mono Nerd Font
+    family: Jetbrains Mono Nerd Font
     style: Bold
   italic:
-    family: Ubuntu Mono Nerd Font
+    family: Jetbrains Mono Nerd Font
     style: Italic
   bold_italic:
-    family: Ubuntu Mono Nerd Font
+    family: Jetbrains Mono Nerd Font
     style: Bold Italic
   size: 14
   offset:
