@@ -3,7 +3,7 @@
 import os
 import stat
 from pathlib import Path
-from subprocess import run, PIPE
+from subprocess import run
 
 import requests
 
@@ -14,11 +14,23 @@ DEV_REQUIREMENTS = f"{HOME}/.scripts/dev_requirements.txt"
 REQUIREMENTS = f"{HOME}/.scripts/requirements.txt"
 PACKAGES = f"{HOME}/.scripts/packages.txt"
 NPM_PACKAGES = f"{HOME}/.scripts/npm_packages.txt"
-SYMLINKS = {f"{HOME}/.git": f"{HOME}/.config/yadm/repo.git/", f"{HOME}/.tmate.conf": f"{HOME}/.tmux.conf"}
+SYMLINKS = {
+    f"{HOME}/.git": f"{HOME}/.config/yadm/repo.git/",
+    f"{HOME}/.tmate.conf": f"{HOME}/.tmux.conf",
+}
+
+
+def log(text):
+    print(f"\033[93m{text}\033[00m")
+
+
+def sh(cmd, check=True, **kwargs):
+    print(f"\033[96m{cmd}\033[00m")
+    return run(cmd, shell=True, check=check, **kwargs)
 
 
 def download_file(url, destination):
-    print(f"Downloading {url} to {destination}")
+    log(f"Downloading {url} to {destination}")
     request = requests.get(url)
     with open(destination, "wb") as f:
         f.write(request.content)
@@ -28,55 +40,105 @@ def make_executable(file_name):
     os.chmod(file_name, os.stat(file_name).st_mode | stat.S_IEXEC)
 
 
-def install_nvim_if_not_installed():
-    if Path(NVIM_INSTALL).is_file():
-        return
-    print("Installing nvim")
+def install_latest_nvim():
+    log("Installing latest nvim")
+    sh(f"rm -f {NVIM_INSTALL}")
     download_file(NVIM_URL, NVIM_INSTALL)
     make_executable(NVIM_INSTALL)
-    run(["git", "config", "--global", "core.editor", "nvim"], check=True)
+    sh("git config --global core.editor nvim")
 
 
 def install_packages():
-    run(["xargs", "-a", PACKAGES, "sudo", "apt-get", "install"], check=True)
+    sh(f"xargs -a {PACKAGES} sudo apt-get install")
 
 
 def install_requirements():
-    run(["pip3", "install", "-r", DEV_REQUIREMENTS], check=True)
-    run(["pip3", "install", "-r", REQUIREMENTS], check=True)
+    sh(f"pip3 install -r {DEV_REQUIREMENTS}")
+    sh(f"pip3 install -r {REQUIREMENTS}")
 
 
 def install_npm_packages():
-    run(["xargs", "-a", NPM_PACKAGES, "sudo", "npm", "install", "-g"], check=True)
+    sh(f"xargs -a {NPM_PACKAGES} sudo npm install -g")
+
+
+def install_i3():
+    sh(
+        "/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb keyring.deb SHA256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4"
+    )
+    sh("sudo apt install ./keyring.deb")
+    sh(
+        "echo \"deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe\" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list"
+    )
+    sh("rm keyring.deb")
+    sh("sudo apt update")
+    sh("sudo apt install i3 i3blocks")
+
+
+def install_picom():
+    cwd = f"{HOME}/Git/picom"
+    sh(f"mkdir -p {HOME}/Git")
+    sh(f"rm -rf {cwd}")
+    sh("git clone https://github.com/yshui/picom", cwd=f"{HOME}/Git")
+    sh("meson setup --buildtype=release build", cwd=cwd)
+    sh("sudo ninja -C build install", cwd=cwd)
+
+
+def install_nerdfonts():
+    cwd = f"{HOME}/.fonts"
+    zip = "UbuntuMono.zip"
+    sh(f"mkdir -p {cwd}")
+    sh(
+        f"wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/{zip}",
+        cwd=cwd,
+    )
+    sh(f"unzip -o {zip}", cwd=cwd)
+    sh(f"rm -f {zip}", cwd=cwd)
+    sh("fc-cache -f")
 
 
 def install_symlinks():
     for source, target in SYMLINKS.items():
         try:
             Path(source).symlink_to(target)
-            print(f"Installed symlink from {target} to {source}")
+            log(f"Installed symlink from {target} to {source}")
         except FileExistsError:
             pass
 
+
 def install_newer_node_version():
-    run("curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -", shell=True, check=True)
-    run(["sudo", "apt-get", "install", "-y", "nodejs"], check=True)
+    VERSION = "20"
+    KEYRING = "/etc/apt/keyrings/nodesource.gpg"
+    sh(f"sudo rm -f {KEYRING}")
+    sh("sudo mkdir -p /etc/apt/keyrings")
+    sh(
+        f"curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o {KEYRING}"
+    )
+    sh(
+        f'echo "deb [signed-by={KEYRING}] https://deb.nodesource.com/node_{VERSION}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list'
+    )
+    sh("sudo apt-get update")
+    sh("sudo apt-get install -y nodejs")
 
 
 def install_crontab():
-    run(["crontab", f"{HOME}/.scripts/crontab"], check=True)
+    sh(f"crontab {HOME}/.scripts/crontab")
 
 
 def main():
     install_packages()
-    install_nvim_if_not_installed()
+    install_latest_nvim()
     install_newer_node_version()
     install_requirements()
     install_npm_packages()
+    install_i3()
+    install_picom()
     install_symlinks()
     install_crontab()
-    run(["systemctl", "--user", "enable", "syncthing.service"], check=True)
-    run(["sudo", "sh", f"{HOME}/.scripts/install_pam_autologin.sh"], check=True)
+    install_nerdfonts()
+    sh("sudo chsh -s $(which zsh)")
+    sh("sudo snap install alacritty")
+    sh("systemctl --user enable syncthing.service")
+    sh(f"sudo sh {HOME}/.scripts/install_pam_autologin.sh")
 
 
 if __name__ == "__main__":
