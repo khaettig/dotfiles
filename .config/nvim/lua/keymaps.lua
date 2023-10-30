@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+local autocmd = vim.api.nvim_create_autocmd
 
 keymap.set("n", "ß", ":wa<CR>", { desc = "Save all" })
 keymap.set("n", "ẞ", ":q<CR>", { desc = "Quit" })
@@ -25,16 +26,16 @@ keymap.set("n", "ü", ":cprevious<CR>zz", { desc = "Go to previous QF item" })
 keymap.set("n", "ö", ":cnext<CR>zz", { desc = "Go to next QF item" })
 keymap.set("n", "Ü", ":lprevious<CR>zz", { desc = "Go to next LF item" })
 keymap.set("n", "Ö", ":lnext<CR>zz", { desc = "Go to next LF item" })
-keymap.set("n", "<leader>ü", ":colder<CR>", { desc = "Open older QF list"})
-keymap.set("n", "<leader>ö", ":cnewer<CR>", { desc = "Open newer QF list"})
-keymap.set("n", "<leader>Ü", ":lolder<CR>", { desc = "Open older LF list"})
-keymap.set("n", "<leader>Ö", ":lnewer<CR>", { desc = "Open newer LF list"})
+keymap.set("n", "<leader>ü", ":colder<CR>", { desc = "Open older QF list" })
+keymap.set("n", "<leader>ö", ":cnewer<CR>", { desc = "Open newer QF list" })
+keymap.set("n", "<leader>Ü", ":lolder<CR>", { desc = "Open older LF list" })
+keymap.set("n", "<leader>Ö", ":lnewer<CR>", { desc = "Open newer LF list" })
 keymap.set("n", "ä", function() require("functions.toggle_list")("quickfix") end, { silent = true })
 keymap.set("n", "Ä", function() require("functions.toggle_list")("loclist") end, { silent = true })
 
 -- Diagnostics
-keymap.set("n", "”", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostics" , silent = true })
-keymap.set("n", "—", vim.diagnostic.goto_next, { desc = "Go to next diagnostics" , silent = true })
+keymap.set("n", "”", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostics", silent = true })
+keymap.set("n", "—", vim.diagnostic.goto_next, { desc = "Go to next diagnostics", silent = true })
 keymap.set('n', '„', vim.diagnostic.open_float, { desc = "Open diagnostics" })
 
 -- [C]overage
@@ -65,8 +66,11 @@ keymap.set("n", "<leader>eq", require("telescope.builtin").quickfix, { desc = "F
 keymap.set("n", "<leader>em", require("telescope.builtin").marks, { desc = "Find [M]arks" })
 keymap.set("n", "<leader>ed", require("telescope.builtin").diagnostics, { desc = "Find [D]iagnostics" })
 keymap.set({ "n", "v" }, "<leader>es", require("telescope.builtin").grep_string, { desc = "Find [S]tring" })
-keymap.set("n", "<leader>en", function() require("telescope.builtin").live_grep({ cwd = "~/.config/nvim" }) end, { desc = "Find [N]vim config" })
-keymap.set('n', '<leader>e%', function() require("telescope.builtin").live_grep({ default_text = vim.fn.expand("%:t") }) end, { desc = "Find [%]Current File" })
+keymap.set("n", "<leader>en", function() require("telescope.builtin").live_grep({ cwd = "~/.config/nvim" }) end,
+{ desc = "Find [N]vim config" })
+keymap.set('n', '<leader>e%',
+function() require("telescope.builtin").live_grep({ default_text = vim.fn.expand("%:t") }) end,
+{ desc = "Find [%]Current File" })
 
 -- [N]
 keymap.set("n", "<leader>no", ":noh<CR>", { desc = "[N][o] highlight", silent = true })
@@ -77,7 +81,7 @@ keymap.set("n", "<leader>no", ":noh<CR>", { desc = "[N][o] highlight", silent = 
 -- [B]reakpoint
 keymap.set("n", "<leader>b", require("dap").toggle_breakpoint, { desc = "[B]reakpoint", silent = true })
 keymap.set("n", "<leader>B", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
-{ desc = "Conditional [B]reakpoint", silent = true })
+    { desc = "Conditional [B]reakpoint", silent = true })
 
 
 -- TODO Use neotest:
@@ -93,9 +97,18 @@ keymap.set("n", "<leader>B", function() require("dap").set_breakpoint(vim.fn.inp
 -- autocmd FileType javascript nnoremap <buffer> <leader>dl :lua require"jester".debug_last()<CR>
 
 -- Markdown
--- autocmd FileType markdown nnoremap <silent> <buffer> <enter> :GoToLink<CR>
--- autocmd FileType markdown nnoremap <silent> <buffer> <leader><enter> :AddTodoistTodo<CR>
--- autocmd FileType markdown nnoremap <silent> <buffer> ✔ A ✔<ESC>
+autocmd(
+    "FileType",
+    {
+        pattern = "markdown",
+        callback = function()
+            local opts = { silent = true, buffer = true }
+            keymap.set("n", "✔", "A ✔<ESC>", opts)
+            keymap.set("n", "<enter>", require("functions.md_goto_link"), opts)
+            keymap.set("n", "<leader><enter>", require("functions.md_add_todo"), opts)
+        end
+    }
+)
 
 -- [Leader]
 keymap.set("n", "<leader><space>s", ":source %<CR>", { desc = "[S]ource current file" })

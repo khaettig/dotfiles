@@ -1,8 +1,5 @@
 local cmd, opt = vim.cmd, vim.opt
 
-cmd("syntax on")
-cmd("filetype plugin on")
-
 vim.g.mapleader = " "
 opt.clipboard = "unnamedplus"
 opt.splitright = true
