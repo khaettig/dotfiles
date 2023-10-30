@@ -29,8 +29,8 @@ keymap.set("n", "<leader>ü", ":colder<CR>", { desc = "Open older QF list"})
 keymap.set("n", "<leader>ö", ":cnewer<CR>", { desc = "Open newer QF list"})
 keymap.set("n", "<leader>Ü", ":lolder<CR>", { desc = "Open older LF list"})
 keymap.set("n", "<leader>Ö", ":lnewer<CR>", { desc = "Open newer LF list"})
-keymap.set("n", "ä", ":lua require'functions.toggle_qf.toggle_qf'()<CR>", { silent = true }) -- TODO
-keymap.set("n", "Ä", ":lua require'functions.toggle_lf.toggle_qf'()<CR>", { silent = true }) -- TODO
+keymap.set("n", "ä", function() require("functions.toggle_list")("quickfix") end, { silent = true })
+keymap.set("n", "Ä", function() require("functions.toggle_list")("loclist") end, { silent = true })
 
 -- Diagnostics
 keymap.set("n", "”", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostics" , silent = true })
