@@ -2,7 +2,7 @@
 
 cd ~/.config/nvim/
 if [[ -n "$TMUX" ]]; then
-  nvim init.vim
+  nvim init.lua
 else
-  tmux new-session -A -s nvim nvim init.vim
+  tmux new-session -A -s nvim nvim init.lua
 fi

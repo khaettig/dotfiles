@@ -1,4 +1,4 @@
-local cmd, fn, opt, api = vim.cmd, vim.fn, vim.opt, vim.api
+local cmd, opt, api = vim.cmd, vim.opt, vim.api
 
 opt.termguicolors = true
 
@@ -207,3 +207,15 @@ api.nvim_set_hl(0, "Comment", { link ="FgPaleYellowBold" })
 api.nvim_set_hl(0, "@comment", { link ="FgPaleYellowBold" })
 api.nvim_set_hl(0, "Todo", { link ="FgBlueBold" })
 api.nvim_set_hl(0, "@label", { link ="FgPaleJade" })
+
+cmd.syntax([[match GTDLink "\[[a-zäöüßA-Z0-9\./:~_\-\(\)]*\]"]])
+cmd([[hi! link GTDLink FgPaleBlue]])
+
+cmd.syntax([[match Deadline "<[0-9\-]\+>"]])
+cmd([[hi! link Deadline WhiteOnBlue]])
+
+cmd.syntax([[match HighPriority "<high>"]])
+cmd([[hi! link HighPriority WhiteOnBlood]])
+
+cmd.syntax([[match TodoDone ".*✔$"]])
+cmd([[hi! link TodoDone FgGray]])

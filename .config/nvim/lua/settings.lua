@@ -1,7 +1,6 @@
-local cmd, fn, opt = vim.cmd, vim.fn, vim.opt
+local cmd, opt = vim.cmd, vim.opt
 
 cmd("syntax on")
-cmd("color ron")
 cmd("filetype plugin on")
 
 vim.g.mapleader = " "

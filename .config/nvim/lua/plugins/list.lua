@@ -25,7 +25,7 @@ require"lazy".setup({
 
   "preservim/nerdtree",
   "nvim-lualine/lualine.nvim",
-  "airblade/vim-gitgutter",
+  "lewis6991/gitsigns.nvim",
 
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
@@ -36,7 +36,7 @@ require"lazy".setup({
   "szw/vim-maximizer",
 
   "ThePrimeagen/vim-be-good",
-  "ap/vim-css-color",
+  -- "ap/vim-css-color",
   "guns/xterm-color-table.vim",
 
   -- Python specific
@@ -47,14 +47,15 @@ require"lazy".setup({
   "retorillo/istanbul.vim",
 })
 
-require "plugins.treesitter"
-require "plugins.lsp"
-require "plugins.telescope"
-require "plugins.harpoon"
-require "plugins.cmp"
-require "plugins.luasnip"
-require "plugins.dap"
-require "plugins.nerdtree"
-require "plugins.lualine"
-require "plugins.fugitive"
-require "plugins.ropevim"
+require "plugins._nvim-treesitter"
+require "plugins._nvim-lspconfig"
+require "plugins._telescope"
+require "plugins._harpoon"
+require "plugins._nvim-cmp"
+require "plugins._luasnip"
+require "plugins._nvim-dap"
+require "plugins._nerdtree"
+require "plugins._lualine"
+require "plugins._gitsigns"
+require "plugins._vim-fugitive"
+require "plugins._ropevim"
