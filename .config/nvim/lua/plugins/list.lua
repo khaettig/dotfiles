@@ -26,7 +26,8 @@ if not LazyLoaded then
     "rcarriga/nvim-dap-ui",
     "mfussenegger/nvim-dap-python",
 
-    "preservim/nerdtree",
+    "nvim-tree/nvim-tree.lua",
+    "nvim-tree/nvim-web-devicons",
     "nvim-lualine/lualine.nvim",
     "lewis6991/gitsigns.nvim",
 
@@ -39,7 +40,7 @@ if not LazyLoaded then
     "szw/vim-maximizer",
 
     "ThePrimeagen/vim-be-good",
-    -- "ap/vim-css-color",
+    "ap/vim-css-color",
     "guns/xterm-color-table.vim",
 
     -- Python specific
@@ -60,7 +61,7 @@ require "plugins._harpoon"
 require "plugins._nvim-cmp"
 require "plugins._luasnip"
 require "plugins._nvim-dap"
-require "plugins._nerdtree"
+require "plugins._nvim-tree"
 require "plugins._lualine"
 require "plugins._gitsigns"
 require "plugins._vim-fugitive"

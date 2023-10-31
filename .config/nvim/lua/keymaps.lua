@@ -4,6 +4,8 @@ local autocmd = vim.api.nvim_create_autocmd
 keymap.set("n", "ß", ":wa<CR>", { desc = "Save all" })
 keymap.set("n", "ẞ", ":q<CR>", { desc = "Quit" })
 keymap.set("n", "Q", "@q", { desc = "Use q macro" })
+keymap.set("n", "<C-y>", ":NvimTreeToggle<CR>", { silent = true })
+keymap.set("n", "<leader><C-y>", ":NvimTreeFindFile<CR>", { silent = true })
 
 -- Split navigation
 keymap.set("n", "<S-Up>", "<C-w><Up>", { desc = "Go [Up]" })
