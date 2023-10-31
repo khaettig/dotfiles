@@ -1,7 +1,6 @@
-if not LazyLoaded then
-    require("lazy").setup({
+require("lazy").setup({
     "nvim-lua/plenary.nvim",
-    { "nvim-treesitter/nvim-treesitter", build="TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", build=":TSUpdate" },
     "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/playground",
     "neovim/nvim-lspconfig",
@@ -19,12 +18,11 @@ if not LazyLoaded then
     { "L3MON4D3/LuaSnip", build="make install_jsregexp", version="v2.*" },
     "saadparwaiz1/cmp_luasnip",
 
-    "janko/vim-test",
+    "nvim-neotest/neotest",
+    "nvim-neotest/neotest-python",
     "David-Kunz/jester",
-
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
-    "mfussenegger/nvim-dap-python",
 
     "nvim-tree/nvim-tree.lua",
     "nvim-tree/nvim-web-devicons",
@@ -49,20 +47,19 @@ if not LazyLoaded then
 
     -- Javascript specific
     "retorillo/istanbul.vim",
-    })
-    LazyLoaded = true
-end
+})
 
-require "plugins._nvim-treesitter"
-require "plugins._nvim-treesitter-context"
-require "plugins._nvim-lspconfig"
-require "plugins._telescope"
-require "plugins._harpoon"
-require "plugins._nvim-cmp"
-require "plugins._luasnip"
-require "plugins._nvim-dap"
-require "plugins._nvim-tree"
-require "plugins._lualine"
-require "plugins._gitsigns"
-require "plugins._vim-fugitive"
-require "plugins._ropevim"
+require("plugins._nvim-treesitter")
+require("plugins._nvim-treesitter-context")
+require("plugins._nvim-lspconfig")
+require("plugins._telescope")
+require("plugins._harpoon")
+require("plugins._nvim-cmp")
+require("plugins._luasnip")
+require("plugins._nvim-neotest")
+require("plugins._nvim-dap")
+require("plugins._nvim-tree")
+require("plugins._lualine")
+require("plugins._gitsigns")
+require("plugins._vim-fugitive")
+require("plugins._ropevim")

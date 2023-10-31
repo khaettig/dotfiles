@@ -4,6 +4,8 @@ local autocmd = vim.api.nvim_create_autocmd
 keymap.set("n", "ß", ":wa<CR>", { desc = "Save all" })
 keymap.set("n", "ẞ", ":q<CR>", { desc = "Quit" })
 keymap.set("n", "Q", "@q", { desc = "Use q macro" })
+keymap.set("n", "<PageUp>", "<C-u>")
+keymap.set("n", "<PageDown>", "<C-d>")
 keymap.set("n", "<C-y>", ":NvimTreeToggle<CR>", { silent = true })
 keymap.set("n", "<leader><C-y>", ":NvimTreeFindFile<CR>", { silent = true })
 
@@ -26,8 +28,6 @@ keymap.set("v", "<A-a>", ":m '>+1<CR>gv=gv", { desc = "Move block down" })
 -- Quickfix
 keymap.set("n", "ü", ":cprevious<CR>zz", { desc = "Go to previous QF item" })
 keymap.set("n", "ö", ":cnext<CR>zz", { desc = "Go to next QF item" })
-keymap.set("n", "Ü", ":lprevious<CR>zz", { desc = "Go to next LF item" })
-keymap.set("n", "Ö", ":lnext<CR>zz", { desc = "Go to next LF item" })
 keymap.set("n", "<leader>ü", ":colder<CR>", { desc = "Open older QF list" })
 keymap.set("n", "<leader>ö", ":cnewer<CR>", { desc = "Open newer QF list" })
 keymap.set("n", "<leader>Ü", ":lolder<CR>", { desc = "Open older LF list" })
@@ -86,17 +86,50 @@ keymap.set("n", "<leader>B", function() require("dap").set_breakpoint(vim.fn.inp
     { desc = "Conditional [B]reakpoint", silent = true })
 
 
--- TODO Use neotest:
--- autocmd FileType python nnoremap <buffer> <Leader>dn :lua require("dap-python").test_method()<CR>
--- autocmd FileType python nnoremap <buffer> <Leader>df :lua require("dap-python").test_class()<CR>
--- autocmd FileType python vnoremap <buffer> <Leader>ds <ESC>:lua require("dap-python").debug_selection()<CR>
+-- [T]est
+local neotest = require("neotest")
+keymap.set("n", "<leader>tn", neotest.run.run, { desc = "[T]est [N]earest", silent = true })
+keymap.set("n", "<leader>tdn", function() neotest.run.run({ strategy = "dap" }) end, { desc = "[T]est [D]ebug [N]earest", silent = true })
+keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, { desc = "[T]est [F]ile", silent = true })
+keymap.set("n", "<leader>tdn", function() neotest.run.run(vim.fn.expand("%"), { strategy = "dap" }) end, { desc = "[T]est [D]ebug [F]ile", silent = true })
+keymap.set("n", "<leader>ta", function() neotest.run.run({ suite = true }) end, { desc = "[T]est [A]ll", silent = true })
+keymap.set("n", "<leader>tda", function() neotest.run.run({ suite = true, strategy = "dap" }) end, { desc = "[T]est [D]ebug [A]ll", silent = true })
+keymap.set("n", "<leader>tl", neotest.run.run_last, { desc = "[T]est [L]ast", silent = true })
+keymap.set("n", "<leader>tdl", function() neotest.run.run_last({ strategy = "dap" }) end, { desc = "[T]est [D]ebug [L]ast", silent = true })
+keymap.set("n", "<leader>tx", neotest.run.stop, { desc = "[T]est Stop", silent = true })
+keymap.set("n", "<leader>to", neotest.output_panel.toggle, { desc = "[T]est [O]utput", silent = true })
+keymap.set("n", "<leader>ts", neotest.summary.toggle, { desc = "[T]est [S]ummary", silent = true })
+keymap.set("n", "Ü", function() neotest.jump.next({ status = "failed" }) end, { desc = "Jump to previous failing test" })
+keymap.set("n", "Ö", function() neotest.jump.prev({ status = "failed" }) end, { desc = "Jump to next failing test" })
 
--- autocmd FileType javascript nnoremap <buffer> <leader>tn :lua require"jester".run()<CR>
--- autocmd FileType javascript nnoremap <buffer> <leader>tf :lua require"jester".run_file()<CR>
--- autocmd FileType javascript nnoremap <buffer> <leader>tl :lua require"jester".run_last()<CR>
--- autocmd FileType javascript nnoremap <buffer> <leader>dn :lua require"jester".debug()<CR>
--- autocmd FileType javascript nnoremap <buffer> <leader>df :lua require"jester".debug_file()<CR>
--- autocmd FileType javascript nnoremap <buffer> <leader>dl :lua require"jester".debug_last()<CR>
+-- [Leader]
+keymap.set("n", "<leader><space>s", ":source %<CR>", { desc = "[S]ource current file" })
+
+-- Functional keys
+keymap.set("n", "<F5>", require("dap").continue)
+keymap.set("n", "<F6>", require("dap").step_into)
+keymap.set("n", "<F7>", require("dap").step_over)
+keymap.set("n", "<F8>", require("dap").step_out)
+keymap.set("n", "<F9>", require("dap").terminate)
+keymap.set("n", "<F10>", require("dap").disconnect)
+keymap.set("n", "<F11>", require("dap").clear_breakpoints)
+keymap.set("n", "<F12>", require("dapui").toggle)
+
+-- Javascript
+autocmd(
+    "FileType",
+    {
+        pattern = "javascript",
+        callback = function()
+            keymap.set("n", "<leader>tn", require("jester").run, { buffer = true })
+            keymap.set("n", "<leader>tdn", require("jester").debug, { buffer = true })
+            keymap.set("n", "<leader>tf", require("jester").run_file, { buffer = true })
+            keymap.set("n", "<leader>tdf", require("jester").debug_file, { buffer = true })
+            keymap.set("n", "<leader>tl", require("jester").run_last, { buffer = true })
+            keymap.set("n", "<leader>tdl", require("jester").debug_last, { buffer = true })
+        end
+    }
+)
 
 -- Markdown
 autocmd(
@@ -111,6 +144,3 @@ autocmd(
         end
     }
 )
-
--- [Leader]
-keymap.set("n", "<leader><space>s", ":source %<CR>", { desc = "[S]ource current file" })

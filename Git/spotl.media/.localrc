@@ -2,6 +2,7 @@ source .venv/bin/activate
 
 export DJANGO_SETTINGS_MODULE=spotl.dev_settings
 export PYTHONPATH="$PYTHONPATH:/home/kevin/Git/spotl.media/apps"
+export NODE_OPTIONS=--openssl-legacy-provider
 
 alias runapp="python3 manage.py run --no-webpack-stdout --filter-logs"
 alias debugapp="DEBUG=True python3 manage.py run --no-wait --no-webpack-stdout --debugpy 5678"

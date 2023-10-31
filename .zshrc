@@ -30,6 +30,10 @@ alias kube_prod="gcloud config set project spotl-media-prod && gcloud container 
 alias kubec="sh ~/.scripts/kubec.sh"
 alias kubenuke="kubectl delete pod --grace-period=0 --force"
 
+if [[ -a .localrc ]]; then
+    source .localrc
+fi
+
 autoload -U colors && colors
 
 HISTSIZE=10000

@@ -1,15 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
-vim.keymap.set("n", "<F6>", ":lua require'dap'.step_into()<CR>")
-vim.keymap.set("n", "<F7>", ":lua require'dap'.step_over()<CR>")
-vim.keymap.set("n", "<F8>", ":lua require'dap'.step_out()<CR>")
-vim.keymap.set("n", "<F9>", ":lua require'dap'.terminate()<CR>")
-vim.keymap.set("n", "<F10>", ":lua require'dap'.disconnect()<CR>")
-vim.keymap.set("n", "<F12>", ":lua require'dap'.clear_breakpoints()<CR>")
-vim.keymap.set("n", "<leader>du", ":lua require'dapui'.toggle()<CR>")
-
 dapui.setup({
     layouts = {
         {
@@ -41,10 +32,6 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
-
--- Python
-require("dap-python").setup("python3")
-require('dap-python').test_runner = 'pytest'
 
 -- Javascript
 require("jester").setup({
