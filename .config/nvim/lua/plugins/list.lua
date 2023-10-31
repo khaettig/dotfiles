@@ -3,6 +3,7 @@ if not LazyLoaded then
     "nvim-lua/plenary.nvim",
     { "nvim-treesitter/nvim-treesitter", build="TSUpdate" },
     "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/playground",
     "neovim/nvim-lspconfig",
 
     "nvim-telescope/telescope.nvim",
