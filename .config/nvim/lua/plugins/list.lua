@@ -2,6 +2,7 @@ if not LazyLoaded then
     require("lazy").setup({
     "nvim-lua/plenary.nvim",
     { "nvim-treesitter/nvim-treesitter", build="TSUpdate" },
+    "nvim-treesitter/nvim-treesitter-context",
     "neovim/nvim-lspconfig",
 
     "nvim-telescope/telescope.nvim",
@@ -51,6 +52,7 @@ if not LazyLoaded then
 end
 
 require "plugins._nvim-treesitter"
+require "plugins._nvim-treesitter-context"
 require "plugins._nvim-lspconfig"
 require "plugins._telescope"
 require "plugins._harpoon"

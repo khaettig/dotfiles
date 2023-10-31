@@ -1,4 +1,4 @@
-local cmd, opt = vim.cmd, vim.opt
+local opt = vim.opt
 
 vim.g.mapleader = " "
 opt.clipboard = "unnamedplus"
@@ -6,6 +6,7 @@ opt.splitright = true
 opt.splitbelow = true
 opt.winminheight = 0
 opt.winminwidth = 0
+opt.number = true
 opt.relativenumber = true
 opt.ignorecase = true
 opt.smartcase = true
