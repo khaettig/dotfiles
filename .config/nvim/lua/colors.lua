@@ -119,6 +119,7 @@ cmd("hi! link fugitiveblameNotCommittedYet FgGray")
 cmd("hi! link fugitiveblameDelimiter FgGray")
 
 -- git
+cmd("hi! link gitcommitSummary Normal")
 cmd("hi! link gitcommitComment FgPaleOrange")
 cmd("hi! link gitcommitOnBranch FgPaleOrange")
 cmd("hi! link gitcommitBranch FgPaleBlue")
