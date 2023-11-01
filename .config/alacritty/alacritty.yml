@@ -22,10 +22,10 @@ shell:
 
 colors:
   primary:
-    background: "#101010"
+    background: "#121212"
     foreground: "#C7C8D0"
   normal:
-    black: "#101010"
+    black: "#121212"
     red: "#800000"
     green: "#007400"
     yellow: "#FFFF00"

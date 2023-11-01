@@ -106,6 +106,9 @@ highlight({
 
     NvimTreeRootFolder = { fg=colors.fern },
 
+    NeotestAdapterName = { fg=colors.cerulean },
+    NeotestTarget = { fg=colors.cerulean },
+
     GTDLink = { fg=colors.cerulean },
     Deadline = { fg=colors.white, bg=colors.cerulean },
     HigPriority = { fg=colors.white, bg=colors.blood },
