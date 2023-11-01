@@ -67,6 +67,7 @@ keymap.set("n", "<leader>ec", require("telescope.builtin").git_commits, { desc =
 keymap.set("n", "<leader>eq", require("telescope.builtin").quickfix, { desc = "Find [Q]uickfix" })
 keymap.set("n", "<leader>em", require("telescope.builtin").marks, { desc = "Find [M]arks" })
 keymap.set("n", "<leader>ed", require("telescope.builtin").diagnostics, { desc = "Find [D]iagnostics" })
+keymap.set("n", "<leader>el", require("telescope.builtin").highlights, { desc = "Find High[L]ights" })
 keymap.set({ "n", "v" }, "<leader>es", require("telescope.builtin").grep_string, { desc = "Find [S]tring" })
 keymap.set("n", "<leader>en", function() require("telescope.builtin").live_grep({ cwd = "~/.config/nvim" }) end,
 { desc = "Find [N]vim config" })
@@ -76,6 +77,7 @@ function() require("telescope.builtin").live_grep({ default_text = vim.fn.expand
 
 -- [N]
 keymap.set("n", "<leader>no", ":noh<CR>", { desc = "[N][o] highlight", silent = true })
+keymap.set("n", "<leader>nt", require("functions.md_add_note"), { desc = "Add [N]o[T]e", silent = true })
 
 -- [R]efactoring
 -- See "lua/plugins/lsp.lua"

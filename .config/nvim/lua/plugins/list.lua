@@ -49,6 +49,9 @@ require("lazy").setup({
     "retorillo/istanbul.vim",
 })
 
+-- load before other plugins to take effect
+require("plugins._nvim-web-devicons")
+
 require("plugins._nvim-treesitter")
 require("plugins._nvim-treesitter-context")
 require("plugins._nvim-lspconfig")

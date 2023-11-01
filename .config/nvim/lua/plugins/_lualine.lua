@@ -1,7 +1,21 @@
+local colors = require("colors")
+
+local b = { fg = colors.white, bg = colors.gray3 }
+local c = { fg = colors.gray2, bg = colors.gray4 }
+local y = { fg = colors.gray2, bg = colors.gray4 }
+local z = { fg = colors.white, bg = colors.gray3, gui = 'bold' }
+
 require('lualine').setup({
     options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = {
+            normal = { a = { fg = colors.gray5, bg = colors.gray2, gui = "bold" }, b = b, c = c, y = y, z = z },
+            inactive = { a = { fg = colors.gray5, bg = colors.gray2, gui = "bold" }, b = b, c = c, y = y, z = z },
+            insert = { a = { fg = colors.white, bg = colors.cerulean, gui = "bold" }, b = b, c = c, y = y, z = z },
+            replace = { a = { fg = colors.white, bg = colors.blood, gui = "bold" }, b = b, c = c, y = y, z = z },
+            visual = { a = { fg = colors.black, bg = colors.tan, gui = "bold" }, b = b, c = c, y = y, z = z },
+            command = { a = { fg = colors.white, bg = colors.gray4, gui = "bold" }, b = b, c = c, y = y, z = z },
+        },
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -38,19 +52,3 @@ require('lualine').setup({
     inactive_winbar = {},
     extensions = {}
 })
-
--- vim.g.lightline = {
---   colorscheme = "default",
---   separator = { left = "\ue0b8", right = "\ue0ba" },
---   active = {
---     left = { { "mode", "paste" },
---              { "gitbranch", "readonly", "filename", "modified" } },
---     right =  { {}, { "lineinfo" } , { 'filetype' },
---   },
---   inactive =  {
---     left = {{ "readonly", "filename", "modified" }},
---     right = {},
---   },
---   component_function = { gitbranch = "FugitiveHead" }
---   },
--- }

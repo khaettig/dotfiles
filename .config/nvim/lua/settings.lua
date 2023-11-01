@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+opt.termguicolors = true
+vim.cmd.colorscheme("calm")
+
 vim.g.mapleader = " "
 opt.clipboard = "unnamedplus"
 opt.splitright = true
@@ -14,6 +17,7 @@ opt.encoding = "utf-8"
 opt.viminfo = "<800,:100,/50,'100,f1"
 opt.exrc = true
 opt.secure = true
+
 
 opt.expandtab = true
 opt.shiftwidth = 4
