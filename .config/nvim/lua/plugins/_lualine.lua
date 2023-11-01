@@ -16,8 +16,8 @@ require('lualine').setup({
             visual = { a = { fg = colors.black, bg = colors.tan, gui = "bold" }, b = b, c = c, y = y, z = z },
             command = { a = { fg = colors.white, bg = colors.gray4, gui = "bold" }, b = b, c = c, y = y, z = z },
         },
-        component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
+        component_separators = { left = ' ', right = ' ' },
         disabled_filetypes = {
             statusline = {},
             winbar = {},

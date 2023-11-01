@@ -23,6 +23,8 @@ local function highlight(groups)
     end
 end
 
+vim.cmd.syntax([[match TODO "TODO[a-z\(\)]*:+"]])
+
 highlight({
     ColorColumn = { bg=colors.gray4 },
     Comment = { fg=colors.tan },
@@ -43,7 +45,7 @@ highlight({
     Directory = { fg=colors.cerulean },
     EndOfBuffer = { fg=bg, bg=bg },
     ErrorMsg = { fg=colors.white, bg=colors.blood },
-    FloatBorder = not_set(),
+    FloatBorder = { fg=colors.gray4, bg=colors.gray4 },
     FloatFooter = not_set(),
     FloatTitle = not_set(),
     FoldColumn = not_set(),
@@ -53,7 +55,7 @@ highlight({
     LineNr = { fg=colors.olive, bg=colors.gray5 },
     LineNrAbove = { fg=colors.olive, bg=colors.gray5 },
     LineNrBelow = { fg=colors.olive, bg=colors.gray5 },
-    MatchParen = { fg=colors.fern, bg=colors.cerulean },
+    MatchParen = { fg=colors.teal, bg=colors.cerulean },
     ModeMsg = { fg=fg, bold=true },
     MoreMsg = { fg=fg },
     MsgArea = { fg=fg },
@@ -102,9 +104,47 @@ highlight({
     WinSeparator = { fg=colors.gray3, bg=colors.gray3 },
     lCursor = not_set(),
 
-    ["@operator"] = { fg=colors.fern },
-    ["@punctuation"] = { fg=colors.fern },
-    ["@constructor"] = { fg=colors.fern },
-
     NvimTreeRootFolder = { fg=colors.fern },
+
+    GTDLink = { fg=colors.cerulean },
+    Deadline = { fg=colors.white, bg=colors.cerulean },
+    HigPriority = { fg=colors.white, bg=colors.blood },
+    TodoDone = { fg=colors.gray2, strikethrough=true },
+    Todo = { fg=colors.white, bg=colors.blue, bold=true },
+
+    ["@property"] = { fg=colors.gray1 },
+    ["@method"] = { fg=colors.gray1 },
+    ["@field"] = { fg=colors.gray1 },
+    ["@constant"] = { fg=colors.gray1 },
+    ["@parameter"] = { fg=colors.gray1 },
+    ["@variable"] = { fg=colors.gray1 },
+    ["@lsp.type.variable"] = { fg=colors.gray1 },
+    ["@lsp.type.parameter"] = { fg=colors.gray1 },
+    ["@lsp.type.property"] = { fg=colors.gray1 },
+    ["@lsp.typemod.variable"] = { fg=colors.gray1 },
+    ["@lsp.typemod.parameter"] = { fg=colors.gray1 },
+    ["@lsp.typemod.property.declaration"] = { fg=colors.gray1 },
+
+    ["@include"] = { fg=colors.gray2 },
+    ["@variable.builtin"] = { fg=colors.gray2 },
+    ["@keyword.operator"] = { fg=colors.gray2 },
+
+    ["@punctuation"] = { fg=colors.teal },
+    ["@lsp.type.member"] = { fg=colors.teal },
+    ["@lsp.type.method"] = { fg=colors.teal },
+    ["@lsp.type.function"] = { fg=colors.teal },
+    ["@method.call"] = { fg=colors.teal },
+    ["@function.call"] = { fg=colors.teal },
+
+    ["@type"] = { fg=colors.fern },
+    ["@lsp.mod.declaration"] = { fg=colors.fern },
+    ["@lsp.typemod.class.declaration"] = { fg=colors.fern },
+
+    ["@lsp.type.class"] = { fg=colors.fern },
+
+    ["@string"] = { fg=colors.coral },
+
+    ["@string.documentation"] = { fg=colors.coral },
+
+    ["@text.title"] = { fg=colors.fern, bold=true },
 })
