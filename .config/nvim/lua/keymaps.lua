@@ -40,8 +40,9 @@ keymap.set("n", "”", vim.diagnostic.goto_prev, { desc = "Go to previous diagno
 keymap.set("n", "—", vim.diagnostic.goto_next, { desc = "Go to next diagnostics", silent = true })
 keymap.set('n', '„', vim.diagnostic.open_float, { desc = "Open diagnostics" })
 
--- [C]overage
--- TODO
+-- [C]
+keymap.set("n", "<leader>cn", require("functions.code_review").code_review_next, { desc = "[C]ode review [N]ext" })
+keymap.set("n", "<leader>cp", require("functions.code_review").code_review_previous, { desc = "[C]ode review [P]revious" })
 
 -- [H]arpoon
 keymap.set("n", "<leader>h", require("harpoon.ui").toggle_quick_menu, { desc = "Open [H]arpoon marks" })
