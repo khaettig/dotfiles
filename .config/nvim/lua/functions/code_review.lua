@@ -3,7 +3,7 @@ local M = {}
 M.code_review_next = function()
     vim.cmd("silent! cnext")
     vim.cmd("only")
-    vim.cmd("Gvdiff " .. vim.g.current_review_branch)
+    vim.cmd("silent! Gvdiff " .. vim.g.current_review_branch)
     vim.cmd("wincmd H")
     vim.cmd("wincmd l")
 end
@@ -11,7 +11,7 @@ end
 M.code_review_previous = function()
     vim.cmd("silent! cprevious")
     vim.cmd("only")
-    vim.cmd("Gvdiff " .. vim.g.current_review_branch)
+    vim.cmd("silent! Gvdiff " .. vim.g.current_review_branch)
     vim.cmd("wincmd H")
     vim.cmd("wincmd l")
 end
