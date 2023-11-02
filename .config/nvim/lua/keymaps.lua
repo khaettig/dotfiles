@@ -4,8 +4,8 @@ local autocmd = vim.api.nvim_create_autocmd
 keymap.set("n", "ß", ":wa<CR>", { desc = "Save all" })
 keymap.set("n", "ẞ", ":q<CR>", { desc = "Quit" })
 keymap.set("n", "Q", "@q", { desc = "Use q macro" })
-keymap.set("n", "<PageUp>", "<C-u>")
-keymap.set("n", "<PageDown>", "<C-d>")
+keymap.set("n", "<PageUp>", "<C-u>zz")
+keymap.set("n", "<PageDown>", "<C-d>zz")
 keymap.set("n", "<C-y>", ":NvimTreeToggle<CR>", { silent = true })
 keymap.set("n", "<leader><C-y>", ":NvimTreeFindFile<CR>", { silent = true })
 
@@ -123,10 +123,11 @@ autocmd(
     {
         pattern = "javascript",
         callback = function()
+            local file_opts = { cmd = "cd frontend && jest -- $file" }
             keymap.set("n", "<leader>tn", require("jester").run, { buffer = true })
             keymap.set("n", "<leader>tdn", require("jester").debug, { buffer = true })
-            keymap.set("n", "<leader>tf", require("jester").run_file, { buffer = true })
-            keymap.set("n", "<leader>tdf", require("jester").debug_file, { buffer = true })
+            keymap.set("n", "<leader>tf", function() require("jester").run_file(file_opts) end, { buffer = true })
+            keymap.set("n", "<leader>tdf", function() require("jester").debug_file(file_opts) end, { buffer = true })
             keymap.set("n", "<leader>tl", require("jester").run_last, { buffer = true })
             keymap.set("n", "<leader>tdl", require("jester").debug_last, { buffer = true })
         end
