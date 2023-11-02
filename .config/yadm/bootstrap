@@ -48,6 +48,16 @@ def install_latest_nvim():
     sh("git config --global core.editor nvim")
 
 
+def install_flatpak_packages():
+    sh(
+        "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo"
+    )
+    for name, package in [("firefox", "org.mozilla.firefox"), ("slack", "com.slack.Slack")]:
+        sh(f"rm -f {HOME}/.local/bin/{name}")
+        sh(f"flatpak install -y flathub {package}")
+        sh(f"ln -s /var/lib/flatpak/exports/bin/{package} {HOME}/.local/bin/{name}")
+
+
 def install_packages():
     sh(f"xargs -a {PACKAGES} sudo apt-get install")
 
@@ -120,12 +130,29 @@ def install_newer_node_version():
     sh("sudo apt-get install -y nodejs")
 
 
+def install_alacritty():
+    cwd = f"{HOME}/Git/alacritty"
+    sh(f"rm -rf {cwd}")
+    sh(f"mkdir -p {HOME}/Git")
+    sh("git clone https://github.com/alacritty/alacritty", cwd=f"{HOME}/Git")
+    sh("rustup override set stable", cwd=cwd)
+    sh("rustup update stable", cwd=cwd)
+    sh(
+        "sudo apt-get install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3"
+    )
+    sh("cargo build --release", cwd=cwd)
+    sh("sudo tic -xe alacritty,alacritty-direct extra/alacritty.info", cwd=cwd)
+    sh(f"rm -f {HOME}/.local/bin/alacritty")
+    sh(f"sudo cp target/release/alacritty {HOME}/.local/bin/", cwd=cwd)
+
+
 def install_crontab():
     sh(f"crontab {HOME}/.scripts/crontab")
 
 
 def main():
     install_packages()
+    install_flatpak_packages()
     install_latest_nvim()
     install_newer_node_version()
     install_requirements()
@@ -135,8 +162,8 @@ def main():
     install_symlinks()
     install_crontab()
     install_nerdfonts()
+    install_alacritty()
     sh("sudo chsh -s $(which zsh)")
-    sh("sudo snap install alacritty")
     sh("systemctl --user enable syncthing.service")
     sh(f"sudo sh {HOME}/.scripts/install_pam_autologin.sh")
 
