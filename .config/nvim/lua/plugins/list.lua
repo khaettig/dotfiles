@@ -20,9 +20,10 @@ require("lazy").setup({
 
     "nvim-neotest/neotest",
     "nvim-neotest/neotest-python",
-    "David-Kunz/jester",
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
+    "mfussenegger/nvim-dap-python",
+    "David-Kunz/jester",
 
     "nvim-tree/nvim-tree.lua",
     "nvim-tree/nvim-web-devicons",

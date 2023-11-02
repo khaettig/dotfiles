@@ -33,6 +33,9 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+require("dap-python").setup("python3")
+require('dap-python').test_runner = 'pytest'
+
 -- Javascript
 require("jester").setup({
     cmd = "cd frontend && jest -t '$result' -- $file",
