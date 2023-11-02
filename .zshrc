@@ -34,6 +34,8 @@ if [[ -a .localrc ]]; then
     source .localrc
 fi
 
+source <(kubectl completion zsh)
+
 autoload -U colors && colors
 
 HISTSIZE=10000
