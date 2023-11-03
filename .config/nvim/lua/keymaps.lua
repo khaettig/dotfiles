@@ -41,6 +41,7 @@ keymap.set("n", "—", vim.diagnostic.goto_next, { desc = "Go to next diagnostic
 keymap.set('n', '„', vim.diagnostic.open_float, { desc = "Open diagnostics" })
 
 -- [C]
+-- See autocmds below
 keymap.set("n", "<leader>cn", require("functions.code_review").code_review_next, { desc = "[C]ode review [N]ext" })
 keymap.set("n", "<leader>cp", require("functions.code_review").code_review_previous, { desc = "[C]ode review [P]revious" })
 
@@ -118,12 +119,24 @@ keymap.set("n", "<F10>", require("dap").disconnect)
 keymap.set("n", "<F11>", require("dap").clear_breakpoints)
 keymap.set("n", "<F12>", require("dapui").toggle)
 
+-- Python
+autocmd(
+    "FileType",
+    {
+        pattern = "python",
+        callback = function()
+            keymap.set("n", "<leader>cc", function() vim.cmd("CoveragePy") end, { buffer = true })
+        end,
+})
+
 -- Javascript
 autocmd(
     "FileType",
     {
         pattern = "javascript",
         callback = function()
+            keymap.set("n", "<leader>cc", function() vim.cmd("IstanbulUpdate") end, { buffer = true })
+
             local file_opts = { cmd = "cd frontend && jest -- $file" }
             keymap.set("n", "<leader>tn", require("jester").run, { buffer = true })
             keymap.set("n", "<leader>tdn", require("jester").debug, { buffer = true })

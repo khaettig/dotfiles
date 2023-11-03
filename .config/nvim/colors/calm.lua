@@ -122,6 +122,12 @@ highlight({
     NeotestAdapterName = { fg=colors.cerulean },
     NeotestTarget = { fg=colors.cerulean },
 
+    covered = { fg=colors.emerald, bg=colors.emerald },
+    uncovered_nt = { fg=colors.blood, bg=colors.blood },
+    CoveragePyOk = { fg=colors.emeral, bg=colors.emerald  },
+    CoveragePyWarn = { fg=colors.yello, bg=colors.yellow  },
+    CoveragePyErr = { fg=colors.blood, bg=colors.blood },
+
     GTDLink = { fg=colors.cerulean },
     Deadline = { fg=colors.white, bg=colors.cerulean },
     HigPriority = { fg=colors.white, bg=colors.blood },
