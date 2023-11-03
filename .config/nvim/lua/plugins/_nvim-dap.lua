@@ -15,7 +15,7 @@ dapui.setup({
         {
             elements = {
                 { id = "repl", size = 0.5 },
-                { id = "watches", size = 0.5 },
+                { id = "console", size = 0.5 },
             },
             position = "bottom",
             size = 10
