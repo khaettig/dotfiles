@@ -122,6 +122,8 @@ highlight({
     NeotestAdapterName = { fg=colors.cerulean },
     NeotestTarget = { fg=colors.cerulean },
 
+    Sneak = { fg=colors.gray5, bg=colors.gray2 },
+
     covered = { fg=colors.emerald, bg=colors.emerald },
     uncovered_nt = { fg=colors.blood, bg=colors.blood },
     CoveragePyOk = { fg=colors.emeral, bg=colors.emerald  },
@@ -173,6 +175,5 @@ highlight({
 
     ["@text.title"] = { fg=colors.fern, bold=true },
 
-    ["@punctuation.delimiter"] = { fg=colors.purple },
     ["@text.literal.block"] = { fg=colors.purple }
 })

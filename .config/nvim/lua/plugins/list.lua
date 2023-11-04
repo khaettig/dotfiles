@@ -38,6 +38,7 @@ require("lazy").setup({
     "tpope/vim-commentary",
     "tpope/vim-abolish",
     "szw/vim-maximizer",
+    "justinmk/vim-sneak",
 
     "ThePrimeagen/vim-be-good",
     "ap/vim-css-color",
