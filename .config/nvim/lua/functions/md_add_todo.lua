@@ -18,6 +18,6 @@ return function()
         "-H",
         "Authorization: Bearer " .. get_token(),
         "-d",
-        vim.json.encode({ content = line }),
+        vim.json.encode({ content = line, due_string = "today"}),
     })
 end
