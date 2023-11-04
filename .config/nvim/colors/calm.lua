@@ -169,4 +169,7 @@ highlight({
     ["@string.documentation"] = { fg=colors.coral },
 
     ["@text.title"] = { fg=colors.fern, bold=true },
+
+    ["@punctuation.delimiter"] = { fg=colors.purple },
+    ["@text.literal.block"] = { fg=colors.purple }
 })

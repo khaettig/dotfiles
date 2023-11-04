@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+LOG = require("functions.log")
+
 opt.termguicolors = true
 vim.cmd.colorscheme("calm")
 

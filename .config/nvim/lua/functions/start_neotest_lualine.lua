@@ -19,13 +19,17 @@ local function get_status(adapter_id)
     if status.passed > 0 then return " " .. status.passed .. " PASSED ", colors.emerald end
 end
 
+local function handle_adapter(adapter_id)
+    local status, color = get_status(adapter_id)
+    if vim.g.test_status == status then return end
+    vim.g.test_status = status
+    change_z_color(color)
+end
+
 return function()
     vim.uv.new_timer():start(0, 1000, vim.schedule_wrap(function()
-        local adapter_id = neotest.adapter_ids()[1]
-        if not adapter_id then return end
-        local status, color = get_status(adapter_id)
-        if vim.g.test_status == status then return end
-        vim.g.test_status = status
-        change_z_color(color)
+        for _, adapter_id in pairs(neotest.adapter_ids()) do
+            handle_adapter(adapter_id)
+        end
     end))
 end

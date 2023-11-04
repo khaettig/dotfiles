@@ -19,5 +19,5 @@ return {
     teal = "#87AFAF",
     blood = "#870000",
     emerald = "#008700",
-    purple = "#8700FF",
+    purple = "#8700d7",
 }

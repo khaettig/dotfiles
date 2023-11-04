@@ -138,11 +138,8 @@ autocmd(
             keymap.set("n", "<leader>cc", function() vim.cmd("IstanbulUpdate") end, { buffer = true })
 
             local file_opts = { cmd = "cd frontend && jest -- $file" }
-            keymap.set("n", "<leader>tn", require("jester").run, { buffer = true })
             keymap.set("n", "<leader>tdn", require("jester").debug, { buffer = true })
-            keymap.set("n", "<leader>tf", function() require("jester").run_file(file_opts) end, { buffer = true })
             keymap.set("n", "<leader>tdf", function() require("jester").debug_file(file_opts) end, { buffer = true })
-            keymap.set("n", "<leader>tl", require("jester").run_last, { buffer = true })
             keymap.set("n", "<leader>tdl", require("jester").debug_last, { buffer = true })
         end
     }
