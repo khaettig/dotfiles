@@ -6,6 +6,8 @@ keymap.set("n", "ẞ", ":q<CR>", { desc = "Quit" })
 keymap.set("n", "Q", "@q", { desc = "Use q macro" })
 keymap.set("n", "<PageUp>", "<C-u>zz")
 keymap.set("n", "<PageDown>", "<C-d>zz")
+keymap.set("n", "<C-u>", function() print("Use PageUp") end)
+keymap.set("n", "<C-d>", function() print("Use PageDown") end)
 keymap.set("n", "<C-y>", ":NvimTreeToggle<CR>", { silent = true })
 keymap.set("n", "<leader><C-y>", ":NvimTreeFindFile<CR>", { silent = true })
 

@@ -132,7 +132,7 @@ highlight({
 
     GTDLink = { fg=colors.cerulean },
     Deadline = { fg=colors.white, bg=colors.cerulean },
-    HigPriority = { fg=colors.white, bg=colors.blood },
+    HighPriority = { fg=colors.white, bg=colors.blood },
     TodoDone = { fg=colors.gray2, strikethrough=true },
     Todo = { fg=colors.white, bg=colors.blue, bold=true },
 
