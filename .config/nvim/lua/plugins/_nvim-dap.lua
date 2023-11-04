@@ -1,27 +1,7 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-dapui.setup({
-    layouts = {
-        {
-            elements = {
-                { id = "scopes", size = 0.6 },
-                { id = "breakpoints", size = 0.2 },
-                { id = "stacks", size = 0.2 },
-            },
-            position = "left",
-            size = 30
-        },
-        {
-            elements = {
-                { id = "repl", size = 0.5 },
-                { id = "console", size = 0.5 },
-            },
-            position = "bottom",
-            size = 10
-        },
-    }
-})
+dapui.setup({})
 
 require("dap-python").setup("python3")
 require('dap-python').test_runner = 'pytest'
