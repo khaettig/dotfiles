@@ -134,6 +134,9 @@ highlight({
     TodoDone = { fg=colors.gray2, strikethrough=true },
     Todo = { fg=colors.white, bg=colors.blue, bold=true },
 
+    DebuggerBreakpoint = { fg=colors.blood },
+    DebuggerStopped = { fg=colors.emerald },
+
     ["@property"] = { fg=colors.gray1 },
     ["@method"] = { fg=colors.gray1 },
     ["@field"] = { fg=colors.gray1 },

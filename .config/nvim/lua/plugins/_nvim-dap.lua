@@ -1,5 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
+local colors = require("colors")
 
 dapui.setup({
     layouts = {
@@ -72,3 +73,7 @@ dap.configurations.javascript = {
     processId = require'dap.utils'.pick_process,
   },
 }
+
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='DebuggerBreakpoint', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='DebuggerBreakpoint', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='', texthl='DebuggerStopped', linehl='', numhl=''})
