@@ -9,21 +9,20 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
 set $mod Mod4
 
 {% set wallpaper = "/home/kevin/Bilder/Wallpapers/current.png" %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock.png" %}
 
 {% set screens = namespace(primary="HDMI-0", secondary="") %}
+{% include '/home/kevin/.screens.j2' %}
 
 {% if YADM_HOSTNAME == "kevin-desktop" %}
-{% set screens.primary ="DP-2" %}
-{% set screens.secondary ="HDMI-0" %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock_desktop.png" %}
 
 {% elif YADM_HOSTNAME == "kevin-X1" %}
 {% set screens.primary ="eDP-1" %}
-{% include '/home/kevin/.screens.j2' %}
 
 {% elif YADM_HOSTNAME == "kevin-T15p" %}
 {% set screens.primary ="DP-3" %}
