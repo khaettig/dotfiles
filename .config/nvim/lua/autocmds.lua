@@ -10,3 +10,11 @@ autocmd(
     "FileType",
     { pattern = "qf", callback = function() vim.cmd("wincmd J") end }
 )
+
+autocmd(
+    "FileType",
+    { pattern = "javascript", callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+    end }
+)
