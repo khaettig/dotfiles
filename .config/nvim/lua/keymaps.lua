@@ -86,6 +86,9 @@ keymap.set("n", "<leader>nt", require("functions.md_add_note"), { desc = "Add [N
 -- [R]efactoring
 -- See "lua/plugins/lsp.lua"
 
+-- [D]
+keymap.set("n", "<leader>db", ":e ~/WorkNotes/Daybook/daybook.md<CR>", { silent = true })
+
 -- [B]reakpoint
 keymap.set("n", "<leader>b", require("dap").toggle_breakpoint, { desc = "[B]reakpoint", silent = true })
 keymap.set("n", "<leader>B", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
