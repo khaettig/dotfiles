@@ -19,6 +19,8 @@ alias v="bash ~/.scripts/open_nvim_config.sh"
 
 alias gitclean="sh ~/.scripts/git_clean.sh"
 alias swap_wipe="rm ~/.local/state/nvim/swap/*"
+alias loopback="pactl load-module module-loopback latency_msec=1"
+alias stop_loopback="pactl unload-module module-loopback"
 
 alias sme="cd ~/Git/spotl.media"
 alias sma="cd ~/Git/spotl.machine"
