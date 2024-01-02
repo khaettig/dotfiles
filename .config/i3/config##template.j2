@@ -227,7 +227,7 @@ bindsym $mod+Shift+P exec python3 /home/kevin/.scripts/pomodoro/control.py STOP
 
 # Shorcuts
 bindsym $mod+b exec pkill -x telegram-deskto; exec pkill -x Discord
-bindsym $mod+Shift+B exec telegram-desktop; exec discord
+bindsym $mod+Shift+B exec telegram; exec discord
 bindsym $mod+m exec pkill -x slack
 bindsym $mod+Shift+M exec slack
 bindsym $mod+q exec python3 /home/kevin/.scripts/quick_capture.py
@@ -299,7 +299,13 @@ exec --no-startup-id picom
 # Host specific
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 
-exec telegram-desktop
+exec telegram
+exec spotify
+exec discord
+
+{% elif YADM_HOSTNAME == "kevin-desktop2" %}
+
+exec telegram
 exec spotify
 exec discord
 
@@ -313,6 +319,8 @@ exec --no-startup-id synclient VertScrollDelta=-113
 	{% if YADM_HOSTNAME == "kevin-desktop" %}
 		exec xrandr --output {{ screens.secondary }} --mode 2560x1440 --pos 0x0 --rotate normal --output {{ screens.primary }} --primary --mode 2560x1440 --pos 0x1440 --rotate normal
 
+	{% elif YADM_HOSTNAME == "kevin-desktop2" %}
+		exec xrandr --output {{ screens.primary }} --primary --mode 2560x1440 --pos 0x0 --rotate normal --output {{ screens.secondary }} --mode 1920x1080 --pos 2560x0 --rotate normal
 	{% elif YADM_HOSTNAME == "kevin-T15p" %}
 		exec xrandr --output {{ screens.secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ screens.primary }} --primary --mode 1920x1080 --pos 1920x0 --rotate normal
 

@@ -52,7 +52,14 @@ def install_flatpak_packages():
     sh(
         "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo"
     )
-    for name, package in [("firefox", "org.mozilla.firefox"), ("slack", "com.slack.Slack")]:
+    for name, package in [
+        ("firefox", "org.mozilla.firefox"),
+        ("slack", "com.slack.Slack"),
+        ("chrome", "com.google.Chrome"),
+        ("telegram", "org.telegram.desktop"),
+        ("discord", "com.discordapp.Discord"),
+        ("spotify", "com.spotify.Client"),
+    ]:
         sh(f"rm -f {HOME}/.local/bin/{name}")
         sh(f"flatpak install -y flathub {package}")
         sh(f"ln -s /var/lib/flatpak/exports/bin/{package} {HOME}/.local/bin/{name}")
@@ -95,7 +102,7 @@ def install_picom():
 
 def install_nerdfonts():
     cwd = f"{HOME}/.fonts"
-    zip = "UbuntuMono.zip"
+    zip = "JetBrainsMono.zip"
     sh(f"mkdir -p {cwd}")
     sh(
         f"wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/{zip}",
