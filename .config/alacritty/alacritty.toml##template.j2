@@ -13,7 +13,11 @@ background = "#121212"
 foreground = "#C7C8D0"
 
 [font]
+{% if YADM_HOSTNAME == "kevin-X1" %}
+size = 10
+{% else %}
 size = 14
+{% endif %}
 
 [font.bold]
 family = "Jetbrains Mono Nerd Font"

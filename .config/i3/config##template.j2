@@ -313,6 +313,11 @@ exec discord
 
 exec --no-startup-id synclient VertScrollDelta=-113
 
+bindcode --release 232 exec brightnessctl 100-
+bindcode --release 233 exec brightnessctl +100
+bindcode --release 128 exec xinput --enable 13
+bindcode --release 152 exec xinput --disable 13
+
 {% endif %}
 
 {% if screens.secondary %}
