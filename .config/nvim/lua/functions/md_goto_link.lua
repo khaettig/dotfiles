@@ -33,7 +33,7 @@ local function handle_project_link(link)
     end
 
     if projects[link] then
-        vim.cmd.edit(projects_folder .. projects[link])
+        vim.cmd.edit(projects[link])
     else
         vim.cmd.edit(projects_folder .. os.date("%Y-%m-%d") .. "_" .. link .. ".md")
         vim.cmd.read(project_template)
