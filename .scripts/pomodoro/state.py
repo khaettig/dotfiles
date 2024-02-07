@@ -2,7 +2,8 @@ from datetime import datetime
 from playsound import playsound
 from timer import Timer
 from input import ask_for_input
-from snippets.caldav import create_events, Event
+from snippets.clockify import create_entry
+from snippets.datetime import round_to_next_minute
 
 BEEP_PATH = "/home/kevin/.misc/beep.mp3"
 LOG_PATH = "/home/kevin/.pomodoro_log.txt"
@@ -52,14 +53,11 @@ class State:
 
     def _log_timer(self):
         try:
-            create_events(
-                calendar_name="Tracking",
-                events=[Event(
-                    start=self.timer.started,
-                    end=datetime.now(),
-                    title=self.current_goal,
-                    categories=self.current_categories,
-                )]
+            create_entry(
+                start=round_to_next_minute(self.timer.started),
+                end=round_to_next_minute(datetime.now()),
+                task=self.current_goal,
+                project=self.current_categories[0],
             )
         except Exception:
             pass
