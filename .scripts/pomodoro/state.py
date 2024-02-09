@@ -57,7 +57,7 @@ class State:
                 start=round_to_next_minute(self.timer.started),
                 end=round_to_next_minute(datetime.now()),
                 task=self.current_goal,
-                project=self.current_categories[0],
+                project=self.current_categories[0] if len(self.current_categories) else "",
             )
         except Exception:
             pass

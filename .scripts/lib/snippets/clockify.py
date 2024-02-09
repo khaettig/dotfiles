@@ -20,17 +20,19 @@ def create_entry(*, start, end, task, project=""):
         "end": TIMEZONE.localize(end).isoformat(),
         "description": task,
     }
+    workspace_id = settings["personalWorkspaceId"]
 
     if project:
-        projects = _load_projects(settings)
+        projects = _load_work_projects(settings)
 
         project_id = projects.get(project, None)
 
         if project_id:
             data["projectId"] = project_id
+            workspace_id = settings["workWorkspaceId"]
 
     response = requests.post(
-        URL + settings["workspaceId"] + "/time-entries",
+        URL + workspace_id + "/time-entries",
         headers={
             "X-Api-Key": settings["apiKey"],
             "Content-Type": "application/json",
@@ -45,9 +47,9 @@ def _load_settings():
         return json.load(f)
 
 
-def _load_projects(settings):
+def _load_work_projects(settings):
     response = requests.get(
-        URL + settings["workspaceId"] + "/projects",
+        URL + settings["workWorkspaceId"] + "/projects",
         headers={
             "X-Api-Key": settings["apiKey"],
             "Content-Type": "application/json",
