@@ -1,10 +1,11 @@
+import pytz
 import logging
 import json
 import requests
 from os.path import expanduser
 
 URL = "https://api.clockify.me/api/v1/workspaces/"
-ISO_8601 = "%Y-%m-%dT%H:%M:%SZ"
+TIMEZONE = pytz.timezone("Europe/Paris")
 
 logging.basicConfig(filename=expanduser("~/.clockify.log"), level=logging.DEBUG)
 logger = logging.getLogger()
@@ -15,8 +16,8 @@ def create_entry(*, start, end, task, project=""):
     settings = _load_settings()
 
     data = {
-        "start": start.strftime(ISO_8601),
-        "end": end.strftime(ISO_8601),
+        "start": TIMEZONE.localize(start).isoformat(),
+        "end": TIMEZONE.localize(end).isoformat(),
         "description": task,
     }
 
