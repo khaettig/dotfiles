@@ -43,7 +43,7 @@ class State:
                 return
             self.current_goal = input["goal"]
             self.current_categories = input["categories"]
-            self.timer = Timer("POMODORO", input["minutes"] * 60)
+            self.timer = Timer("POMODORO", input["minutes"] * 60, input["delay"])
             self.next_is_break = True
 
     def _stop(self):

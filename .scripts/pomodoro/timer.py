@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 WIDTH = 25
 FULL_CHAR = "█"
@@ -11,11 +11,11 @@ def render_time(seconds):
 
 
 class Timer:
-    def __init__(self, name, duration_in_s):
+    def __init__(self, name, duration_in_s, delay=0):
         self.name = name
         self.duration_in_s = duration_in_s
 
-        self.started = datetime.now()
+        self.started = datetime.now() - timedelta(minutes=delay)
 
     def render(self):
         remaining_seconds = self.remaining_seconds
