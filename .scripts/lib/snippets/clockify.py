@@ -12,34 +12,37 @@ logger = logging.getLogger()
 
 
 def create_entry(*, start, end, task, project=""):
-    logger.info("Create clockify entry %s, %s, %s, %s", start, end, task, project)
-    settings = _load_settings()
+    try:
+        logger.info("Create clockify entry %s, %s, %s, %s", start, end, task, project)
+        settings = _load_settings()
 
-    data = {
-        "start": TIMEZONE.localize(start).isoformat(),
-        "end": TIMEZONE.localize(end).isoformat(),
-        "description": task,
-    }
-    workspace_id = settings["personalWorkspaceId"]
+        data = {
+            "start": TIMEZONE.localize(start).isoformat(),
+            "end": TIMEZONE.localize(end).isoformat(),
+            "description": task,
+        }
+        workspace_id = settings["personalWorkspaceId"]
 
-    if project:
-        projects = _load_work_projects(settings)
+        if project:
+            projects = _load_work_projects(settings)
 
-        project_id = projects.get(project, None)
+            project_id = projects.get(project, None)
 
-        if project_id:
-            data["projectId"] = project_id
-            workspace_id = settings["workWorkspaceId"]
+            if project_id:
+                data["projectId"] = project_id
+                workspace_id = settings["workWorkspaceId"]
 
-    response = requests.post(
-        URL + workspace_id + "/time-entries",
-        headers={
-            "X-Api-Key": settings["apiKey"],
-            "Content-Type": "application/json",
-        },
-        data=json.dumps(data),
-    )
-    logger.info("Response: %s", response.text)
+        response = requests.post(
+            URL + workspace_id + "/time-entries",
+            headers={
+                "X-Api-Key": settings["apiKey"],
+                "Content-Type": "application/json",
+            },
+            data=json.dumps(data),
+        )
+        logger.info("Response: %s", response.text)
+    except Exception as exception:
+        logger.error(exception)
 
 
 def _load_settings():
