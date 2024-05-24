@@ -21,6 +21,7 @@ require("lazy").setup({
     "nvim-neotest/neotest",
     "nvim-neotest/neotest-python",
     "nvim-neotest/neotest-jest",
+    "nvim-neotest/nvim-nio",
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
     "mfussenegger/nvim-dap-python",

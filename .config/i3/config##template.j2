@@ -13,6 +13,7 @@
 set $mod Mod4
 
 {% set wallpaper = "/home/kevin/Bilder/Wallpapers/current.png" %}
+{% set fontsize = 14 %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock.png" %}
 
 {% set screens = namespace(primary="HDMI-0", secondary="") %}
@@ -25,11 +26,10 @@ set $mod Mod4
 {% set screens.primary ="eDP-1" %}
 
 {% elif YADM_HOSTNAME == "kevin-T15p" %}
-{% set screens.primary ="DP-3" %}
-{% set screens.secondary ="eDP-1" %}
+{% set screens.primary = "eDP-1" %}
+{% set fontsize = 12 %}
 {% set wallpaper = "/home/kevin/Pictures/current.png" %}
-
-{% set lock_image = "/home/kevin/Pictures/lock.png" %}
+{% set lock_paper = "/home/kevin/Pictures/current.png" %}
 
 {% endif %}
 
@@ -242,7 +242,7 @@ gaps inner 10px
 
 # Screens
 bar {
-	font pango:Ubuntu Mono Nerd Font 14
+	font pango:Ubuntu Mono Nerd Font {{ fontsize }}
 	output {{ screens.primary }}
 
 	{% if screens.secondary %}
@@ -317,6 +317,10 @@ bindcode --release 232 exec brightnessctl 100-
 bindcode --release 233 exec brightnessctl +100
 bindcode --release 128 exec xinput --enable 13
 bindcode --release 152 exec xinput --disable 13
+
+{% elif YADM_HOSTNAME == "kevin-T15p" %}
+
+exec --no-startup-id synclient VertScrollDelta=-113
 
 {% endif %}
 

@@ -80,7 +80,7 @@ def install_npm_packages():
 
 def install_i3():
     sh(
-        "/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb keyring.deb SHA256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4"
+       "/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2024.03.04_all.deb keyring.deb SHA256:f9bb4340b5ce0ded29b7e014ee9ce788006e9bbfe31e96c09b2118ab91fca734"
     )
     sh("sudo apt install ./keyring.deb")
     sh(
@@ -92,12 +92,7 @@ def install_i3():
 
 
 def install_picom():
-    cwd = f"{HOME}/Git/picom"
-    sh(f"mkdir -p {HOME}/Git")
-    sh(f"rm -rf {cwd}")
-    sh("git clone https://github.com/yshui/picom", cwd=f"{HOME}/Git")
-    sh("meson setup --buildtype=release build", cwd=cwd)
-    sh("sudo ninja -C build install", cwd=cwd)
+    sh("sudo apt install picom")
 
 
 def install_nerdfonts():
