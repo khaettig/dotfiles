@@ -49,15 +49,16 @@ keymap.set("n", "<leader>cp", require("functions.code_review").code_review_previ
 
 -- [H]arpoon
 keymap.set("n", "<leader>h", require("harpoon.ui").toggle_quick_menu, { desc = "Open [H]arpoon marks" })
-keymap.set("n", "°", require("harpoon.ui").nav_next, { desc = "Go to next harpoon mark" })
-keymap.set("n", "§", require("harpoon.ui").nav_prev, { desc = "Go to previous harpoon mark" })
-keymap.set("n", "ℓ", require("harpoon.mark").add_file, { desc = "Add harpoon mark" })
-keymap.set("n", "»", require("harpoon.mark").rm_file, { desc = "Remove harpoon mark" })
-keymap.set("n", "«", require("harpoon.mark").clear_all, { desc = "Clear all harpoon marks" })
-keymap.set("n", "¹", function() require("harpoon.ui").nav_file(1) end, { desc = "Go to first harpoon mark" })
-keymap.set("n", "²", function() require("harpoon.ui").nav_file(2) end, { desc = "Go to second harpoon mark" })
-keymap.set("n", "³", function() require("harpoon.ui").nav_file(3) end, { desc = "Go to third harpoon mark" })
-keymap.set("n", "›", function() require("harpoon.ui").nav_file(4) end, { desc = "Go to fourth harpoon mark" })
+keymap.set("n", "°", require("harpoon.ui").nav_next, { desc = "Go to next harpoon mark (shift-1)" })
+keymap.set("n", "§", require("harpoon.ui").nav_prev, { desc = "Go to previous harpoon mark (shift-2)" })
+keymap.set("n", "ℓ", require("harpoon.mark").add_file, { desc = "Add harpoon mark (shift-3)" })
+keymap.set("n", "»", require("harpoon.mark").rm_file, { desc = "Remove harpoon mark (shift-4)" })
+keymap.set("n", "«", require("harpoon.mark").clear_all, { desc = "Clear all harpoon marks (shift-5)" })
+keymap.set("n", "¹", function() require("harpoon.ui").nav_file(1) end, { desc = "Go to first harpoon mark (caps-1)" })
+keymap.set("n", "²", function() require("harpoon.ui").nav_file(2) end, { desc = "Go to second harpoon mark (caps-2)" })
+keymap.set("n", "³", function() require("harpoon.ui").nav_file(3) end, { desc = "Go to third harpoon mark (caps-3)" })
+keymap.set("n", "›", function() require("harpoon.ui").nav_file(4) end, { desc = "Go to fourth harpoon mark (caps-4)" })
+keymap.set("n", "‹", function() require("harpoon.ui").nav_file(5) end, { desc = "Go to fourth harpoon mark (caps-5)" })
 
 -- [E]
 keymap.set("n", "<leader>eh", require("telescope.builtin").help_tags, { desc = "Find [H]elp" })
