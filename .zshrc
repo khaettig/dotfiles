@@ -14,6 +14,7 @@ alias ds="docker ps -a"
 alias n="bash ~/.scripts/open_notes.sh"
 alias i="nvim ~/Notes/Incoming.md"
 alias w="bash ~/.scripts/open_work_notes.sh"
+alias wi="nvim ~/WorkNotes/Incoming.md"
 alias b="bash ~/.scripts/open_brain.sh"
 alias v="bash ~/.scripts/open_nvim_config.sh"
 
