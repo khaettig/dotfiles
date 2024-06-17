@@ -5,7 +5,7 @@ export PYTHONPATH="$PYTHONPATH:/home/kevin/Git/spotl.media/apps"
 export NODE_OPTIONS=--openssl-legacy-provider
 
 alias runapp="python3 manage.py run --no-webpack-stdout --filter-logs"
-alias debugapp="DEBUG=True python3 manage.py run --no-wait --no-webpack-stdout --debugpy 5678"
+alias debugapp="DEBUG=True python3 manage.py run --no-wait --no-webpack-stdout"
 alias pycov="pytest -n auto --cov=apps --cov-report= --cov-branch --cov-context=test"
 alias pyunit="pytest -n auto apps/*/tests/unit"
 alias pyviews="pytest -n auto apps/*/tests/views"
