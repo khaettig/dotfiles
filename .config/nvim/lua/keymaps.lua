@@ -10,6 +10,8 @@ keymap.set("n", "<C-u>", function() print("Use PageUp") end)
 keymap.set("n", "<C-d>", function() print("Use PageDown") end)
 keymap.set("n", "<C-y>", ":NvimTreeToggle<CR>", { silent = true })
 keymap.set("n", "<leader><C-y>", ":NvimTreeFindFile<CR>", { silent = true })
+keymap.set("n", "<leader>id", ":pu=strftime('%F')<CR>", { silent = true })
+keymap.set("n", "<leader>it", ":pu=strftime('%F %H:%M:%S')<CR>", { silent = true })
 
 -- Split navigation
 keymap.set("n", "<S-Up>", "<C-w><Up>", { desc = "Go [Up]" })
