@@ -1,2 +1,2 @@
 #!/bin/sh
-screenkey -p fixed -g 707x109+1799+2667 --persist --compr-cnt 1 -t 0.5
+screenkey -p fixed -g 840x70+1700+2760 --persist --compr-cnt 1 -t 1
