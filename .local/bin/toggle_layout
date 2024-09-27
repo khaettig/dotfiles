@@ -4,6 +4,8 @@ current_layout=$(setxkbmap -query | grep layout | awk '{print $2}')
 
 if [ "$current_layout" = "de" ]; then
     setxkbmap fr
+    notify-send azerty
 else
     setxkbmap de neo
+    notify-send neo2
 fi
