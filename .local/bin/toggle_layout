@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+current_layout=$(setxkbmap -query | grep layout | awk '{print $2}')
+
+if [ "$current_layout" = "de" ]; then
+    setxkbmap fr
+else
+    setxkbmap de neo
+fi
