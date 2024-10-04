@@ -137,7 +137,19 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10:0"
+set $wsf1 "11:F1"
+set $wsf2 "12:F2"
+set $wsf3 "13:F3"
+set $wsf4 "14:F4"
+set $wsf5 "15:F5"
+set $wsf6 "16:F6"
+set $wsf7 "17:F7"
+set $wsf8 "18:F8"
+set $wsf9 "19: "
+set $wsf10 "20:󰙯 "
+set $wsf11 "21:󰒱 "
+set $wsf12 "22: "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -150,6 +162,18 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+F1 workspace number $wsf1
+bindsym $mod+F2 workspace number $wsf2
+bindsym $mod+F3 workspace number $wsf3
+bindsym $mod+F4 workspace number $wsf4
+bindsym $mod+F5 workspace number $wsf5
+bindsym $mod+F6 workspace number $wsf6
+bindsym $mod+F7 workspace number $wsf7
+bindsym $mod+F8 workspace number $wsf8
+bindsym $mod+F9 workspace number $wsf9
+bindsym $mod+F10 workspace number $wsf10
+bindsym $mod+F11 workspace number $wsf11
+bindsym $mod+F12 workspace number $wsf12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1; workspace $ws1
@@ -162,6 +186,18 @@ bindsym $mod+Shift+7 move container to workspace number $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10; workspace $ws10
+bindsym $mod+Shift+F1 move container to workspace number $wsf1; workspace $wsf1
+bindsym $mod+Shift+F2 move container to workspace number $wsf2; workspace $wsf2
+bindsym $mod+Shift+F3 move container to workspace number $wsf3; workspace $wsf3
+bindsym $mod+Shift+F4 move container to workspace number $wsf4; workspace $wsf4
+bindsym $mod+Shift+F5 move container to workspace number $wsf5; workspace $wsf5
+bindsym $mod+Shift+F6 move container to workspace number $wsf6; workspace $wsf6
+bindsym $mod+Shift+F7 move container to workspace number $wsf7; workspace $wsf7
+bindsym $mod+Shift+F8 move container to workspace number $wsf8; workspace $wsf8
+bindsym $mod+Shift+F9 move container to workspace number $wsf9; workspace $wsf9
+bindsym $mod+Shift+F10 move container to workspace number $wsf10; workspace $wsf10
+bindsym $mod+Shift+F11 move container to workspace number $wsf11; workspace $wsf11
+bindsym $mod+Shift+F12 move container to workspace number $wsf12; workspace $wsf12
 
 bindsym $mod+n move workspace to output left
 bindsym $mod+g move workspace to output up
@@ -208,10 +244,10 @@ bindsym $mod+f exec firefox
 bindsym $mod+Shift+C exec google-chrome --incognito
 bindsym $mod+Shift+F exec firefox --private-window
 
-assign [class="discord"] $ws7
-assign [class="TelegramDesktop"] $ws8
-assign [class="Slack"] $ws9
-for_window [class="Spotify"] move to workspace $ws10
+assign [class="TelegramDesktop"] $wsf9
+assign [class="discord"] $wsf10
+assign [class="Slack"] $wsf11
+for_window [class="Spotify"] move to workspace $wsf12
 
 # Unlock gnome keyring on startup (needs install_pam_autologin.sh)
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
@@ -262,7 +298,9 @@ bar {
 		urgent_workspace "#262626" "#262626" "#C7C8D0"
 	}
 
-	padding 0px 10px 0px 0px
+    strip_workspace_numbers yes
+    workspace_min_width 30
+	padding 0px 0px 0px 0px
 }
 
 {% if screens.secondary %}
@@ -284,7 +322,9 @@ bar {
 		urgent_workspace "#262626" "#262626" "#C7C8D0"
 	}
 
-	padding 0px 10px 0px 0px
+    strip_workspace_numbers yes
+    workspace_min_width 30
+	padding 0px 0px 0px 0px
 }
 {% endif %}
 
