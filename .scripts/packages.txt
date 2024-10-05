@@ -13,7 +13,6 @@ syncthing
 jq
 black
 fd-find
-grip
 ripgrep
 zsh
 
