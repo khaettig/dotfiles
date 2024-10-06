@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.pylsp.setup { capabilities = capabilities }
-lspconfig.tsserver.setup { capabilities = capabilities }
+lspconfig.ts_ls.setup { capabilities = capabilities }
 lspconfig.lua_ls.setup({
     settings = { Lua = { diagnostics = { globals = { "vim" } } } },
     capabilities = capabilities
