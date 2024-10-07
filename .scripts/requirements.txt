@@ -1,4 +1,4 @@
-j2cli
+envtpl
 zmq
 playsound
 redminecli

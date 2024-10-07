@@ -70,8 +70,8 @@ def install_packages():
 
 
 def install_requirements():
-    sh(f"pip3 install -r {DEV_REQUIREMENTS}")
-    sh(f"pip3 install -r {REQUIREMENTS}")
+    sh(f"pip3 install -r {DEV_REQUIREMENTS} --break-system-packages")
+    sh(f"pip3 install -r {REQUIREMENTS} --break-system-packages")
 
 
 def install_npm_packages():
@@ -100,7 +100,7 @@ def install_nerdfonts():
     zip = "JetBrainsMono.zip"
     sh(f"mkdir -p {cwd}")
     sh(
-        f"wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/{zip}",
+        f"wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/{zip}",
         cwd=cwd,
     )
     sh(f"unzip -o {zip}", cwd=cwd)

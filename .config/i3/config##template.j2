@@ -17,7 +17,6 @@ set $mod Mod4
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock.png" %}
 
 {% set screens = namespace(primary="HDMI-0", secondary="") %}
-{% include '/home/kevin/.screens.j2' %}
 
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock_desktop.png" %}
@@ -146,10 +145,10 @@ set $wsf5 "15:F5"
 set $wsf6 "16:F6"
 set $wsf7 "17:F7"
 set $wsf8 "18:F8"
-set $wsf9 "19: "
-set $wsf10 "20:󰙯 "
-set $wsf11 "21:󰒱 "
-set $wsf12 "22: "
+set $wsf9 "19:"
+set $wsf10 "20:󰙯 "
+set $wsf11 "21:󰒱"
+set $wsf12 "22:"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
