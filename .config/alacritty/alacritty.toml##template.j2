@@ -73,7 +73,11 @@ hide_when_typing = true
 history = 10000
 multiplier = 3
 
+{% if YADM_HOSTNAME == "kevin-T15p" %}
 [terminal.shell]
+{% else %}
+[shell]
+{% endif %}
 program = "zsh"
 
 [window.padding]

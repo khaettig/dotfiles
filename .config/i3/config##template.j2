@@ -21,6 +21,10 @@ set $mod Mod4
 {% if YADM_HOSTNAME == "kevin-desktop" %}
 {% set lock_image = "/home/kevin/Bilder/Wallpapers/lock_desktop.png" %}
 
+{% elif YADM_HOSTNAME == "kevin-desktop2" %}
+{% set screens.primary = "DP-0" %}
+{% set screens.secondary = "HDMI-0" %}
+
 {% elif YADM_HOSTNAME == "kevin-X1" %}
 {% set screens.primary ="eDP-1" %}
 
