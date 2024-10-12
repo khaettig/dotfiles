@@ -91,6 +91,7 @@ keymap.set("n", "<leader>nt", require("functions.md_add_note"), { desc = "Add [N
 
 -- [D]
 keymap.set("n", "<leader>db", ":e ~/WorkNotes/Daybook.md<CR>", { silent = true })
+keymap.set("n", "<leader>dr", function() require("dapui").float_element("repl") end, { silent = true })
 
 -- [B]reakpoint
 keymap.set("n", "<leader>b", require("dap").toggle_breakpoint, { desc = "[B]reakpoint", silent = true })
@@ -107,7 +108,7 @@ keymap.set("n", "<leader>tdn", require("dap-python").test_class, { desc = "[T]es
 keymap.set("n", "<leader>ta", function() neotest.run.run({ suite = true }) end, { desc = "[T]est [A]ll", silent = true })
 keymap.set("n", "<leader>tda", function() print("Not supported") end, { desc = "[T]est [D]ebug [A]ll", silent = true })
 keymap.set("n", "<leader>tl", neotest.run.run_last, { desc = "[T]est [L]ast", silent = true })
-keymap.set("n", "<leader>tdl", function() print("Not supported") end, { desc = "[T]est [D]ebug [L]ast", silent = true })
+keymap.set("n", "<leader>tdl", function() require("dap").run_last() end, { desc = "[T]est [D]ebug [L]ast", silent = true })
 keymap.set("n", "<leader>tx", neotest.run.stop, { desc = "[T]est Stop", silent = true })
 keymap.set("n", "<leader>to", neotest.output_panel.toggle, { desc = "[T]est [O]utput", silent = true })
 keymap.set("n", "<leader>ts", neotest.summary.toggle, { desc = "[T]est [S]ummary", silent = true })
