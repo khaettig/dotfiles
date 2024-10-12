@@ -371,7 +371,7 @@ exec --no-startup-id synclient VertScrollDelta=-113
 		exec xrandr --output {{ screens.secondary }} --mode 2560x1440 --pos 0x0 --rotate normal --output {{ screens.primary }} --primary --mode 2560x1440 --pos 0x1440 --rotate normal
 
 	{% elif YADM_HOSTNAME == "kevin-desktop2" %}
-		exec xrandr --output {{ screens.primary }} --primary --mode 2560x1440 --pos 0x0 --rotate normal --output {{ screens.secondary }} --mode 1920x1080 --pos 2560x0 --rotate normal
+		exec xrandr --output {{ screens.primary }} --primary --mode 2560x1440 --pos 0x0 --rotate normal --output {{ screens.secondary }} --mode 2560x1440 --pos 2560x0 --rotate normal
 	{% elif YADM_HOSTNAME == "kevin-T15p" %}
 		exec xrandr --output {{ screens.secondary }} --mode 1920x1080 --pos 0x0 --rotate normal --output {{ screens.primary }} --primary --mode 1920x1080 --pos 1920x0 --rotate normal
 
