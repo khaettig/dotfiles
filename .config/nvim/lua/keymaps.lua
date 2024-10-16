@@ -102,9 +102,9 @@ keymap.set("n", "<leader>B", function() require("dap").set_breakpoint(vim.fn.inp
 -- [T]est
 local neotest = require("neotest")
 keymap.set("n", "<leader>tn", neotest.run.run, { desc = "[T]est [N]earest", silent = true })
-keymap.set("n", "<leader>tdn", require("dap-python").test_method, { desc = "[T]est [D]ebug [N]earest", silent = true })
+-- keymap.set("n", "<leader>tdn", require("dap-python").test_method, { desc = "[T]est [D]ebug [N]earest", silent = true })
 keymap.set("n", "<leader>tf", function() neotest.run.run(vim.fn.expand("%")) end, { desc = "[T]est [F]ile", silent = true })
-keymap.set("n", "<leader>tdn", require("dap-python").test_class, { desc = "[T]est [D]ebug [F]ile", silent = true })
+-- keymap.set("n", "<leader>tdn", require("dap-python").test_class, { desc = "[T]est [D]ebug [F]ile", silent = true })
 keymap.set("n", "<leader>ta", function() neotest.run.run({ suite = true }) end, { desc = "[T]est [A]ll", silent = true })
 keymap.set("n", "<leader>tda", function() print("Not supported") end, { desc = "[T]est [D]ebug [A]ll", silent = true })
 keymap.set("n", "<leader>tl", neotest.run.run_last, { desc = "[T]est [L]ast", silent = true })
@@ -135,6 +135,8 @@ autocmd(
         pattern = "python",
         callback = function()
             keymap.set("n", "<leader>cc", function() vim.cmd("CoveragePy") end, { buffer = true })
+            keymap.set("n", "<leader>b", "Oimport pdb; pdb.set_trace()<ESC>", { desc = "[B]reakpoint", silent = true })
+            keymap.set("n", "<leader>tdn", ":TestNearest<CR>", { desc = "[T]est [D]ebug [N]earest", silent = true })
         end,
 })
 
