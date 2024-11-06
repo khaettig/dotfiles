@@ -261,6 +261,9 @@ exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym Shift+XF86AudioPlay exec playerctl play-pause
+bindsym Shift+XF86AudioPrev exec playerctl next
+bindsym Shift+XF86AudioNext exec playerctl previous
 
 # Pomodoro
 bindsym $mod+p exec python3 /home/kevin/.scripts/pomodoro/control.py NEXT
