@@ -18,7 +18,7 @@ alias mr="cd ~/Notes; nvim -c 'OpenMorningReview'"
 alias dr="cd ~/Notes; nvim -c 'OpenDailyReview'"
 alias w="cd ~/Notes; nvim -c 'OpenWorkNotes'"
 alias wm="cd ~/Notes; nvim -c 'OpenWorkMeeting'"
-alias b="cd ~/Notes; nvim -c 'OpenBrain'"
+alias b="cd ~/Notes/Brain; nvim -c 'OpenBrain'"
 alias v="cd ~/.config/nvim; nvim -c 'OpenVimConfig'"
 
 alias gitclean="sh ~/.scripts/git_clean.sh"
