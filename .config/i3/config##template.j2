@@ -266,15 +266,15 @@ bindsym Shift+XF86AudioPrev exec playerctl next
 bindsym Shift+XF86AudioNext exec playerctl previous
 
 # Pomodoro
-bindsym $mod+p exec python3 /home/kevin/.scripts/pomodoro/control.py NEXT
-bindsym $mod+Shift+P exec python3 /home/kevin/.scripts/pomodoro/control.py STOP
+bindsym $mod+p exec python3 /home/kevin/.code/scripts/pomodoro/control.py NEXT
+bindsym $mod+Shift+P exec python3 /home/kevin/.code/scripts/pomodoro/control.py STOP
 
 # Shorcuts
 bindsym $mod+b exec pkill -x telegram-deskto; exec pkill -x Discord
 bindsym $mod+Shift+B exec telegram; exec discord
 bindsym $mod+m exec pkill -x slack
 bindsym $mod+Shift+M exec slack
-bindsym $mod+q exec python3 /home/kevin/.scripts/quick_capture.py
+bindsym $mod+q exec python3 /home/kevin/.code/scripts/quick_capture.py
 
 bindsym $mod+j exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 

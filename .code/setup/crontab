@@ -21,4 +21,4 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h  dom mon dow   command
-*/10 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) python3 ~/.scripts/check_yadm_status.py
+*/10 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) python3 ~/.code/check_yadm_status.py

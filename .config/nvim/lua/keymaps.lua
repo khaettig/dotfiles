@@ -128,6 +128,13 @@ keymap.set("n", "<F10>", require("dap").disconnect)
 keymap.set("n", "<F11>", require("dap").clear_breakpoints)
 keymap.set("n", "<F12>", require("dapui").toggle)
 
+-- System
+keymap.set("n", "<leader>fn", ":OpenNotes<CR>", { silent = true })
+keymap.set("n", "<leader>fm", ":OpenMorningReview<CR>", { silent = true })
+keymap.set("n", "<leader>fr", ":OpenDailyReview<CR>", { silent = true })
+keymap.set("n", "<leader>fw", ":OpenWorkNotes<CR>", { silent = true })
+keymap.set("n", "<leader>fv", ":OpenWorkMeeting<CR>", { silent = true })
+
 -- Python
 autocmd(
     "FileType",

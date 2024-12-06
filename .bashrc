@@ -2,11 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PYTHONPATH=$PYTHONPATH:$HOME/.scripts/lib
+export PYTHONPATH=$PYTHONPATH:$HOME/.code/python_lib
 export TERM=xterm-256color
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-
-source ~/.bash_aliases
 
 export PATH="$HOME/.local/bin:$PATH"
 
