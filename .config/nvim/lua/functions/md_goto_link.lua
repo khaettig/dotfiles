@@ -26,6 +26,10 @@ local function handle_system_link(link)
     vim.cmd.edit(string.sub(link, 2) .. ".md")
 end
 
+local function handle_issue_link(link)
+    system({ "google-chrome", "--new-window", "https://redmine.spotl.io/issues/" .. string.sub(link, 2) })
+end
+
 local function handle_project_link(link)
     local projects = {}
     for _, file in pairs(vim.fn.globpath(projects_folder, "*.md", 0, 1)) do
@@ -55,6 +59,9 @@ return function()
 
     if string.sub(match, 1, 1) == "/" then
         handle_system_link(match)
+        return
+    elseif string.sub(match, 1, 1) == "#" then
+        handle_issue_link(match)
         return
     end
 
