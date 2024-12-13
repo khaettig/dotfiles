@@ -4,5 +4,6 @@ return function()
     cmd([[syntax match GTDLink "\[#[0-9]*\]"]])
     cmd([[syntax match Deadline "<[0-9\-]\+>"]])
     cmd([[syntax match HighPriority "<high>"]])
+    cmd([[syntax match ThisWeek "<this-week>"]])
     cmd([[syntax match TodoDone ".*✔$"]])
 end
