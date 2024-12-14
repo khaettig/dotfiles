@@ -3,6 +3,11 @@ local system = vim.system
 local projects_folder = "Projects/"
 local project_template = "System/ProjectTemplate.md"
 
+local function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
 local function handle_command(type, link)
     if type == "file" then
         system({ "xdg-open", vim.fn.expand(link) })
@@ -18,6 +23,13 @@ local function handle_command(type, link)
         return
     elseif type == "yt" then
         system({ "firefox", "--new-window", "youtube.com/watch?v=" .. link })
+        return
+    elseif type == "draw" then
+        local file = vim.fn.expand("~/Sync/Main/Dokumente/Diagramme/" .. link .. ".drawio")
+        if not file_exists(file) then
+            system({ "cp", vim.fn.expand("~/Sync/Main/Dokumente/Diagramme/Template.drawio"), file })
+        end
+        system({ "drawio", "-c", file })
         return
     end
 end
