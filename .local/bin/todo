@@ -1,3 +1,0 @@
-#!/bin/sh
-
-firefox --new-window https://todoist.com/app/filter/2339635299
