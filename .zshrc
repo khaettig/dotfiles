@@ -21,7 +21,7 @@ alias wm="cd ~/Notes; nvim -c 'OpenWorkMeeting'"
 alias b="cd ~/Notes/Brain; nvim -c 'OpenBrain'"
 alias v="cd ~/.config/nvim; nvim -c 'OpenVimConfig'"
 
-alias gitclean="sh ~/.scripts/git_clean.sh"
+alias gitclean="sh ~/.code/scripts/git_clean.sh"
 alias trash_swap="trash ~/.local/state/nvim/swap/*"
 
 alias sme="cd ~/Git/spotl.media"
@@ -30,7 +30,7 @@ alias smc="cd ~/Git/spotl.config"
 
 alias kube_test="gcloud config set project spotl-media-test && gcloud container clusters get-credentials spotl-test-gke"
 alias kube_prod="gcloud config set project spotl-media-prod && gcloud container clusters get-credentials spotl-prod-gke"
-alias kubec="sh ~/.scripts/kubec.sh"
+alias kubec="sh ~/.code/scripts/kubec.sh"
 alias kubenuke="kubectl delete pod --grace-period=0 --force"
 
 export PATH="$HOME/Sync/Main/.bin:$PATH"
