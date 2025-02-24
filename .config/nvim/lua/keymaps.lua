@@ -129,6 +129,7 @@ keymap.set("n", "<F11>", require("dap").clear_breakpoints)
 keymap.set("n", "<F12>", require("dapui").toggle)
 
 -- System
+keymap.set("n", "<leader>fi", ":OpenIncoming<CR>", { silent = true })
 keymap.set("n", "<leader>fn", ":OpenNotes<CR>", { silent = true })
 keymap.set("n", "<leader>fm", ":OpenMorningReview<CR>", { silent = true })
 keymap.set("n", "<leader>fr", ":OpenDailyReview<CR>", { silent = true })
