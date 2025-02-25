@@ -85,6 +85,7 @@ function() require("telescope.builtin").live_grep({ default_text = vim.fn.expand
 -- [N]
 keymap.set("n", "<leader>no", ":noh<CR>", { desc = "[N][o] highlight", silent = true })
 keymap.set("n", "<leader>nt", require("functions.md_add_note"), { desc = "Add [N]o[T]e", silent = true })
+keymap.set("n", "<leader>ni", require("functions.open_issue_md"), { desc = "Open [N]ote [I]ssue", silent = true })
 
 -- [R]efactoring
 -- See "lua/plugins/lsp.lua"
