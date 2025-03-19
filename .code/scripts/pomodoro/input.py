@@ -27,9 +27,9 @@ class Window(qtw.QDialog):
 
         self.goal_input = qtw.QLineEdit()
         self.minutes_input = qtw.QLineEdit("25")
-        self.minutes_input.setValidator(qtg.QIntValidator(1, 99))
+        self.minutes_input.setValidator(qtg.QIntValidator(1, 999))
         self.delay_input = qtw.QLineEdit("0")
-        self.delay_input.setValidator(qtg.QIntValidator(1, 99))
+        self.delay_input.setValidator(qtg.QIntValidator(1, 999))
         self.category_input = qtw.QLineEdit()
         self.submit_button = qtw.QPushButton("Start")
         self.submit_button.clicked.connect(self.submit)
